@@ -1,0 +1,105 @@
+<mat-card>
+  <span>REGISTRAR NUEVO USUARIO</span>
+  <br>
+  <!--onSubmit acer referencia anuestro token atraes de un metodo (ngSubmit)='onSubmit()'-->
+  <form [formGroup] = "registerForm" (ngSubmit)='onSubmit()' >
+      <mat-form-field  >  <!-- appearance="fill" -->
+          <!-- <mat-label>Cod Usuario</mat-label> -->
+          <input matInput placeholder="CodigoUsuario" formControlUserCode="userCode">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="col-md-9">
+         <!--  <mat-label>Contraseña</mat-label> -->
+          <input matInput placeholder="Nombre_Completo" type="" formControlUserCode="Nombre Completo">
+
+        </mat-form-field>
+        <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Email" type="" formControlUserCode="Email">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Contraseña" type="password" formControlUserCode="password">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Cargo"  formControlUserCode="Cargo">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="UnidadOrg"  formControlUserCode="UnidadOrg">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Gerencia"  formControlUserCode="Gerencia">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Locacion" formControlUserCode="Locacion">
+
+         </mat-form-field>
+         <mat-form-field>
+          <!--  <mat-label>Contraseña</mat-label> -->
+           <input matInput placeholder="Sucursal" formControlUserCode="Sucursal">
+
+         </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" [disabled]="registerForm.valid" > REGISTER </button>
+  </form>
+
+
+</mat-card>
+
+<!--
+<mat-card style="margin-bottom: 10px;">
+  <mat-card-content>
+    <form [formGroup]="form">
+      <div class="col-md-12">
+        <mat-form-field>
+          <input type="text" matInput formControlName="UnitName" placeholder="Unit Name">
+          <mat-error *ngIf="UnitName.invalid" style="color: red;">{{unitNameError()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="number" matInput formControlName="Area" placeholder="Unit Area">
+          <mat-error *ngIf="UnitName.invalid" style="color: red;">{{areaError()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field>
+          <mat-select placeholder="Unit Owner" formControlName="OwnerId">
+            <mat-option *ngFor="let p of persons" [value]="p.PersonId">
+              {{p.FirstName}} {{p.MiddleName}} {{p.LastName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="OwnerId.invalid" style="color: red;">{{ownerIdError()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field>
+          <mat-select formControlName="IsWithParking" placeholder="With Parking">
+            <mat-option *ngFor="let y of yesNo" [value]="y.value">
+              {{y.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field>
+          <input type="number" matInput placeholder="Parking Area Size" formControlName="ParkingArea">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button class="btn btn-primary" (click)="updateUnit()" [disabled]="form.invalid">
+        Update Unit
+      </button>
+      <button mat-raised-button class="btn btn-warning" (click)="cancel()">
+        Cancel
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+ -->

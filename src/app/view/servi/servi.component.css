@@ -1,0 +1,280 @@
+
+
+/*      carousel       */
+
+
+img {
+    margin: 0 16px;
+  }
+  .fade-carousel {
+    position:relative;
+   height: 35vh;
+}
+
+    .fade-carousel .carousel-inner .item {
+        height: 35vh;
+    }
+
+
+
+
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+
+    .hero h1 {
+        font-size: 5em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .3;
+}
+
+
+/********************************/
+.fade-carousel .slides .slide-1 {
+    height: 35vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.fade-carousel .slides .slide-1 {
+    background-image: linear-gradient(to right, rgba(255,255,255,0) 10%,
+    rgba(255,255,255,1)), url(../../../assets/img/service.jpg);
+}
+
+/********************************/
+@media screen and (min-width: 980px) {
+    .hero {
+        width: 980px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .hero h1 {
+        font-size: 4em;
+    }
+}
+
+
+/*************************************/
+.card {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+
+    .card h3 {
+        font-weight: 600;
+    }
+
+    .card img {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        max-height: 120px;
+    }
+
+.card-1 {
+    background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
+.card-2 {
+    background-image: url(https://ionicframework.com/img/getting-started/components-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
+.card-3 {
+    background-image: url(https://ionicframework.com/img/getting-started/theming-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
+@media(max-width: 990px) {
+    .card {
+        margin: 20px;
+    }
+}
+/*
+nuevp services
+*/
+a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+#accordion .panel {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#accordion .panel-heading {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+    #accordion .panel-heading:before,
+    #accordion .panel-heading:after {
+        content: "";
+        width: 50%;
+        height: 20%;
+        box-shadow: 0 15px 5px rgba(0, 0, 0, 0.4);
+        position: absolute;
+        bottom: 15px;
+        left: 10px;
+        transform: rotate(-3deg);
+        z-index: -1;
+    }
+
+    #accordion .panel-heading:after {
+        left: auto;
+        right: 10px;
+        transform: rotate(3deg);
+    }
+
+#accordion .panel-title a {
+    display: block;
+    padding: 15px 0px 15px 0px;
+    text-align: center;
+    margin: auto;
+    background: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--my-accent-color);
+    border-radius: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+
+
+
+    #accordion .panel-title a .icon {
+        display: inline-block;
+        width: 55px;
+        height: 100%;
+        border-right: 2px var(--my-light-primary-color);
+        font-size: 20px;
+        color: rgba(0,0,0,0.7);
+        line-height: 50px;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+#accordion .panel-body {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    border-bottom: 3px solid var(--my-light-primary-color);
+    border-top: none;
+    background: #fff;
+    font-size: 15px;
+    color: #333;
+    line-height: 27px;
+}
+
+
+
+
+
+mat-accordion
+mat-expansion-panel
+mat-expansion-panel-header
+mat-expanded{
+  font-size: 1.25em;
+  background-color: white;
+  background: white;
+  color: #00838f;
+  font-weight: 500;
+}
+
+mat-panel-description{
+    font-family: Georgia, 'Times New Roman', serif;
+    color:black;
+    display: flex;
+  justify-content: center;
+    
+}
+
+mat-accordion
+mat-expansion-panel
+mat-expansion-panel-header {
+  font-size: 1.25em;
+  background-color: white;
+  background: white;
+  text-align: center;
+
+  color: #00838f;
+  font-weight: 500;
+}
+
+
+  mat-accordion{
+      color: darkgrey;
+  }
+  mat-expansion-panel
+  .mat-expansion-panel-body {
+  background-color: white;
+  padding-top: 5px;
+}
+.mat-expansion-indicator::after {
+  color: #00838f;
+}
+
+
+
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover,
+.mat-expansion-panel-header.mat-expanded:focus {
+    background: rgb(135, 151, 163);
+    background: linear-gradient(0deg, rgba(0,109,190,0) 0%, rgb(128, 149, 150) 93%);
+}
