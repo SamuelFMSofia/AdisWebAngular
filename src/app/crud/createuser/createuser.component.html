@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z8 table">
+  <span>CREAR NUEVO USARIO</span>
+  <form [formGroup] = "createuserForm" (ngSubmit) = "onSubmit()">
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "IdUser" formControlName="IdUsr">
+      </mat-form-field>
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Password" formControlName="Password" type="password">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Nombre_Completo" formControlName="Nombre_Completo">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "SiglaUO" formControlName="SiglaUO">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "IdUO" formControlName="IdUO">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "UnidadOrg" formControlName="UnidadOrg">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Email" formControlName="Email">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Empresa" formControlName="Empresa">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Gerencia" formControlName="Gerencia">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Locacion" formControlName="Locacion">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "Sucursal" formControlName="Sucursal">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "NroDocAprobador" formControlName="NroDocAprobador">
+      </mat-form-field>
+
+      <mat-form-field class="createUser">
+          <input matInput placeholder = "NombreAprobador" formControlName="NombreAprobador">
+      </mat-form-field>
+
+
+
+      <button mat-raised-button [disabled] = "!createuserForm.valid">Crear Nuevo</button>
+
+
+  </form>
+</mat-card>

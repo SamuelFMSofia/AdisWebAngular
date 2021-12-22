@@ -12,6 +12,9 @@ import { WorkComponent } from './work.component';
   imports: [
     CommonModule,
     WorkRoutingModule
+  ],
+  exports:[
+    WorkComponent
   ]
 })
 export class WorkModule { }

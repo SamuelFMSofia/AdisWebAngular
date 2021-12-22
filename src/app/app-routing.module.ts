@@ -1,34 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeaComponent } from './homea/homea.component';
 
 
 const routes: Routes = [
 
-/*   {
-    path:'**',
-    redirectTo:'home',
-  }, */
-  {
-    path:'home',
-    loadChildren:()=> import('./view/home/home.module').then((m)=>m.HomeModule)
-  },
-
-  {
-    path:'servi',
-    loadChildren:()=> import('./view/servi/servi.module').then((x)=>x.ServiModule)
+ {
+    path:'web',
+    redirectTo:'web', pathMatch: 'full',
   },
   {
-    path:'work',
-    loadChildren:()=> import('./view/work/work.module').then((y)=>y.WorkModule)
-  },
-  {
-    path:'login',
-    loadChildren:()=> import('./login/login.module').then((l)=>l.LoginModule)
-  },
-  {
-    path:'register',
-    loadChildren:()=> import('./register/register.module').then((r)=>r.RegisterModule)
+    path:'web',
+    loadChildren:()=> import('./web/web.module').then((m)=>m.WebModule)
   }
+  ,
+  {
+    path:'layout',
+    loadChildren:()=> import('./layout/layout.module').then((t)=>t.LayoutModule)
+  }
+
 
 ];
 

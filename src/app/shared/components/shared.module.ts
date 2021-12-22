@@ -48,7 +48,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule, MatTableModule,MatToolbarModule, MatSidenavModule, MatIconModule, ReactiveFormsModule,
     MatInputModule, MatCardModule, MatDialogModule, MatListModule, FormsModule, RouterModule, FlexModule
     ,MatExpansionModule,
-    MatTabsModule, FlexLayoutModule
+    MatTabsModule, FlexLayoutModule,
+    RouterModule
   ],
   exports:[
     FooterComponent,

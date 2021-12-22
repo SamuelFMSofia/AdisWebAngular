@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
           Validators.minLength(30)])],
         Cargo: ['', Validators.required],
         UnidadOrg:['', Validators.required],
-        Gerencia: ['', Validators.required],
+        Gerencia: [''],
         Locacion: ['', Validators.required],
-        Sucursal: ['', Validators.required]
+        Sucursal: ['']
       })
     }
   onSubmit(){

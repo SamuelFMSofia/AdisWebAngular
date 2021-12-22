@@ -35,7 +35,7 @@ export class LoginComponent  {
 
 
        //pagina
-       this.router.navigate(['/']);
+       this.router.navigate(['/layout']);
 
      },
       // coontrolar al usuario en la ejecucion este mensaje viene desde e api

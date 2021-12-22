@@ -14,20 +14,20 @@
     <div fxFlex fxLayout fxLayoutAlign="center" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
             <li>
-                <a routerLink="/home">Home</a>
+                <a routerLink="home">Home</a>
             </li>
             <li>
-                <a routerLink="/servi">Services</a>
+                <a routerLink="servi">Services</a>
             </li>
             <li>
-              <a routerLink="/work">Work Team</a>
+              <a routerLink="work">Work Team</a>
            </li>
         </ul>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
       <ul fxLayout  class="navigation-items">
           <li>
-              <a *ngIf = "!auth.isAutenticado"  routerLink="/login">LogIn</a>
+              <a *ngIf = "!auth.isAutenticado"  routerLink="login">LogIn</a>
           </li>
 
       </ul>
@@ -51,7 +51,7 @@
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout  class="navigation-items">
         <li>
-            <a  *ngIf = "!auth.isAutenticado" routerLink="/register">Register</a>
+            <a  routerLink="layout">DASHBOARD</a>
         </li>
 
     </ul>

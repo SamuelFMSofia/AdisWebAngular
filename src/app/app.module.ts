@@ -1,24 +1,41 @@
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from './layout/layout.module';
+import { WebModule } from './web/web.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/components/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { FormRComponent } from './form/form-r/form-r.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormRComponent,
+
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
-    SharedModule,
     BrowserAnimationsModule,
-    MatSidenavModule
-  ],
+    AppRoutingModule,
+    WebModule,
+    LayoutModule,
+    HttpClientModule
+
+   ],
+   exports:[
+     CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    WebModule,
+    LayoutModule
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

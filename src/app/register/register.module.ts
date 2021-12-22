@@ -35,6 +35,19 @@ import { MatInputModule } from '@angular/material/input';
    MatIconModule,
    MatInputModule
 
+  ],
+  exports:[
+    CommonModule,
+    RegisterRoutingModule,
+   MatFormFieldModule,
+   FlexLayoutModule,
+   FlexModule,
+   MatCardModule,
+   ReactiveFormsModule,
+   //MatDatepickerModule
+   MatButtonModule,
+   MatIconModule,
+   MatInputModule
   ]
 })
 export class RegisterModule { }
