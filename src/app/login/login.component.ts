@@ -44,6 +44,7 @@ export class LoginComponent  {
      (errorData)=>alert(errorData.error.displayMessage)
 
      )
+     this.router.navigate(['/layout']);
    }
 
 }

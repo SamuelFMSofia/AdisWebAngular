@@ -13,6 +13,10 @@ const routes: Routes = [
     {
       path:'register',
       loadChildren:()=> import('../register/register.module').then((r)=>r.RegisterModule)
+    },
+    {
+      path:'dashboard',
+      component:HomeaComponent
     }
   ]
 
