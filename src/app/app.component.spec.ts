@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'AdisWebAngular'`, () => {
+  it(`should have as title 'adisApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('AdisWebAngular');
+    expect(app.title).toEqual('adisApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('AdisWebAngular app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('adisApp app is running!');
   });
 });

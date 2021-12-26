@@ -1,0 +1,52 @@
+
+
+
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenavdash></app-sidenavdash>
+  </mat-drawer>
+
+
+   <app-headerdash (toggleSidebarForMe)="sideBarToggler() " ></app-headerdash>
+
+
+<div class="main contents">
+ 
+  <router-outlet>
+
+  </router-outlet>
+  
+</div>
+
+
+  <app-footerdash></app-footerdash>
+
+</mat-drawer-container>
+
+
+
+
+
+
+
+<!-- <mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenavdash></app-sidenavdash>
+  </mat-drawer>
+
+  <mat-drawer-content>
+        <app-headerdash (toggleSidebarForMe)="sideBarToggler() " ></app-headerdash>
+
+           
+               <router-outlet>
+
+              </router-outlet>
+            
+
+    <app-footerdash></app-footerdash>
+  </mat-drawer-content>
+
+
+  </mat-drawer-container> -->
+
+

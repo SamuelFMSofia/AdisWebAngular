@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeaComponent } from './homea/homea.component';
-
 
 const routes: Routes = [
-
- {
-    path:'web',
-    redirectTo:'web', pathMatch: 'full',
-  },
-  {
-    path:'web',
-    loadChildren:()=> import('./web/web.module').then((m)=>m.WebModule)
-  }
-  ,
-  {
-    path:'layout',
-    loadChildren:()=> import('./layout/layout.module').then((t)=>t.LayoutModule)
-  }
-
-
+ 
+    {
+      path:'websites',
+      loadChildren:()=> import('./websites/websites.module').then(w=>w.WebsitesModule)
+    },
+    {
+      path:'dashboard',
+      loadChildren:()=> import('./dashboard/dashboard.module').then(d=>d.DashboardModule)
+    },
+    {
+      path:'**',
+      redirectTo:'websites'
+    }
+  
 ];
 
 @NgModule({
