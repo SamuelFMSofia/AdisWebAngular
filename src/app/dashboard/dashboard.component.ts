@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent {
+
+  constructor() { }
+
+ 
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
+
+}

@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    flex-direction: column;
+    height: 100%;
+    position: absolute;
+
+  min-width: 100%;
+ 
+  }
+
+  mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+
+  mat-drawer {
+    background: #1976d2;
+  }
+
+
+
+ 
+  .main {
+    background-color: #fff;
+  }
+  
+
+  .main {
+    min-height: 80vh;
+    margin-top: 40px; /* height of header */
+    padding: 16px;
+  }
+
+
