@@ -1,4 +1,13 @@
 
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CreatepersonModule } from './../createperson/createperson.module';
+import { ModifyusersModule } from './../../modify/modifyusers/modifyusers.module';
+import { ModifypersonModule } from './../../modify/modifyperson/modifyperson.module';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 import { SearchModule } from './../search/search.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +37,23 @@ import { MatCardModule } from '@angular/material/card';
     MatTabsModule,
     SearchModule,
     MatCardModule,
-    HttpClientModule
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    ModifypersonModule,
+    ModifyusersModule,
+    CreatepersonModule,
+    MatInputModule,
+
+    ModifyusersModule
+  ],
+
+  entryComponents:[
+
+    ModifyusersModule
+  ],
+  exports:[
+    ListpersonComponent
   ]
 })
 export class ListpersonModule { }

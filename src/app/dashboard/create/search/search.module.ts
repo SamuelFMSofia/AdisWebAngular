@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,8 @@ import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-fi
     MatFormFieldModule,
     MatSelectModule,
     FlexModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   exports:[
     SearchComponent

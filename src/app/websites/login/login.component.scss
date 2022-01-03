@@ -5,6 +5,12 @@
     margin-bottom: 5%;
   }
 
+  .card-title{
+
+  font-weight: 900;
+ 
+  font-family: "Homer Simpson UI";
+  }
   mat-form-field{
     width: 80%;
     margin-left: 10%;
@@ -13,7 +19,33 @@
 
   new-form-btn{
     position: relative;
+
   }
+
+ 
+.card-img-left {
+  width: 45%;
+  background: scroll center url('../../../assets/img/loginAdis.png');
+  background-size: 140%;
+}
+
+.btn-dark-moon {
+  background: #141E30;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  border: 3px solid #eee;
+}
+
+.btn-dark-moon:hover{
+  background: #084bff;/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+.label{
+  font-weight: lighter;
+  font-size: 12px;
+  font-weight: 700;
+}
 
 /*
    $primary-color: #3f51b5;

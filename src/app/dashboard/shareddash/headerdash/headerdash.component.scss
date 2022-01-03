@@ -18,7 +18,8 @@ mat-toolbar {
     font-size: 14px;
   }
   mat-toolbar {
-    background: #4285F4;
+    background: rgb(9,9,121);
+background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(11,2,159,1) 46%, rgba(0,91,255,1) 96%, rgba(4,56,217,1) 100%, rgba(9,11,124,1) 100%);
   }
   .user-image {
     border-radius: 50%;

@@ -1,5 +1,34 @@
-.table {
-    width: 100%;
+
+  button.mat-button .mat-icon,
+  a.mat-button .mat-icon,
+  a.mat-stroked-button .mat-icon,
+  a.mat-flat-button .mat-icon,
+  a.mat-stroked-button .mat-icon {
+    vertical-align: top;
+    font-size: 1.25em;
   }
-  
+
+/* Structure */
+table {
+  margin-top: 10px; 
+  width: 100%;
+}
+
+div{
+  height: 55px;
+  margin-top: 3px; 
+  margin-right: auto;
+   margin-left: auto;
+   border-width:3px;
+   border-color:cornflowerblue;
+   border-style:solid;
+   border-radius: 5px;
+  justify-content: space-around;
+}
+ .nuevo{
+ 
+		float:right;
+    margin: 10px;
+    	
+}
  

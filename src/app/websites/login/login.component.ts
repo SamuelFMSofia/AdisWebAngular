@@ -25,15 +25,15 @@ export class LoginComponent  {
 
     this.servi.login(this.loginData).subscribe((data:any)=>{
       console.log(data);
-let result=data;
-if(result.status==1){
-  console.log(result.data.token);
-  if(result.data.token!=""){
+      let result=data;
+      if(result.status==1){
+          console.log(result.data.token);
+        if(result.data.token!=""){
 
-    localStorage.setItem('UserCode', result.data.user.userCode);
-    localStorage.setItem('nombreCompleto', result.data.user.nombre_Completo);
-     //localStorage.setItem('Password', data.result.password);
-     localStorage.setItem('token_value', result.data.token);
+            localStorage.setItem('userCode', result.data.userResponse.userCode);
+            localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
+           //localStorage.setItem('Password', data.result.password);
+           localStorage.setItem('token_value', result.data.token);
 
      //alert(localStorage.getItem('nombre_Completo'));
      //pagina

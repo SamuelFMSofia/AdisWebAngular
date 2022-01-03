@@ -26,4 +26,11 @@ export class ServicesService {
   get isAutenticado(){
    return !!localStorage.getItem('token_value');
   }
+  logout(){
+    localStorage.removeItem('userCode');
+    localStorage.removeItem('token_value');
+    //pagina
+    this.router.navigate(['../websites/home']);
+    //window.location.reload();
+  }
 }

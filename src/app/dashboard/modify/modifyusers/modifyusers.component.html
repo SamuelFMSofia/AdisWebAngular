@@ -1,4 +1,123 @@
+<!-- <div class="btn">
 
+  <a mat-flat-button color="accent" routerLinkActive="list-item-active" routerLink="../createperson"><mat-icon inline=true>done_all</mat-icon> CREAR</a>
+  <a mat-flat-button color="primary" routerLinkActive="list-item-active" routerLink="../modifyperson"><mat-icon inline=true>supervisor_account</mat-icon>MODIFICAR PER</a>
+  <a mat-flat-button color="primary" routerLinkActive="list-item-active" routerLink="../modifyusers"><mat-icon inline=true>border_color</mat-icon>MODIFICAR USU </a>
+</div>
+ -->
+
+
+<mat-dialog-content [formGroup] = "form">
+  <h2 mat-dialog-title>MODIFICAR PERSONA</h2>
+   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px"> 
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Codigo Persona</mat-label>
+      
+        <input matInput placeholder = "Codigo de Usuario" formControlName="numeroDocumento" readonly onmousedown="return false;"> 
+    </mat-form-field> 
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Nombre Completo</mat-label>
+        <input matInput placeholder = "Nombre Completo" formControlName="nombreCompleto" readonly onmousedown="return false;"> 
+    </mat-form-field>
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Correo Electronico</mat-label>
+        <input matInput placeholder = "Correo Electronico" formControlName="correo"> 
+    </mat-form-field>
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label class="label">Cargo</mat-label>
+      <mat-select [(ngModel)]="selectedCargo" formControlName="cargo">
+        <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
+          {{cargo.nombre}}
+        </mat-option>
+      </mat-select>
+
+    <!--  <input matInput placeholder="Cargo" formControlName="Cargo" > -->
+
+    </mat-form-field>
+     <!-- <mat-form-field class="createUser" fxFlex>
+        <input matInput placeholder = "cargo" formControlName="cargo"> 
+    </mat-form-field>  -->
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <!-- <mat-form-field class="createUser" fxFlex>
+      <mat-label>Contraseña</mat-label>
+        <input matInput placeholder = "Contraseña" formControlName="Password"> 
+    </mat-form-field> -->
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Unidad Organizacional</mat-label>
+      <input matInput placeholder = "Unidad Organizacional" formControlName="unidadOrganizacional"> 
+  </mat-form-field>
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Sigla UO</mat-label>
+        <input matInput placeholder = "Sigla UO" formControlName="unidadOrganizacional"> 
+    </mat-form-field>
+
+ </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Empresa</mat-label>
+          <mat-select>
+            <mat-option value="" *ngFor="let empresa of empresas">
+              {{empresa.name}}
+          </mat-option>
+          </mat-select>
+        <!-- <input matInput placeholder = "Empresa" formControlName="empresa">  -->
+    </mat-form-field>
+
+    <mat-form-field class="createUser" fxFlex>
+     <mat-label>Gerencia</mat-label>
+          <mat-select >
+            <mat-option value="" *ngFor="let gerencia of gerencias">
+              {{gerencia.name}}
+          </mat-option>
+          </mat-select>
+        <!-- <input matInput placeholder = "Gerencia" formControlName="gerencia">  -->
+    </mat-form-field>
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Locacion</mat-label>
+          <mat-select >
+            <mat-option value="" *ngFor="let locacion of locaciones">
+              {{locacion.name}}
+          </mat-option>
+          </mat-select>
+        <!-- <input matInput placeholder = "Locacion" formControlName="locacion">  -->
+    </mat-form-field>
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Sucursal</mat-label>
+          <mat-select >
+            <mat-option value="" *ngFor="let sucursal of sucursales">
+              {{sucursal.name}}
+          </mat-option>
+          </mat-select>
+      <!--   <input matInput placeholder = "sucursal" formControlName="sucursal">  -->
+    </mat-form-field>
+
+    <mat-form-field class="createUser"fxFlex>
+        <input matInput placeholder = "NombreAprobador" formControlName="NombreAprobador"> 
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+ <!--    <button mat-raiset-button color="primary" (click) = "cerrar()">CERRAR</button> -->
+    <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+      <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+    
+    <button  class="btn1"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button> 
+</mat-dialog-actions>
+<!-- <div class="example-button-container">
+  
+</div> -->
+
+
+
+<!-- 
  <mat-card class="mat-elevation-z16" fxLayout="row wrap">
   <mat-card-header >
     <mat-card-title>MODIFY USER</mat-card-title>
@@ -45,3 +164,4 @@
 </mat-card-content>
 </mat-card>
 
+ -->

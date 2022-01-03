@@ -1,22 +1,29 @@
 
+<body>
 
 
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenavdash></app-sidenavdash>
-  </mat-drawer>
+</mat-drawer>
 
 
-   <app-headerdash (toggleSidebarForMe)="sideBarToggler() " ></app-headerdash>
+   <app-headerdash (toggleSidebarForMe)="sideBarToggler() " >
 
 
-<div class="main contents">
- 
+   </app-headerdash>
+
+   <div class="title">
+    <a class="navbar-brand" href="javascript:void(0)" >{{getTitle()}}</a>
+  </div>
+
+
+  <div class="main">
+
   <router-outlet>
-
   </router-outlet>
-  
-</div>
+  </div>
+
 
 
   <app-footerdash></app-footerdash>
@@ -24,7 +31,7 @@
 </mat-drawer-container>
 
 
-
+</body>
 
 
 
@@ -37,11 +44,11 @@
   <mat-drawer-content>
         <app-headerdash (toggleSidebarForMe)="sideBarToggler() " ></app-headerdash>
 
-           
+
                <router-outlet>
 
               </router-outlet>
-            
+
 
     <app-footerdash></app-footerdash>
   </mat-drawer-content>

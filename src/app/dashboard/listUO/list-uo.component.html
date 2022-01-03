@@ -1,0 +1,8 @@
+<div col="col-sm-10">
+  <select name="cargo" (Change)="ChangeCargo($event)"></select>
+  <option >--Seleccionar--</option>
+  <option [value]="cargo.id" *ngFor="let cargo of listUO">
+    {{cargo.name}}
+  </option>
+    <!-- {{cargo.name}} -->
+</div>

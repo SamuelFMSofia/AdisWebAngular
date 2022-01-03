@@ -1,3 +1,7 @@
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { SearchModule } from './../../create/search/search.module';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
@@ -9,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -26,8 +31,17 @@ import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angul
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SearchModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatSelectModule
 
+  ],
+  exports:[
+    ModifyusersComponent
   ]
 })
 export class ModifyusersModule { }

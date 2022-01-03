@@ -1,3 +1,5 @@
+
+
 :host {
     display: block;
     flex-direction: column;
@@ -5,32 +7,40 @@
     position: absolute;
 
   min-width: 100%;
- 
+
   }
 
   mat-drawer {
-    width: 260px;
+    width: 200px;
   }
   mat-drawer-container {
     height: 100%;
   }
 
   mat-drawer {
-    background: #1976d2;
+    background-image: radial-gradient(circle at 95.14% 90.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+  }
+
+  .title {
+    background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+    min-height: 0.5vh;
+    margin-top: 2px; /* height of header */
+    padding: 0.8px;
+
+  }
+  a{
+    color: #edf1f5;
   }
 
 
-
- 
   .main {
-    background-color: #fff;
-  }
-  
 
-  .main {
-    min-height: 80vh;
-    margin-top: 40px; /* height of header */
-    padding: 16px;
+    max-height: auto;
+
+    padding: 40px;
+
+
   }
+
 
 

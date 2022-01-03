@@ -1,19 +1,42 @@
 export interface createpersonInterface{
 
-    Num_Doc: string;
-    Password :string;
-    NOmbre_Completo : string;
-    SiglaUO :string;
-    IdUO :string;
-    UnidadOrg : string;
-    Email: string;
-    Empresa: string;
-    Gerencia: string;
-    Locacion: string;
-    Sucursal: string;
-    NroDocAprobador:string;
-    NombreAprobador: string;
-
-
+  numeroDocumento : string;
+  nombreCompleto :string;
+  correo :string;
+  locacion : string;
+  sucursal : string;
+  estado : string;
+  aprobador :
+  {
+  userCode :string,
+  nombre :string
+  };
+  empresa :
+  {
+  id : number,
+  nombre :string,
+  estado :string
+  };
+  gerencia :
+  {
+  id :number,
+  nombre: string,
+  sigla :string
+  };
+  unidadOrganizacional :
+  {
+  id :number,
+  nombre :string,
+  sigla :string
+  };
+  cargo :
+  {
+  id :number,
+  nombre :string
+  };
+ 
 
 }
+
+
+	

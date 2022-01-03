@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footerdash.component.scss']
 })
 export class FooterdashComponent implements OnInit {
-
+  test : Date = new Date();
   constructor() { }
 
   ngOnInit(): void {

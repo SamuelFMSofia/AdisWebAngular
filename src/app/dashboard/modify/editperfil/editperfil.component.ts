@@ -1,3 +1,5 @@
+import { ListarusersService } from './../../services/listusers/listarusers.service';
+import { ListpersonServiceService } from './../../services/listperson/listperson-service.service';
 import { ServicesService } from './../../../websites/services/services.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +14,9 @@ export class EditperfilComponent implements OnInit {
 
 
   constructor(
-    public list: ServicesService
+    public list: ServicesService,
+    public lista: ListpersonServiceService,
+    public service: ListarusersService
   ) { }
 
   ngOnInit(): void {

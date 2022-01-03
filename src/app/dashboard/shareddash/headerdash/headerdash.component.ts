@@ -17,7 +17,7 @@ export class HeaderdashComponent implements OnInit {
 
   ngOnInit(
 
-  ): void {
+  ): void { 
   }
 
   toggleSidebar() {

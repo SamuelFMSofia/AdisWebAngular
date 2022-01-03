@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
 import { ServicesService } from './services/services.service';
@@ -25,7 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     MatSidenavModule,
     LoginModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
 
 
   ],

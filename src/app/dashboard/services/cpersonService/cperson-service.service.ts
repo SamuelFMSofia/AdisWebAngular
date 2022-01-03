@@ -9,7 +9,7 @@ import { createpersonInterface } from '../../interfaces/createpersonInterface';
 export class CpersonServiceService  {
 
   //para llamar al enpoint de users register
-baseUrl: string = 'https://localhost:5001/api/admin/';
+baseUrl: string = 'https://localhost:5001/api/admin/person/create';
 
   constructor(
     private http: HttpClient,
@@ -22,7 +22,7 @@ baseUrl: string = 'https://localhost:5001/api/admin/';
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.post(this.baseUrl+'createperson', person, {headers:headers});
+    return this.http.post(this.baseUrl, person, {headers:headers});
   }
 
 }

@@ -8,29 +8,29 @@ import { Injectable } from '@angular/core';
 export class MusersServiceService {
 
   //para llamar al enpoint
-baseUrl: string = 'https://localhost:5001/api/user/';
+baseUrl: string = 'https://localhost:5001/api/user/admin/editperson/';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  modifyUsers(users:modifyuserInterface){
+  modifyUsers(userCode:string, users:modifyuserInterface){
     
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.put(this.baseUrl, users,{headers:headers});    
+    return this.http.put(this.baseUrl+userCode, users, {headers:headers});    
   }
-  getUsuserById(userId:number){
+  getUsuserById(userCode:string){
     
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.get(this.baseUrl+userId,{headers:headers});    
+    return this.http.get(this.baseUrl+userCode,{headers:headers});    
   }
   getUsers(){
 

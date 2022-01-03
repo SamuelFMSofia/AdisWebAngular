@@ -25,6 +25,14 @@ const routes: Routes = [
     {
       path:'editperfil',
       loadChildren:()=> import('./modify/editperfil/editperfil.module').then(e=>e.EditperfilModule)
+    },
+    {
+      path:'listusers',
+      loadChildren:()=> import('./create/listusers/listusers.module').then(lu=>lu.ListusersModule)
+    } ,
+    {
+      path:'listuo',
+      loadChildren:()=> import('./listUO/list-uo.module').then(li=>li.ListUOModule)
     }
   ]
   }

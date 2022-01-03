@@ -1,11 +1,20 @@
 export interface modifyuserInterface{
 
-  Email: string;
-  Cargo: string;
-  UnidadOrg: string;
-  Empresa: string;
-  Gerencia: string;
-  Locacion: string;
-  Sucursal: string;
-  NroDocAprobador:string;
+
+  idUser			:number,
+	userCode				:string,
+	Password		:string,
+	lastLogin			:string,
+	passwordDate		:string, //number
+	abreviatura		:string,
+	tipoUsuario	:{id	:number, nombre: string};
+  perfil        :{idPerfil :number, nombre :string, estado: string};
+	AprobadorOT			:string,
+  unidadTecnica      :{idDptoTecnico:number, nombre : string};
+	estado				:string, //number
+	creationDate	:string,
+	creationBy			:string,
+	modifyDate			:string,
+	modifyBy			:string, //number
+  
 }

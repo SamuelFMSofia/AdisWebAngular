@@ -1,8 +1,10 @@
+import { CpersonServiceService } from './services/cpersonService/cperson-service.service';
+import { ListuoService } from './services/listuoService/listuo.service';
 import { ListpersonServiceService } from './services/listperson/listperson-service.service';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,6 +24,9 @@ import { ModifypersonModule } from './modify/modifyperson/modifyperson.module';
 
 import { ModifyusersModule } from './modify/modifyusers/modifyusers.module';
 import { CreatepersonModule } from './create/createperson/createperson.module';
+import { ListpersonModule } from './create/listperson/listperson.module';
+
+
 
 
 @NgModule({
@@ -47,10 +52,37 @@ import { CreatepersonModule } from './create/createperson/createperson.module';
     ModifyusersModule,
     CreatepersonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ListpersonModule,
+    MatFormFieldModule
+
+  ],
+  exports:[
+    CommonModule,
+    DashboardRoutingModule,
+    ShareddashModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    FlexLayoutModule,
+    FlexModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    ModifypersonModule,
+    ModifyusersModule,
+    CreatepersonModule,
+    FormsModule,
+    RouterModule,
+    ListpersonModule,
+    MatFormFieldModule
   ],
   providers:[
-    ListpersonServiceService
+    ListpersonServiceService,ListuoService, CpersonServiceService
   ]
+
 })
 export class DashboardModule { }

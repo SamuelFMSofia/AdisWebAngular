@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,8 +32,8 @@ import {MatListModule} from '@angular/material/list';
    MatToolbarModule,
    MatSidenavModule,
    MatListModule,
-   RouterModule
-   
+   RouterModule,
+   MatButtonModule
   ],
   exports:[
     FooterComponent,

@@ -1,3 +1,25 @@
 .profile-card {
     text-align: center;
 }
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
+.btn{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ mat-card{
+  border: 2px solid darkblue;
+ }
+
+ .perfil{
+  border: 1px dashed rgb(27, 27, 243);
+ }

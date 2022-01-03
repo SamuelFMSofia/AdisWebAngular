@@ -18,17 +18,17 @@
 .mat-list-item {
   color: white!important;
   font-size: 0.8rem;
-  height: 44px !important;
+  height: 40px !important;
   margin-bottom: 2px;
   &:hover {
     color: #f2f5f7 !important;
   }
   ::ng-deep {
     .mat-list-item-content {
-      border-radius: 50px;
+     /*  border-radius: 50px; */
       margin: 0.8px;
       &:hover {
-        background: #2c3344 !important;
+        background: blue !important;
       }
     }
   }
@@ -43,7 +43,7 @@
   color: #f2f5f7 !important;
   ::ng-deep {
     .mat-list-item-content {
-      background: #2c3344 !important;
+      background: blue !important;
       &:hover {
         background: #2c3344 !important;
       }

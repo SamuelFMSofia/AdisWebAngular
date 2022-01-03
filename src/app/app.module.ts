@@ -1,3 +1,8 @@
+import { MatIconModule } from '@angular/material/icon';
+import { MpersonServiceService } from './dashboard/services/mpersonService/mperson-service.service';
+import { PasswordService } from './dashboard/services/password/password.service';
+import { ListuoService } from './dashboard/services/listuoService/listuo.service';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -16,6 +21,7 @@ import { WebsitesModule } from './websites/websites.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MusersServiceService } from './dashboard/services/musersService/musers-service.service';
 import { ListpersonServiceService } from './dashboard/services/listperson/listperson-service.service';
+import { ListarusersService } from './dashboard/services/listusers/listarusers.service';
 
 @NgModule({
   declarations: [
@@ -31,16 +37,27 @@ import { ListpersonServiceService } from './dashboard/services/listperson/listpe
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FormsModule
-
+    FormsModule,
+    MatFormFieldModule,
+    MatIconModule
 
   ],
   exports:[
-
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    WebsitesModule,
+    DashboardModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule
   ],
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
-    ListpersonServiceService],
+    ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

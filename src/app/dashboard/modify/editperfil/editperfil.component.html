@@ -1,57 +1,45 @@
 
+
+
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
 
   <div fxFlex="95%">
 
     <mat-card>
       <mat-card-content>
-        <h2>My Profile</h2>
+        <h2>Mi Perfil</h2>
 
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+        <div class="perfil" fxLayout="row" fxLayout.sm="column" >
 
           <div fxFlex="30%" fxFlex.sm="95%" fxFlex.xs="95%">
            <!--  <app-profile-details></app-profile-details> -->
            <div class="profile-card" *ngIf="list.isAutenticado">
 
-
-            <h2 class="title">
+           <h3 class="title">
              Nombre: {{list.getUserCode}}
-            </h2>
+          </h3>
 
-            <label>
-              {{list.getUserCode}}
-            </label>
-
-            <label>
-              {{list.getUserCode}}
-            </label>
+            <!-- <label>
+              {{lista.getUsers}}
+            </label> -->
           </div>
           </div>
-          <div fxFlex="30%" fxFlex.sm="95%" fxFlex.xs="95%">
-            <!--  <app-profile-details></app-profile-details> -->
-            <div class="profile-card" *ngIf="list.isAutenticado">
-
-
-             <h2 class="title">
-               {{list.getUserCode}}
-             </h2>
-
-             <label>
-               {{list.getUserCode}}
-             </label>
-
-             <label>
-               {{list.getUserCode}}
-             </label>
-           </div>
-           </div>
-
-          <div fxFlex></div>
-
-
 
         </div>
+
       </mat-card-content>
+      <div style="width: auto;margin:0 auto" >
+        <mat-accordion  >
+            <mat-expansion-panel style="background-color: #D6EAF8;" >
+                <mat-expansion-panel-header fxLayoutAlign="center none" >
+                    <mat-panel-title style="color: blue;" >
+                        RESETEAR CONTRASEÑA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-password></app-password>
+            </mat-expansion-panel>
+        </mat-accordion>
+      </div>
     </mat-card>
   </div>
 
