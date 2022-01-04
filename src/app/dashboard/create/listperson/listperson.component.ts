@@ -1,3 +1,5 @@
+import { modifypersonInterface } from './../../interfaces/modifypersonInterface';
+import { MpersonServiceService } from './../../services/mpersonService/mperson-service.service';
 import { listInterface } from './../../interfaces/listInterface';
 import { modifyuserInterface } from './../../interfaces/modifyuserInterface';
 import { ModifypersonComponent } from './../../modify/modifyperson/modifyperson.component';
@@ -35,7 +37,7 @@ export class ListpersonComponent implements OnInit {
 
   constructor(
      private service: ListpersonServiceService,
-     private serviuser: MusersServiceService,
+     private serviuser: MpersonServiceService,
       private router: Router,
       private dialog: MatDialog
   ) { }
@@ -68,9 +70,9 @@ export class ListpersonComponent implements OnInit {
    
   }
 
-  upgradeUsuario(user: modifyuserInterface ){
+  upgradeUsuario(user: modifypersonInterface ){
     //console.log(user);
-    this.dialog.open(ModifyusersComponent,{
+    this.dialog.open(ModifypersonComponent,{
       data:user
     })
      

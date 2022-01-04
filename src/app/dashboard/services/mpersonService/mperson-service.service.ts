@@ -7,18 +7,18 @@ import { Injectable } from '@angular/core';
 })
 export class MpersonServiceService {
 
-  baseUrl: string = 'https://localhost:5001/user/edit';
+  baseUrl: string = 'https://localhost:5001/api/person/edit/';
   constructor(
     private http: HttpClient
   ) { }
 
-  modifyPerson(userCode:string, users:modifypersonInterface){
+  modifyPerson(idPersona:number, person:modifypersonInterface){
 
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.put(this.baseUrl+userCode, users, {headers:headers});
+    return this.http.put(this.baseUrl+idPersona, person, {headers:headers});
   }
 }

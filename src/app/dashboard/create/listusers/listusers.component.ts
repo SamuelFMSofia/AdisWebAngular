@@ -1,3 +1,4 @@
+import { MusersServiceService } from './../../services/musersService/musers-service.service';
 import { listusersInterface } from './../../interfaces/listusersInterface';
 import { listInterface } from './../../interfaces/listInterface';
 import { ModifyusersComponent } from './../../modify/modifyusers/modifyusers.component';
@@ -9,6 +10,7 @@ import { ModifypersonComponent } from './../../modify/modifyperson/modifyperson.
 import { modifypersonInterface } from './../../interfaces/modifypersonInterface';
 import { ListarusersService } from '../../services/listusers/listarusers.service';
 import { Component, OnInit } from '@angular/core';
+import { modifyuserInterface } from '../../interfaces/modifyuserInterface';
 
  const ELEMENT_DATA: listusersInterface[] = [];
 @Component({
@@ -25,7 +27,7 @@ export class ListusersComponent implements OnInit {
 
   constructor(
     private service: ListarusersService,
-    private serviceu: MpersonServiceService,
+    private serviceu: MusersServiceService,
     private dialog: MatDialog,
     private router: Router
   ) { }
@@ -46,9 +48,9 @@ export class ListusersComponent implements OnInit {
     );
   }
 
-  upgradeUser(use: modifypersonInterface ){
+  upgradeUser(use: modifyuserInterface ){
     //console.log(user);
-    this.dialog.open(ModifypersonComponent,{
+    this.dialog.open(ModifyusersComponent,{
       data:use
     })
 

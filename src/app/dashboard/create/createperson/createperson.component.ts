@@ -8,12 +8,6 @@ import { debounceTime, map, Observable, startWith, switchMap } from 'rxjs';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
-///cargo
-interface Cargo {
-  value: string;
-  viewValue: string;
-}
-
 //unidad organizacional
 
 export interface StateGroup {
@@ -25,11 +19,11 @@ export const _filter = (opt: string[], value: string): string[] => {
 
   return opt.filter(item => item.toLowerCase().includes(filterValue));
 };
-/************GERENCIAI********* */ 
+/************GERENCIAI********* */
 
-interface Gerencia {
+interface aprobador {
   value: string;
-  viewValue: string;
+  nombre: string;
 }
 @Component({
   selector: 'app-createperson',
@@ -73,20 +67,20 @@ export class CreatepersonComponent implements OnInit {
 toggle = true;
 status = 'Enable';
 
-    
+
     /**unidad organizacional */
 
 
     stateForm: FormGroup = this._formBuilder.group({
       unidadOrganizacional: '',
     });
-  
+
     stateGroups: StateGroup[] = [
       {
         letter: 'A',
         names: ['Alabama', 'Alaska', 'Arizona', 'Arkansas'],
       },
-      
+
       {
         letter: 'G',
         names: ['Georgia'],
@@ -100,11 +94,11 @@ status = 'Enable';
         names: ['Idaho', 'Illinois', 'Indiana', 'Iowa'],
       }
     ];
-  
-    stateGroupOptions: Observable<StateGroup[]>;
-/*************************************************************/  
 
- 
+    stateGroupOptions: Observable<StateGroup[]>;
+/*************************************************************/
+
+
 
   constructor(private formBuilder: FormBuilder,
     private _formBuilder: FormBuilder,
@@ -115,27 +109,19 @@ status = 'Enable';
     ){
     this.form = this.formBuilder.group({
       numeroDocumento: ['', Validators.required],
-      password: [''],
       nombreCompleto: ['',Validators.required],
-      cargo: [''],
-      unidadOrganizacionales: ['',Validators.required],
-
-      SiglaUO: [''],
-      gerencias: [''],
-      SiglaG: [''],
-      IdUO: [''],
-
       correo: ['',Validators.required],
-      empresas: ['',Validators.required],
+      locacion: [''],
+      sucursal: ['',Validators.required],
+      estado:[''],
+      aprobador:[''],
+      empresa:[''],
+      gerencia: [''],
+      unidadOrganizacional: ['',Validators.required],
+      cargo: [''],
 
-      locaciones: [''],
-      sucursales: [''],
-      NroDocAprobador: [''],//aprobador
-      NombreAprobador: [''],//aprobador
-      estado:['']
-      
 
-    });
+          });
   }
 
   ngOnInit(
@@ -233,14 +219,14 @@ status = 'Enable';
 /////cargo
 
 /* cargos: Cargo[] = [
-  
-  
+
+
 ]; */
-//Gerencia
-/* gerencias:Gerencia[] = [
-  {value: 'sistemas', viewValue: 'xxx'},
-  {value: 'rrhh', viewValue: 'yyyyy'},
-  {value: 'comunicacion', viewValue: 'zzzzz'},
-]; */
+//aprobador
+aprobadores:aprobador[] = [
+  {value: 'sistemas', nombre: 'xxx'},
+  {value: 'rrhh', nombre: 'yyyyy'},
+  {value: 'comunicacion', nombre: 'zzzzz'},
+];
 
 }
