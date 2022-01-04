@@ -18,6 +18,15 @@ declare var Jquery:any;
 })
 export class ModifyusersComponent implements OnInit {
 
+//unidad Tecnica
+unidadTecnicas:any=[];
+selectedTecnica:string;
+//tipo usuario
+tipoUsuarios:any=[];
+selectedUsuario:string;
+//perfil
+perfiles:any=[];
+selectedPerfil:string;
 //cargos
 cargos:any=[];
 selectedCargo:string;
@@ -30,87 +39,61 @@ locaciones:any;
 //sucursales
 sucursales:any;
 
-  form=new FormGroup({
-    nombreCompleto:new FormControl,
-    correo:new FormControl(),
-    cargo:new FormControl(),
-    UnidadOrg:new FormControl(),
-    empresa:new FormControl(),
-    gerencia:new FormControl(),
-    locacion:new FormControl(),
-    sucursal:new FormControl(),
-  });
-  numeroDocumento:string;
- // nombre_Completo: string;
+
+//inicializzacion de variables
+  form: FormGroup;
+  idUser:number;
+
   constructor(
     private formBuilder: FormBuilder,
     private service: MusersServiceService,
     private router: Router,
     public listaruo: ListuoService,
-    
+
     private dialogRef: MatDialogRef <ModifyusersComponent>,
     @Inject(MAT_DIALOG_DATA) private data:{
-      idPersona:number,
-      numeroDocumento:string;
-      nombreCompleto: string;
-      correo : string;
-      cargo: {id:string,nombre:string};
-      password :string;
-      unidadOrganizacional:{id: string
-      nombre: string
-      sigla: string};
-      UnidadOrg : string;
-      empresa: {id: null;
-      nombre: string};
-      gerencia: {id: null
-        nombre: string};
-      locacion: string;
-      sucursal: string;
-      aprobador:{nombre: string
-      numeroDocumento: string};
+      /* idUser			:number,
+	    abreviatura		:string,
+      estado				:string, //number
+       unidadTecnica      :{idDptoTecnico:number nombre : string},
+      tipoUsuario	:{id	:number nombre: string},
+      perfil        :{idPerfil :number, nombre :string, estado: string} */
+
 
     }
-    
+
   ) {
-    console.log(data);
-   this.numeroDocumento=data.numeroDocumento;
-   //this.nombre_Completo=data.nombre_Completo;
+
+  /*  this.idUser=data.idUser;
+
    this.form=formBuilder.group({
-     idPersona:[data.idPersona],
-     numeroDocumento:[data.numeroDocumento],
-     nombreCompleto:[data.nombreCompleto],
-     correo:[data.correo],
-     cargo:[data.cargo.nombre],
-     Password:[data.password],
-     unidadOrganizacional:[data.unidadOrganizacional.sigla],
-     UnidadOrg:[data.UnidadOrg],
-     empresa:[data.empresa.nombre],
-     gerencia:[data.gerencia.nombre],
-     locacion:[data.locacion],
-     sucursal:[data.sucursal],
-     NombreAprobador:[data.aprobador.nombre]
-     
-   })
-  
+    // idUser:[data.idUser],
+    abreviatura:[data.abreviatura],
+     estado:[data.estado],
+     unidadTecnica:[data.unidadTecnica.nombre],
+     tipoUsuarios:[data.tipoUsuario.nombre],
+     perfiles:[data.perfil.nombre],
+   })*/
+
     }
-  
+
    /// this.form.controls.get("Empresa").setValue('abc');
 
    cerrar(){
     this.dialogRef.close();
   }
   guardar(){
-     this.form.value.numeroDocumento=this.numeroDocumento;
-    this.service.modifyUsers(this.numeroDocumento, this.form.value).subscribe((data)=>{
+     this.form.value.idUser=this.idUser;
+    this.service.modifyUsers(this.idUser, this.form.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
-      this.router.navigate(['listperson']);
-      window.location.reload(); 
-     }); 
+      this.router.navigate(['/listusers']);
+      window.location.reload();
+     });
     //cerrar
     this.dialogRef.close();
   }
-/* 
-   
+/*
+
   onSubmit() {
 
     this.service.modifyUsers(this.form.value).subscribe((data:any)=>{
@@ -120,11 +103,11 @@ sucursales:any;
     console.log(this.form.value);
 } */
 ngOnInit(): void {
-  this.listaruo.getlistUo().subscribe((data:any)=>{
+  /* this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
 
     this.cargos=data.data.cargos;
-    },)
+    },) */
   }
 
 

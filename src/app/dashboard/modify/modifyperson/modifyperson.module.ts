@@ -40,7 +40,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatAutocompleteModule,
     PasswordModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
 
   ],
   exports:[

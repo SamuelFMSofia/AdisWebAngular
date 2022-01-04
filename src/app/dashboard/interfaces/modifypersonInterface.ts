@@ -2,12 +2,11 @@
 export interface modifypersonInterface{
 
   idPersona :number;
-  numeroDocumento : string;
-  nombreCompleto :string;
   correo :string;
   locacion : string;
   sucursal : string;
   estado : string;
+
   aprobador :
   {
   userCode :string,
@@ -23,7 +22,7 @@ export interface modifypersonInterface{
   {
   id :number,
   nombre: string,
-  sigla :string
+  gerencia :string
   };
   unidadOrganizacional :
   {
@@ -35,13 +34,8 @@ export interface modifypersonInterface{
   {
   id :number,
   nombre :string
-  };
-  idPlanilla :number;
-  codPlanilla :string;
-  creationDate :string;
-  creationBy :string;
-  modifyDate : string;
-  modifyBy :string;
+  }
+
 
 }
 
