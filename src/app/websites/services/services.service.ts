@@ -19,6 +19,9 @@ export class ServicesService {
     return this.http.post(this.baseUrl+'login', users)
   }
   // este metodo se encarga de traer los datos de localstoroge
+  get getUser(){
+    return localStorage.getItem('User');
+  }
   get getUserCode(){
     return localStorage.getItem('nombreCompleto');
   }
