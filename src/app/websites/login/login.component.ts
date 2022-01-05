@@ -30,6 +30,7 @@ export class LoginComponent  {
           console.log(result.data.token);
         if(result.data.token!=""){
 
+            localStorage.setItem('User', result.data.userResponse);
             localStorage.setItem('userCode', result.data.userResponse.userCode);
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
            //localStorage.setItem('Password', data.result.password);

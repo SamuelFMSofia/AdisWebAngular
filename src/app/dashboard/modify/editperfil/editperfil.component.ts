@@ -12,12 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditperfilComponent implements OnInit {
 
-
   constructor(
     public list: ServicesService,
     public lista: ListpersonServiceService,
     public service: ListarusersService
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit(): void {
 
