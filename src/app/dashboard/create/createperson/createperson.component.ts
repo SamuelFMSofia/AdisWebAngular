@@ -22,7 +22,7 @@ export const _filter = (opt: string[], value: string): string[] => {
 /************GERENCIAI********* */
 
 interface aprobador {
-  value: string;
+  userCode: string;
   nombre: string;
 }
 @Component({
@@ -224,9 +224,9 @@ status = 'Enable';
 ]; */
 //aprobador
 aprobadores:aprobador[] = [
-  {value: 'sistemas', nombre: 'xxx'},
-  {value: 'rrhh', nombre: 'yyyyy'},
-  {value: 'comunicacion', nombre: 'zzzzz'},
+  {userCode: 'sistemas', nombre: 'xxx'},
+  {userCode: 'rrhh', nombre: 'yyyyy'},
+  {userCode: 'comunicacion', nombre: 'zzzzz'},
 ];
 
 }

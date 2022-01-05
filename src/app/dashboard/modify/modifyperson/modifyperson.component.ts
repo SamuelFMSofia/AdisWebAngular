@@ -60,12 +60,12 @@ selectedUO:any=[];
       idPersona:number,
       correo : string,
       locacion: string,
-      sucursal: string,
+      sucursal: {id:number, nombre:string},
       estado:string,
       aprobador:{userCode:string, nombre:string},
-      empresa: {id: null,
+      empresa: {id: number,
         nombre: string, estado:string},
-      gerencia: {id: null,
+      gerencia: {id: number,
           nombre: string, gerencia:string},
       unidadOrganizacional:{id: string,
             nombre: string, sigla: string},
@@ -79,14 +79,14 @@ selectedUO:any=[];
    //this.nombre_Completo=data.nombre_Completo;
    this.form=formBuilder.group({
      //digito los cambios que se van a realizar
-     //idPersona:[data.idPersona],
+     idPersona:[data.idPersona],
 
      correo:[data.correo],
      locacion:[data.locacion],
-     sucursal:[data.sucursal],
+     sucursales:[data.sucursal.nombre],
      estado:[data.estado],
      aprobador:[data.aprobador.nombre],
-     empresa: [data.empresa.nombre],
+     empresa: [data.empresa],
      gerencia:[data.gerencia.nombre],
      unidadOrganizacional:[data.unidadOrganizacional.sigla],
      cargo:[data.cargo.nombre]
@@ -123,9 +123,14 @@ selectedUO:any=[];
 ngOnInit(): void {
   this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
-
     this.cargos=data.data.cargos;
-    },)
+    this.unidadOrganizacionalesUO=data.data.unidadOrganizacionales;
+    this.gerencias=data.data.gerencias;
+    this.locaciones=data.data.locaciones;
+    this.sucursales=data.data.sucursales;
+    this.empresas=data.data.empresas;
+
+  },)
   }
 
   //aprobador

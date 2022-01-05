@@ -52,28 +52,28 @@ sucursales:any;
 
     private dialogRef: MatDialogRef <ModifyusersComponent>,
     @Inject(MAT_DIALOG_DATA) private data:{
-      /* idUser			:number,
+       idUser			:number,
 	    abreviatura		:string,
       estado				:string, //number
-       unidadTecnica      :{idDptoTecnico:number nombre : string},
-      tipoUsuario	:{id	:number nombre: string},
-      perfil        :{idPerfil :number, nombre :string, estado: string} */
+       unidadTecnica :{idDptoTecnico:number, nombre : string},
+      tipoUsuario	:{id	:number, nombre: string},
+      perfil        :{idPerfil :number, nombre :string, estado: string}
 
 
     }
 
   ) {
 
-  /*  this.idUser=data.idUser;
+    this.idUser=data.idUser;
 
    this.form=formBuilder.group({
-    // idUser:[data.idUser],
+     idUser:[data.idUser],
     abreviatura:[data.abreviatura],
      estado:[data.estado],
-     unidadTecnica:[data.unidadTecnica.nombre],
-     tipoUsuarios:[data.tipoUsuario.nombre],
+    //unidadTecnicas:[data.unidadTecnica.nombre],
+    tipoUsuarios:[data.tipoUsuario.nombre],
      perfiles:[data.perfil.nombre],
-   })*/
+   })
 
     }
 

@@ -44,6 +44,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSelectModule
 
   ],
+
   exports:[
     ModifypersonComponent
   ]

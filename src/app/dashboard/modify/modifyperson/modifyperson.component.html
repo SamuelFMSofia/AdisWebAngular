@@ -9,10 +9,18 @@
         <input matInput placeholder = "ID Persona" formControlName="idPersona" readonly onmousedown="return false;">
     </mat-form-field>
 
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Correo</mat-label>
+
+        <input matInput placeholder = "Correo" formControlName="correo" readonly onmousedown="return false;">
+    </mat-form-field>
+
+
+
 
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Locacion</mat-label>
-      <mat-select [(ngModel)]="selectedLocacion" formControlName="locacion">
+      <mat-select [(ngModel)]="selectedLocacion" formControlName="locaciones">
         <mat-option *ngFor="let locacion of locaciones" [value]="locacion">
           {{locacion}}
         </mat-option>
@@ -20,19 +28,40 @@
     </mat-form-field>
 
 
-    <mat-form-field fxFlex appearance="outline">
+    <!-- <mat-form-field fxFlex appearance="outline">
       <mat-label class="label"></mat-label>
       <mat-select [(ngModel)]="selectedLocacion" formControlName="locacion">
         <mat-option *ngFor="let locacion of locaciones" [value]="locacion">
           {{locacion}}
         </mat-option>
       </mat-select>
+    </mat-form-field> -->
+
+
+
+
+
+
+    <!-- <mat-form-field class="createUser" fxFlex>
+      <mat-label>Codigo Persona</mat-label>
+
+        <input matInput placeholder = "Codigo de Usuario" formControlName="numeroDocumento" readonly onmousedown="return false;">
     </mat-form-field>
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label>Nombre Completo</mat-label>
+        <input matInput placeholder = "Nombre Completo" formControlName="nombreCompleto" readonly onmousedown="return false;">
+    </mat-form-field> -->
+
+
+
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Sucursal</mat-label>
       <mat-select [(ngModel)]="selectedSucursal" formControlName="sucursal">
         <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal">
-          {{sucursal}}
+          {{sucursal.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -49,42 +78,34 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+ </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-     <!-- empresa -->
-     <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Empresa</mat-label>
-      <mat-select [(ngModel)]="selectedEmpresas" formControlName="empresa">
-        <mat-option *ngFor="let empresa of empresas" [value]="empresa">
-          {{empresa.nombre}}
-        </mat-option>
-      </mat-select>
+ <!-- empresa -->
+ <mat-form-field fxFlex appearance="outline">
+  <mat-label class="label">Empresa</mat-label>
+  <mat-select [(ngModel)]="selectedEmpresas" formControlName="empresa">
+    <mat-option *ngFor="let empresa of empresas" [value]="empresa">
+      {{empresa.nombre}}
+    </mat-option>
+  </mat-select>
 
-    </mat-form-field>
+</mat-form-field>
 
-    <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Gerencias</mat-label>
-      <mat-select [(ngModel)]="selectedGerencia" formControlName="gerencia">
-        <mat-option *ngFor="let gerencia of gerencias" [value]="gerencia">
-          {{gerencia.nombre}}
-        </mat-option>
-      </mat-select>
-
-
-    </mat-form-field>
-
+<mat-form-field fxFlex appearance="outline">
+  <mat-label class="label">Gerencias</mat-label>
+  <mat-select [(ngModel)]="selectedGerencia" formControlName="gerencia">
+    <mat-option *ngFor="let gerencia of gerencias" [value]="gerencia.id">
+      {{gerencia.nombre}}
+    </mat-option>
+  </mat-select>
 
 
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Codigo Persona</mat-label>
+</mat-form-field>
 
-        <input matInput placeholder = "Codigo de Usuario" formControlName="numeroDocumento" readonly onmousedown="return false;">
-    </mat-form-field>
 
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Nombre Completo</mat-label>
-        <input matInput placeholder = "Nombre Completo" formControlName="nombreCompleto" readonly onmousedown="return false;">
-    </mat-form-field> -->
-
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Unidad Organizacional</mat-label>
       <mat-select [(ngModel)]="selectedUO" formControlName="unidadOrganizacional">
@@ -92,57 +113,19 @@
           {{unidadOrganizacional}}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Cargo</mat-label>
+      <mat-select [(ngModel)]="selectedCargo" formControlName="cargo">
+        <mat-option *ngFor="let cargo of cargos" [value]="cargo">
+          {{cargo.nombre}}
+        </mat-option>
+      </mat-select>
 
     <!--  <input matInput placeholder="Cargo" formControlName="Cargo" > -->
 
     </mat-form-field>
-    <mat-form-field fxFlex >
-      <mat-label class="label">Cargo</mat-label>
-      <mat-select [(ngModel)]="selectedCargo" formControlName="cargo">
-        <mat-option *ngFor="let cargo of cargos" [value]="cargo">
-          {{cargo}}
-        </mat-option>
-      </mat-select>
-
-    </mat-form-field>
-
-  </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Unidad Organizacional</mat-label>
-      <input matInput placeholder = "Unidad Organizacional" formControlName="unidadOrganizacional">
-  </mat-form-field>
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Sigla UO</mat-label>
-        <input matInput placeholder = "Sigla UO" formControlName="unidadOrganizacional">
-    </mat-form-field>
-
- </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Empresa</mat-label>
-          <mat-select>
-            <mat-option value="" *ngFor="let empresa of empresas">
-              {{empresa.name}}
-          </mat-option>
-          </mat-select>
-        <!-- <input matInput placeholder = "Empresa" formControlName="empresa">  -->
-    </mat-form-field>
-
-    <mat-form-field class="createUser" fxFlex>
-     <mat-label>Gerencia</mat-label>
-          <mat-select >
-            <mat-option value="" *ngFor="let gerencia of gerencias">
-              {{gerencia.name}}
-          </mat-option>
-          </mat-select>
-        <!-- <input matInput placeholder = "Gerencia" formControlName="gerencia">  -->
-    </mat-form-field>
-
-
-  </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
   </div>
 </mat-dialog-content>
