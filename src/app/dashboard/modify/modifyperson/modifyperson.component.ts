@@ -1,3 +1,4 @@
+import { Observable, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs';
 import { MpersonServiceService } from './../../services/mpersonService/mperson-service.service';
 import { ListuoService } from './../../services/listuoService/listuo.service';
 
@@ -8,8 +9,14 @@ import { MusersServiceService } from '../../services/musersService/musers-servic
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 interface aprobador {
-  value: string;
+  userCode: string;
   nombre: string;
+}
+
+interface empresaInterface{
+  id: number;
+  nombre: string;
+  estado: string;
 }
 //cargo
 declare var $:any;
@@ -26,14 +33,31 @@ export class ModifypersonComponent implements OnInit {
 cargos:any=[];
 selectedCargo:string;
 //empresa
-empresas:any=[];
+//empresita:any;
+//empresas:empresaInterface[]=[];
+
+//options2: empresaInterface[] = [];
 selectedEmpresas:string;
+stateCtrl: FormControl;
+empresas: empresaInterface[]=[];
+
+
 //gerencias
 gerencias:any=[];
 selectedGerencia:string;
 // locaciones
-locaciones:any=[];
+locaciones=['One',
+'Two',
+'Three'];
+///locaciones: Observable<string[]>;
 selectedLocacion:string;
+myControl = new FormControl('locacion');
+/*  options = [
+  'One',
+  'Two',
+  'Three'
+];  */
+filteredOptions: Observable<string[]>;
 //sucursales
 sucursales:any=[];
 selectedSucursal:string;
@@ -41,8 +65,8 @@ selectedSucursal:string;
 
 selectedAprobador:string;
 //unidad uo
-unidadOrganizacionalesUO:string
-selectedUO:any=[];
+unidadOrganizacionalesUO:any=[];
+selectedUO:string;
 
 
   form: FormGroup;
@@ -54,46 +78,57 @@ selectedUO:any=[];
     private router: Router,
     public listaruo: ListuoService,
 
-    private dialogRef: MatDialogRef <ModifypersonComponent>,
+    public dialogRef: MatDialogRef <ModifypersonComponent>,
     //defino los datos que estos recibiendo
-    @Inject(MAT_DIALOG_DATA) private data:{
-      idPersona:number,
+    @Inject(MAT_DIALOG_DATA) public data:{
+
       correo : string,
       locacion: string,
-      sucursal: {id:number, nombre:string},
+      sucursal: string,
       estado:string,
-      aprobador:{userCode:string, nombre:string},
-      empresa: {id: number,
-        nombre: string, estado:string},
-      gerencia: {id: number,
-          nombre: string, gerencia:string},
-      unidadOrganizacional:{id: string,
-            nombre: string, sigla: string},
-      cargo: {id:string,nombre:string}
+      aprobador:{userCode: string, nombre:string},
+      empresa: {
+        id : number,
+        nombre :string,
+        estado :string},
+      gerencia: {
+        id :number,
+        nombre: string,
+        gerencia :string},
+      unidadOrganizacional:{
+        id :number,
+        nombre :string,
+        sigla :string},
+      cargo: {id :number,
+        nombre :string},
+      idPersona:number
 
 
     }
+  )
 
-  ) {
+  {
+
    this.idPersona =data.idPersona;
    //this.nombre_Completo=data.nombre_Completo;
    this.form=formBuilder.group({
      //digito los cambios que se van a realizar
-     idPersona:[data.idPersona],
-
-     correo:[data.correo],
+        correo:[data.correo],
      locacion:[data.locacion],
-     sucursales:[data.sucursal.nombre],
+     sucursal:[data.sucursal],
      estado:[data.estado],
      aprobador:[data.aprobador.nombre],
      empresa: [data.empresa],
      gerencia:[data.gerencia.nombre],
-     unidadOrganizacional:[data.unidadOrganizacional.sigla],
-     cargo:[data.cargo.nombre]
+     unidadOrganizacional:[data.unidadOrganizacional.nombre],
+     cargo:[data.cargo.nombre],
+     idPersona:[data.idPersona]
 
    })
 
+
     }
+
 
    /// this.form.controls.get("Empresa").setValue('abc');
 
@@ -126,18 +161,49 @@ ngOnInit(): void {
     this.cargos=data.data.cargos;
     this.unidadOrganizacionalesUO=data.data.unidadOrganizacionales;
     this.gerencias=data.data.gerencias;
-    this.locaciones=data.data.locaciones;
+    this.locaciones=data.data.locaciones
+
     this.sucursales=data.data.sucursales;
     this.empresas=data.data.empresas;
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(val => this.filter(val))
+    );
+
+
+    /* this.empresas = this.empresa.valueChanges.pipe(
+      startWith<string | empresaInterface>(''),
+      map(value => (typeof value === 'string' ? value : value.nombre)),
+      map(nombre => (nombre ? this._filter2(nombre) : this.options2.slice()))
+    ); */
 
   },)
-  }
 
+  }
+  filter(val: string): string[] {
+    return this.locaciones.filter(option =>
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
+  /* private _filter2(nombre: string): empresaInterface[] {
+    const filterValue = nombre.toLowerCase();
+    return this.options2.filter(o => o.nombre.toLowerCase().includes(filterValue));
+  } */
   //aprobador
 aprobadores:aprobador[] = [
-  {value: 'sistemas', nombre: 'xxx'},
-  {value: 'rrhh', nombre: 'yyyyy'},
-  {value: 'comunicacion', nombre: 'zzzzz'},
+  {userCode: 'sistemas', nombre: 'xxx'},
+  {userCode: 'rrhh', nombre: 'yyyyy'},
+  {userCode: 'comunicacion', nombre: 'zzzzz'},
 ];
+
+select(){
+
+}
+/*  displayFn(empresas) {
+
+  return empresas.nombre;
+} */
+
+
 
 }

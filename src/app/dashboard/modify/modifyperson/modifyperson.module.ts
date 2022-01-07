@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from './../../create/password/password.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchModule } from './../../create/search/search.module';
 import { MatButtonModule } from '@angular/material/button';

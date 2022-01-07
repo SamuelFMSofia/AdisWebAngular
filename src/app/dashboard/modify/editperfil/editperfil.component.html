@@ -8,25 +8,51 @@
     <mat-card>
       <mat-card-content>
         <h2>Mi Perfil</h2>
-
+        <form >
         <div class="perfil" fxLayout="row" fxLayout.sm="column" >
 
-          <div fxFlex="30%" fxFlex.sm="95%" fxFlex.xs="95%">
+          <div fxFlex="95%" fxFlex.sm="95%" fxFlex.xs="95%">
            <!--  <app-profile-details></app-profile-details> -->
-           <div class="profile-card" *ngIf="list.isAutenticado">
+           <div  *ngIf="list.isAutenticado">
 
-           <h3 class="title">
-             Nombre: {{list.getUserCode}}
-          </h3>
-
-            <!-- <label>
-              {{lista.getUsers}}
+            <!-- <label class="title">
+             Nombre Completo: <label class="title1">{{list.getUserCode}}</label>
             </label> -->
+
+            <label class="title">Nombre Completo:</label>
+            	<input type="text" value="{{list.getUserCode}}"/>
+
+            <!-- <label class="title1">
+              {{list.getUserCode}}
+             </label> --><br>
+          <label class="title">
+            Codigo Usuario:
+            </label>
+          <input type="text" value="
+            {{list.getUserResponse.userCode}}" >
+          <br>
+          <label class="title">
+            Cargo:
+            </label>
+          <input type="text" value="
+            {{list.getUserResponse.persona.cargo.nombre}}" >
+            <br>
+            <label class="title">
+              Unidad Organizacional:
+            </label>
+            <input type="text" value="
+            {{list.getUserResponse.persona.unidadOrganizacional.nombre}}" >
+            <br>
+            <label class="title">
+              Tipo Usuario:
+            </label>
+            <input type="text" value="
+            {{list.getUserResponse.tipoUsuario.nombre}}" >
           </div>
           </div>
 
         </div>
-
+      </form>
       </mat-card-content>
       <div style="width: auto;margin:0 auto" >
         <mat-accordion  >

@@ -45,3 +45,32 @@ mat-dialog-content{
 .btn2:hover{
   background-color: greenyellow;
 }
+
+
+.label{
+  font-weight: lighter;
+  font-size: 12px;
+  font-weight: 700;
+}
+.input-row{
+  font-size: 10px
+}
+
+.content{
+
+  border-width:1px;
+  border-color:cornflowerblue;
+  border-style:solid;
+  border-radius: 5px;
+
+
+}
+
+
+mat-dialog-content{
+  margin: 5px;
+}
+mat-dialog-actions{
+  display: block;
+  float: left;
+}

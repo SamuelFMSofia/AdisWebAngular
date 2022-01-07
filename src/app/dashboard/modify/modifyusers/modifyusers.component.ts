@@ -103,11 +103,16 @@ sucursales:any;
     console.log(this.form.value);
 } */
 ngOnInit(): void {
-  /* this.listaruo.getlistUo().subscribe((data:any)=>{
+  this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
-
     this.cargos=data.data.cargos;
-    },) */
+    //this.unidadOrganizacionalesUO=data.data.unidadOrganizacionales;
+    this.gerencias=data.data.gerencias;
+    this.locaciones=data.data.locaciones;
+    this.sucursales=data.data.sucursales;
+    this.empresas=data.data.empresas;
+
+  },)
   }
 
 

@@ -1,5 +1,45 @@
-.profile-card {
-    text-align: center;
+
+
+.title1{
+color: #000;
+font-weight: bold;
+  font-style: italic;
+background-color:rgb(215, 232, 247);
+
+}
+form{
+
+  width:auto;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color: rgb(212, 240, 236);
+}
+
+ form label{
+  width:150px;
+	font-weight:bold;
+	display:inline-block;
+  font-family: Arial, Helvetica, Sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
+  margin: 5px;
+  font-weight:bold;
+	display:inline-block;
+ }
+input{
+  outline:none;
+}
+
+form input[type="text"]{
+	width:250px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f0f8f6ef;
+	margin:8px 0;
+	display:inline-block;
 }
 button.mat-button .mat-icon,
 a.mat-button .mat-icon,

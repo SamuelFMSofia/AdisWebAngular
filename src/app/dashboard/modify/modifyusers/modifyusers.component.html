@@ -1,10 +1,13 @@
 
+ <h2 mat-dialog-title>MODIFICAR USUARIO</h2>
+
+<div class="content">
 <mat-dialog-content [formGroup] = "form">
-  <h2 mat-dialog-title>MODIFICAR USUARIO</h2>
+ 
    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
     <mat-form-field class="createUser" fxFlex>
-      <mat-label>Id Usuario</mat-label>
+      <mat-label class="label">Id Usuario</mat-label>
 
         <input matInput placeholder = "Id Usuario" formControlName="idUser" readonly onmousedown="return false;">
     </mat-form-field>
@@ -16,131 +19,69 @@
         <input matInput placeholder = "Codigo de Usuario" formControlName="numeroDocumento" readonly onmousedown="return false;">
     </mat-form-field> -->
     <mat-form-field class="createUser" fxFlex>
-      <mat-label>Abreviatura</mat-label>
+      <mat-label class="label">Abreviatura</mat-label>
         <input matInput placeholder = "Abreviatura" formControlName="abreviatura" readonly onmousedown="return false;">
     </mat-form-field>
 
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Estado</mat-label>
-        <input matInput placeholder = "Estado" formControlName="estado">
-    </mat-form-field>
+   
 
     <!-- <mat-form-field class="createUser" fxFlex>
       <mat-label>Nombre Completo</mat-label>
         <input matInput placeholder = "Nombre Completo" formControlName="nombreCompleto" readonly onmousedown="return false;">
     </mat-form-field> -->
 
-    <mat-form-field fxFlex >
+   
+
+  
+  </div>
+  
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label class="label">Estado</mat-label>
+        <input matInput placeholder = "Estado" formControlName="estado">
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Unidad Tecnica</mat-label>
       <mat-select [(ngModel)]="selectedTecnica" formControlName="unidadTecnica">
-        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica">
-          {{unidadTecnica}}
+        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica.idDptoTecnico">
+          {{unidadTecnica.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Correo Electronico</mat-label>
-        <input matInput placeholder = "Correo Electronico" formControlName="correo">
-    </mat-form-field> -->
-   <!--  <mat-form-field fxFlex >
-      <mat-label class="label">Cargo</mat-label>
-      <mat-select [(ngModel)]="selectedCargo" formControlName="cargo">
-        <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
-          {{cargo.nombre}}
-        </mat-option>
-      </mat-select>
-
-
-    </mat-form-field> -->
-     <!-- <mat-form-field class="createUser" fxFlex>
-        <input matInput placeholder = "cargo" formControlName="cargo">
-    </mat-form-field>  -->
+   
+   
   </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Contraseña</mat-label>
-        <input matInput placeholder = "Contraseña" formControlName="Password">
-    </mat-form-field> -->
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Unidad Organizacional</mat-label>
-      <input matInput placeholder = "Unidad Organizacional" formControlName="unidadOrganizacional">
-  </mat-form-field>
-    <mat-form-field class="createUser" fxFlex>
-      <mat-label>Sigla UO</mat-label>
-        <input matInput placeholder = "Sigla UO" formControlName="unidadOrganizacional">
-    </mat-form-field> -->
-    <mat-form-field fxFlex >
+    <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo Usuario</mat-label>
       <mat-select [(ngModel)]="selectedUsuario" formControlName="tipoUsuario">
-        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario">
-          {{tipoUsuario}}
+        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario.id">
+          {{tipoUsuario.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-
-    <mat-form-field fxFlex >
+    
+    <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Perfil</mat-label>
       <mat-select [(ngModel)]="selectedPerfil" formControlName="perfil">
-        <mat-option *ngFor="let perfil of perfiles" [value]="perfil">
-          {{perfil}}
+        <mat-option *ngFor="let perfil of perfiles" [value]="perfil.idPerfil">
+          {{perfil.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
- </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Empresa</mat-label>
-          <mat-select>
-            <mat-option value="" *ngFor="let empresa of empresas">
-              {{empresa.name}}
-          </mat-option>
-          </mat-select>
-        -- <input matInput placeholder = "Empresa" formControlName="empresa">  -
-    </mat-form-field> -->
-
-<!--     <mat-form-field class="createUser" fxFlex>
-     <mat-label>Gerencia</mat-label>
-          <mat-select >
-            <mat-option value="" *ngFor="let gerencia of gerencias">
-              {{gerencia.name}}
-          </mat-option>
-          </mat-select>
-
-    </mat-form-field>
- -->
-<!--     <mat-form-field class="createUser" fxFlex>
-      <mat-label>Locacion</mat-label>
-          <mat-select >
-            <mat-option value="" *ngFor="let locacion of locaciones">
-              {{locacion.name}}
-          </mat-option>
-          </mat-select>
-
-    </mat-form-field> -->
   </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-   <!--  <mat-form-field class="createUser" fxFlex>
-      <mat-label>Sucursal</mat-label>
-          <mat-select >
-            <mat-option value="" *ngFor="let sucursal of sucursales">
-              {{sucursal.name}}
-          </mat-option>
-          </mat-select>
+  </mat-dialog-content>
 
-    </mat-form-field> -->
+  <mat-dialog-actions>
 
-  </div>
-</mat-dialog-content>
+      <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+      </button>
 
-<mat-dialog-actions>
-
-    <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
-      <mat-icon>cancel</mat-icon>Cancelar
-    </button>
-
-    <button  class="btn1"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
-    <button class="btn2" mat-flat-button ><mat-icon>enhanced_encryption</mat-icon>RESETEAR CONTRASEÑA</button>
-</mat-dialog-actions>
+      <button  class="btn1"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
+      <button class="btn2" mat-flat-button ><mat-icon>enhanced_encryption</mat-icon>RESETEAR CONTRASEÑA</button>
+  </mat-dialog-actions>
+</div>

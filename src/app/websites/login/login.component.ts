@@ -10,6 +10,8 @@ import { ServicesService } from './../services/services.service';
 })
 export class LoginComponent  {
 
+
+
   // creacion de modelo referenciado de la vista
   loginData={
     userCode:'',
@@ -17,7 +19,7 @@ export class LoginComponent  {
   }
 
   constructor(
-  private servi: ServicesService,
+  public servi: ServicesService,
   private router: Router
   ) { }
 
@@ -30,9 +32,13 @@ export class LoginComponent  {
           console.log(result.data.token);
         if(result.data.token!=""){
 
-            localStorage.setItem('User', result.data.userResponse);
             localStorage.setItem('userCode', result.data.userResponse.userCode);
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
+            localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
+            //JSON.parse(localStorage.getItem('userResponse'));
+
+
+
            //localStorage.setItem('Password', data.result.password);
            localStorage.setItem('token_value', result.data.token);
 

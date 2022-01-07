@@ -3,8 +3,8 @@ export interface modifypersonInterface{
 
   idPersona :number;
   correo :string;
-  locacion : string;
-  sucursal : string;
+  locacion : string[];
+  sucursal : string[];
   estado : string;
 
   aprobador :

@@ -2,6 +2,7 @@ import { interfacelogin } from './../interface/intefacelogin';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SearchComponent } from '../../dashboard/create/search/search.component';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,33 @@ export class ServicesService {
     return this.http.post(this.baseUrl+'login', users)
   }
   // este metodo se encarga de traer los datos de localstoroge
-  get getUser(){
-    return localStorage.getItem('User');
-  }
   get getUserCode(){
     return localStorage.getItem('nombreCompleto');
+
+  }
+
+   /* set(userResponse:string, data:any){
+    try{
+      localStorage.setItem(userResponse, JSON.stringify(data.userResponse));
+      console.log(data);
+      } catch(e){
+          console.log(e);
+      }
+  } */
+  get getUserResponse(){
+
+    //let restoredSession= JSON.parse('userResponse');
+  //  var restoredSession = JSON.parse(localStorage.getItem('session'));
+
+  //return localStorage.getItem('userResponse');
+
+   return JSON.parse(localStorage.getItem('userResponse') || '{}');
+
+
+
+
+    //return restoredSession;
+
   }
 //autentificacion del localstorage
   get isAutenticado(){
