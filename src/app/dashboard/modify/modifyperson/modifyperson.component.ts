@@ -12,18 +12,18 @@ interface aprobador {
   userCode: string;
   nombre: string;
 }
-
 interface empresaInterface{
   id: number;
   nombre: string;
   estado: string;
 }
+
 //cargo
 declare var $:any;
 declare var Jquery:any;
 
 @Component({
-  selector: 'app-modifyperson',
+  selector: 'ModifypersonComponent',
   templateUrl: './modifyperson.component.html',
   styleUrls: ['./modifyperson.component.scss']
 })
@@ -37,8 +37,10 @@ selectedCargo:string;
 //empresas:empresaInterface[]=[];
 
 //options2: empresaInterface[] = [];
-selectedEmpresas:string;
+selectedEmpresas:empresaInterface;
 stateCtrl: FormControl;
+
+
 empresas: empresaInterface[]=[];
 
 
@@ -110,6 +112,7 @@ selectedUO:string;
   {
 
    this.idPersona =data.idPersona;
+   this.selectedEmpresas=data.empresa;
    //this.nombre_Completo=data.nombre_Completo;
    this.form=formBuilder.group({
      //digito los cambios que se van a realizar
@@ -137,7 +140,13 @@ selectedUO:string;
   }
   guardar(){
      this.form.value.idPersona=this.idPersona;
-    this.service.modifyPerson(this.idPersona, this.form.value).subscribe((data)=>{
+     let dataSend:any;
+     let selectedItemEmpresa:any;
+     selectedItemEmpresa = this.empresas.filter(item => item.id == this.form.value.empresa)[0];
+     dataSend=this.form.value;
+     console.log(selectedItemEmpresa);
+     dataSend.empresa=selectedItemEmpresa;
+    this.service.modifyPerson(this.idPersona, dataSend).subscribe((data)=>{
       //direcionaa ala pagina requerida
       this.router.navigate(['/listperson']);
       window.location.reload();
