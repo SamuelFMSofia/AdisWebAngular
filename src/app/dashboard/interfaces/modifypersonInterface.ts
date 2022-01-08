@@ -1,5 +1,5 @@
 
-export interface modifypersonInterface{
+export interface modifyPersonInterface{
 
   idPersona :number;
   correo :string;

@@ -1,3 +1,4 @@
+import { UnidadTecnicaService } from './dashboard/services/unidadTecnica/unidad-tecnica.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MpersonServiceService } from './dashboard/services/mpersonService/mperson-service.service';
 import { PasswordService } from './dashboard/services/password/password.service';
@@ -57,7 +58,8 @@ import { ListarusersService } from './dashboard/services/listusers/listarusers.s
   ],
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
-    ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService],
+    ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService, 
+  UnidadTecnicaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,6 +33,10 @@ const routes: Routes = [
     {
       path:'listuo',
       loadChildren:()=> import('./listUO/list-uo.module').then(li=>li.ListUOModule)
+    },
+    {
+      path:'unidadTecnica',
+      loadChildren:()=> import('./unidadtecnica/unidadtecnica.module').then(ut=>ut.UnidadtecnicaModule)
     }
   ]
   }

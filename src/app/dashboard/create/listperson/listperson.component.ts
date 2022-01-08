@@ -1,4 +1,4 @@
-import { modifypersonInterface } from './../../interfaces/modifypersonInterface';
+import { modifyPersonInterface } from '../../interfaces/modifyPersonInterface';
 import { MpersonServiceService } from './../../services/mpersonService/mperson-service.service';
 import { listInterface } from './../../interfaces/listInterface';
 import { modifyuserInterface } from './../../interfaces/modifyuserInterface';
@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 /*
@@ -66,19 +66,19 @@ export class ListpersonComponent implements OnInit {
     );
 
    // displayedColumns: string[] = ['Num_Doc', 'Nombre_Completo', 'Cargo', 'UnidadOrg','Gerencia'];
-  
-   
+
+
   }
 
-  upgradeUsuario(user: modifypersonInterface ){
+  upgradeUsuario(user: modifyPersonInterface ){
     //console.log(user);
     this.dialog.open(ModifypersonComponent,{
       data:user
     })
-     
+
 
   }
- 
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

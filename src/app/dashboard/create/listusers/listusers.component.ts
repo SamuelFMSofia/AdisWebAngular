@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MpersonServiceService } from './../../services/mpersonService/mperson-service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModifypersonComponent } from './../../modify/modifyperson/modifyperson.component';
-import { modifypersonInterface } from './../../interfaces/modifypersonInterface';
+
 import { ListarusersService } from '../../services/listusers/listarusers.service';
 import { Component, OnInit } from '@angular/core';
 import { modifyuserInterface } from '../../interfaces/modifyuserInterface';

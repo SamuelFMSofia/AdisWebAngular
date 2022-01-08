@@ -1,0 +1,36 @@
+
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)">
+    <mat-card-header>
+      <mat-card-title>UNIDAD DE ASISTENCIA TECNICA</mat-card-title>
+    </mat-card-header>
+    <div class="content">
+              <mat-card-content>
+                    <form novalidate [formGroup]="FormUnidadTecnica" (ngSubmit)="submit()" >
+                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                              <mat-form-field  [style.width.px]=200 class="example-full-width" color="accent" appearance="outline">
+                                <mat-label class="label">Nombre</mat-label>
+                                <input matInput placeholder="Nombre" formControlName="Nombre" >
+
+                              </mat-form-field >
+
+                                <mat-form-field fxFlex appearance="outline">
+                                  <mat-label class="label">Sigla</mat-label>
+                                  <input matInput placeholder="Sigla" formControlName="sigla" fxFlex="50">
+                                </mat-form-field>
+
+                        </div>
+                        <div class="boton">
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../listperson" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <mat-icon>cancel</mat-icon>Cancelar</button>
+                          <button class="btnGuardar" id="btnSubmit" type="submit"  mat-raised-button color="primary" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <mat-icon>save</mat-icon>GRABAR</button>
+
+                        </div>
+
+                    </form>
+            </mat-card-content>
+  </div>
+  </mat-card>
+
+
+

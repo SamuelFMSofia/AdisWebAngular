@@ -91,17 +91,18 @@
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
  <!-- empresa -->
+ <mat-form-field fxFlex appearance="outline">
+  <mat-label class="label">Empresa</mat-label>
 
-  <!-- empresa -->
-  <mat-form-field fxFlex appearance="outline">
-    <mat-label class="label">Empresa</mat-label>
-    <mat-select [(ngModel)]="selectedEmpresas.id"  formControlName="empresa">
-      <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
-        {{empresa.nombre}}
-      </mat-option>
-    </mat-select>
+    <input type="text" placeholder="Empresa"   matInput  formControlName="empresa"  [matAutocomplete]="auto2">
+    <mat-autocomplete #auto2="matAutocomplete">
+    <mat-option *ngFor="let empresa of empresas " [value]="empresa">
+      {{empresa.nombre}}
+    </mat-option>
+  </mat-autocomplete>
 
-  </mat-form-field>
+</mat-form-field>
+
 <!-- <mat-card fxFlex.gt-xs="40" class="mb15">
   <mat-card-content class="auto-field">
     <mat-form-field>

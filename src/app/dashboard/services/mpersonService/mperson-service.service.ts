@@ -1,5 +1,6 @@
+
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { modifypersonInterface } from './../../interfaces/modifypersonInterface';
+import { modifyPersonInterface } from '../../interfaces/modifyPersonInterface';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class MpersonServiceService {
     private http: HttpClient
   ) { }
 
-  modifyPerson(idPersona:number, person:modifypersonInterface){
+  modifyPerson(idPersona:number, person:modifyPersonInterface){
 
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({

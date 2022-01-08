@@ -1,0 +1,44 @@
+.content{
+
+    border-width:1px;
+    border-color:cornflowerblue;
+    border-style:solid;
+    border-radius: 5px;
+ 
+ 
+  }
+
+  .label{
+    font-weight: lighter;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .btn1{
+    font-family: helvetica;
+  
+    font-size: 10px;
+    font-style: italic;
+  
+  
+    border-radius: 15px;
+  
+  }
+  
+  .btn1:hover{
+    background-color: #ff0101;
+  }
+  .btnGuardar{
+    font-family: helvetica;
+  
+    font-size: 10px;
+    font-style: italic;
+  
+  
+    border-radius: 15px;
+  
+  }
+  
+  .btnGuardar:hover{
+    background-color: #43f61a;
+  }
