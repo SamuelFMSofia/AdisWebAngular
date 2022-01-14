@@ -1,3 +1,5 @@
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,7 +17,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { UnidadtecnicaRoutingModule } from './unidadtecnica-routing.module';
 import { UnidatecnicaComponent } from './unidatecnica.component';
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -37,9 +41,14 @@ import { UnidatecnicaComponent } from './unidatecnica.component';
      RouterModule,
      SearchModule,
      MatIconModule,
-     MatSnackBarModule
+     MatSnackBarModule,
+     MatRadioModule,
+     MatTabsModule,
+     MatTableModule,
+     MatTooltipModule,
+     MatPaginatorModule
 
   ],
-  
+
 })
 export class UnidadtecnicaModule { }

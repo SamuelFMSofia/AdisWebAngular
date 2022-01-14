@@ -8,44 +8,69 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+
 interface aprobador {
   userCode: string;
-  nombre: string;
+  nombre: string
+}
+
+interface gerenciaInterface{
+  id :number,
+        nombre: string,
+        gerencia :string
+
 }
 
 interface empresaInterface{
   id: number;
   nombre: string;
-  estado: string;
+  estado: string
 }
+
+interface unidadOrganizacionalInterface{
+  id :number;
+  nombre :string;
+  sigla :string
+}
+
+interface cargoInterface{
+  id :number;
+  nombre :string
+
+}
+
 //cargo
 declare var $:any;
 declare var Jquery:any;
 
 @Component({
   selector: 'app-modifyperson',
+  //selector:'ModifypersonComponent',
   templateUrl: './modifyperson.component.html',
   styleUrls: ['./modifyperson.component.scss']
 })
 export class ModifypersonComponent implements OnInit {
 
 //cargos
-cargos:any=[];
-selectedCargo:string;
+cargos:cargoInterface[]=[];
+selectedCargos:cargoInterface;
 //empresa
 //empresita:any;
 //empresas:empresaInterface[]=[];
 
 //options2: empresaInterface[] = [];
-selectedEmpresas:string;
+//selectedEmpresas:string;
 stateCtrl: FormControl;
+selectedEmpresas:empresaInterface;
 empresas: empresaInterface[]=[];
 
 
 //gerencias
-gerencias:any=[];
-selectedGerencia:string;
+gerencias:gerenciaInterface[]=[];
+
+selectedGerencias:gerenciaInterface;
 // locaciones
+locacion:[]=[];
 locaciones=['One',
 'Two',
 'Three'];
@@ -65,8 +90,8 @@ selectedSucursal:string;
 
 selectedAprobador:string;
 //unidad uo
-unidadOrganizacionalesUO:any=[];
-selectedUO:string;
+unidadOrganizacionales:unidadOrganizacionalInterface[]=[];
+selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
 
 
   form: FormGroup;
@@ -98,6 +123,7 @@ selectedUO:string;
       unidadOrganizacional:{
         id :number,
         nombre :string,
+
         sigla :string},
       cargo: {id :number,
         nombre :string},
@@ -110,6 +136,10 @@ selectedUO:string;
   {
 
    this.idPersona =data.idPersona;
+   this.selectedEmpresas=data.empresa;
+   this.selectedGerencias=data.gerencia;
+   this.selectedUnidadOrganizacionales=data.unidadOrganizacional;
+   this.selectedCargos=data.cargo;
    //this.nombre_Completo=data.nombre_Completo;
    this.form=formBuilder.group({
      //digito los cambios que se van a realizar
@@ -117,11 +147,11 @@ selectedUO:string;
      locacion:[data.locacion],
      sucursal:[data.sucursal],
      estado:[data.estado],
-     aprobador:[data.aprobador.nombre],
+     aprobador:[data.aprobador],
      empresa: [data.empresa],
-     gerencia:[data.gerencia.nombre],
-     unidadOrganizacional:[data.unidadOrganizacional.nombre],
-     cargo:[data.cargo.nombre],
+     gerencia:[data.gerencia],
+     unidadOrganizacional:[data.unidadOrganizacional],
+     cargo:[data.cargo],
      idPersona:[data.idPersona]
 
    })
@@ -137,8 +167,27 @@ selectedUO:string;
   }
   guardar(){
      this.form.value.idPersona=this.idPersona;
-    this.service.modifyPerson(this.idPersona, this.form.value).subscribe((data)=>{
+    //this.service.modifyPerson(this.idPersona, this.form.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
+      let dataSend:any;
+
+      let selectedItemEmpresa:any;
+      let selectedItemGerencia:any;
+      let selectedItemUnidadOrganizacional:any;
+      let selectedItemCargo:any;
+      selectedItemEmpresa = this.empresas.filter(item => item.id == this.form.value.empresa)[0];
+      selectedItemGerencia=this.gerencias.filter(item1=> item1.id== this.form.value.gerencia)[0];
+      selectedItemUnidadOrganizacional=this.unidadOrganizacionales.filter(item2=> item2.id== this.form.value.unidadOrganizacional)[0];
+      selectedItemCargo=this.cargos.filter(item3=>  item3.id== this.form.value.cargo)[0];
+
+      dataSend=this.form.value;
+
+      console.log(selectedItemEmpresa);
+      dataSend.empresa=selectedItemEmpresa;
+      dataSend.gerencia=selectedItemGerencia;
+      dataSend.unidadOrganizacional=selectedItemUnidadOrganizacional;
+      dataSend.cargo=selectedItemCargo;
+     this.service.modifyPerson(this.idPersona, dataSend ).subscribe((data:any)=>{
       this.router.navigate(['/listperson']);
       window.location.reload();
      });
@@ -159,7 +208,7 @@ ngOnInit(): void {
   this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
     this.cargos=data.data.cargos;
-    this.unidadOrganizacionalesUO=data.data.unidadOrganizacionales;
+    this.unidadOrganizacionales=data.data.unidadOrganizacionales;
     this.gerencias=data.data.gerencias;
     this.locaciones=data.data.locaciones
 

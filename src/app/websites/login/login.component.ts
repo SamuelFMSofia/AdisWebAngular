@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { Component } from '@angular/core';
@@ -20,7 +21,8 @@ export class LoginComponent  {
 
   constructor(
   public servi: ServicesService,
-  private router: Router
+  private router: Router,
+  private _snackBar: MatSnackBar
   ) { }
 
   onLogin(){
@@ -46,12 +48,12 @@ export class LoginComponent  {
      //pagina
      this.router.navigate(['/dashboard']);
   }else{
-    alert("token no valido");
+    this.error();
     }
 
 
 }else{
-  alert("usuario no valido");
+  this.error();
   }
 
 
@@ -61,12 +63,13 @@ export class LoginComponent  {
 
   }
 
-  /* onLogin() {
-    localStorage.setItem('isLoggedin', 'true');
-    console.log('isLoggedin')
-    this.router.navigate(['/dashboard']);
-  } */
-
+  error() {
+    this._snackBar.open('Usuario invalido', '', {
+      duration:5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
 
 
 }

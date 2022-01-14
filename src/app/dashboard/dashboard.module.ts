@@ -1,3 +1,4 @@
+import { MusersServiceService } from './services/musersService/musers-service.service';
 import { CpersonServiceService } from './services/cpersonService/cperson-service.service';
 import { ListuoService } from './services/listuoService/listuo.service';
 import { ListpersonServiceService } from './services/listperson/listperson-service.service';
@@ -25,6 +26,7 @@ import { ModifypersonModule } from './modify/modifyperson/modifyperson.module';
 import { ModifyusersModule } from './modify/modifyusers/modifyusers.module';
 import { CreatepersonModule } from './create/createperson/createperson.module';
 import { ListpersonModule } from './create/listperson/listperson.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -78,10 +80,11 @@ import { ListpersonModule } from './create/listperson/listperson.module';
     FormsModule,
     RouterModule,
     ListpersonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
   providers:[
-    ListpersonServiceService,ListuoService, CpersonServiceService
+    ListpersonServiceService,ListuoService, CpersonServiceService,MusersServiceService
   ]
 
 })

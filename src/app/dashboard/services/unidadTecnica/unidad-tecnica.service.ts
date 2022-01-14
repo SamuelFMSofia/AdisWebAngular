@@ -8,21 +8,38 @@ import { unidadTecnicaInterface } from '../../interfaces/unidadTecnicaInterface'
 })
 export class UnidadTecnicaService {
 
+  ELEMENT_DATA: unidadTecnicaInterface[] = [
+    {nombre: 'APLICACIONES', sigla: 'APLICACIONES', SecuenciaOT: 1.0079, estado: 'A'},
+    {nombre: 'APLICACIONES', sigla: 'APLICACIONES', SecuenciaOT: 4.0026, estado: 'A'},
+    {nombre: 'APLICACIONES', sigla: 'APLICACIONES', SecuenciaOT: 6.941, estado: 'A'},
+
+    {nombre: 'SOPORTE', sigla: 'SOPORTE', SecuenciaOT: 10.811, estado: 'A'},
+    {nombre: 'SOPORTE', sigla: 'SOPORTE', SecuenciaOT: 12.0107, estado: 'A'},
+    {nombre: 'SOPORTE', sigla: 'SOPORTE', SecuenciaOT: 14.0067, estado: 'P'}
+  ];
+
   baseUrl: string ='https://localhost:5001/api/';
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
 
-  createUnidadTecnica(UnidadTecnica: unidadTecnicaInterface){
-    let auth_token = localStorage.getItem('token_value');
+   listarUnidadTercnica(){
+    return this.ELEMENT_DATA.slice();
+   }
+  createUnidadTecnica(Unidad_Tecnica: unidadTecnicaInterface){
+
+    this.ELEMENT_DATA.unshift(Unidad_Tecnica);
+
+    /* let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
-    })
-    return this.http.post(this.baseUrl, UnidadTecnica, {headers:headers});
-  } 
+    }) */
+    //return this.http.post(this.baseUrl, UnidadTecnica, {headers:headers});
+
+  }
 }
 
- 
+
 

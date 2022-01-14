@@ -23,7 +23,7 @@ baseUrl: string = 'https://localhost:5001/api/admin/user/edit/';
     })
     return this.http.put(this.baseUrl+idUser, users, {headers:headers});
   }
-  getUsuserById(userCode:string){
+  /* getUsuserById(userCode:string){
 
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
@@ -40,5 +40,5 @@ baseUrl: string = 'https://localhost:5001/api/admin/user/edit/';
     'Authorization': 'Bearer '+auth_token
     })
     return this.http.get(this.baseUrl,{headers:headers});
-}
+} */
 }

@@ -6,7 +6,17 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+interface tipoUsuario{
+  id	:number; nombre: string
+}
 
+interface unidadTecnica{
+  IdDptoTecnico:number; nombre : string; sigla:string
+}
+
+interface perfil{
+  idPerfil :number; nombre :string; estado: number
+}
 //cargo
 declare var $:any;
 declare var Jquery:any;
@@ -19,25 +29,32 @@ declare var Jquery:any;
 export class ModifyusersComponent implements OnInit {
 
 //unidad Tecnica
-unidadTecnicas:any=[];
+unidadTecnicas:unidadTecnica[]=[
+  {IdDptoTecnico: 1, nombre: 'Aplicaciones y Desarrollo', sigla: 'A.D'},
+  {IdDptoTecnico: 2, nombre: 'Soporte Tecnico', sigla:'S.T'},
+  {IdDptoTecnico: 3, nombre: 'Investigacion Desarrollo', sigla: 'I.D'}
+];
 selectedTecnica:string;
 //tipo usuario
-tipoUsuarios:any=[];
+tipoUsuarios:tipoUsuario[]=[
+  {id	:1, nombre: 'SUPER USUARIO'},
+  {id	:2, nombre: 'ADMIN'},
+  {id	:3, nombre: 'APROBADOR'},
+  {id	:4, nombre: 'TECNICO'},
+  {id	:5, nombre: 'ELABORADOR'}
+];
 selectedUsuario:string;
 //perfil
-perfiles:any=[];
+perfiles:perfil[]=[
+  {idPerfil	:1, nombre: 'SUPER USUARIO', estado: 1},
+  {idPerfil	:2, nombre: 'ADMIN', estado: 1},
+  {idPerfil	:3, nombre: 'APROBADOR', estado: 1},
+  {idPerfil	:4, nombre: 'TECNICO', estado: 1},
+  {idPerfil	:5, nombre: 'ELABORADOR', estado: 1}
+];
 selectedPerfil:string;
 //cargos
-cargos:any=[];
-selectedCargo:string;
-//empresa
-empresas:any;
-//gerencias
-gerencias:any;
-// locaciones
-locaciones:any;
-//sucursales
-sucursales:any;
+
 
 
 //inicializzacion de variables
@@ -54,10 +71,10 @@ sucursales:any;
     @Inject(MAT_DIALOG_DATA) private data:{
        idUser			:number,
 	    abreviatura		:string,
-      estado				:string, //number
-       unidadTecnica :{idDptoTecnico:number, nombre : string},
+      estado				:number, //number
+       unidadTecnica :{IdDptoTecnico:number, nombre : string, sigla: string},
       tipoUsuario	:{id	:number, nombre: string},
-      perfil        :{idPerfil :number, nombre :string, estado: string}
+      perfil        :{idPerfil :number, nombre :string, estado: number}
 
 
     }
@@ -70,9 +87,9 @@ sucursales:any;
      idUser:[data.idUser],
     abreviatura:[data.abreviatura],
      estado:[data.estado],
-    //unidadTecnicas:[data.unidadTecnica.nombre],
-    tipoUsuarios:[data.tipoUsuario.nombre],
-     perfiles:[data.perfil.nombre],
+    unidadTecnica:[data.unidadTecnica],
+    tipoUsuario:[data.tipoUsuario],
+     perfil:[data.perfil],
    })
 
     }
@@ -105,12 +122,7 @@ sucursales:any;
 ngOnInit(): void {
   this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
-    this.cargos=data.data.cargos;
-    //this.unidadOrganizacionalesUO=data.data.unidadOrganizacionales;
-    this.gerencias=data.data.gerencias;
-    this.locaciones=data.data.locaciones;
-    this.sucursales=data.data.sucursales;
-    this.empresas=data.data.empresas;
+
 
   },)
   }

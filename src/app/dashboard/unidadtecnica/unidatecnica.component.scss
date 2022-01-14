@@ -1,11 +1,44 @@
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-stroked-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
+
+mat-card{
+
+  margin-left:auto;
+  margin-right:auto;
+
+
+}
+mat-card-title{
+  font-family: "Homer Simpson UI";
+}
+mat-card-content{
+  margin: 10px;
+}
+table{
+  width: 100%;
+}
+.pointer{
+  cursor: pointer;
+}
+
+.pointer:hover{
+  cursor: pointer;
+  color: green;
+}
 .content{
 
     border-width:1px;
     border-color:cornflowerblue;
     border-style:solid;
     border-radius: 5px;
- 
- 
+
+
   }
 
   .label{
@@ -16,29 +49,48 @@
 
   .btn1{
     font-family: helvetica;
-  
+
     font-size: 10px;
     font-style: italic;
-  
-  
+
+
     border-radius: 15px;
-  
+
   }
-  
+
   .btn1:hover{
     background-color: #ff0101;
   }
   .btnGuardar{
     font-family: helvetica;
-  
+
     font-size: 10px;
     font-style: italic;
-  
-  
+
+
     border-radius: 15px;
-  
+
   }
-  
+
   .btnGuardar:hover{
     background-color: #43f61a;
   }
+
+  .input-row{
+    font-size: 10px
+  }
+
+
+  .first-box {
+
+    float:left;
+
+
+
+  }
+  /* .second-box {
+
+    float:right;
+
+  }
+ */

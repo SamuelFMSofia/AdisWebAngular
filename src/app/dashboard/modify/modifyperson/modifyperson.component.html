@@ -16,28 +16,10 @@
         <input matInput placeholder = "Correo" formControlName="correo" readonly onmousedown="return false;">
     </mat-form-field>
 
-    <!-- <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Locacion</mat-label>
-      <mat-select [(ngModel)]="selectedLocacion" formControlName="locaciones"  >
-        <mat-option *ngFor="let locacion of locaciones" [value]="locacion">
-          {{locacion}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
-<!--   <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Locacion</mat-label>
 
-        <input type="text" placeholder="Locacion"  matInput  formControlName="locacion" [formControl]="myControl" [matAutocomplete]="auto2">
-        <mat-autocomplete #auto2="matAutocomplete" >
-        <mat-option *ngFor="let locacion of filteredOptions |async" [value]="locacion">
-          {{locacion}}
-        </mat-option>
-      </mat-autocomplete>
-
-    </mat-form-field> -->
 
      <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Locacion"    matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Locacion"  formControlName="locacion"  matInput  [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let locacion of filteredOptions | async" [value]="locacion">
           {{ locacion }}
@@ -47,20 +29,7 @@
 
  </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-     <!--  <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Sucursal</mat-label>
-      <input type="text" placeholder="Sucursal"  matInput formControlName="sucursal" [matAutocomplete]="auto2" >
-     <mat-select  formControlName="sucursal">
-      <mat-option *ngFor="let sucursal of sucursales" [value]="">
-        {{sucursal}}
-      </mat-option>
-      </mat-select>
-    </mat-form-field> -->
 
-    <!-- <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Sucursal</mat-label>
-      <input matInput placeholder="Sucursal" formControlName="sucursal" >
-    </mat-form-field> -->
 
    <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Sucursal</mat-label>
@@ -68,7 +37,7 @@
         <input type="text" placeholder="Sucursal"  matInput formControlName="sucursal" [matAutocomplete]="auto2" >
         <mat-autocomplete #auto2="matAutocomplete">
         <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal">
-          {{sucursal}}
+          {{sucursal.nombre}}
         </mat-option>
       </mat-autocomplete>
 
@@ -81,7 +50,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label class="label">Aprobador</mat-label>
-      <mat-select [(ngModel)]="selectedAprobador" formControlName="aprobador" ><!-- [compareWith]="compareWith" -->
+      <mat-select formControlName="aprobador" >
         <mat-option *ngFor="let aprobador of aprobadores" [value]="aprobador">
           {{ aprobador.nombre }}
         </mat-option>
@@ -93,95 +62,52 @@
  <!-- empresa -->
  <mat-form-field fxFlex appearance="outline">
   <mat-label class="label">Empresa</mat-label>
-
-    <input type="text" placeholder="Empresa"   matInput  formControlName="empresa"  [matAutocomplete]="auto2">
-    <mat-autocomplete #auto2="matAutocomplete">
-    <mat-option *ngFor="let empresa of empresas " [value]="empresa">
+  <mat-select [(ngModel)]="selectedEmpresas.id"  formControlName="empresa">
+    <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
       {{empresa.nombre}}
     </mat-option>
-  </mat-autocomplete>
+  </mat-select>
 
 </mat-form-field>
 
-<!-- <mat-card fxFlex.gt-xs="40" class="mb15">
-  <mat-card-content class="auto-field">
-    <mat-form-field>
-      <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl2" [matAutocomplete]="auto2">
-      <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </mat-card-content>
-</mat-card> -->
-
-<!-- <mat-form-field fxFlex appearance="outline">
+ <mat-form-field fxFlex appearance="outline">
   <mat-label class="label">Gerencias</mat-label>
-  <mat-select [(ngModel)]="selectedGerencia" formControlName="gerencia">
+  <mat-select [(ngModel)]="selectedGerencias.id"  formControlName="gerencia">
+
     <mat-option *ngFor="let gerencia of gerencias" [value]="gerencia.id">
       {{gerencia.nombre}}
     </mat-option>
   </mat-select>
-
-
-</mat-form-field> -->
-<mat-form-field fxFlex appearance="outline">
-  <mat-label class="label">Gerencias</mat-label>
-
-    <input type="text" placeholder="Gerencias"  matInput formControlName="gerencia" [matAutocomplete]="auto2">
-    <mat-autocomplete #auto2="matAutocomplete">
-    <mat-option *ngFor="let gerencia of gerencias" [value]="gerencia.sigla">
-      {{gerencia.nombre}}
-    </mat-option>
-  </mat-autocomplete>
 
 </mat-form-field>
 
 
   </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <!-- <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Unidad Organizacional</mat-label>
-      <mat-select [(ngModel)]="selectedUO" formControlName="unidadOrganizacional">
-        <mat-option *ngFor="let unidadOrganizacional of unidadOrganizacionalesUO" [value]="unidadOrganizacional.id">
-          {{unidadOrganizacional.sigla}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
 
-    <mat-form-field fxFlex appearance="outline">
+     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Unidad Organizacional</mat-label>
 
-        <input type="text" placeholder="Unidad Organizacional"  matInput formControlName="unidadOrganizacional" [matAutocomplete]="auto2">
-        <mat-autocomplete #auto2="matAutocomplete">
-        <mat-option *ngFor="let unidadOrganizacional of unidadOrganizacionalesUO" [value]="unidadOrganizacional.nombre">
+
+      <mat-select [(ngModel)]="selectedUnidadOrganizacionales.id"  formControlName="unidadOrganizacional">
+         <mat-option *ngFor="let unidadOrganizacional of unidadOrganizacionales" [value]="unidadOrganizacional.id">
           {{unidadOrganizacional.nombre}}
         </mat-option>
-      </mat-autocomplete>
 
+      </mat-select>
     </mat-form-field>
 
-<!--     <mat-form-field fxFlex appearance="outline">
+    <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Cargo</mat-label>
-      <mat-select [(ngModel)]="selectedCargo" formControlName="cargo">
-        <mat-option *ngFor="let cargo of cargos" [value]="cargo">
+        <mat-select [(ngModel)]="selectedCargos.id" formControlName="cargo">
+        <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
           {{cargo.nombre}}
         </mat-option>
       </mat-select>
 
-    </mat-form-field> -->
-    <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Cargo</mat-label>
-
-        <input type="text" placeholder="Cargo"  matInput formControlName="cargo" [matAutocomplete]="auto2">
-        <mat-autocomplete #auto2="matAutocomplete">
-        <mat-option *ngFor="let cargo of cargos" [value]="cargo.nombre">
-          {{cargo.nombre}}
-        </mat-option>
-      </mat-autocomplete>
-
     </mat-form-field>
+
+
 
     </div>
   </mat-dialog-content>

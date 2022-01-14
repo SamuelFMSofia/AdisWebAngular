@@ -23,6 +23,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { MusersServiceService } from './dashboard/services/musersService/musers-service.service';
 import { ListpersonServiceService } from './dashboard/services/listperson/listperson-service.service';
 import { ListarusersService } from './dashboard/services/listusers/listarusers.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ListarusersService } from './dashboard/services/listusers/listarusers.s
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
