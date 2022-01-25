@@ -1,3 +1,5 @@
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 
 
 
+
 @NgModule({
   declarations: [
     ListpersonComponent
@@ -41,11 +44,11 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     RouterModule,
     ModifypersonModule,
-    ModifyusersModule,
     CreatepersonModule,
     MatInputModule,
-
-    ModifyusersModule
+    MatToolbarModule,
+    ModifyusersModule,
+    MatPaginatorModule
   ],
 
   entryComponents:[

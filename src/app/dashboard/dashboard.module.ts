@@ -1,3 +1,4 @@
+import { MunidadtecnicaService } from './services/unidadTecnica/Modify/munidadtecnica.service';
 import { MusersServiceService } from './services/musersService/musers-service.service';
 import { CpersonServiceService } from './services/cpersonService/cperson-service.service';
 import { ListuoService } from './services/listuoService/listuo.service';
@@ -27,6 +28,7 @@ import { ModifyusersModule } from './modify/modifyusers/modifyusers.module';
 import { CreatepersonModule } from './create/createperson/createperson.module';
 import { ListpersonModule } from './create/listperson/listperson.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UnidadTecnicaService } from './services/unidadTecnica/Create/unidad-tecnica.service';
 
 
 
@@ -84,7 +86,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
   ],
   providers:[
-    ListpersonServiceService,ListuoService, CpersonServiceService,MusersServiceService
+    ListpersonServiceService,ListuoService, CpersonServiceService,MusersServiceService, UnidadTecnicaService,
+    MunidadtecnicaService
   ]
 
 })

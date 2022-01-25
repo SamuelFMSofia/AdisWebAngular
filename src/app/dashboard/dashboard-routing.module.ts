@@ -36,10 +36,24 @@ const routes: Routes = [
     },
     {
       path:'unidadTecnica',
-      loadChildren:()=> import('./unidadtecnica/unidadtecnica.module').then(ut=>ut.UnidadtecnicaModule)
+      loadChildren:()=> import('./unidadtecnica/listar/unidadtecnica.module').then(ut=>ut.UnidadtecnicaModule)
+    },
+    {
+      path:'modifyUnidadTecnica',
+      loadChildren:()=> import('./modify/modify-technicalUnit/technicalunit.module').then(mt=>mt.TechnicalunitModule)
+    },
+    {
+      path:'createunidadtecnica',
+      loadChildren:()=> import('./unidadtecnica/create/create.module').then(mt=>mt.CreateModule)
+    },
+    {
+      path:'**',
+      redirectTo:'listperson'
     }
+
   ]
   }
+
 ];
 
 @NgModule({

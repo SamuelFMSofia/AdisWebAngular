@@ -7,7 +7,10 @@ import { CpersonServiceService } from '../../services/cpersonService/cperson-ser
 import { debounceTime, map, Observable, startWith, switchMap } from 'rxjs';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
-
+interface Food {
+  value: number;
+  viewValue: string;
+}
 //unidad organizacional
 
 export interface StateGroup {
@@ -31,6 +34,13 @@ interface aprobador {
   styleUrls: ['./createperson.component.scss']
 })
 export class CreatepersonComponent implements OnInit {
+
+  estados: Food[] = [
+    {value: 1, viewValue: 'Activo'},
+    {value: 2, viewValue: 'Inactivo'}];
+    foodControl = new FormControl(this.estados[1]);
+
+
   estado=1;
  cargos:any=[];
   //cargo
@@ -45,8 +55,14 @@ export class CreatepersonComponent implements OnInit {
   selectedGerencia: string;
 
   //locaciones
+
   locaciones:any[];
   selectedLocacion:string;
+
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+
 
   //sucursales
 
@@ -59,9 +75,9 @@ export class CreatepersonComponent implements OnInit {
 
 ///* empreSA */
   form: FormGroup;
-  myControl = new FormControl();
+ // myControl = new FormControl();
   uo:any=[];
-  filteredOptions: Observable<string>;
+  //filteredOptions: Observable<string>;
 
 //botones
 toggle = true;
@@ -127,14 +143,11 @@ status = 'Enable';
   ngOnInit(
 
   ) {
-    //empresa
-    //this.filteredOptions = this.myControl.valueChanges.pipe(
-     // startWith(''),
-     //debounceTime(300),
-      //switchMap(value=>this._filter(value))
-      /* map(value => (typeof value === 'string' ? value : value.name)),
-      map(name => (name ? this._filter(name) : this.uo.slice())), */
-   // );
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
+
     /*unidad organizacional*/
     this.stateGroupOptions = this.stateForm.get('unidadOrganizacional')!.valueChanges.pipe(
       startWith(''),
@@ -159,6 +172,14 @@ status = 'Enable';
     /*********************************** *
     /**************************************** */
   }
+
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
   /*unidad organizacional */
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
@@ -171,7 +192,7 @@ status = 'Enable';
   }
 
   submit() {
-
+    console.log(this.form);
     this.service.createPerson(this.form.value).subscribe((data:any)=>{
       console.log(data);
       //localStorage.setItem('userCode', data.result.userCode);
@@ -185,32 +206,17 @@ status = 'Enable';
         console.log('xxxxxxxxxx');
       });
 
-
-
-
-      ;
-    /*   this._snackBar.open('Cannonball!!', 'Splash', {
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }); */
-
-      //alerta lo que me esta devolviendo el backend
-      //alert("fdfdfdfd");
-      //ruta
-
     }
 
     )
   }
-  //empresa
-  /* displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
 
-    return this.uo.filter(uo => uo.name.toLowerCase().includes(filterValue));
-  } */
+  iniForm(){
+    this.form=this.formBuilder.group({
+
+    })
+  }
+
   //boton
   enableDisableRule() {
     this.toggle = !this.toggle;
@@ -224,9 +230,9 @@ status = 'Enable';
 ]; */
 //aprobador
 aprobadores:aprobador[] = [
-  {userCode: 'sistemas', nombre: 'xxx'},
-  {userCode: 'rrhh', nombre: 'yyyyy'},
-  {userCode: 'comunicacion', nombre: 'zzzzz'},
+  {userCode: 'sistemas', nombre: 'Sistemas'},
+  {userCode: 'rrhh', nombre: 'Recursos Humano'},
+  {userCode: 'comunicacion', nombre: 'Comunicacion'},
 ];
 
 }

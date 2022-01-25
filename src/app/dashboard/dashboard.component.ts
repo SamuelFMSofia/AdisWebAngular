@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit{
 
     var titlee = this.location.prepareExternalUrl(this.location.path())
 
-    if(titlee.charAt(1) ==='dashboard')
+    if(titlee.charAt(1) ==='/dashboard/unidadTecnica')
     console.log(titlee);
     {
 

@@ -1,8 +1,14 @@
+<div class="main">
+  <div class="toolbar">
+    <p>
+      <mat-toolbar class="example-spacer">
+    <span>USUARIOS</span>
+      </mat-toolbar>
+    </p>
+  </div>
 
-
-
-
-<div fxLayout fxLayoutAlign="center center" >
+  <div class="container">
+    <div  class="buscar">
 
   <mat-form-field fxFlex="40%" >
 
@@ -12,6 +18,8 @@
 
 
 </div>
+<div class="tablero">
+
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z16">
 
@@ -39,10 +47,7 @@
     <td mat-cell *matCellDef="let element"> {{element.perfil.nombre}} </td>
   </ng-container>
     <!-- Symbol Column -->
-     <ng-container matColumnDef="estado">
-      <th mat-header-cell *matHeaderCellDef> Estado </th>
-      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
-    </ng-container>
+     
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let element">
@@ -61,3 +66,6 @@
     <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro  "{{input.value}}"</td>
   </tr>
 </table>
+</div>
+  </div>
+</div>

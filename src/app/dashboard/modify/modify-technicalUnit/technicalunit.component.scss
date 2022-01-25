@@ -32,18 +32,33 @@ mat-dialog-content{
   display: none;
 }
 
-.btn2{
-  background-color: #FFC300 ;
-  text-align: center;
+.btn1{
   font-family: helvetica;
 
   font-size: 10px;
   font-style: italic;
-  color: white;
+
+
+  border-radius: 15px;
+
+}
+.btn1:hover{
+  background-color: #FD0D02;
+}
+
+
+.btn2{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+
+
+  border-radius: 15px;
 
 }
 .btn2:hover{
-  background-color: greenyellow;
+  background-color: #56B53F;
 }
 
 
@@ -53,7 +68,10 @@ mat-dialog-content{
   font-weight: 700;
 }
 .input-row{
-  font-size: 10px
+  font-size: 8px;
+  margin-top: 1px; /* height of header */
+  padding: 0.8px;
+  height: 45px;
 }
 
 .content{

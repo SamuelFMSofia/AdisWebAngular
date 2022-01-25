@@ -7,6 +7,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+interface Food {
+  value: number;
+  viewValue: string;
+}
 
 
 interface aprobador {
@@ -50,7 +54,11 @@ declare var Jquery:any;
   styleUrls: ['./modifyperson.component.scss']
 })
 export class ModifypersonComponent implements OnInit {
+  estados: Food[] = [
+    {value: 1, viewValue: 'Activo'},
+    {value: 2, viewValue: 'Inactivo'}]
 
+    foodControl = new FormControl(this.estados[1]);
 //cargos
 cargos:cargoInterface[]=[];
 selectedCargos:cargoInterface;
@@ -77,11 +85,7 @@ locaciones=['One',
 ///locaciones: Observable<string[]>;
 selectedLocacion:string;
 myControl = new FormControl('locacion');
-/*  options = [
-  'One',
-  'Two',
-  'Three'
-];  */
+
 filteredOptions: Observable<string[]>;
 //sucursales
 sucursales:any=[];
@@ -147,7 +151,7 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
      locacion:[data.locacion],
      sucursal:[data.sucursal],
      estado:[data.estado],
-     aprobador:[data.aprobador],
+     aprobador:[data.aprobador.userCode],
      empresa: [data.empresa],
      gerencia:[data.gerencia],
      unidadOrganizacional:[data.unidadOrganizacional],
@@ -221,11 +225,7 @@ ngOnInit(): void {
     );
 
 
-    /* this.empresas = this.empresa.valueChanges.pipe(
-      startWith<string | empresaInterface>(''),
-      map(value => (typeof value === 'string' ? value : value.nombre)),
-      map(nombre => (nombre ? this._filter2(nombre) : this.options2.slice()))
-    ); */
+
 
   },)
 

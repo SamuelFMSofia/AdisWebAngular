@@ -43,18 +43,22 @@
 
     </mat-form-field>
 
-    <mat-form-field fxFlex appearance="outline">
+    <!-- <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Estado</mat-label>
       <input matInput placeholder="Estado" formControlName="estado" >
-    </mat-form-field>
+    </mat-form-field> -->
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
 
-    <mat-form-field appearance="outline">
-      <mat-label class="label">Aprobador</mat-label>
-      <mat-select formControlName="aprobador" >
-        <mat-option *ngFor="let aprobador of aprobadores" [value]="aprobador">
-          {{ aprobador.nombre }}
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label class="label">Aprobador</mat-label>
+      <input type="text" placeholder="Aprobador"  matInput formControlName="aprobador" >
     </mat-form-field>
  </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">

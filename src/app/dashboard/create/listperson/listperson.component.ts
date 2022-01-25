@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 /*
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,6 +20,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { listInterface } from '../../interfaces/listInterface'; */
 
 import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 
 const ELEMENT_DATA: listInterface[] = [];
@@ -34,18 +36,14 @@ export class ListpersonComponent implements OnInit {
    dataSource:any=[];
 
    displayedColumns: string[] = ['numeroDocumento', 'nombreCompleto', 'cargo', 'unidadOrganizacional','gerencia', 'Acciones'];
-
+   @ViewChild(MatPaginator) paginator: MatPaginator;
+   @ViewChild(MatSort) sort: MatSort;
   constructor(
      private service: ListpersonServiceService,
      private serviuser: MpersonServiceService,
       private router: Router,
       private dialog: MatDialog
   ) { }
-
-  /*  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }  */
 
 
    ngOnInit() {
@@ -57,16 +55,11 @@ export class ListpersonComponent implements OnInit {
       console.log(data);
       const ELEMENT_DATA: listInterface[] =data.data;
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-      //este datasource son datos que devuelven la tabla usuario
-     // this.dataSource= new  MatTableDataSource<listInterface>(data as listInterface[]);
-     // console.log(this.dataSource)
+
 
     },
     //(errorData) => this.router.navigate(['/login-user'])
     );
-
-   // displayedColumns: string[] = ['Num_Doc', 'Nombre_Completo', 'Cargo', 'UnidadOrg','Gerencia'];
-
 
   }
 
@@ -77,6 +70,10 @@ export class ListpersonComponent implements OnInit {
     })
 
 
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

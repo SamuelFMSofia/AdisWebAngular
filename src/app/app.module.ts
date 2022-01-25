@@ -1,4 +1,6 @@
-import { UnidadTecnicaService } from './dashboard/services/unidadTecnica/unidad-tecnica.service';
+import { MunidadtecnicaService } from './dashboard/services/unidadTecnica/Modify/munidadtecnica.service';
+import { UnidadTecnicaService } from './dashboard/services/unidadTecnica/Create/unidad-tecnica.service';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MpersonServiceService } from './dashboard/services/mpersonService/mperson-service.service';
 import { PasswordService } from './dashboard/services/password/password.service';
@@ -24,6 +26,7 @@ import { MusersServiceService } from './dashboard/services/musersService/musers-
 import { ListpersonServiceService } from './dashboard/services/listperson/listperson-service.service';
 import { ListarusersService } from './dashboard/services/listusers/listarusers.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -60,8 +63,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
-    ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService, 
-  UnidadTecnicaService],
+    ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService,
+  UnidadTecnicaService, MunidadtecnicaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,12 @@
-
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>CREAR PERSONAS</span>
+    </mat-toolbar>
+  </p>
+</div>
+<div>
 <mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)">
-  <mat-card-header>
-    <mat-card-title>CREAR PERSONA</mat-card-title>
-  </mat-card-header>
   <div class="content">
             <mat-card-content>
                   <form novalidate id="contactForm" [formGroup]="form" (ngSubmit)="submit()" >
@@ -27,8 +31,8 @@
                               <mat-label class="label">Correo Electronico</mat-label>
                               <input matInput placeholder="Correo Electronico" formControlName="correo" >
                             </mat-form-field>
-
-
+                          </div>
+                            <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
                             <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Locacion</mat-label>
                               <mat-select [(ngModel)]="selectedLocacion" formControlName="locacion">
@@ -38,31 +42,42 @@
                               </mat-select>
 
                                </mat-form-field>
-
+                              <!--  <form >
+                                <mat-form-field  fxFlex appearance="outline">
+                                  <mat-label>Locacion</mat-label>
+                                  <input type="text"
+                                         placeholder="Locacion"
+                                         matInput
+                                         [formControl]="myControl"
+                                         [matAutocomplete]="auto">
+                                  <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                      {{option}}
+                                    </mat-option>
+                                  </mat-autocomplete>
+                                </mat-form-field>
+                              </form> -->
                             <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Sucursal</mat-label>
                               <input matInput placeholder="Sucursal" formControlName="sucursal" >
                             </mat-form-field>
 
-
-                            <!-- *************** -->
-
-
-
-                            <!-- ************************* -->
-
-
-
-
-
-
                           </div>
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
 
-                            <mat-form-field fxFlex appearance="outline">
+                            <!-- <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Estado</mat-label>
                               <input matInput placeholder="Estado" formControlName="estado" >
+                            </mat-form-field> -->
+                            <mat-form-field fxFlex appearance="outline">
+                              <mat-label class="label">Estado</mat-label>
+                              <mat-select formControlName="estado">
+  
+                                <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                  {{estado.viewValue}}
+                                </mat-option>
+                              </mat-select>
                             </mat-form-field>
 
 
@@ -140,5 +155,6 @@
           </mat-card-content>
 </div>
 </mat-card>
+</div>
 
 

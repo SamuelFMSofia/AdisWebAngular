@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 
 import { ListusersRoutingModule } from './listusers-routing.module';
 import { ListusersComponent } from './listusers.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ListusersComponent } from './listusers.component';
     MatIconModule,
     RouterModule,
     ModifypersonModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule
   ],
   entryComponents:[
 

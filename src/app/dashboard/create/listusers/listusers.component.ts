@@ -21,7 +21,7 @@ export class ListusersComponent implements OnInit {
   dataSource:any=[];
 
   //se define el nombre del arreglo
-  displayedColumns: string[] = ['userCode', 'nombreCompleto', 'correo', 'perfil','estado', 'Acciones'];
+  displayedColumns: string[] = ['userCode', 'nombreCompleto', 'correo', 'perfil', 'Acciones'];
 
 
   constructor(

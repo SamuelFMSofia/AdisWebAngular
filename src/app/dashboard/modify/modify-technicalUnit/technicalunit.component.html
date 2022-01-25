@@ -1,0 +1,111 @@
+
+<div>
+  <h4>MODIFICAR UNIDAD TECNICA</h4>
+</div>
+
+<div class="content">
+ <mat-dialog-content [formGroup] = "FormUnidadTecnica">
+   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field >
+      <mat-label class="label">Unidad Tecnica ID</mat-label>
+
+        <input matInput formControlName="idDptoTecnico" readonly onmousedown="return false;">
+    </mat-form-field>
+
+    <mat-form-field  fxFlex >
+      <mat-label class="label">Nombre Completo</mat-label>
+      <input matInput placeholder="Nombre" formControlName="nombre" readonly onmousedown="return false;">
+    </mat-form-field >
+  </div>
+ <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Sigla Unidad Tecnica</mat-label>
+      <input matInput placeholder="Sigla" formControlName="sigla" autocomplete="off">
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Secuencia Order Trabajo</mat-label>
+      <input matInput placeholder="Secuencia OT" formControlName="secuenciaOT" autocomplete="off">
+    </mat-form-field>
+
+ </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Secuencia Control Cambios</mat-label>
+      <input matInput placeholder="Secuencia CC" formControlName="secuenciaControlCambios" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Prefijo Control Cambios</mat-label>
+      <input matInput placeholder="Prefijo" formControlName="prefijoControlCambios" autocomplete="off">
+    </mat-form-field>
+
+    <!-- <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <input matInput placeholder="Estado" formControlName="estado" >
+    </mat-form-field> -->
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
+
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+ </div>
+ <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Respueta OT</mat-label>
+
+
+    <textarea  matInput formControlName="respuestaOT" autocomplete="off"></textarea>
+  </mat-form-field>
+
+</div>
+<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Respuesta 2</mat-label>
+    <textarea  matInput formControlName="respuesta2" autocomplete="off"></textarea>
+  </mat-form-field>
+
+</div>
+<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Respuesta 3</mat-label>
+    <textarea  matInput formControlName="respuesta3" autocomplete="off"></textarea>
+  </mat-form-field>
+
+</div>
+<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Respuesta 4</mat-label>
+    <textarea  matInput formControlName="respuesta4" autocomplete="off"></textarea>
+  </mat-form-field>
+
+</div>
+<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Respuesta 5</mat-label>
+    <textarea  matInput formControlName="respuesta5" autocomplete="off"></textarea>
+  </mat-form-field>
+
+</div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+  <!--    <button mat-raiset-button color="primary" (click) = "cerrar()">CERRAR</button> -->
+      <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+      </button>
+
+      <button  class="btn2"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
+  </mat-dialog-actions>
+</div>
+

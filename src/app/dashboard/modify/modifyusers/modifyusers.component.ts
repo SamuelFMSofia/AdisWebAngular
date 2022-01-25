@@ -6,6 +6,11 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+interface Food {
+  value: number;
+  viewValue: string;
+}
+
 interface tipoUsuario{
   id	:number; nombre: string
 }
@@ -27,6 +32,12 @@ declare var Jquery:any;
   styleUrls: ['./modifyusers.component.scss']
 })
 export class ModifyusersComponent implements OnInit {
+
+  estados: Food[] = [
+    {value: 1, viewValue: 'Activo'},
+    {value: 2, viewValue: 'Inactivo'}]
+
+    foodControl = new FormControl(this.estados[1]);
 
 //unidad Tecnica
 unidadTecnicas:unidadTecnica[]=[

@@ -1,0 +1,116 @@
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>CREAR UNIDAD TECNICAS</span>
+    </mat-toolbar>
+  </p>
+</div>
+
+<div>
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)">
+
+      <div class="content">
+                <mat-card-content>
+                      <form novalidate id="contactForm" [formGroup]="FormUnidadTecnica" (ngSubmit)="submit()" >
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                          <mat-form-field fxFlex   appearance="outline" >
+                            <mat-label class="label">Nombre Completo</mat-label>
+                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off">
+                          </mat-form-field >
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Sigla</mat-label>
+                            <input matInput placeholder="Sigla" formControlName="Sigla" autocomplete="off">
+                          </mat-form-field>
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Secuencia OT</mat-label>
+                            <input matInput placeholder="Secuencia OT" formControlName="SecuenciaOT" autocomplete="off">
+                          </mat-form-field>
+
+
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Prefijo CC</mat-label>
+                            <input matInput placeholder="Prefijo CC" formControlName="PrefijoControlCambios" autocomplete="off">
+                          </mat-form-field>
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Secuencia CC</mat-label>
+                            <input matInput placeholder="Secuencia CC" formControlName="SecuenciaControlCambios" autocomplete="off">
+                          </mat-form-field>
+                          <!-- <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Estado</mat-label>
+                            <input matInput placeholder="Estado" formControlName="Estado" fxFlex="50" autocomplete="off">
+                          </mat-form-field> -->
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Estado</mat-label>
+                            <mat-select formControlName="Estado">
+
+                              <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                {{estado.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+
+                        </div>
+
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Respueta OT</mat-label>
+
+
+                            <textarea  matInput formControlName="RespuestaOT" autocomplete="off"></textarea>
+                          </mat-form-field>
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Respuesta 2</mat-label>
+                            <textarea  matInput formControlName="Respuesta2" autocomplete="off"></textarea>
+                          </mat-form-field>
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Respuesta 3</mat-label>
+                            <textarea  matInput formControlName="Respuesta3" autocomplete="off"></textarea>
+                          </mat-form-field>
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Respuesta 4</mat-label>
+                            <textarea  matInput formControlName="Respuesta4" autocomplete="off"></textarea>
+                          </mat-form-field>
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Respuesta 5</mat-label>
+                            <textarea  matInput formControlName="Respuesta5" autocomplete="off"></textarea>
+                          </mat-form-field>
+
+                        </div>
+
+                        <div class="boton">
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../unidadTecnica" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <mat-icon>cancel</mat-icon>Cancelar</button>
+                          <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button color="primary" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <mat-icon>save</mat-icon>GUARDAR</button>
+
+                        </div>
+
+                      </form>
+              </mat-card-content>
+            </div>
+
+    </mat-card>
+
+  </div>

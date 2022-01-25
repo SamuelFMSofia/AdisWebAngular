@@ -1,4 +1,4 @@
- button.mat-button .mat-icon,
+button.mat-button .mat-icon,
 a.mat-button .mat-icon,
 a.mat-raised-button .mat-icon,
 a.mat-flat-button .mat-icon,
@@ -8,9 +8,8 @@ a.mat-stroked-button .mat-icon {
 
 
 }
-
 .toolbar{
-  
+
   margin-top: 1px; /* height of header */
   padding: 0.8px;
   height: 50px;
@@ -21,6 +20,9 @@ background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15
 color: #ffffff;
 height: 20px;
 
+}
+.example-full-width {
+  width: 100%;
 }
 
 .btn{
@@ -38,7 +40,11 @@ mat-card{
 
 }
 .input-row{
-  font-size: 10px
+  font-size: 8px;
+  margin-top: 1px; /* height of header */
+  padding: 0.8px;
+  height: 45px;
+
 }
 
 mat-card-title{
@@ -72,7 +78,23 @@ mat-card-title{
 }
 
 .btn1:hover{
-  background-color: gold;
+  background-color: #FD0D02;
+}
+
+
+.btn2{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+
+
+  border-radius: 15px;
+
+}
+
+.btn2:hover{
+  background-color: #56B53F;
 }
 
 mat-card-content{

@@ -25,21 +25,25 @@
 
 
 
-    <!-- <mat-form-field class="createUser" fxFlex>
-      <mat-label>Nombre Completo</mat-label>
-        <input matInput placeholder = "Nombre Completo" formControlName="nombreCompleto" readonly onmousedown="return false;">
-    </mat-form-field> -->
-
-
 
 
   </div>
 
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-    <mat-form-field class="createUser" fxFlex>
+    <!-- <mat-form-field class="createUser" fxFlex>
       <mat-label class="label">Estado</mat-label>
         <input matInput placeholder = "Estado" formControlName="estado">
+    </mat-form-field> -->
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
+
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
    <mat-form-field fxFlex appearance="outline">
@@ -51,14 +55,14 @@
       </mat-select>
     </mat-form-field>
 
-    
+
 
   </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo Usuario</mat-label>
       <mat-select  formControlName="tipoUsuario">
-        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario">
+        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario.id">
           {{tipoUsuario.nombre}}
         </mat-option>
       </mat-select>
