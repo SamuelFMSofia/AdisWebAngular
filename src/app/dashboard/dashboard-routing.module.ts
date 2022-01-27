@@ -8,27 +8,27 @@ const routes: Routes = [
   children:[
     {
       path:'modifyperson',
-      loadChildren:()=> import('./modify/modifyperson/modifyperson.module').then(p=>p.ModifypersonModule)
+      loadChildren:()=> import('./persona/modifyperson/modifyperson.module').then(p=>p.ModifypersonModule)
     },
     {
       path:'modifyusers',
-      loadChildren:()=> import('./modify/modifyusers/modifyusers.module').then(u=>u.ModifyusersModule)
+      loadChildren:()=> import('./usuario/modifyusers/modifyusers.module').then(u=>u.ModifyusersModule)
     },
     {
       path:'createperson',
-      loadChildren:()=> import('./create/createperson/createperson.module').then(c=>c.CreatepersonModule)
+      loadChildren:()=> import('./persona/createperson/createperson.module').then(c=>c.CreatepersonModule)
     },
     {
       path:'listperson',
-      loadChildren:()=> import('./create/listperson/listperson.module').then(l=>l.ListpersonModule)
+      loadChildren:()=> import('./persona/listperson/listperson.module').then(l=>l.ListpersonModule)
     },
     {
       path:'editperfil',
-      loadChildren:()=> import('./modify/editperfil/editperfil.module').then(e=>e.EditperfilModule)
+      loadChildren:()=> import('./persona/editperfil/editperfil.module').then(e=>e.EditperfilModule)
     },
     {
       path:'listusers',
-      loadChildren:()=> import('./create/listusers/listusers.module').then(lu=>lu.ListusersModule)
+      loadChildren:()=> import('./usuario/listusers/listusers.module').then(lu=>lu.ListusersModule)
     } ,
     {
       path:'listuo',
@@ -40,7 +40,7 @@ const routes: Routes = [
     },
     {
       path:'modifyUnidadTecnica',
-      loadChildren:()=> import('./modify/modify-technicalUnit/technicalunit.module').then(mt=>mt.TechnicalunitModule)
+      loadChildren:()=> import('./unidadtecnica/modify-technicalUnit/technicalunit.module').then(mt=>mt.TechnicalunitModule)
     },
     {
       path:'createunidadtecnica',

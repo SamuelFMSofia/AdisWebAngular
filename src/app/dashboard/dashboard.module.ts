@@ -1,8 +1,9 @@
+
 import { MunidadtecnicaService } from './services/unidadTecnica/Modify/munidadtecnica.service';
-import { MusersServiceService } from './services/musersService/musers-service.service';
-import { CpersonServiceService } from './services/cpersonService/cperson-service.service';
-import { ListuoService } from './services/listuoService/listuo.service';
-import { ListpersonServiceService } from './services/listperson/listperson-service.service';
+import { MusersServiceService } from './services/usuarios/musersService/musers-service.service';
+import { CpersonServiceService } from './services/personas/cpersonService/cperson-service.service';
+import { ListuoService } from './services/usuarios/listuoService/listuo.service';
+import { ListpersonServiceService } from './services/personas/listperson/listperson-service.service';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 
@@ -22,13 +23,15 @@ import { ShareddashModule } from './shareddash/shareddash.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { ModifypersonModule } from './modify/modifyperson/modifyperson.module';
+import { ModifypersonModule } from './persona/modifyperson/modifyperson.module';
 
-import { ModifyusersModule } from './modify/modifyusers/modifyusers.module';
-import { CreatepersonModule } from './create/createperson/createperson.module';
-import { ListpersonModule } from './create/listperson/listperson.module';
+import { ModifyusersModule } from './usuario/modifyusers/modifyusers.module';
+
+import { ListpersonModule } from './persona/listperson/listperson.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UnidadTecnicaService } from './services/unidadTecnica/Create/unidad-tecnica.service';
+import { CreatepersonModule } from './persona/createperson/createperson.module';
+import { MATERIALModule } from '../MATERIAL/material.module';
 
 
 
@@ -40,51 +43,15 @@ import { UnidadTecnicaService } from './services/unidadTecnica/Create/unidad-tec
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    ListpersonModule,
     ShareddashModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    FlexLayoutModule,
-    FlexModule,
-    MatFormFieldModule,
-    HttpClientModule,
     ModifypersonModule,
     ModifyusersModule,
     CreatepersonModule,
-    FormsModule,
-    RouterModule,
-    ListpersonModule,
-    MatFormFieldModule
+    MATERIALModule
 
   ],
-  exports:[
-    CommonModule,
-    DashboardRoutingModule,
-    ShareddashModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    FlexLayoutModule,
-    FlexModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    ModifypersonModule,
-    ModifyusersModule,
-    CreatepersonModule,
-    FormsModule,
-    RouterModule,
-    ListpersonModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule
-  ],
+  
   providers:[
     ListpersonServiceService,ListuoService, CpersonServiceService,MusersServiceService, UnidadTecnicaService,
     MunidadtecnicaService

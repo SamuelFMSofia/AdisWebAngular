@@ -1,0 +1,78 @@
+
+
+.title1{
+color: #000;
+font-weight: bold;
+  font-style: italic;
+background-color:rgb(215, 232, 247);
+
+}
+form{
+
+  width:auto;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color: rgb(212, 240, 236);
+}
+
+ form label{
+  width:150px;
+	font-weight:bold;
+	display:inline-block;
+  font-family: Arial, Helvetica, Sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
+  margin: 5px;
+  font-weight:bold;
+	display:inline-block;
+ }
+input{
+  outline:none;
+}
+
+form input[type="text"]{
+	width:250px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f0f8f6ef;
+	margin:8px 0;
+	display:inline-block;
+}
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
+.btn{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ mat-card{
+  border: 2px solid darkblue;
+ }
+
+ .perfil{
+  border: 1px dashed rgb(27, 27, 243);
+ }
+ .toolbar{
+  
+  margin-top: 1px; /* height of header */
+  padding: 0.8px;
+  height: 50px;
+}
+.example-spacer {
+ flex: 1 1 auto;
+background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+color: #ffffff;
+height: 20px;
+
+}

@@ -1,7 +1,7 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { modifyUnidadTecnicaInterface } from '../../../interfaces/modifyUnidadTecnicaInterface';
+import { modifyUnidadTecnicaInterface } from '../../../interfaces/unidad_tecnica/modifyUnidadTecnicaInterface';
 
 @Injectable({
   providedIn: 'root'

@@ -57,25 +57,6 @@ export class CreateComponent implements OnInit {
 
   submit(){
 
-    /*  const UnidadTecnica:unidadTecnicaInterface={
-       IdDptoTecnico:this.FormUnidadTecnica.value.IdDptoTecnico,
-       nombre:this.FormUnidadTecnica.value.nombre,
-       sigla:this.FormUnidadTecnica.value.sigla,
-       secuenciaOT:this.FormUnidadTecnica.value.secuenciaOT,
-       PrefijoCC:this.FormUnidadTecnica.value.PrefijoCC,
-       SecuenciaCC:this.FormUnidadTecnica.value.SecuenciaCC,
-       estado:this.FormUnidadTecnica.value.estado,
-       respuestaOT:this.FormUnidadTecnica.value.respuestaOT,
-       repuesta2:this.FormUnidadTecnica.value.respuesta2,
-       respuesta3:this.FormUnidadTecnica.value.repuesta3
-
-     } */
-     /* console.log(UnidadTecnica);
-     this.service.createUnidadTecnica(UnidadTecnica);
-     this.router.navigate[('/dashboard/unidadTecnica')] */
-     /*  this.service.createUnidadTecnica(this.FormUnidadTecnica.value).subscribe((data:any)=>{
-       console.log(data);
-     }) */
 
      this.service.createUnidadTecnica(this.FormUnidadTecnica.value).subscribe((data:any)=>{
        console.log(data);

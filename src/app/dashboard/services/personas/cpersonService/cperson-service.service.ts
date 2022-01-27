@@ -1,25 +1,28 @@
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { passwordInterface } from '../../interfaces/usuarios/passwordInterface';
+import { createpersonInterface } from '../../../interfaces/personas/createpersonInterface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PasswordService {
-  baseUrl: string = 'https://localhost:5001/api/user/changePassword';
+export class CpersonServiceService  {
+
+  //para llamar al enpoint de users register
+baseUrl: string = 'https://localhost:5001/api/admin/person/create';
+
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
 
-  modificarPassword(idUser:number, password:passwordInterface){
-
+  createPerson(person:createpersonInterface){
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.put(this.baseUrl+idUser, password, {headers:headers});
+    return this.http.post(this.baseUrl, person, {headers:headers});
   }
+
 }

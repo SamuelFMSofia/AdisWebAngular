@@ -1,0 +1,72 @@
+<div class="main">
+  <div class="toolbar">
+    <p>
+      <mat-toolbar class="example-spacer">
+    <span>USUARIOS</span>
+      </mat-toolbar>
+    </p>
+  </div>
+
+  <div class="container">
+    <div  class="buscar">
+
+  <mat-form-field  >
+
+    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+
+  </mat-form-field>
+
+
+</div>
+<div class="tablero">
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z16">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="userCode">
+    <th mat-header-cell *matHeaderCellDef> Codigo </th>
+    <td mat-cell *matCellDef="let element"> {{element.userCode}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+    <td mat-cell *matCellDef="let element"> {{element.persona.nombreCompleto}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="correo">
+    <th mat-header-cell *matHeaderCellDef> Correo </th>
+    <td mat-cell *matCellDef="let element"> {{element.persona.correo}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="perfil">
+    <th mat-header-cell *matHeaderCellDef> Perfil </th>
+    <td mat-cell *matCellDef="let element"> {{element.perfil.nombre}} </td>
+  </ng-container>
+    <!-- Symbol Column -->
+
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element">
+        <a (click) = "upgradeUser(element)" color="primary">
+          <mat-icon color="warn">border_color</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+   <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro  "{{input.value}}"</td>
+  </tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="100" [pageSize]="5"></mat-paginator>
+</div>
+  </div>
+</div>

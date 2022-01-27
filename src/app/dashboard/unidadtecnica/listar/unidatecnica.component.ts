@@ -1,13 +1,14 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TechnicalunitComponent } from '../../modify/modify-technicalUnit/technicalunit.component';
+import { TechnicalunitComponent } from '../modify-technicalUnit/technicalunit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { Router } from '@angular/router';
-import { unidadTecnicaInterface } from '../../interfaces/unidadTecnicaInterface';
+import { unidadTecnicaInterface } from '../../interfaces/unidad_tecnica/unidadTecnicaInterface';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 
 
@@ -25,7 +26,7 @@ export class UnidatecnicaComponent implements OnInit {
 
   displayedColumns: string[] = ['idDptoTecnico','nombre', 'sigla', 'secuenciaOT',  'Acciones'];
   dataSource: MatTableDataSource<any>;
-
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   FormUnidadTecnica: FormGroup;
 
@@ -43,6 +44,7 @@ export class UnidatecnicaComponent implements OnInit {
       console.log(data);
       const ELEMENT_DATA: unidadTecnicaInterface[] =data.data;
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.dataSource.paginator=this.paginator;
       //este datasource son datos que devuelven la tabla usuario
      // this.dataSource= new  MatTableDataSource<listInterface>(data as listInterface[]);
      // console.log(this.dataSource)

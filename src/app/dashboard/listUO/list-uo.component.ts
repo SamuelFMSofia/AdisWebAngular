@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { ListuoService } from './../services/listuoService/listuo.service';
+import { ListuoService } from '../services/usuarios/listuoService/listuo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

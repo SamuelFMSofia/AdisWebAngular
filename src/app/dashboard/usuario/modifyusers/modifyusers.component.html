@@ -1,0 +1,82 @@
+
+ <h2 mat-dialog-title>MODIFICAR USUARIO</h2>
+
+<div class="content">
+<mat-dialog-content [formGroup] = "form">
+
+   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label class="label">Id Usuario</mat-label>
+
+        <input matInput placeholder = "Id Usuario" formControlName="idUser" readonly onmousedown="return false;">
+    </mat-form-field>
+
+
+    <mat-form-field class="createUser" fxFlex>
+      <mat-label class="label">Abreviatura</mat-label>
+        <input matInput placeholder = "Abreviatura" formControlName="abreviatura" readonly onmousedown="return false;">
+    </mat-form-field>
+
+
+
+
+
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
+
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+   <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Unidad Tecnica</mat-label>
+      <mat-select  formControlName="unidadTecnica">
+        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica">
+          {{unidadTecnica.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Tipo Usuario</mat-label>
+      <mat-select  formControlName="tipoUsuario">
+        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario.id">
+          {{tipoUsuario.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Perfil</mat-label>
+      <mat-select formControlName="perfil">
+        <mat-option *ngFor="let perfil of perfiles" [value]="perfil">
+          {{perfil.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+      <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+      </button>
+
+      <button  class="btn2"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
+      <button class="btn3" mat-flat-button ><mat-icon>enhanced_encryption</mat-icon>RESETEAR CONTRASEÑA</button>
+  </mat-dialog-actions>
+</div>

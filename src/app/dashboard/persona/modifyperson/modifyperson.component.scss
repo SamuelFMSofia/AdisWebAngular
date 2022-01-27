@@ -1,0 +1,75 @@
+
+
+
+.btn{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.input-row{
+  font-size: 10px
+}
+
+mat-card-title{
+  font-family: "Homer Simpson UI";
+}
+
+.content{
+
+   border-width:1px;
+   border-color:cornflowerblue;
+   border-style:solid;
+   border-radius: 5px;
+
+
+ }
+.label{
+  font-weight: lighter;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.btn1{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+
+
+  border-radius: 15px;
+
+}
+.btn1:hover{
+  background-color: #FD0D02;
+}
+
+
+.btn2{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+
+
+  border-radius: 15px;
+
+}
+.btn2:hover{
+  background-color: #56B53F;
+}
+
+
+mat-dialog-content{
+  margin: 5px;
+}
+mat-card-content{
+  margin: 10px;
+}
+mat-dialog-actions{
+  display: block;
+  float: left;
+}
+

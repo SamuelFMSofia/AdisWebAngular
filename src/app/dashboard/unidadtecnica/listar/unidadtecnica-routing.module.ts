@@ -9,7 +9,7 @@ const routes: Routes = [
     children:[
       {
         path:'modifyUnidadTecnica',
-        loadChildren:()=>import('../../modify/modify-technicalUnit/technicalunit.module').then(m=>m.TechnicalunitModule)
+        loadChildren:()=>import('../modify-technicalUnit/technicalunit.module').then(m=>m.TechnicalunitModule)
       },
       {
         path:'createunidadtecnica',

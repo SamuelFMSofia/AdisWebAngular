@@ -1,4 +1,4 @@
-import { unidadTecnicaInterface } from './../../../interfaces/unidadTecnicaInterface';
+import { unidadTecnicaInterface } from '../../../interfaces/unidad_tecnica/unidadTecnicaInterface';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
