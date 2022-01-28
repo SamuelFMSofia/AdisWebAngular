@@ -1,6 +1,8 @@
 a {
     text-decoration: none;
     color: white;
+    font: icon;
+    font-size: large;
   }
   a:hover, a:active{
     color: lightgray;
@@ -10,6 +12,14 @@ a {
     padding: 0;
     margin: 0;
   }
+
+  .my-nav-bar{
+    background: linear-gradient(90deg, #01084C 50%, #28486b 90%);
+    box-shadow: 
+    1px 3px 10px var(#243B55),
+    1px 3px 10px var(#141E30);
+  }
+
   mat-toolbar{
     border-radius: 3px;
   }

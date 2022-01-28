@@ -40,21 +40,20 @@
 .btn-text {
   background: none;
   border: none;
-  color: #0f4fff;
+  color: #3e8cd6;
 }
 .btn-text:hover{
-  color: #141E30;
+  color: #01084C;
 }
 
 .btn-dark-moon {
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #01084C;  /* fallback for old browsers */
+  background: linear-gradient(90deg, #01084C 60%, #01096C 100%);
   color: #fff;
 }
 
 .btn-dark-moon:hover{
-  background: linear-gradient(to right, #3e8cd6, #345881);
+  background: linear-gradient(90deg, #1e4e85 10%, #3e8cd6 99%);
 }
 
 
