@@ -6,10 +6,10 @@
   }
 
   .card-title{
-
-  font-weight: 900;
- 
-  font-family: "Homer Simpson UI";
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-family: "Roboto";
   }
   mat-form-field{
     width: 80%;
@@ -22,6 +22,14 @@
 
   }
 
+.card-btns-flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
  
 .card-img-left {
   width: 45%;
@@ -29,21 +37,30 @@
   background-size: 140%;
 }
 
+.btn-text {
+  background: none;
+  border: none;
+  color: #0f4fff;
+}
+.btn-text:hover{
+  color: #141E30;
+}
+
 .btn-dark-moon {
   background: #141E30;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
-  border: 3px solid #eee;
 }
 
 .btn-dark-moon:hover{
-  background: #084bff;/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: linear-gradient(to right, #3e8cd6, #345881);
 }
+
+
 .label{
   font-weight: lighter;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 

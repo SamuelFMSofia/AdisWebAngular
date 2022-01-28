@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { Component } from '@angular/core';
 import { ServicesService } from './../services/services.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RestorePassword } from './restore-password/restore-password.component';
+
 
 @Component({
   selector: 'app-login',
@@ -10,8 +13,6 @@ import { ServicesService } from './../services/services.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent  {
-
-
 
   // creacion de modelo referenciado de la vista
   loginData={
@@ -21,9 +22,19 @@ export class LoginComponent  {
 
   constructor(
   public servi: ServicesService,
+  public dialog: MatDialog,
   private router: Router,
   private _snackBar: MatSnackBar
   ) { }
+
+
+  openDialog(){
+
+    this.dialog.open(RestorePassword, {
+      width: '350px'
+    });
+
+  }
 
   onLogin(){
 
@@ -38,29 +49,19 @@ export class LoginComponent  {
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
             localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
             //JSON.parse(localStorage.getItem('userResponse'));
+            //localStorage.setItem('Password', data.result.password);
+            localStorage.setItem('token_value', result.data.token);
 
-
-
-           //localStorage.setItem('Password', data.result.password);
-           localStorage.setItem('token_value', result.data.token);
-
-     //alert(localStorage.getItem('nombre_Completo'));
-     //pagina
-     this.router.navigate(['/dashboard']);
-  }else{
-    this.error();
-    }
-
-
-}else{
-  this.error();
-  }
-
-
-    }
-
-    )
-
+            //alert(localStorage.getItem('nombre_Completo'));
+            //pagina
+            this.router.navigate(['/dashboard']);
+        }else{
+            this.error();
+        }
+      }else{
+        this.error();
+      }
+    })
   }
 
   error() {
@@ -71,5 +72,5 @@ export class LoginComponent  {
     });
   }
 
-
 }
+

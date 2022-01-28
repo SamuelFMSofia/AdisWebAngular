@@ -19,10 +19,13 @@ export class ServicesService {
   login(users: interfacelogin){
     return this.http.post(this.baseUrl+'login', users)
   }
+
+  restorePassword(correo:string, numDoc:string){
+    return this.http.post(this.baseUrl+'restorePassword', {Correo:correo, NumDoc:numDoc})
+  }
   // este metodo se encarga de traer los datos de localstoroge
   get getUserCode(){
     return localStorage.getItem('nombreCompleto');
-
   }
 
    /* set(userResponse:string, data:any){
@@ -34,17 +37,10 @@ export class ServicesService {
       }
   } */
   get getUserResponse(){
-
     //let restoredSession= JSON.parse('userResponse');
   //  var restoredSession = JSON.parse(localStorage.getItem('session'));
-
   //return localStorage.getItem('userResponse');
-
    return JSON.parse(localStorage.getItem('userResponse') || '{}');
-
-
-
-
     //return restoredSession;
 
   }
@@ -52,6 +48,7 @@ export class ServicesService {
   get isAutenticado(){
    return !!localStorage.getItem('token_value');
   }
+
   logout(){
     localStorage.removeItem('userCode');
     localStorage.removeItem('token_value');
