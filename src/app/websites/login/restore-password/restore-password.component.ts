@@ -26,11 +26,19 @@ import { ServicesService } from './../../services/services.service';
     }
 
     sendEmail(): void{
+
+
+        if (this.correo == '' || this.numDoc == '') {
+            this.OpenSnack(" Por favor, es obligatorio llenar ambos campos ");
+            return;
+        }
+
+
         this.service.restorePassword(this.correo, this.numDoc)
         .pipe(
             catchError( err => {
                 console.log(err);
-                this.OpenSnack(" Hubo un error al enviar el mensaje de correo ");
+                this.OpenSnack(" Hubo un error al enviar el mensaje de correo. Asegurate que el correo y el documento sean válidos ");
                 return of();
             })
         )

@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { catchError, of } from 'rxjs';
 import { Component } from '@angular/core';
 import { ServicesService } from './../services/services.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,7 +38,20 @@ export class LoginComponent  {
 
   onLogin(){
 
-    this.servi.login(this.loginData).subscribe((data:any)=>{
+    if (this.loginData.userCode == '' || this.loginData.password == '') {
+      this.OpenSnack(" Por favor, es obligatorio llenar ambos campos ");
+      return;
+    }
+
+    this.servi.login(this.loginData)
+    .pipe(
+      catchError( err => {
+          console.log(err);
+          this.OpenSnack(" Hubo un error al iniciar sesión. Intente nuevamente. ");
+          return of();
+      })
+    )
+    .subscribe((data:any)=>{
       console.log(data);
       let result=data;
       if(result.status==1){
@@ -56,20 +69,21 @@ export class LoginComponent  {
             //pagina
             this.router.navigate(['/dashboard']);
         }else{
-            this.error();
+            this.OpenSnack('Usuario No Valido');
         }
       }else{
-        this.error();
+        this.OpenSnack('Usuario No Valido');
       }
     })
   }
 
-  error() {
-    this._snackBar.open('Usuario invalido', '', {
-      duration:5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
+
+  OpenSnack(message:string){
+    this._snackBar.open(message, 'skip', {
+        duration: 3000,
+        horizontalPosition: "center",
+        verticalPosition: 'bottom'
+      })
   }
 
 }
