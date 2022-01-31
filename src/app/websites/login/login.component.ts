@@ -25,7 +25,10 @@ export class LoginComponent  {
   public dialog: MatDialog,
   private router: Router,
   private _snackBar: MatSnackBar
-  ) { }
+  ) 
+  { 
+    this.servi.getIPAddress();
+  }
 
 
   openDialog(){

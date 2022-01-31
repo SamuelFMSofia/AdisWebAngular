@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ServicesService {
 
+  ipAddress = '';
   baseUrl: string = 'https://localhost:5001/api/user/';
 
   constructor(
@@ -16,8 +17,22 @@ export class ServicesService {
      private router:Router
   ) { }
 
+  async getIPAddress()
+  {
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.ipAddress = res.ip;
+    });
+  }
+
+
   login(users: interfacelogin){
-    return this.http.post(this.baseUrl+'login', users)
+    console.log(this.ipAddress);
+    return this.http.post(this.baseUrl+'login', 
+    {
+      userCode : users.userCode,
+      password : users.password,
+      ipAddress : this.ipAddress
+    });
   }
 
   restorePassword(correo:string, numDoc:string){
