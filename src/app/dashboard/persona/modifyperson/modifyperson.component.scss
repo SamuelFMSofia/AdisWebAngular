@@ -1,6 +1,11 @@
-
-
-
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
 .btn{
 
   display: flex;
@@ -8,28 +13,23 @@
   align-items: center;
 }
 
-
-.input-row{
-  font-size: 10px
+mat-dialog-content{
+  border: 30px;
 }
 
-mat-card-title{
-  font-family: "Homer Simpson UI";
+.btn1{
+    font-family: helvetica;
+
+    font-size: 10px;
+    font-style: italic;
+
+
+    border-radius: 15px;
+
 }
 
-.content{
-
-   border-width:1px;
-   border-color:cornflowerblue;
-   border-style:solid;
-   border-radius: 5px;
-
-
- }
-.label{
-  font-weight: lighter;
-  font-size: 12px;
-  font-weight: 700;
+.no-line {
+  display: none;
 }
 
 .btn1{
@@ -62,14 +62,31 @@ mat-card-title{
 }
 
 
+.label{
+  font-weight: lighter;
+  font-size: 12px;
+  font-weight: 700;
+}
+.input-row{
+  font-size: 10px;
+  margin-top: 0.1px;
+  
+}
+
+.content{
+
+  border-width:1px;
+  border-color:cornflowerblue;
+  border-style:solid;
+  border-radius: 5px;
+  
+}
+
+
 mat-dialog-content{
   margin: 5px;
-}
-mat-card-content{
-  margin: 10px;
 }
 mat-dialog-actions{
   display: block;
   float: left;
 }
-

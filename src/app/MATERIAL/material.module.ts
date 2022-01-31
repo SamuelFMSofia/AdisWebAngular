@@ -71,8 +71,7 @@ const matModules = [
  
    MatProgressSpinnerModule,
 
-   MatCheckboxModule,
-   
+   MatCheckboxModule
 ];
 @NgModule({
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -19,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidenavdash.component.scss']
 })
 export class SidenavdashComponent implements OnInit {
-
+  @ViewChild(MatAccordion) accordion: MatAccordion;
   constructor() { }
 
   ngOnInit(): void {

@@ -35,7 +35,7 @@ const ELEMENT_DATA: listInterface[] = [];
 export class ListpersonComponent implements OnInit {
    dataSource:any=[];
 
-   displayedColumns: string[] = ['numeroDocumento', 'nombreCompleto', 'correo', 'unidadOrganizacional', 'Acciones'];
+   displayedColumns: string[] = ['numeroDocumento', 'nombreCompleto', 'cargo', 'unidadOrganizacional','gerencia', 'Acciones'];
    @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   constructor(
