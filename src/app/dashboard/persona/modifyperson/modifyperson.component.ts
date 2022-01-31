@@ -57,7 +57,7 @@ declare var Jquery:any;
 export class ModifypersonComponent implements OnInit {
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
-    {value: 2, viewValue: 'Inactivo'}]
+    {value: 2, viewValue: 'Pasivo'}]
 
     foodControl = new FormControl(this.estados[1]);
 //cargos
@@ -187,15 +187,14 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
 
       dataSend=this.form.value;
 
-      console.log(this.form.value);
+      console.log(selectedItemEmpresa);
       dataSend.empresa=selectedItemEmpresa;
       dataSend.gerencia=selectedItemGerencia;
       dataSend.unidadOrganizacional=selectedItemUnidadOrganizacional;
       dataSend.cargo=selectedItemCargo;
-      console.log(dataSend);
      this.service.modifyPerson(this.idPersona, dataSend ).subscribe((data:any)=>{
       this.snackBar.open('Modificado Correctamente ', 'action', {
-        duration: 3000,
+        duration: 1000,
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {

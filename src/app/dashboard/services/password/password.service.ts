@@ -7,7 +7,7 @@ import { passwordInterface } from '../../interfaces/usuarios/passwordInterface';
   providedIn: 'root'
 })
 export class PasswordService {
-  baseUrl: string = 'https://localhost:5001/api/user/changePassword';
+  baseUrl: string = 'https://localhost:5001/api/user/changePassword/';
   constructor(
     private http: HttpClient,
     private router: Router

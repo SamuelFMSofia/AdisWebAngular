@@ -1,11 +1,8 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { catchError, of } from 'rxjs';
+
 import { Component } from '@angular/core';
 import { ServicesService } from './../services/services.service';
-import { MatDialog } from '@angular/material/dialog';
-import { RestorePassword } from './restore-password/restore-password.component';
-
 
 @Component({
   selector: 'app-login',
@@ -13,6 +10,8 @@ import { RestorePassword } from './restore-password/restore-password.component';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent  {
+
+
 
   // creacion de modelo referenciado de la vista
   loginData={
@@ -22,36 +21,13 @@ export class LoginComponent  {
 
   constructor(
   public servi: ServicesService,
-  public dialog: MatDialog,
   private router: Router,
   private _snackBar: MatSnackBar
   ) { }
 
-
-  openDialog(){
-
-    this.dialog.open(RestorePassword, {
-      width: '350px'
-    });
-
-  }
-
   onLogin(){
 
-    if (this.loginData.userCode == '' || this.loginData.password == '') {
-      this.OpenSnack(" Por favor, es obligatorio llenar ambos campos ");
-      return;
-    }
-
-    this.servi.login(this.loginData)
-    .pipe(
-      catchError( err => {
-          console.log(err);
-          this.OpenSnack(" Hubo un error al iniciar sesión. Intente nuevamente. ");
-          return of();
-      })
-    )
-    .subscribe((data:any)=>{
+    this.servi.login(this.loginData).subscribe((data:any)=>{
       console.log(data);
       let result=data;
       if(result.status==1){
@@ -62,29 +38,38 @@ export class LoginComponent  {
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
             localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
             //JSON.parse(localStorage.getItem('userResponse'));
-            //localStorage.setItem('Password', data.result.password);
-            localStorage.setItem('token_value', result.data.token);
 
-            //alert(localStorage.getItem('nombre_Completo'));
-            //pagina
-            this.router.navigate(['/dashboard']);
-        }else{
-            this.OpenSnack('Usuario No Valido');
-        }
-      }else{
-        this.OpenSnack('Usuario No Valido');
-      }
-    })
+
+
+           //localStorage.setItem('Password', data.result.password);
+           localStorage.setItem('token_value', result.data.token);
+
+     //alert(localStorage.getItem('nombre_Completo'));
+     //pagina
+     this.router.navigate(['/dashboard']);
+  }else{
+    this.error();
+    }
+
+
+}else{
+  this.error();
   }
 
 
-  OpenSnack(message:string){
-    this._snackBar.open(message, 'skip', {
-        duration: 3000,
-        horizontalPosition: "center",
-        verticalPosition: 'bottom'
-      })
+    }
+
+    )
+
   }
+
+  error() {
+    this._snackBar.open('Usuario invalido', '', {
+      duration:5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
 
 }
-

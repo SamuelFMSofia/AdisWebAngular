@@ -1,0 +1,57 @@
+<div>
+  <h4>MODIFICAR SUB DE ORDEN DE TRABAJO</h4>
+</div>
+
+
+ <div class="content">
+  <mat-dialog-content [formGroup] = "FormSubtipo">
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+     <mat-form-field >
+       <mat-label class="label">Sub Tipo de OT</mat-label>
+         <input matInput formControlName="idDptoTecnico" readonly onmousedown="return false;">
+     </mat-form-field>
+
+     <mat-form-field  fxFlex  appearance="outline">
+       <mat-label class="label">Nombre Completo</mat-label>
+       <input matInput placeholder="Nombre" formControlName="nombre" autocomplete="off">
+     </mat-form-field >
+   </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+     <mat-form-field fxFlex appearance="outline">
+       <mat-label class="label">Unidad Tecnica</mat-label>
+       <input matInput placeholder="Unidad Tecnica" formControlName="sigla" autocomplete="off">
+     </mat-form-field>
+
+
+     <mat-form-field fxFlex appearance="outline">
+       <mat-label class="label">Tipo de OT</mat-label>
+       <input matInput placeholder="Usuario" formControlName="secuenciaOT" autocomplete="off">
+     </mat-form-field>
+
+  </div>
+   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+
+     <mat-form-field fxFlex appearance="outline">
+       <mat-label class="label">Estado</mat-label>
+       <mat-select formControlName="estado">
+
+         <mat-option *ngFor="let estado of estados" [value]="estado.value">
+           {{estado.viewValue}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+  </div>
+
+
+   </mat-dialog-content>
+
+   <mat-dialog-actions>
+
+       <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+         <mat-icon>cancel</mat-icon>Cancelar
+       </button>
+
+       <button  class="btn2"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
+   </mat-dialog-actions>
+ </div>

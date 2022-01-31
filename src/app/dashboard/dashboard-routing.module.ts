@@ -47,6 +47,30 @@ const routes: Routes = [
       loadChildren:()=> import('./unidadtecnica/create/create.module').then(mt=>mt.CreateModule)
     },
     {
+      path:'tipoOT',
+      loadChildren:()=> import('./tiposOT/listar/tipo-ot.module').then(tp=>tp.TipoOTModule)
+    },
+    {
+      path:'SubtipoOT',
+      loadChildren:()=> import('./subTipoOT/listar/sub-tipo.module').then(st=>st.SubTipoModule)
+    },
+    {
+      path:'crearsubtipo',
+      loadChildren:()=> import('./subTipoOT/crear/crear-subtipo.module').then(st=>st.CrearSubtipoModule)
+    },
+    {
+      path:'creartipo',
+      loadChildren:()=> import('./tiposOT/crear/crear-tipo.module').then(st=>st.CrearTipoModule)
+    },
+    {
+      path:'modificartipo',
+      loadChildren:()=> import('./tiposOT/modificar/modificar-tipo.module').then(ti=>ti.ModificarTipoModule)
+    },
+    {
+      path:'modificarsubtipo',
+      loadChildren:()=> import('./subTipoOT/modificar/modificar-subtipo.module').then(sub=>sub.ModificarSubtipoModule)
+    },
+    {
       path:'**',
       redirectTo:'listperson'
     }

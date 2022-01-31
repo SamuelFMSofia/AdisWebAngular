@@ -1,8 +1,10 @@
 <div>
-  <h2 mat-dialog-title>MODIFICAR PERSONA</h2>
+  <h4 mat-dialog-title>MODIFICAR PERSONA</h4>
 </div>
 
-<div>
+
+
+
   <div class="content">
     <mat-dialog-content [formGroup] = "form"  >
     
@@ -123,9 +125,6 @@
     
     </mat-dialog-content>
     
-  </div>
-  <div>
-
     <mat-dialog-actions>
     
         <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
@@ -135,4 +134,3 @@
         <button  class="btn2"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
     </mat-dialog-actions>
   </div>
-</div>
