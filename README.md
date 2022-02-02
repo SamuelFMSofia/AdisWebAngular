@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
+Para correr este proyecto, luego de clonarlo:
+1. asegurarse que el proyecto del servidor tambien lo tengan corriendo
+2. escribir por consola, dentro del directorio del proyecto, 
+    npm install
+   para instalar todas las dependencias.
+3. Luego, escribir en la consola
+    ng serve
+   para correr el servidor de desarrollo.. y poder probar la app en `http://localhost:4200/`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

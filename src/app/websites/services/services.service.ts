@@ -23,8 +23,14 @@ export class ServicesService {
   restorePassword(correo:string, numDoc:string){
     return this.http.post(this.baseUrl+'restorePassword', {Correo:correo, NumDoc:numDoc})
   }
+
+
+  getEmail(numeroDocumento:string){
+    let url = 'https://localhost:5001/api/person/email';
+    return this.http.get(url, {params: {numeroDocumento}});
+  }
   // este metodo se encarga de traer los datos de localstoroge
-  get getUserCode(){
+  getUserCode(){
     return localStorage.getItem('nombreCompleto');
   }
 
