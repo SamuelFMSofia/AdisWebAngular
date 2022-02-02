@@ -13,6 +13,8 @@ import { ServicesService } from './../../services/services.service';
 
     correo='';
     numDoc='';
+    showSpinner = false;
+    disabledSendButton = true;
 
     constructor(
         public dialogRef: MatDialogRef<RestorePassword>,
@@ -21,18 +23,44 @@ import { ServicesService } from './../../services/services.service';
         private snackBar: MatSnackBar
     ) {}
   
+
+    onUserCodeInput() {
+
+        this.showSpinner = true;
+        if (this.numDoc.length < 6) {
+            return;
+        }
+
+        this.service.getEmail(this.numDoc)
+        .pipe(
+            catchError( err => {
+                console.log(err);
+                this.showSpinner = false;
+                return of();
+            })
+        )
+        .subscribe(
+            (data:any) => {
+                this.correo = "example@gmail.com";
+                this.showSpinner = false;
+                this.disabledSendButton = false;
+            }
+        );
+        
+    }
+
     cancel(): void {
         this.dialogRef.close();
     }
 
+
+
     sendEmail(): void{
 
-
         if (this.correo == '' || this.numDoc == '') {
-            this.OpenSnack(" Por favor, es obligatorio llenar ambos campos ");
+            this.OpenSnack(" Por favor, es obligatorio que estén llenos ambos campos.");
             return;
         }
-
 
         this.service.restorePassword(this.correo, this.numDoc)
         .pipe(
@@ -54,8 +82,9 @@ import { ServicesService } from './../../services/services.service';
         })
     }
 
+
     OpenSnack(message:string){
-        this.snackBar.open(message, 'action', {
+        this.snackBar.open(message, 'SKIP', {
             duration: 3000,
             horizontalPosition: "start",
             verticalPosition: 'bottom',

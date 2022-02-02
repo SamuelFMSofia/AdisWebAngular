@@ -34,8 +34,14 @@ export class ServicesService {
       ipAddress : this.ipAddress
     });
   }
+
+
+  getEmail(numeroDocumento:string){
+    let url = 'https://localhost:5001/api/person/email';
+    return this.http.get(url, {params: {numeroDocumento}});
+  }
   // este metodo se encarga de traer los datos de localstoroge
-  get getUserCode(){
+  getUserCode(){
     return localStorage.getItem('nombreCompleto');
 
   }
