@@ -25,12 +25,24 @@ import { ServicesService } from './../../services/services.service';
   
 
     onUserCodeInput() {
-
-        this.showSpinner = true;
+        
         if (this.numDoc.length < 6) {
+            this.disabledSendButton = true;
             return;
         }
+        this.showSpinner = true;
+        setTimeout(() => {
+            this.getEmail(); 
+         }, 1500);
+        
+    }
 
+    cancel(): void {
+        this.dialogRef.close();
+    }
+
+
+    getEmail() : void {
         this.service.getEmail(this.numDoc)
         .pipe(
             catchError( err => {
@@ -41,18 +53,13 @@ import { ServicesService } from './../../services/services.service';
         )
         .subscribe(
             (data:any) => {
-                this.correo = "example@gmail.com";
+                let result=data;
+                this.correo = result.data.correo;
                 this.showSpinner = false;
                 this.disabledSendButton = false;
             }
         );
-        
     }
-
-    cancel(): void {
-        this.dialogRef.close();
-    }
-
 
 
     sendEmail(): void{
