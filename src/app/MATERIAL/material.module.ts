@@ -59,7 +59,7 @@ const matModules = [
 
 
    MatDialogModule,
-  
+
    MatExpansionModule,
 
    MatMenuModule,
@@ -68,11 +68,12 @@ const matModules = [
    MatListModule,
    MatSidenavModule,
 
- 
+
    MatProgressSpinnerModule,
 
    MatCheckboxModule,
-   
+
+
 ];
 @NgModule({
 

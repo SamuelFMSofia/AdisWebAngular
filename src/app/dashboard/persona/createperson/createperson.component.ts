@@ -44,7 +44,7 @@ export class CreatepersonComponent implements OnInit {
 
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
-    {value: 2, viewValue: 'Inactivo'}];
+    {value: 2, viewValue: 'Pasivo'}];
     foodControl = new FormControl(this.estados[1]);
 
 

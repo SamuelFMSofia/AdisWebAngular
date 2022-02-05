@@ -1,0 +1,111 @@
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+
+
+}
+.toolbar{
+
+  margin-top: 1px; /* height of header */
+  padding: 0.8px;
+  height: 30px;
+}
+.example-spacer {
+ flex: 1 1 auto;
+background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+color: #ffffff;
+height: 20px;
+
+}
+.example-full-width {
+  width: 100%;
+}
+
+.btn{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card{
+
+  margin-left:auto;
+  margin-right:auto;
+
+
+}
+.input-row{
+  font-size: 8px;
+  margin-top: 0.1px; /* height of header */
+
+
+
+}
+
+mat-card-title{
+  font-family: "Homer Simpson UI";
+}
+
+.content{
+
+   border-width:1px;
+   border-color:cornflowerblue;
+   border-style:solid;
+   border-radius: 5px;
+
+
+ }
+.label{
+  font-weight: lighter;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.btn1{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+
+
+  border-radius: 15px;
+
+}
+
+.btn1:hover{
+  background-color: #FD0D02;
+}
+
+
+.btn2{
+  font-family: helvetica;
+
+  font-size: 10px;
+  font-style: italic;
+  background-color: #44B80A;
+  color: #ffffff;
+  border-radius: 15px;
+
+}
+
+.btn2:hover{
+  background-color: #37f707;
+}
+
+mat-card-content{
+  margin: 10px;
+}
+
+/* .green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+ */

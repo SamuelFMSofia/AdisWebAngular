@@ -1,56 +1,48 @@
 
 
-  button.mat-button .mat-icon,
-  a.mat-button .mat-icon,
-  a.mat-stroked-button .mat-icon,
-  a.mat-flat-button .mat-icon,
-  a.mat-stroked-button .mat-icon {
-    vertical-align: top;
-    font-size: 1.25em;
-  }
 
   .toolbar{
-    
-      margin-top: 1px; /* height of header */
-      padding: 0.8px;
-      height: 50px;
-  }
-  .example-spacer {
-     flex: 1 1 auto;
-    background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
-    color: #ffffff;
-    height: 20px;
 
-  }
+    margin-top: 1px; /* height of header */
+    padding: 0.8px;
+    height: 50px;
+}
+.example-spacer {
+   flex: 1 1 auto;
+  background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+  color: #ffffff;
+  height: 20px;
+
+}
 
 /* Structure */
 table {
-  margin-top: 10px;
-  width: 100%;
+margin-top: 10px;
+width: 100%;
 }
 
 .buscar{
-  height: 55px;
-  margin-top: 3px;
-  margin-right: auto;
-   margin-left: auto;
-   border-width:3px;
-   border-color:cornflowerblue;
-   border-style:solid;
-   border-radius: 5px;
-  justify-content: space-around;
-  padding: 1px;
+height: 55px;
+margin-top: 3px;
+margin-right: auto;
+ margin-left: auto;
+ border-width:3px;
+ border-color:cornflowerblue;
+ border-style:solid;
+ border-radius: 5px;
+justify-content: space-around;
+padding: 1px;
 }
- .nuevo{
+.nuevo{
 
-		float:right;
-    margin: 10px;
+  float:right;
+  margin: 10px;
 
 }
 
 .tablero{
-  max-height: auto;
+max-height: auto;
 
-    padding: 30px;
+  padding: 30px;
 
 }

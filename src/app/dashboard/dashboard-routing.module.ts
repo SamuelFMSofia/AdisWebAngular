@@ -44,7 +44,31 @@ const routes: Routes = [
     },
     {
       path:'createunidadtecnica',
-      loadChildren:()=> import('./unidadtecnica/create/create.module').then(mt=>mt.CreateModule)
+      loadChildren:()=> import('./unidadtecnica/create/create.module').then(ul=>ul.CreateModule)
+    },
+    {
+      path:'tipoOT',
+      loadChildren:()=> import('./tiposOT/listar/tipo-ot.module').then(tp=>tp.TipoOTModule)
+    },
+    {
+      path:'SubtipoOT',
+      loadChildren:()=> import('./subTipoOT/listar/sub-tipo.module').then(sl=>sl.SubTipoModule)
+    },
+    {
+      path:'crearsubtipo',
+      loadChildren:()=> import('./subTipoOT/crear/crear-subtipo.module').then(pq=>pq.CrearSubtipoModule)
+    },
+    {
+      path:'creartipo',
+      loadChildren:()=> import('./tiposOT/crear/crear-tipo.module').then(q=>q.CrearTipoModule)
+    },
+    {
+      path:'modificartipo',
+      loadChildren:()=> import('./tiposOT/modificar/modificar-tipo.module').then(ti=>ti.ModificarTipoModule)
+    },
+    {
+      path:'modificarsubtipo',
+      loadChildren:()=> import('./subTipoOT/modificar/modificar-subtipo.module').then(sub=>sub.ModificarSubtipoModule)
     },
     {
       path:'**',

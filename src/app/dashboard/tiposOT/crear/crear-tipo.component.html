@@ -1,0 +1,85 @@
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>CREAR TIPOS DE ORDEN DE TRABAJO</span>
+    </mat-toolbar>
+  </p>
+</div>
+
+<div>
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(70%-10px)">
+
+      <div class="content">
+                <mat-card-content>
+                      <form novalidate id="contactForm" [formGroup]="FormTipo" (ngSubmit)="submit()" >
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                          <mat-form-field fxFlex   appearance="outline" >
+                            <mat-label class="label">Nombre Completo</mat-label>
+                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off">
+                          </mat-form-field >
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                           <!-- <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Unidad Tecnica</mat-label>
+                            <input matInput placeholder="Unidad Tecnica" formControlName="IdDptoTecnico" autocomplete="off">
+                          </mat-form-field> -->
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Unidad Tecnica</mat-label>
+                            <mat-select [(ngModel)]="selectedUnidad"  formControlName="unidadTecnica">
+                              <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica.idDptoTecnico">
+                                {{unidadTecnica.nombre}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                           <!-- <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Usuario</mat-label>
+                            <input matInput placeholder="Usuario" formControlName="IdUsrResponsable" autocomplete="off">
+                          </mat-form-field> -->
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Usuario</mat-label>
+                            <mat-select  [(ngModel)]="selectedUsuario"  formControlName="usuario">
+                              <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUser">
+                                {{usuario.persona.nombreCompleto}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <!-- <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Tiene SubTipo</mat-label>
+                            <input matInput placeholder="Tiene SubTipo" formControlName="TieneSubTipo" autocomplete="off">
+                          </mat-form-field> -->
+                          <section class="example-section" >
+
+                            <p><mat-checkbox formControlName="TieneSubTipo">Tiene SubTipo</mat-checkbox></p>
+
+                          </section>
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Estado</mat-label>
+                            <mat-select formControlName="estado">
+
+                              <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                {{estado.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+
+                        <div class="boton">
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../unidadTecnica" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <mat-icon>cancel</mat-icon>Cancelar</button>
+                          <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <mat-icon>save</mat-icon>AGREGAR</button>
+
+                        </div>
+
+                      </form>
+              </mat-card-content>
+            </div>
+
+    </mat-card>
+
+  </div>

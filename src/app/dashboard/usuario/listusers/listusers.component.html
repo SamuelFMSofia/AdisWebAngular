@@ -2,7 +2,7 @@
   <div class="toolbar">
     <p>
       <mat-toolbar class="example-spacer">
-    <span>USUARIOS</span>
+        <span>USUARIOS</span>
       </mat-toolbar>
     </p>
   </div>
@@ -10,14 +10,14 @@
   <div class="container">
     <div  class="buscar">
 
-  <mat-form-field  >
+        <mat-form-field  >
 
-    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+          <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
 
-  </mat-form-field>
+        </mat-form-field>
 
 
-</div>
+    </div>
 <div class="tablero">
 
 
@@ -51,9 +51,11 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let element">
-        <a (click) = "upgradeUser(element)" color="primary">
-          <mat-icon color="warn">border_color</mat-icon>
+        <a (click) = "upgradeUser(element)" color="primary" matTooltip="EDITAR">
+
+          <mat-icon color="warn" >border_color</mat-icon>
         </a>
+
       </td>
     </ng-container>
 

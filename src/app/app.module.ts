@@ -27,7 +27,8 @@ import { ListpersonServiceService } from './dashboard/services/personas/listpers
 import { ListarusersService } from './dashboard/services/usuarios/listusers/listarusers.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MATERIALModule } from './MATERIAL/material.module';
-
+import { ModifyService } from './dashboard/services/tipoOT/modify/modify.service';
+import { ModificarSubtipoService } from './dashboard/services/subTipoOT/modificar/modificar-subtipo.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { MATERIALModule } from './MATERIAL/material.module';
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
     ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService,
-  UnidadTecnicaService, MunidadtecnicaService],
+  UnidadTecnicaService,
+  ModifyService, ModificarSubtipoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
