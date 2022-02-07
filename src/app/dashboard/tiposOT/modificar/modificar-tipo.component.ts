@@ -48,8 +48,8 @@ export class ModificarTipoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:{
 
 
-	    unidadTecnica :{idDptoTecnico:number, nombre : string, sigla: string},
-	    usuario   	:{idUser: number, persona:{idPersona:number, nombreCompleto:string}},
+	    IdDptoTecnico :{idDptoTecnico:number, nombre : string, sigla: string},
+	    IdUsrResponsable   	:{idUser: number, persona:{idPersona:number, nombreCompleto:string}},
 	    nombre				      :string,
 	    TieneSubTipo	      :number,
 	    estado				      :number
@@ -59,8 +59,8 @@ export class ModificarTipoComponent implements OnInit {
     }) {
       this.idTipoOT=data.idTipoOT
       this.FormTipo=formBuilder.group({
-        unidadTecnica:[data.unidadTecnica],
-        usuario : [data.usuario],
+        IdDptoTecnico:[data.IdDptoTecnico],
+        IdUsrResponsable : [data.IdUsrResponsable],
         nombre: [data.nombre],
         TieneSubTipo : 1,
         estado : [data.estado],
@@ -99,14 +99,13 @@ export class ModificarTipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        this.router.navigate(['/unidadtecnica'])
-        window.location.reload();
+
       });
 
 
     });
     //cerrar
-    this.dialogRef.close();
+    //this.dialogRef.close();
   }
 
 }

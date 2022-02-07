@@ -26,7 +26,7 @@ interface usuario{
 export class CrearTipoComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
   FormTipo: FormGroup;
-
+  IdDptoTecnico:number;
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
     {value: 2, viewValue: 'Inactivo'}];
@@ -47,10 +47,11 @@ export class CrearTipoComponent implements OnInit {
     public snackbar: MatSnackBar,
     public unidad: UnidadTecnicaService,
     public usuario: ListarusersService,
+
   ) {
     this.FormTipo=this.formBuilder.group({
       Nombre:['', Validators.required],
-      unidadTecnica:['', Validators.required],
+      IdDptoTecnico:['', Validators.required],
       usuario:[''],
       TieneSubTipo:1,
       estado:[''],
@@ -59,19 +60,7 @@ export class CrearTipoComponent implements OnInit {
 
   ngOnInit(): void {
     estado: this.foodControl;
-    this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
-      //direcionaa ala pagina requerida
-      console.log(data)
-     this.unidadTecnicas=data.data;
-    }
-    );
-
-    this.usuario.getUser().subscribe((data:any)=>{
-      //direcionaa ala pagina requerida
-      console.log(data)
-     this.usuarios=data.data;
-    }
-    );
+    this.cargarusuario();
   }
 
   submit(){
@@ -85,8 +74,7 @@ export class CrearTipoComponent implements OnInit {
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
-        window.location.reload();
-        this.router.navigate(['/unidadtecnica'])
+
 
       });
 
@@ -95,6 +83,11 @@ export class CrearTipoComponent implements OnInit {
 
     )
 
+  }
+  cargarusuario(){
+   this.unidad.listarUserUnidadTecnica(1).subscribe((data:any)=>{
+     this.unidadTecnicas=data;
+   })
   }
 
 }

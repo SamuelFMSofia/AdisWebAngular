@@ -15,6 +15,8 @@ export class UnidadTecnicaService {
 
   baseUrl: string ='https://localhost:5001/api/admin/unidadTecnicas';
   baserUrl: string ='https://localhost:5001/api/admin/unidadTecnica/create';
+  _url: string ='https://localhost:5001/api/admin/unidadTecnica/getUsers';
+  bass: string='https://localhost:5001/api​/admin​/unidadTecnica/getTipos';
   constructor(
     private http: HttpClient,
     private router: Router
@@ -31,7 +33,26 @@ export class UnidadTecnicaService {
       return this.http.get(this.baseUrl, {headers:headers} );
    }
 
-
+   listarUserUnidadTecnica(IdDptoTecnico: number){
+    let auth_token = localStorage.getItem('token_value');
+    const headers =new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': 'Bearer '+auth_token
+    })
+   // return this.ELEMENT_DATA.slice();
+      //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
+      return this.http.get(this._url, {headers:headers} );
+   }
+   listarTipoUniadadTecnica(IdDptoTecnico: number){
+    let auth_token = localStorage.getItem('token_value');
+    const headers =new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': 'Bearer '+auth_token
+    })
+   // return this.ELEMENT_DATA.slice();
+      //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
+      return this.http.get(this.baseUrl, {headers:headers} );
+   }
 
 
 
@@ -43,7 +64,7 @@ export class UnidadTecnicaService {
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
-    }) 
+    })
     return this.http.post(this.baserUrl, UnidadTecnica, {headers:headers});
 
   }

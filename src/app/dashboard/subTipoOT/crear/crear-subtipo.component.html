@@ -26,7 +26,7 @@
 
                             <mat-form-field fxFlex appearance="outline">
                             <mat-label class="label">Unidad Tecnica</mat-label>
-                            <mat-select [(ngModel)]="selectedUnidad"  formControlName="unidadTecnica">
+                            <mat-select [(ngModel)]="selectedUnidad"  formControlName="unidadTecnica" >
                               <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica.idDptoTecnico">
                                 {{unidadTecnica.nombre}}
                               </mat-option>
