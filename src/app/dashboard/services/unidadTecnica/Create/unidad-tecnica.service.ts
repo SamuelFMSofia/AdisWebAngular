@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs';
 import { unidadTecnicaInterface } from '../../../interfaces/unidad_tecnica/unidadTecnicaInterface';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class UnidadTecnicaService {
   baseUrl: string ='https://localhost:5001/api/admin/unidadTecnicas';
   baserUrl: string ='https://localhost:5001/api/admin/unidadTecnica/create';
   _url: string ='https://localhost:5001/api/admin/unidadTecnica/getUsers';
-  bass: string='https://localhost:5001/api​/admin​/unidadTecnica/getTipos';
+  bass: string='https://localhost:5001/api/admin/unidadTecnica/getTipos';
   constructor(
     private http: HttpClient,
     private router: Router
@@ -33,7 +34,7 @@ export class UnidadTecnicaService {
       return this.http.get(this.baseUrl, {headers:headers} );
    }
 
-   listarUserUnidadTecnica(IdDptoTecnico: number){
+   listarUserUnidadTecnica(idUnidadTecnica: number|any){
     let auth_token = localStorage.getItem('token_value');
     const headers =new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -41,9 +42,13 @@ export class UnidadTecnicaService {
     })
    // return this.ELEMENT_DATA.slice();
       //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
-      return this.http.get(this._url, {headers:headers} );
+      return this.http.get(this._url+ "?idUnidadTecnica="+idUnidadTecnica, {headers:headers} );
+           
    }
-   listarTipoUniadadTecnica(IdDptoTecnico: number){
+    
+   
+
+   listarTipoUnidadTecnica(idUnidadTecnica: number|any){
     let auth_token = localStorage.getItem('token_value');
     const headers =new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -51,7 +56,8 @@ export class UnidadTecnicaService {
     })
    // return this.ELEMENT_DATA.slice();
       //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
-      return this.http.get(this.baseUrl, {headers:headers} );
+      return this.http.get(this.bass+ "?idUnidadTecnica="+idUnidadTecnica, {headers:headers} );
+      
    }
 
 

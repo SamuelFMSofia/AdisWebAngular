@@ -113,7 +113,7 @@ selectedPerfil:string;
      this.form.value.idUser=this.idUser;
     this.service.modifyUsers(this.idUser, this.form.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
-
+      
       this.snackBar.open('Modificado Correctamente ', 'action', {
         duration: 2000,
         horizontalPosition: "start",

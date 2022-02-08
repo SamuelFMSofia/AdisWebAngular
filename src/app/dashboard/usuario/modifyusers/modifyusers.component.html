@@ -52,7 +52,7 @@
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo Usuario</mat-label>
       <mat-select  formControlName="tipoUsuario">
-        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario.id">
+        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario">
           {{tipoUsuario.nombre}}
         </mat-option>
       </mat-select>

@@ -59,9 +59,9 @@ export class ModificarSubtipoComponent implements OnInit {
     }) {
       this.idSTipoOT=data.idSTipoOT
       this.FormSubtipo=formBuilder.group({
-        unidadTecnica:[data.unidadTecnica],
+        IdDptoTecnico:[data.unidadTecnica],
         nombre:[data.nombre],
-        tipo : [data.tipo],
+        IdTipoOT : [data.tipo],
         estado : [data.estado],
         idSTipoOT : [data.idSTipoOT]
       })
@@ -75,12 +75,7 @@ export class ModificarSubtipoComponent implements OnInit {
      this.unidadTecnicas=data.data;
     }
     );
-    this.tipo.listarTiposOT().subscribe((data:any)=>{
-      //direcionaa ala pagina requerida
-      console.log(data)
-     this.tipos=data.data;
-    }
-    );
+
   }
   cerrar(){
     this.dialogRef.close();
@@ -97,8 +92,7 @@ export class ModificarSubtipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        this.router.navigate(['/unidadtecnica'])
-        window.location.reload();
+
       });
 
 
@@ -106,4 +100,16 @@ export class ModificarSubtipoComponent implements OnInit {
     //cerrar
     this.dialogRef.close();
   }
+  cargarusuario(event:Event){
+    this.unidad_tecnicas.listarTipoUnidadTecnica(event).subscribe((data:any)=>{
+      console.log(data);
+      let result=data;
+      if(result.status==1){
+      this.tipos=data.data;
+      }else{
+        this.tipos=[{idTipoOT:0, nombre :'null'}];
+      }
+
+    })
+   }
 }

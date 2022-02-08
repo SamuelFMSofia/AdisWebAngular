@@ -25,21 +25,22 @@
                             </mat-form-field> -->
 
                             <mat-form-field fxFlex appearance="outline">
-                            <mat-label class="label">Unidad Tecnica</mat-label>
-                            <mat-select [(ngModel)]="selectedUnidad"  formControlName="unidadTecnica" >
-                              <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica.idDptoTecnico">
-                                {{unidadTecnica.nombre}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
+                              <mat-label class="label">Unidad Tecnica</mat-label>
+                              <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico">
+                                <mat-option *ngFor="let IdDptoTecnico of unidadTecnicas" [value]="IdDptoTecnico.idDptoTecnico">
+                                  {{IdDptoTecnico.nombre}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                            <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
                            <!--  <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Tipo OT</mat-label>
                               <input matInput placeholder="Tipo OT" formControlName="IdTipoOT" autocomplete="off">
                             </mat-form-field> -->
                             <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Tipo OT</mat-label>
-                              <mat-select [(ngModel)]="selectedTipo"  formControlName="tipo">
+                              <mat-select [(ngModel)]="selectedTipo"  formControlName="IdTipoOT">
                                 <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipoOT">
                                   {{tipo.nombre}}
                                 </mat-option>
@@ -48,7 +49,7 @@
 
 
                           </div>
-                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="10px">
 
 
                             <mat-form-field fxFlex appearance="outline">
@@ -63,7 +64,7 @@
                           </div>
 
                           <div class="boton">
-                            <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../unidadTecnica" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../SubtipoOT" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                               <mat-icon>cancel</mat-icon>Cancelar</button>
                             <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button color="primary" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                             <mat-icon>save</mat-icon>GUARDAR</button>

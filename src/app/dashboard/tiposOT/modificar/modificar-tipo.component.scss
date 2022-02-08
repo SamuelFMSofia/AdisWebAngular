@@ -16,7 +16,12 @@ a.mat-stroked-button .mat-icon {
 mat-dialog-content{
   border: 30px;
 }
-
+input{
+  font-family: Arial; font-size: 12pt; 
+  }
+  mat-select{
+    font-family: Arial; font-size: 10pt; 
+  }
 .btn1{
     font-family: helvetica;
 
@@ -68,7 +73,7 @@ mat-dialog-content{
   font-weight: 700;
 }
 .input-row{
-  font-size: 8px;
+  font-size: 10px;
   margin-top: 0.1px;
 }
 

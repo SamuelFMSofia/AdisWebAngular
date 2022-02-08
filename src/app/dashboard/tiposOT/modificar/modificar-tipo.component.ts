@@ -13,14 +13,15 @@ interface Food {
 interface unidadTecnica{
   idDptoTecnico:number; nombre : string; sigla:string
 }
-interface usuario{
+interface usuarioInterface{
   idUser:number; persona:{nombreCompleto: string};
 }
 
 @Component({
   selector: 'app-modificar-tipo',
   templateUrl: './modificar-tipo.component.html',
-  styleUrls: ['./modificar-tipo.component.scss']
+  styleUrls: ['./modificar-tipo.component.scss'],
+  providers:[UnidadTecnicaService]
 })
 export class ModificarTipoComponent implements OnInit {
   FormTipo:FormGroup;
@@ -28,11 +29,21 @@ export class ModificarTipoComponent implements OnInit {
   toppings:FormGroup;
   //unidad Tecnica
       unidadTecnicas:unidadTecnica[]=[];
-      selectedUnidad:string;
+     
+      selectedUnidadTecnica:unidadTecnica={
+        idDptoTecnico: 0,
+        nombre: '',
+        sigla: ''
+      };
       //
       //
-      usuarios:usuario[]=[];
-      selectedUsuario:string;
+      usuarios:usuarioInterface[]=[];
+      selectedUsuario:usuarioInterface|any={
+        idUser: 0,
+        persona: {
+          nombreCompleto: ''
+        }
+      };
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
     {value: 2, viewValue: 'Inactivo'}]
@@ -48,8 +59,8 @@ export class ModificarTipoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:{
 
 
-	    IdDptoTecnico :{idDptoTecnico:number, nombre : string, sigla: string},
-	    IdUsrResponsable   	:{idUser: number, persona:{idPersona:number, nombreCompleto:string}},
+	    dptoTecnico :{idDptoTecnico:number, nombre : string, sigla: string},
+	    usuario   	:{idUser: number, persona:{idPersona:number, nombreCompleto:string}},
 	    nombre				      :string,
 	    TieneSubTipo	      :number,
 	    estado				      :number
@@ -57,10 +68,13 @@ export class ModificarTipoComponent implements OnInit {
 
 
     }) {
-      this.idTipoOT=data.idTipoOT
+      this.idTipoOT=data.idTipoOT;
+      this.selectedUnidadTecnica=data.dptoTecnico;
+      this.selectedUsuario=data.usuario;
+      this.usuarios=[];
       this.FormTipo=formBuilder.group({
-        IdDptoTecnico:[data.IdDptoTecnico],
-        IdUsrResponsable : [data.IdUsrResponsable],
+        IdDptoTecnico:[data.dptoTecnico],
+        IdUsrResponsable : [data.usuario],
         nombre: [data.nombre],
         TieneSubTipo : 1,
         estado : [data.estado],
@@ -76,13 +90,7 @@ export class ModificarTipoComponent implements OnInit {
      this.unidadTecnicas=data.data;
     }
     );
-
-    this.usuario.getUser().subscribe((data:any)=>{
-      //direcionaa ala pagina requerida
-      console.log(data)
-     this.usuarios=data.data;
-    }
-    );
+    this.cargarusuario(this.selectedUnidadTecnica.idDptoTecnico);
   }
   cerrar(){
     this.dialogRef.close();
@@ -90,7 +98,14 @@ export class ModificarTipoComponent implements OnInit {
 
   guardar(){
     this.FormTipo.value.idTipoOT=this.idTipoOT;
+    //let dataSend:any;
+    //let selectedItemIdDptoTecnico:any;
+    //selectedItemIdDptoTecnico=this.unidadTecnicas.filter(item1=> item1.idDptoTecnico== this.FormTipo.value.IdDptoTecnico)[0];
+    
+    //dataSend=this.FormTipo.value;
+    //dataSend.IdDptoTecnico=selectedItemIdDptoTecnico;
     this.service.modicarTipo(this.idTipoOT, this.FormTipo.value).subscribe((data)=>{
+      
       //direcionaa ala pagina requerida
 
       this.snackBar.open('Modificado Correctamente ', 'action', {
@@ -107,5 +122,15 @@ export class ModificarTipoComponent implements OnInit {
     //cerrar
     //this.dialogRef.close();
   }
+  cargarusuario(event:Event | any){
+    this.unidad_tecnicas.listarUserUnidadTecnica(event).subscribe((data:any)=>{
+      let result=data;
+      if(result.status==1){
+      this.usuarios=data.data;
+      }else{
+        this.usuarios=[];
+      }
+    })
+   }
 
 }

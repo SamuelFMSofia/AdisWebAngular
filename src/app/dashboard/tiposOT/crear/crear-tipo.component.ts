@@ -34,7 +34,8 @@ export class CrearTipoComponent implements OnInit {
     //
     unidadTecnicas:unidadTecnica[]=[];
     selectedUnidad:string;
-
+///
+labelPosition: 'before' | 'after' = 'after';
     //
     usuarios:usuario[]=[];
     selectedUsuario:string;
@@ -52,7 +53,7 @@ export class CrearTipoComponent implements OnInit {
     this.FormTipo=this.formBuilder.group({
       Nombre:['', Validators.required],
       IdDptoTecnico:['', Validators.required],
-      usuario:[''],
+      IdUsrResponsable:['', Validators.required],
       TieneSubTipo:1,
       estado:[''],
     })
@@ -60,8 +61,10 @@ export class CrearTipoComponent implements OnInit {
 
   ngOnInit(): void {
     estado: this.foodControl;
-    this.cargarusuario();
-  }
+    this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
+      this.unidadTecnicas=data.data;
+  });
+}
 
   submit(){
 
@@ -84,9 +87,15 @@ export class CrearTipoComponent implements OnInit {
     )
 
   }
-  cargarusuario(){
-   this.unidad.listarUserUnidadTecnica(1).subscribe((data:any)=>{
-     this.unidadTecnicas=data;
+  cargarusuario(event:Event){
+   this.unidad.listarUserUnidadTecnica(event).subscribe((data:any)=>{
+     console.log(data);
+     let result=data;
+      if(result.status==1){
+      this.usuarios=data.data;
+      }else{
+        this.usuarios=[];
+      }
    })
   }
 

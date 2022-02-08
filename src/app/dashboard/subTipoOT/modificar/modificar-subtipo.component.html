@@ -23,20 +23,21 @@
      </mat-form-field> -->
      <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Unidad Tecnica</mat-label>
-      <mat-select [(ngModel)]="selectedUnidad"  formControlName="unidadTecnica">
-        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica.idDptoTecnico">
-          {{unidadTecnica.nombre}}
+      <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico">
+        <mat-option *ngFor="let IdDptoTecnico of unidadTecnicas" [value]="IdDptoTecnico.idDptoTecnico">
+          {{IdDptoTecnico.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
+    </div>
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
      <!-- <mat-form-field fxFlex appearance="outline">
        <mat-label class="label">Tipo de OT</mat-label>
        <input matInput placeholder="Usuario" formControlName="secuenciaOT" autocomplete="off">
      </mat-form-field> -->
      <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo OT</mat-label>
-      <mat-select [(ngModel)]="selectedTipo"  formControlName="tipo">
+      <mat-select [(ngModel)]="selectedTipo"  formControlName="IdTipoOT">
         <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipoOT">
           {{tipo.nombre}}
         </mat-option>

@@ -10,7 +10,7 @@ export class CreateSubtipoService {
   ELEMENT_DATA: listarSubtipo[] = [];
 
   baseUrl: string ='https://localhost:5001/api/admin/SubtiposOT';
-  baserUrl: string ='https://localhost:5001/api/admin/tipoOT/create';
+  baserUrl: string ='https://localhost:5001/api/admin/SubtipoOT/create';
   constructor(
     private http: HttpClient,
     private router: Router
