@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
          SecuenciaOT:[''],
          PrefijoControlCambios:[''],
          SecuenciaControlCambios:[''],
-         Estado:[''],
+         Estado:1,
          RespuestaOT:[''],
          Respuesta2:[''],
          Respuesta3:[''],

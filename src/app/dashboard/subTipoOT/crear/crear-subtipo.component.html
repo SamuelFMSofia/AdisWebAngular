@@ -52,10 +52,10 @@
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="10px">
 
 
-                            <mat-form-field fxFlex appearance="outline">
+                            <mat-form-field  appearance="outline">
                               <mat-label class="label">Estado</mat-label>
-                              <mat-select formControlName="estado">
-
+                              <mat-select formControlName="estado" [(value)]="selectedFood">
+  
                                 <mat-option *ngFor="let estado of estados" [value]="estado.value">
                                   {{estado.viewValue}}
                                 </mat-option>

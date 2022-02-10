@@ -7,7 +7,7 @@
 </div>
 
 <div>
-<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(70%-10px)">
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(50%-10px)">
 
       <div class="content">
                 <mat-card-content>
@@ -15,17 +15,14 @@
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
                           <mat-form-field fxFlex   appearance="outline" >
                             <mat-label class="label">Nombre Completo</mat-label>
-                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off">
+                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
                           </mat-form-field >
                         </div>
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-                           <!-- <mat-form-field fxFlex appearance="outline">
-                            <mat-label class="label">Unidad Tecnica</mat-label>
-                            <input matInput placeholder="Unidad Tecnica" formControlName="IdDptoTecnico" autocomplete="off">
-                          </mat-form-field> -->
+
                           <mat-form-field fxFlex appearance="outline">
                             <mat-label class="label">Unidad Tecnica</mat-label>
-                            <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico">
+                            <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico" required>
                               <mat-option *ngFor="let IdDptoTecnico of unidadTecnicas" [value]="IdDptoTecnico.idDptoTecnico">
                                 {{IdDptoTecnico.nombre}}
                               </mat-option>
@@ -49,37 +46,28 @@
 
                         </div>
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-                          <!-- <mat-form-field fxFlex appearance="outline">
-                            <mat-label class="label">Tiene SubTipo</mat-label>
-                            <input matInput placeholder="Tiene SubTipo" formControlName="TieneSubTipo" autocomplete="off">
-                          </mat-form-field> -->
-                          <section class="example-section" >
 
-                            <p><mat-checkbox formControlName="TieneSubTipo" value="1" ng-false-value="0">Tiene SubTipo</mat-checkbox ></p>
-
-                          </section>
+                          <mat-radio-group formControlName="TieneSubTipo">
+                            <mat-label class="label">Tiene SubTipo</mat-label>&nbsp;
+                            <mat-radio-button value="1">SI</mat-radio-button>&nbsp;
+                            <mat-radio-button value="0">NO</mat-radio-button>
+                          </mat-radio-group>
                           </div>
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-                           <mat-form-field fxFlex appearance="outline">
+                           <mat-form-field  appearance="outline">
                             <mat-label class="label">Estado</mat-label>
-                            <mat-select formControlName="estado">
+                            <mat-select formControlName="estado" [(value)]="selectedFood">
 
                               <mat-option *ngFor="let estado of estados" [value]="estado.value">
                                 {{estado.viewValue}}
                               </mat-option>
                             </mat-select>
-                          </mat-form-field> 
-                          <!-- <section class="example-section">
-                            <label class="example-margin">Align:</label>
-                            <mat-radio-group [(ngModel)]="labelPosition">
-                              <mat-radio-button class="example-margin" value="1">Activo</mat-radio-button>
-                              <mat-radio-button class="example-margin" value="2">Pasivo</mat-radio-button>
-                            </mat-radio-group>
-                          </section> -->
+                          </mat-form-field>
+
                         </div>
 
                         <div class="boton">
-                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../unidadTecnica" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../tipoOT" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                             <mat-icon>cancel</mat-icon>Cancelar</button>
                           <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                           <mat-icon>save</mat-icon>AGREGAR</button>

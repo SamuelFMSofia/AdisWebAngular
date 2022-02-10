@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { listarTipoOT } from '../../../interfaces/tipoOT/listar';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,15 +29,15 @@ export class CreateService {
       //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
       return this.http.get(this.baseUrl, {headers:headers} );
    }
-
-   createTipoOT(TipoOT: listarTipoOT){
+  // TipoOT: listarTipoOT
+   createTipoOT(TipoOT: listarTipoOT):Observable<listarTipoOT[]>{
 
      let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     'Authorization': 'Bearer '+auth_token
     })
-    return this.http.post(this.baserUrl, TipoOT, {headers:headers});
+    return this.http.post<listarTipoOT[]>(this.baserUrl, TipoOT, {headers:headers});
 
   }
 

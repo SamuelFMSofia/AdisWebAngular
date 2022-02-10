@@ -36,7 +36,7 @@
       </mat-select>
     </mat-form-field>
 
-   <mat-form-field fxFlex appearance="outline">
+   <!-- <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Unidad Tecnica</mat-label>
       <mat-select  formControlName="unidadTecnica">
         <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica">
@@ -44,17 +44,34 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-
+ -->
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label class="label">Unidad Tecnica</mat-label>
+            <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="unidadTecnica">
+              <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica">
+                {{UnidadTecnica.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
   </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <!-- <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Tipo Usuario</mat-label>
+      <mat-select [ngModel]="selectedTipoUsuario.id" formControlName="tipoUsuario">
+        <mat-option *ngFor="let TipoUsuario of tipoUsuarios" [value]="TipoUsuario.id">
+          {{TipoUsuario.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo Usuario</mat-label>
-      <mat-select  formControlName="tipoUsuario">
-        <mat-option *ngFor="let tipoUsuario of tipoUsuarios" [value]="tipoUsuario">
+      <mat-select [(ngModel)]="selectedTiposUsuarios.id"  formControlName="tipoUsuario">
+        <mat-option *ngFor="let tipoUsuario of tiposUsuarios" [value]="tipoUsuario.id">
           {{tipoUsuario.nombre}}
         </mat-option>
+
       </mat-select>
     </mat-form-field>
 

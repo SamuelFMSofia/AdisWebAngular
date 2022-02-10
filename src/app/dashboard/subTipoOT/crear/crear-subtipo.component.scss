@@ -32,10 +32,19 @@ height: 20px;
   align-items: center;
 }
 
+
+input{
+  font-family: Arial; font-size: 12pt;
+  }
+mat-select{
+  font-family: Arial; font-size: 10pt;
+}
 mat-card{
 
   margin-left:auto;
   margin-right:auto;
+  margin-top: 50px; /* height of header */
+  padding: 10px;
 
 
 }

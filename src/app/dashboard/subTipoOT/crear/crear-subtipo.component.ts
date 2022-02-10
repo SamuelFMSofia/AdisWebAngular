@@ -35,7 +35,7 @@ export class CrearSubtipoComponent implements OnInit {
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
     {value: 2, viewValue: 'Inactivo'}];
-    foodControl = new FormControl(this.estados[1]);
+    selectedFood = this.estados[1].value;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,12 +47,12 @@ export class CrearSubtipoComponent implements OnInit {
   ) {  this.FormSubtipo=this.formBuilder.group({
     Nombre:['', Validators.required],
     IdDptoTecnico:['', Validators.required],
-    IdTipoOT:[''],
-    estado:[''],
+    IdTipoOT:['', Validators.required],
+    estado:1,
   })}
 
   ngOnInit(): void {
-    estado: this.foodControl;
+    estado: this.selectedFood;
     this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
       this.unidadTecnicas=data.data;
   });

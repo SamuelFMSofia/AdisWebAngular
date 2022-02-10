@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 
 import { ModificarTipoRoutingModule } from './modificar-tipo-routing.module';
 import { ModificarTipoComponent } from './modificar-tipo.component';
+import { CreateService } from '../../services/tipoOT/create/create.service';
+import { ModifyService } from '../../services/tipoOT/modify/modify.service';
+import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
+import { ListarusersService } from '../../services/usuarios/listusers/listarusers.service';
 
 
 
@@ -20,6 +24,7 @@ import { ModificarTipoComponent } from './modificar-tipo.component';
   ],
   exports:[
     ModificarTipoComponent
-  ]
+  ],
+  providers:[CreateService,ModifyService,UnidadTecnicaService,ListarusersService]
 })
 export class ModificarTipoModule { }

@@ -136,7 +136,7 @@ status = 'Enable';
       correo: ['',Validators.required],
       locacion: [''],
       sucursal: ['',Validators.required],
-      estado:[''],
+      estado:1,
       aprobador:[''],
       empresa:[''],
       gerencia: [''],

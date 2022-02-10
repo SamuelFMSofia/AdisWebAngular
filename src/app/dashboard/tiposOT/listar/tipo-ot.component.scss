@@ -1,6 +1,6 @@
 
 .toolbar{
-  
+
     margin-top: 1px; /* height of header */
     padding: 0.8px;
     height: 50px;
@@ -18,9 +18,28 @@ table {
 margin-top: 10px;
 width: 100%;
 }
+.no-filter-width {
+  width: 12vw;
+}
 
+.active-filter-width {
+  width: 20vw;
+}
+.active-filter-bg {
+  background-color: teal !important;
+}
+
+.active-filter-text {
+  color: white;
+}
+.text-truncate {
+  width: 9vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .buscar{
-height: 55px;
+height: 60px;
 margin-top: 3px;
 margin-right: auto;
  margin-left: auto;

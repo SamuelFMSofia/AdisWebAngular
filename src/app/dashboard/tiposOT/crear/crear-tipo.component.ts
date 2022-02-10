@@ -5,7 +5,14 @@ import { Component, OnInit } from '@angular/core';
 import { CreateService } from '../../services/tipoOT/create/create.service';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { ListarusersService } from '../../services/usuarios/listusers/listarusers.service';
+import { MatCheckboxDefaultOptions, MAT_CHECKBOX_DEFAULT_OPTIONS } from '@angular/material/checkbox';
+import { filter } from 'rxjs';
 interface Food {
+  value: number;
+  viewValue: string;
+}
+
+interface Foods {
   value: number;
   viewValue: string;
 }
@@ -21,7 +28,10 @@ interface usuario{
 @Component({
   selector: 'app-crear-tipo',
   templateUrl: './crear-tipo.component.html',
-  styleUrls: ['./crear-tipo.component.scss']
+  styleUrls: ['./crear-tipo.component.scss'],
+  providers: [
+    {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}
+  ]
 })
 export class CrearTipoComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
@@ -29,18 +39,19 @@ export class CrearTipoComponent implements OnInit {
   IdDptoTecnico:number;
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
-    {value: 2, viewValue: 'Inactivo'}];
-    foodControl = new FormControl(this.estados[1]);
+    {value: 2, viewValue: 'Pasivo'}];
+    selectedFood = this.estados[1].value;
+
     //
     unidadTecnicas:unidadTecnica[]=[];
     selectedUnidad:string;
 ///
-labelPosition: 'before' | 'after' = 'after';
+
     //
     usuarios:usuario[]=[];
     selectedUsuario:string;
 
-    toppings: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private service:     CreateService,
@@ -53,15 +64,18 @@ labelPosition: 'before' | 'after' = 'after';
     this.FormTipo=this.formBuilder.group({
       Nombre:['', Validators.required],
       IdDptoTecnico:['', Validators.required],
-      IdUsrResponsable:['', Validators.required],
-      TieneSubTipo:1,
-      estado:[''],
+      IdUsrResponsable:[''],
+      TieneSubTipo:['1'],
+      estado:1,
     })
   }
 
   ngOnInit(): void {
-    estado: this.foodControl;
-    this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
+    estado: this.selectedFood;
+    this.unidad.listarUnidadTercnica().pipe(
+      filter(value=> value != 1)
+    ).subscribe((data:any)=>{
+
       this.unidadTecnicas=data.data;
   });
 }
@@ -70,6 +84,7 @@ labelPosition: 'before' | 'after' = 'after';
 
 
     this.service.createTipoOT(this.FormTipo.value).subscribe((data:any)=>{
+
       console.log(data);
       //localStorage.setItem('userCode', data.result.userCode);
       this.snackbar.open('Creado Correctemante ', 'action', {
@@ -93,7 +108,8 @@ labelPosition: 'before' | 'after' = 'after';
      let result=data;
       if(result.status==1){
       this.usuarios=data.data;
-      }else{
+      }
+      else{
         this.usuarios=[];
       }
    })

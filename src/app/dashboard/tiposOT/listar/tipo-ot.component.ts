@@ -2,7 +2,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModificarTipoComponent } from './../modificar/modificar-tipo.component';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { listarTipoOT } from './../../interfaces/tipoOT/listar';
@@ -16,6 +16,9 @@ import { CreateService } from '../../services/tipoOT/create/create.service';
 })
 export class TipoOTComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
+  /*  filter */
+
+  formGroupPesquisa: FormGroup;
 
   ELEMENT_DATA:listarTipoOT[]=[];
 
@@ -28,10 +31,28 @@ export class TipoOTComponent implements OnInit {
     private service: CreateService,
     private dialog: MatDialog,
     private router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+
+    this.formGroupPesquisa = this.formBuilder.group({
+      nome: [null],
+  });
+    this.listarItens();
+
+  }
+  limparPesquisa() {
+    this.formGroupPesquisa.reset();
+    this.listarItens();
+}
+listarItens(){
+  const queryAdicional = new Map();
+  if (this.formGroupPesquisa.value.nome) {
+      queryAdicional.set("nome_like", this.formGroupPesquisa.value.nome);
+  }
+  
     this.service.listarTiposOT().subscribe((data:any) => {
       console.log(data);
       const ELEMENT_DATA: listarTipoOT[] =data.data;
