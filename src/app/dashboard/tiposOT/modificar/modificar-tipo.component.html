@@ -1,81 +1,87 @@
 
-<div>
-    <h4>MODIFICAR TIPO DE ORDEN DE TRABAJO</h4>
+
+<div class="title">
+  <h4 class="text">MODIFICAR TIPO  DE ORDEN DE TRABAJO</h4>
 </div>
-
-
- <div class="content">
-  <mat-dialog-content [formGroup] = "FormTipo">
-    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-     <mat-form-field >
-       <mat-label class="label">Tipo de OT</mat-label>
-         <input matInput formControlName="idTipoOT" readonly onmousedown="return false;">
-     </mat-form-field>
-     </div>
-     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-     <mat-form-field  fxFlex  appearance="outline">
-       <mat-label class="label">Nombre Completo</mat-label>
-       <input matInput placeholder="Nombre" formControlName="nombre" autocomplete="off">
-     </mat-form-field >
-   </div>
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-     <!-- <mat-form-field fxFlex appearance="outline">
-       <mat-label class="label">Unidad Tecnica</mat-label>
-       <input matInput placeholder="Unidad Tecnica" formControlName="nombre" autocomplete="off">
-     </mat-form-field>
- -->
-        <mat-form-field fxFlex appearance="outline">
-          <mat-label class="label">Unidad Tecnica</mat-label>
-          <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico" (valueChange)="cargarusuario($event)" formControlName="IdDptoTecnico">
-            <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
-              {{UnidadTecnica.nombre}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<div>
+<div class="content">
+ <mat-dialog-content [formGroup] = "fromTipo">
+   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field >
+      <mat-label class="label">Tipo de OT</mat-label>
+        <input matInput formControlName="idTipoOT" readonly onmousedown="return false;">
+    </mat-form-field>
   </div>
-        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-     <!-- <mat-form-field fxFlex appearance="outline">
-       <mat-label class="label">Usuario</mat-label>
-       <input matInput placeholder="Usuario" formControlName="secuenciaOT" autocomplete="off">
-     </mat-form-field> -->
-     <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Usuario</mat-label>
-      <mat-select [ngModel]="selectedUsuario" formControlName="IdUsrResponsable">
-        <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUser">
-          {{usuario.persona.nombreCompleto}}
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field  fxFlex  appearance="outline">
+      <mat-label class="label">Nombre Completo</mat-label>
+      <input matInput placeholder="Nombre" formControlName="nombre" autocomplete="off">
+    </mat-form-field >
+  </div>
+ <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Unidad Tecnica</mat-label>
+    <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico" required>
+       <mat-option *ngFor="let unidad of unidadTecnicas" [value]="unidad.idDptoTecnico">
+        {{unidad.nombre}} 
+      </mat-option> 
+    </mat-select>
+  </mat-form-field>
+</div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+   <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Usuario</mat-label>
+    <mat-select  formControlName="IdUsrResponsable">
+       <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUser">
+        {{usuario.persona.nombreCompleto}}
+      </mat-option> 
+    </mat-select>
+  </mat-form-field> 
+
+ </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+  
+    <mat-slide-toggle
+          class="example-margin"
+          [color]="color"
+          [checked]="estadoCheck"
+          [disabled]="disabled"
+          (change)="onChangeEstado($event.checked)">
+          <mat-label class="label">Tiene SubTipo</mat-label>
+      </mat-slide-toggle>
+
+    <!-- <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <input matInput placeholder="Estado" formControlName="estado" >
+    </mat-form-field> -->
+    </div>
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-form-field appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
+
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-  </div>
-   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-    <mat-radio-group formControlName="TieneSubTipo">
-      <mat-label class="label">Tiene SubTipo</mat-label>&nbsp;
-      <mat-radio-button value="1">SI</mat-radio-button>&nbsp;
-      <mat-radio-button value="0">NO</mat-radio-button>
-    </mat-radio-group>
-
-     <mat-form-field fxFlex appearance="outline">
-       <mat-label class="label">Estado</mat-label>
-       <mat-select formControlName="estado">
-
-         <mat-option *ngFor="let estado of estados" [value]="estado.value">
-           {{estado.viewValue}}
-         </mat-option>
-       </mat-select>
-     </mat-form-field>
-  </div>
-
-
-   </mat-dialog-content>
-
-   <mat-dialog-actions>
-
-       <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
-         <mat-icon>cancel</mat-icon>Cancelar
-       </button>
-
-       <button  class="btn2"  mat-flat-button color="primary" (click) = "guardar()"><mat-icon>save</mat-icon>Modificar</button>
-   </mat-dialog-actions>
  </div>
+ 
+
+  </mat-dialog-content>
+</div>
+  <mat-dialog-actions>
+
+  <!--    <button mat-raiset-button color="primary" (click) = "cerrar()">CERRAR</button> -->
+    <div class="btn-action">
+      <button class="btn1" mat-flat-button color="accent" (click) = "cerrar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+      </button>
+
+      <button  class="btn2"  mat-flat-button  (click) = "guardar()">
+      <mat-icon>save</mat-icon>Modificar</button>
+    </div>
+  </mat-dialog-actions>
+</div>
 

@@ -1,5 +1,5 @@
 export interface listarSubtipo{
-  IdSTipoOT			:number,
+  idSTipoOT			:number,
 	IdDptoTecnico		:number,
 	IdTipoOT		   	:number,
 	Nombre				:string,

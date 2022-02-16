@@ -26,7 +26,7 @@
 
                             <mat-form-field fxFlex appearance="outline">
                               <mat-label class="label">Unidad Tecnica</mat-label>
-                              <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico">
+                              <mat-select (valueChange)="cargarTipo($event)"  formControlName="IdDptoTecnico">
                                 <mat-option *ngFor="let IdDptoTecnico of unidadTecnicas" [value]="IdDptoTecnico.idDptoTecnico">
                                   {{IdDptoTecnico.nombre}}
                                 </mat-option>
@@ -44,6 +44,7 @@
                                 <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipoOT">
                                   {{tipo.nombre}}
                                 </mat-option>
+                                <mat-error></mat-error>
                               </mat-select>
                             </mat-form-field>
 
@@ -66,7 +67,7 @@
                           <div class="boton">
                             <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../SubtipoOT" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                               <mat-icon>cancel</mat-icon>Cancelar</button>
-                            <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button color="primary" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button color="primary" [disabled]="FormSubtipo.invalid" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                             <mat-icon>save</mat-icon>GUARDAR</button>
 
                           </div>

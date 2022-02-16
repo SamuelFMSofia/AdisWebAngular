@@ -24,31 +24,12 @@
 
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-    <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Estado</mat-label>
-      <mat-select formControlName="estado">
-
-        <mat-option *ngFor="let estado of estados" [value]="estado.value">
-          {{estado.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-   <!-- <mat-form-field fxFlex appearance="outline">
-      <mat-label class="label">Unidad Tecnica</mat-label>
-      <mat-select  formControlName="unidadTecnica">
-        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica">
-          {{unidadTecnica.nombre}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
- -->
+ <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
           <mat-form-field fxFlex appearance="outline">
             <mat-label class="label">Unidad Tecnica</mat-label>
-            <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="unidadTecnica">
-              <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica">
+            <mat-select [(ngModel)]="selectedUnidadTecnica.idDptoTecnico"  formControlName="unidadTecnica">
+              <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
                 {{UnidadTecnica.nombre}}
               </mat-option>
             </mat-select>
@@ -67,23 +48,49 @@
 
     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Tipo Usuario</mat-label>
-      <mat-select [(ngModel)]="selectedTiposUsuarios.id"  formControlName="tipoUsuario">
+      <mat-select [(ngModel)]="selectedTiposUsuarios"  formControlName="tipoUsuario">
         <mat-option *ngFor="let tipoUsuario of tiposUsuarios" [value]="tipoUsuario.id">
           {{tipoUsuario.nombre}}
         </mat-option>
 
       </mat-select>
     </mat-form-field>
+    </div>
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-    <mat-form-field fxFlex appearance="outline">
+
+
+     <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Perfil</mat-label>
       <mat-select formControlName="perfil">
         <mat-option *ngFor="let perfil of perfiles" [value]="perfil">
           {{perfil.nombre}}
         </mat-option>
       </mat-select>
+    </mat-form-field> 
+
+  </div>
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field  appearance="outline">
+      <mat-label class="label">Estado</mat-label>
+      <mat-select formControlName="estado">
+
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+          {{estado.viewValue}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
+   <!-- <mat-form-field fxFlex appearance="outline">
+      <mat-label class="label">Unidad Tecnica</mat-label>
+      <mat-select  formControlName="unidadTecnica">
+        <mat-option *ngFor="let unidadTecnica of unidadTecnicas" [value]="unidadTecnica">
+          {{unidadTecnica.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  -->
   </div>
   </mat-dialog-content>
 

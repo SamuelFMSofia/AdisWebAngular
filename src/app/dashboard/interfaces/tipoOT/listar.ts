@@ -1,5 +1,5 @@
 export interface listarTipoOT{
-  IdTipoOT			      :number,
+	idTipoOT			      :number,
 	IdDptoTecnico		    :number,
 	IdUsrResponsable   	:number,
 	Nombre				      :string,

@@ -1,0 +1,25 @@
+<form [formGroup]="resetEmailForm" (ngSubmit)="onSubmit()" class="add-field" >
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+
+
+     <div >
+     <mat-form-field>
+         <mat-label >Correo Eliectronico Actual</mat-label>
+         <input matInput type="password"  id="oldPassword" formControlName="OldEmail">
+
+     </mat-form-field>
+     </div>
+     <div >
+         <mat-form-field>
+         <mat-label >Nuevo Correo Electronico</mat-label>
+         <input matInput type="password" id="newPassword" formControlName="NewEmail">
+
+       </mat-form-field>
+     </div>
+
+
+     <button mat-icon-button fxShow.lt-sm   type="submit" class="btn btn-primary" >
+      <mat-icon>done_all</mat-icon></button>
+
+   </div>
+   </form>

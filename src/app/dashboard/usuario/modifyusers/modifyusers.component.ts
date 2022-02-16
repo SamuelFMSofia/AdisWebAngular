@@ -7,6 +7,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/usuarios/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 interface Food {
   value: number;
@@ -18,10 +19,10 @@ interface tipoUsuariosInterface{
 }
 
 interface unidadTecnica{
-  idDptoTecnico:number; nombre : string; sigla:string
+  idDptoTecnico:number; nombre : string
 }
 
-interface perfil{
+interface perfilInterface{
   idPerfil :number; nombre :string; estado: number
 }
 
@@ -45,8 +46,7 @@ export class ModifyusersComponent implements OnInit {
 
         selectedUnidadTecnica:unidadTecnica={
           idDptoTecnico: 0,
-          nombre: '',
-          sigla: ''
+          nombre: ''
         };
 //tipo usuario
           tiposUsuarios:tipoUsuariosInterface[]=[
@@ -58,15 +58,14 @@ export class ModifyusersComponent implements OnInit {
         ];
         selectedTiposUsuarios:tipoUsuariosInterface;
 //perfil
-          perfiles:perfil[]=[
+          perfiles:perfilInterface[]=[
             {idPerfil	:1, nombre: 'SUPER USUARIO', estado: 1},
             {idPerfil	:2, nombre: 'ADMIN', estado: 1},
             {idPerfil	:3, nombre: 'APROBADOR', estado: 1},
             {idPerfil	:4, nombre: 'TECNICO', estado: 1},
             {idPerfil	:5, nombre: 'ELABORADOR', estado: 1}
           ];
-          selectedPerfil:string;
-//cargos
+          selectedPerfiles:perfilInterface;
 
 
 
@@ -84,7 +83,7 @@ export class ModifyusersComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:{
   	    abreviatura		:string,
         estado				:number, //number
-        dptoTecnico :{idDptoTecnico:number, nombre : string, sigla: string},
+        dptoTecnico :{idDptoTecnico:number, nombre : string},
         tipoUsuario	      :{id	:number, nombre: string},
         perfil        :{idPerfil :number, nombre :string, estado: number},
         idUser			:number
@@ -93,9 +92,10 @@ export class ModifyusersComponent implements OnInit {
 
   ) {
 
-    this.idUser=data.idUser;
-    this.selectedUnidadTecnica=data.dptoTecnico;
-    this.selectedTiposUsuarios =data.tipoUsuario;
+    this.idUser = data.idUser;
+    this.selectedUnidadTecnica = data.dptoTecnico;
+    this.selectedTiposUsuarios = data.tipoUsuario;
+    this.selectedPerfiles = data.perfil;
     this.form=formBuilder.group({
     idUser:[data.idUser],
     abreviatura:[data.abreviatura],
@@ -114,10 +114,20 @@ export class ModifyusersComponent implements OnInit {
   guardar(){
      this.form.value.idUser=this.idUser;
      let dataSend:any;
+     let selectedItemUnidadtecnica:any;
      let selectedItemTiposUsuarios:any;
-     selectedItemTiposUsuarios=this.tiposUsuarios.filter(item=> item.id== this.form.value.tipoUsuario)[0];
+     let selectedItemPerfiles: any;
+
+     selectedItemUnidadtecnica=this.unidadTecnicas.filter(item=> item.idDptoTecnico == this.form.value.unidadTecnica)[0];
+     selectedItemTiposUsuarios=this.tiposUsuarios.filter(item1=> item1.id== this.form.value.tipoUsuario)[0];
+     selectedItemPerfiles=this.perfiles.filter(item2=>item2.idPerfil == this.form.value.perfil)[0];
+
      dataSend=this.form.value;
+
+     dataSend.unidadTecnica=selectedItemUnidadtecnica;
      dataSend.tipoUsuario=selectedItemTiposUsuarios;
+     dataSend.perfil=selectedItemPerfiles;
+
      this.service.modifyUsers(this.idUser, dataSend).subscribe((data:any)=>{
       //direcionaa ala pagina requerida
 
@@ -127,7 +137,7 @@ export class ModifyusersComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        this.router.navigate(['/listusers']);
+       
 
       });
 
@@ -135,16 +145,6 @@ export class ModifyusersComponent implements OnInit {
     //cerrar
     this.dialogRef.close();
   }
-/*
-
-  onSubmit() {
-
-    this.service.modifyUsers(this.form.value).subscribe((data:any)=>{
-      console.log(data);
-      this.router.navigate(['dashboard'])
-    })
-    console.log(this.form.value);
-} */
 
       ngOnInit(): void {
         this.unidad_tecnicas.listarUnidadTercnica().subscribe((data:any)=>{

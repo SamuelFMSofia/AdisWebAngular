@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModificarTipoComponent } from './../modificar/modificar-tipo.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,12 +17,11 @@ import { CreateService } from '../../services/tipoOT/create/create.service';
 export class TipoOTComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
   /*  filter */
-
-  formGroupPesquisa: FormGroup;
-
   ELEMENT_DATA:listarTipoOT[]=[];
 
-  displayedColumns: string[] = ['idTipoOT','Nombre', 'idDptoTecnico' , 'usuario',  'Acciones'];
+
+  displayedColumns: string[] = ['idTipoOT','Nombre', 'idDptoTecnico' , 'usuarioResponsable',  'Acciones'];
+
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
@@ -36,37 +35,15 @@ export class TipoOTComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.formGroupPesquisa = this.formBuilder.group({
-      nome: [null],
-  });
-    this.listarItens();
-
-  }
-  limparPesquisa() {
-    this.formGroupPesquisa.reset();
-    this.listarItens();
-}
-listarItens(){
-  const queryAdicional = new Map();
-  if (this.formGroupPesquisa.value.nome) {
-      queryAdicional.set("nome_like", this.formGroupPesquisa.value.nome);
-  }
-  
-    this.service.listarTiposOT().subscribe((data:any) => {
-      console.log(data);
-      const ELEMENT_DATA: listarTipoOT[] =data.data;
+     this.service.listarTiposOT().subscribe((data:any)=>{
+      const ELEMENT_DATA: listarTipoOT[]=data.status==1?data.data:[];
+     console.log(ELEMENT_DATA);
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      console.log(this.dataSource);
       this.dataSource.paginator=this.paginator;
-      //este datasource son datos que devuelven la tabla usuario
-     // this.dataSource= new  MatTableDataSource<listInterface>(data as listInterface[]);
-     // console.log(this.dataSource)
+     })
 
-    },
-    //(errorData) => this.router.navigate(['/login-user'])
-    );
   }
-
   applyFilter(event: Event) {
      const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -77,9 +54,12 @@ listarItens(){
   }
 
   upgradeTipo(tipo:listarTipoOT){
+   
      this.dialog.open(ModificarTipoComponent,{
-      data:tipo
+      data:tipo.idTipoOT
+     
     })
+   
   }
 
 

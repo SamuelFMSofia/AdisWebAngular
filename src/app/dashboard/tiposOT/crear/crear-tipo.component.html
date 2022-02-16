@@ -47,11 +47,23 @@
                         </div>
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-                          <mat-radio-group formControlName="TieneSubTipo">
+                         <!--  <mat-radio-group formControlName="TieneSubTipo">
                             <mat-label class="label">Tiene SubTipo</mat-label>&nbsp;
                             <mat-radio-button value="1">SI</mat-radio-button>&nbsp;
                             <mat-radio-button value="0">NO</mat-radio-button>
-                          </mat-radio-group>
+                          </mat-radio-group> -->
+
+                          <section class="example-section col-lg-3 col-xl-3">
+                            <mat-slide-toggle
+                                class="example-margin"
+                                [color]="color"
+                                [checked]="estadoCheck"
+                                [disabled]="disabled"
+                                (change)="onChangeEstado($event.checked)">
+                              <mat-label class="label">Tiene SubTipo</mat-label>
+                            </mat-slide-toggle>
+                          </section>
+
                           </div>
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
                            <mat-form-field  appearance="outline">
@@ -67,9 +79,9 @@
                         </div>
 
                         <div class="boton">
-                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../tipoOT" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                             <mat-icon>cancel</mat-icon>Cancelar</button>
-                          <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  [disabled]="FormTipo.invalid"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                           <mat-icon>save</mat-icon>AGREGAR</button>
 
                         </div>

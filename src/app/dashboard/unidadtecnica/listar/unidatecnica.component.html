@@ -10,16 +10,16 @@
         <div  class="buscar">
 
 
-  <mat-form-field  >
+            <mat-form-field  >
 
-    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
+              <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
 
-  </mat-form-field><mat-icon>search</mat-icon>
+            </mat-form-field><mat-icon>search</mat-icon>
 
-  <a  class="nuevo" mat-flat-button color="primary"  routerLinkActive="list-item-active" routerLink="../createunidadtecnica"><mat-icon inline=true  class="white-icon">group_add</mat-icon>NUEVO</a>
+            <a  class="nuevo" mat-flat-button color="primary"  routerLinkActive="list-item-active" routerLink="../createunidadtecnica"><mat-icon inline=true  class="white-icon">group_add</mat-icon>NUEVO</a>
 
 
-</div>
+          </div>
 
 <div class="tablero">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

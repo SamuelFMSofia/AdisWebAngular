@@ -28,7 +28,7 @@ export class CrearSubtipoComponent implements OnInit {
 
   unidadTecnicas:unidadTecnica[]=[];
   selectedUnidad:string;
-
+  
   tipos:tipo[] = [];
   selectedTipo:string;
 
@@ -52,9 +52,12 @@ export class CrearSubtipoComponent implements OnInit {
   })}
 
   ngOnInit(): void {
-    estado: this.selectedFood;
+    
     this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
-      this.unidadTecnicas=data.data;
+      this.unidadTecnicas=data.data.filter(value => value.estado == 1);
+
+      console.log(this.unidadTecnicas)
+      
   });
 
 
@@ -62,9 +65,10 @@ export class CrearSubtipoComponent implements OnInit {
 
   submit(){
 
-
+    
     this.service.createSubtipo(this.FormSubtipo.value).subscribe((data:any)=>{
       console.log(data);
+      
       //localStorage.setItem('userCode', data.result.userCode);
       this.snackbar.open('Creado Correctemante ', 'action', {
         duration: 1000,
@@ -72,20 +76,33 @@ export class CrearSubtipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-
+        this.router.navigate(['/dashboard/SubtipoOT']);
+          //window.location.reload()
       });
-
-    })
+    });
+    //cerrar
+  
   }
 
-  cargarusuario(event:Event){
+  cargarTipo(event:Event){
     this.unidad.listarTipoUnidadTecnica(event).subscribe((data:any)=>{
       console.log(data);
       let result=data;
       if(result.status==1){
-      this.tipos=data.data;
+      this.tipos=data.data.filter(value => value.estado == 1 && value.tieneSubTipo==1);;
       }else{
-        this.tipos=[{idTipoOT:0, nombre :'null'}];
+        this.FormSubtipo.patchValue({IdTipoOT:""});
+        this.tipos=[];
+        this.snackbar.open('No contiene un tipo ', 'action', {
+          duration: 4000,
+          horizontalPosition: "start",
+          verticalPosition: 'bottom',
+          
+        }).afterDismissed().subscribe(() => {
+  
+          
+        });
+
       }
     })
    }

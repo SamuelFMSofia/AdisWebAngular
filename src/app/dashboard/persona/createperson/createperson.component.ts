@@ -211,12 +211,10 @@ status = 'Enable';
       }).afterDismissed().subscribe(() => {
         window.location.reload();
         this.router.navigate(['/listperson'])
-        console.log('xxxxxxxxxx');
+        
       });
 
-    }
-
-    )
+    })
   }
 
   iniForm(){

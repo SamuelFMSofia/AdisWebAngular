@@ -57,20 +57,22 @@ mat-dialog-content{
 
   font-size: 10px;
   font-style: italic;
-
+  color:white;
+  background-color: #56B53F;
 
   border-radius: 15px;
 
 }
 .btn2:hover{
-  background-color: #56B53F;
+  background-color:  #169505;
 }
 
 
 .label{
   font-weight: lighter;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
+  
 }
 .input-row{
   font-size: 8px;
@@ -83,7 +85,7 @@ mat-dialog-content{
   border-color:cornflowerblue;
   border-style:solid;
   border-radius: 5px;
-
+  width: 500px;
 
 }
 
@@ -93,5 +95,19 @@ mat-dialog-content{
 }
 mat-dialog-actions{
   display: block;
-  float: left;
+  .btn-action{
+    
+    float: right;
+  }
+  
 }
+.title{
+  background-color: #F3F7F3;
+  .text{
+   color: #123CF6;
+   font-size: 20px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-style: normal;
+   text-align: center;
+ }
+ } 

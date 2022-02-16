@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { listarTipoOT } from './../../../interfaces/tipoOT/listar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,12 +8,16 @@ import { Injectable } from '@angular/core';
 })
 export class ModifyService {
 
+
+
   baseUrl: string = 'https://localhost:5001/api/admin/tipoOT/edit/';
   constructor(
     private http: HttpClient
   ) { }
 
-  modicarTipo(IdTipoOT:number, tipoOT:listarTipoOT){
+
+
+  modificarTipo(IdTipoOT:number, tipoOT:listarTipoOT){
 
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({
@@ -21,4 +26,7 @@ export class ModifyService {
     })
     return this.http.put(this.baseUrl+IdTipoOT, tipoOT, {headers:headers});
   }
+
+  
+
 }

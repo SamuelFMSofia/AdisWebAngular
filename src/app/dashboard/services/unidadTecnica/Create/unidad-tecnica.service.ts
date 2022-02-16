@@ -34,6 +34,7 @@ export class UnidadTecnicaService {
       return this.http.get(this.baseUrl, {headers:headers} );
    }
 
+  
    listarUserUnidadTecnica(idUnidadTecnica: number|any){
     let auth_token = localStorage.getItem('token_value');
     const headers =new HttpHeaders({
@@ -45,8 +46,6 @@ export class UnidadTecnicaService {
       return this.http.get(this._url+ "?idUnidadTecnica="+idUnidadTecnica, {headers:headers} );
            
    }
-    
-   
 
    listarTipoUnidadTecnica(idUnidadTecnica: number|any){
     let auth_token = localStorage.getItem('token_value');

@@ -22,7 +22,7 @@ export class TechnicalunitComponent implements OnInit {
 
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
-    {value: 2, viewValue: 'Inactivo'}]
+    {value: 2, viewValue: 'Pasivo'}]
 
     foodControl = new FormControl(this.estados[1]);
   constructor(
@@ -84,12 +84,12 @@ export class TechnicalunitComponent implements OnInit {
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
-        
+
         this.router.navigate(['/unidadtecnica'])
         window.location.reload();
       });
 
-      
+
     });
     //cerrar
     this.dialogRef.close();

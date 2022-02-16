@@ -12,7 +12,7 @@ export class CreateService {
 
   baseUrl: string ='https://localhost:5001/api/admin/tiposOT';
   baserUrl: string ='https://localhost:5001/api/admin/tipoOT/create';
-
+  _baserUrl: string = 'https://localhost:5001/api/admin/tipoOT/get';
 
   constructor(
     private http: HttpClient,
@@ -29,6 +29,23 @@ export class CreateService {
       //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
       return this.http.get(this.baseUrl, {headers:headers} );
    }
+
+
+      /*mostar datos de un id tipo */
+      listarTipos(idTipoOT: number|any){
+        let auth_token = localStorage.getItem('token_value');
+        const headers =new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Authorization': 'Bearer '+auth_token
+        })
+       // return this.ELEMENT_DATA.slice();
+          //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
+          return this.http.get(this._baserUrl+ "?idTipoOT="+idTipoOT, {headers:headers} );
+
+       }
+
+
+
   // TipoOT: listarTipoOT
    createTipoOT(TipoOT: listarTipoOT):Observable<listarTipoOT[]>{
 

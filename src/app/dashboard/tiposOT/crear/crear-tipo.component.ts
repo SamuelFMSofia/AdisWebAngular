@@ -7,6 +7,7 @@ import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad
 import { ListarusersService } from '../../services/usuarios/listusers/listarusers.service';
 import { MatCheckboxDefaultOptions, MAT_CHECKBOX_DEFAULT_OPTIONS } from '@angular/material/checkbox';
 import { filter } from 'rxjs';
+import { ThemePalette } from '@angular/material/core';
 interface Food {
   value: number;
   viewValue: string;
@@ -18,7 +19,7 @@ interface Foods {
 }
 
 interface unidadTecnica{
-  idDptoTecnico:number; nombre : string; sigla:string
+  idDptoTecnico:number; nombre : string; sigla:string, estado:number
 }
 
 interface usuario{
@@ -51,7 +52,13 @@ export class CrearTipoComponent implements OnInit {
     usuarios:usuario[]=[];
     selectedUsuario:string;
 
+  /**check */
 
+  sending=false;
+  hide=true;
+  estadoCheck=false;
+  color: ThemePalette = 'accent';
+  disabled = false;
   constructor(
     private formBuilder: FormBuilder,
     private service:     CreateService,
@@ -64,21 +71,23 @@ export class CrearTipoComponent implements OnInit {
     this.FormTipo=this.formBuilder.group({
       Nombre:['', Validators.required],
       IdDptoTecnico:['', Validators.required],
-      IdUsrResponsable:[''],
-      TieneSubTipo:['1'],
+      IdUsrResponsable:0,
+      TieneSubTipo:0,
       estado:1,
     })
   }
 
   ngOnInit(): void {
-    estado: this.selectedFood;
-    this.unidad.listarUnidadTercnica().pipe(
-      filter(value=> value != 1)
-    ).subscribe((data:any)=>{
-
-      this.unidadTecnicas=data.data;
-  });
+   
+    this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
+      console.log(data);
+      let result=data.data;
+      this.unidadTecnicas=result.filter(value => value.estado == 1);
+    });
+ 
 }
+
+
 
   submit(){
 
@@ -88,18 +97,15 @@ export class CrearTipoComponent implements OnInit {
       console.log(data);
       //localStorage.setItem('userCode', data.result.userCode);
       this.snackbar.open('Creado Correctemante ', 'action', {
-        duration: 1000,
+        duration: 4000,
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
-
-
+        //window.location.reload();
+        this.router.navigate(['/dashboard/tipoOT'])
+        
       });
-
-
-    }
-
-    )
+    })
 
   }
   cargarusuario(event:Event){
@@ -107,12 +113,34 @@ export class CrearTipoComponent implements OnInit {
      console.log(data);
      let result=data;
       if(result.status==1){
-      this.usuarios=data.data;
-      }
-      else{
-        this.usuarios=[];
+      this.usuarios=data.data.filter(value => value.estado == 1);
+      }else{
+      
+      this.usuarios=[{
+        idUser:0, persona:{nombreCompleto: 'N/A'}
+      }];
       }
    })
   }
+  onChangeEstado(enable: boolean) {
+    if (enable) {
+      this.estadoCheck=true;
+      this.FormTipo.patchValue({TieneSubTipo:"1"});
+    } else {
+      this.estadoCheck=false;
+      this.FormTipo.patchValue({TieneSubTipo:"0"});
+    }
+  }
 
+  cancelar(){
+    this.snackbar.open('Cancelado ', 'action', {
+      duration: 100,
+      horizontalPosition: "start",
+      verticalPosition: 'bottom',
+    }).afterDismissed().subscribe(() => {
+      //window.location.reload();
+      this.router.navigate(['/dashboard/tipoOT'])
+      
+    });
+  }
 }
