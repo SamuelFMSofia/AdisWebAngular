@@ -23,8 +23,8 @@
     <mat-label class="label">Unidad Tecnica</mat-label>
     <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico" required>
        <mat-option *ngFor="let unidad of unidadTecnicas" [value]="unidad.idDptoTecnico">
-        {{unidad.nombre}} 
-      </mat-option> 
+        {{unidad.nombre}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
@@ -33,15 +33,17 @@
    <mat-form-field fxFlex appearance="outline">
     <mat-label class="label">Usuario</mat-label>
     <mat-select  formControlName="IdUsrResponsable">
+      <mat-option value="0" selected>N/A</mat-option>
        <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUser">
+
         {{usuario.persona.nombreCompleto}}
-      </mat-option> 
+      </mat-option>
     </mat-select>
-  </mat-form-field> 
+  </mat-form-field>
 
  </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-  
+
     <mat-slide-toggle
           class="example-margin"
           [color]="color"
@@ -67,7 +69,7 @@
       </mat-select>
     </mat-form-field>
  </div>
- 
+
 
   </mat-dialog-content>
 </div>

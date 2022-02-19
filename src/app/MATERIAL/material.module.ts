@@ -31,6 +31,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
+
 const matModules = [
   MatTableModule,
   ReactiveFormsModule,
@@ -74,6 +75,7 @@ const matModules = [
 
    MatCheckboxModule,
    MatSlideToggleModule
+
 
 ];
 @NgModule({

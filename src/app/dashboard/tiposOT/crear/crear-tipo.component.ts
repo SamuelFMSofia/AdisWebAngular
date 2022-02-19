@@ -78,13 +78,13 @@ export class CrearTipoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
     this.unidad.listarUnidadTercnica().subscribe((data:any)=>{
       console.log(data);
       let result=data.data;
       this.unidadTecnicas=result.filter(value => value.estado == 1);
     });
- 
+
 }
 
 
@@ -102,8 +102,9 @@ export class CrearTipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
         //window.location.reload();
-        this.router.navigate(['/dashboard/tipoOT'])
-        
+
+        this.router.navigateByUrl('/dashboard/tipoOT')
+
       });
     })
 
@@ -113,9 +114,10 @@ export class CrearTipoComponent implements OnInit {
      console.log(data);
      let result=data;
       if(result.status==1){
+        //this.FormTipo.patchValue({IdUsrResponsable:0});
       this.usuarios=data.data.filter(value => value.estado == 1);
       }else{
-      
+
       this.usuarios=[{
         idUser:0, persona:{nombreCompleto: 'N/A'}
       }];
@@ -140,7 +142,7 @@ export class CrearTipoComponent implements OnInit {
     }).afterDismissed().subscribe(() => {
       //window.location.reload();
       this.router.navigate(['/dashboard/tipoOT'])
-      
+
     });
   }
 }

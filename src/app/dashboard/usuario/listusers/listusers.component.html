@@ -8,15 +8,34 @@
   </div>
 
   <div class="container">
-    <div  class="buscar">
+   <!--  <div  class="buscar">
 
+      <div class="search">
         <mat-form-field  >
 
           <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
-
+          <a class="icon"  matSuffix>
+            <mat-icon>search</mat-icon>
+          </a>
+          
         </mat-form-field>
+      </div>
 
+    </div> -->
 
+     <div class="busqueda">
+        <div class="izquierda">
+          <mat-form-field  >
+
+            <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+            <a class="icon"  matSuffix>
+              <mat-icon>search</mat-icon>
+            </a>
+            
+          </mat-form-field>
+          </div>
+           
+          
     </div>
 
 <div class="tablero">

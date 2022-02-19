@@ -89,7 +89,7 @@ export class ModificarSubtipoComponent implements OnInit {
   }
 
   guardar(){
-   
+
     this.FormSubtipo.value._idSTipoOT=this._idSTipoOT;
     this.service.modificarSubtipo(this._idSTipoOT, this.FormSubtipo.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
@@ -100,15 +100,15 @@ export class ModificarSubtipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        // this.router.navigate(['/SubtipoOT']);
-       // window.location.reload(); 
+         this.router.navigateByUrl('/dashboard/SubtipoOT');
+       // window.location.reload();
 
       });
 
 
     });
     //cerrar
-   // this.dialogRef.close(); 
+   this.dialogRef.close();
   }
   cargarTipo(event:Event){
     this.unidad_tecnicas.listarTipoUnidadTecnica(event).subscribe((data:any)=>{

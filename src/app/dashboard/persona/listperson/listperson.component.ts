@@ -30,7 +30,7 @@ const ELEMENT_DATA: listInterface[] = [];
 @Component({
   selector: 'app-listperson',
   templateUrl: './listperson.component.html',
-  styleUrls: ['./listperson.component.scss']
+  styleUrls: ['./../../style/styles.scss']
 })
 export class ListpersonComponent implements OnInit {
    dataSource:any=[];
@@ -83,12 +83,6 @@ export class ListpersonComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+ 
 }
-
- /*   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }  */
-
-

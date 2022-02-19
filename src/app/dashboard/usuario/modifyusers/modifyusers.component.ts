@@ -19,7 +19,7 @@ interface tipoUsuariosInterface{
 }
 
 interface unidadTecnica{
-  idDptoTecnico:number; nombre : string
+  idDptoTecnico:number; nombre : string;
 }
 
 interface perfilInterface{
@@ -50,7 +50,7 @@ export class ModifyusersComponent implements OnInit {
         };
 //tipo usuario
           tiposUsuarios:tipoUsuariosInterface[]=[
-          {id	:1, nombre: 'SUPER USUARIO'},
+          {id	:1, nombre: 'SUPER USER'},
           {id	:2, nombre: 'ADMIN' },
           {id	:3, nombre: 'APROBADOR'},
           {id	:4, nombre: 'TECNICO'},
@@ -59,11 +59,11 @@ export class ModifyusersComponent implements OnInit {
         selectedTiposUsuarios:tipoUsuariosInterface;
 //perfil
           perfiles:perfilInterface[]=[
-            {idPerfil	:1, nombre: 'SUPER USUARIO', estado: 1},
-            {idPerfil	:2, nombre: 'ADMIN', estado: 1},
-            {idPerfil	:3, nombre: 'APROBADOR', estado: 1},
-            {idPerfil	:4, nombre: 'TECNICO', estado: 1},
-            {idPerfil	:5, nombre: 'ELABORADOR', estado: 1}
+            {idPerfil	:1, nombre: 'PERFIL BASICO SUPER USER', estado: 1},
+            {idPerfil	:2, nombre:  'PERFIL BASICO ADMIN', estado: 1},
+            {idPerfil	:3, nombre: 'PERFIL BASICO APROBADOR', estado: 1},
+            {idPerfil	:4, nombre: 'PERFIL BASICO TECNICO', estado: 1},
+            {idPerfil	:5, nombre: 'PERFIL BASICO ELABORADOR', estado: 1}
           ];
           selectedPerfiles:perfilInterface;
 
@@ -136,14 +136,14 @@ export class ModifyusersComponent implements OnInit {
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
-
-       
+        window.location.reload();
+        this.router.navigate(['/dashboard/listusers']);
 
       });
 
      });
     //cerrar
-    this.dialogRef.close();
+
   }
 
       ngOnInit(): void {

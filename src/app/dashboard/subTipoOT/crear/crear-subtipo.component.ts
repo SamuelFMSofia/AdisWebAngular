@@ -76,7 +76,7 @@ export class CrearSubtipoComponent implements OnInit {
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        this.router.navigate(['/dashboard/SubtipoOT']);
+        this.router.navigateByUrl('/dashboard/SubtipoOT');
           //window.location.reload()
       });
     });

@@ -61,6 +61,8 @@ export class LoginComponent  {
             localStorage.setItem('userCode', result.data.userResponse.userCode);
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
             localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
+            localStorage.setItem('idUser', result.data.userResponse.idUser);
+            localStorage.setItem('idPersona', result.data.userResponse.persona.idPersona);
             //JSON.parse(localStorage.getItem('userResponse'));
             //localStorage.setItem('Password', data.result.password);
             localStorage.setItem('token_value', result.data.token);

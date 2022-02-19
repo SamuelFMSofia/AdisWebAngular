@@ -49,8 +49,9 @@ export class PasswordComponent implements OnInit {
 
   onSubmit(){
     let idUser:number =0;
-      idUser=parseInt(localStorage.getItem("idUser") as string);
-    this.service.modificarPassword(idUser, this.resetPasswordForm.value).subscribe((data)=>{
+     idUser= parseInt(localStorage.getItem('idUser') as string)
+      console.log(idUser);
+     this.service.modificarPassword(idUser, this.resetPasswordForm.value).subscribe((data)=>{
       this.snackBar.open('Modificado Correctamente ', 'action', {
         duration: 2000,
         horizontalPosition: "start",
@@ -62,7 +63,7 @@ export class PasswordComponent implements OnInit {
       });
 
     });
-  }
+   }
 
 // Enviar datos al servidor...
 /* handleOk(): void {

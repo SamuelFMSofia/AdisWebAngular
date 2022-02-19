@@ -17,7 +17,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-unidatecnica',
   templateUrl: './unidatecnica.component.html',
-  styleUrls: ['./unidatecnica.component.scss']
+  styleUrls: ['./../../style/styles.scss']
 })
 export class UnidatecnicaComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];

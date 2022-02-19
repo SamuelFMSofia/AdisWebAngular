@@ -27,6 +27,10 @@ const routes: Routes = [
       loadChildren:()=> import('./persona/editperfil/editperfil.module').then(e=>e.EditperfilModule)
     },
     {
+      path:'editPersonPerfil',
+      loadChildren:()=> import('./persona/editPersonPerfil/edit-person-perfil.module').then(ed=>ed.EditPersonPerfilModule)
+    },
+    {
       path:'listusers',
       loadChildren:()=> import('./usuario/listusers/listusers.module').then(lu=>lu.ListusersModule)
     } ,

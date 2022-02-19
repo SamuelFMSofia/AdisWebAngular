@@ -1,4 +1,5 @@
 
+
 import { PasswordModule } from '../password/password.module';
 
 import { NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ import { EditperfilComponent } from './editperfil.component';
 
 import { MATERIALModule } from '../../../MATERIAL/material.module';
 import { EmailModule } from '../email/email.module';
+import { EditPersonPerfilModule } from '../editPersonPerfil/edit-person-perfil.module';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { EmailModule } from '../email/email.module';
     EditperfilRoutingModule,
     PasswordModule,
     EmailModule,
+    EditPersonPerfilModule,
     MATERIALModule
   ],
   exports:[

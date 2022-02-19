@@ -14,7 +14,7 @@ export class EmailComponent implements OnInit {
 
 
   resetEmailForm: FormGroup;
-  idUser:number;
+  idPersona:number;
 
   constructor(private fb: FormBuilder,
     private router:Router,
@@ -37,9 +37,10 @@ export class EmailComponent implements OnInit {
   }
 
   onSubmit(){
-    let idUser:number =0;
-      idUser=parseInt(localStorage.getItem("idUser") as string);
-    this.service.modificarEmail(idUser, this.resetEmailForm.value).subscribe((data)=>{
+    let idPersona:number =0;
+    idPersona=parseInt(localStorage.getItem("idPersona") as string);
+    console.log(idPersona)
+    this.service.modificarEmail(idPersona, this.resetEmailForm.value).subscribe((data)=>{
       this.snackBar.open('Modificado Correctamente ', 'action', {
         duration: 2000,
         horizontalPosition: "start",

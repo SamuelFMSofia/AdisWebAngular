@@ -14,7 +14,7 @@ interface unidadTecnica{
   idDptoTecnico:number; nombre : string; sigla:string, estado:number
 }
 interface listarTipo{
-  
+
      idTipoOT: number,
      nombre: string,
      tieneSubTipo:number,
@@ -48,14 +48,14 @@ interface usuarioInterface{
   selector: 'app-modificar-tipo',
   templateUrl: './modificar-tipo.component.html',
   styleUrls: ['./modificar-tipo.component.scss']
-  
+
 })
 export class ModificarTipoComponent implements OnInit {
   fromTipo:FormGroup;
   idTipoOT:number;
 
   unidadTecnicas:unidadTecnica[]=[];
-    
+
 
     usuarios:usuarioInterface[]=[];
     selectedUsuario:string;
@@ -80,18 +80,18 @@ export class ModificarTipoComponent implements OnInit {
     public dialogRef: MatDialogRef<ModificarTipoComponent>,
     @Inject(MAT_DIALOG_DATA) public  _idTipoOT:number
   ) {
-      
+
         this.fromTipo=formBuilder.group({
           nombre : [''],
-          
+
           IdDptoTecnico: [''],
           IdUsrResponsable: [''],
           tieneSubTipo:[''],
           estado: [''],
-       
+
           idTipoOT:['']
         })
-    
+
   }
 
   ngOnInit(): void {
@@ -109,27 +109,28 @@ this.fromTipo.patchValue(
     idTipoOT: data.data.idTipoOT,
     nombre : data.data.nombre,
     IdDptoTecnico: data.data.dptoTecnico.idDptoTecnico,
-    IdUsrResponsable:data.data.usuarioResponsable!=null? data.data.usuarioResponsable.idUser:null,
+    IdUsrResponsable:data.data.usuarioResponsable!=null? data.data.usuarioResponsable.idUser:0,
     tieneSubTipo: data.data.tieneSubTipo,
     estado: data.data.estado,
     });
-   
+
     if(this.fromTipo.value.tieneSubTipo=="1"){
       this.estadoCheck=true;
 
     }else if (this.fromTipo.value.tieneSubTipo=="0"){
       this.estadoCheck=false;
     }
-  
+
     console.log(this.fromTipo)
     })}
-    
+
 
   cerrar(){
     this.dialogRef.close();
   }
 
   guardar(){
+
     this.fromTipo.value._idTipoOT=this._idTipoOT;
     this.service.modificarTipo(this._idTipoOT, this.fromTipo.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
@@ -139,17 +140,17 @@ this.fromTipo.patchValue(
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
-        window.location.reload(); 
-         this.router.navigate(['/tipoOT']);
-       
+        window.location.reload();
+         this.router.navigateByUrl('/dashboard/tipoOT');
+
 
       });
 
 
     });
     //cerrar
-    this.dialogRef.close(); 
-    
+
+
   }
 
   cargarusuario(event:Event){
@@ -158,8 +159,11 @@ this.fromTipo.patchValue(
       let result=data;
        if(result.status==1){
        this.usuarios=data.data.filter(value => value.estado == 1);
+       }else{
+        this.fromTipo.patchValue({IdUsrResponsable:0});
+         this.usuarios=[]
        }
-   
+
     })
   }
   onChangeEstado(enable: boolean) {

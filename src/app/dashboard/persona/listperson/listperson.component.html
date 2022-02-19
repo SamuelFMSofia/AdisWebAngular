@@ -7,18 +7,42 @@
   </p>
 </div>
   <div class="container">
-      <div  class="buscar">
+     <!--  <div  class="busqueda">
 
         <mat-form-field [hidden]="!dataSource">
 
           <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
-
-        </mat-form-field><mat-icon>search</mat-icon>
+          <a class="icon"  matSuffix>
+            <mat-icon>search</mat-icon>
+          </a>
+        </mat-form-field>
 
         <a  class="nuevo" mat-flat-button color="primary"  routerLinkActive="list-item-active" routerLink="../createperson"><mat-icon inline=true  class="white-icon">group_add</mat-icon>NUEVO</a>
 
 
-      </div>
+      </div> -->
+
+      <div class="busqueda">
+        <div class="izquierda">
+          <mat-form-field [hidden]="!dataSource">
+
+            <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
+            <a class="icon"  matSuffix>
+              <mat-icon>search</mat-icon>
+            </a>
+          </mat-form-field>
+ 
+          </div>
+             <div class="derecha">   
+              <button class="create-ot-button" routerLinkActive="list-item-active" routerLink="../createperson">
+                <div class="button-icon-container">
+                    <mat-icon class="button-icon">group_add</mat-icon> 
+                </div>          
+                  <p class="button-title">NUEVO</p>
+              </button>
+            </div>
+          
+    </div>
     <div class="tablero">
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
