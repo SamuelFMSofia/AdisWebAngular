@@ -7,36 +7,33 @@
 </div>
 
 <div>
-<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(50%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(25%-10px)">
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(50%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(65%-10px)">
 
       <div class="content">
                 <mat-card-content>
+           
                       <form novalidate id="contactForm" [formGroup]="FormUnidadTecnica" (ngSubmit)="submit()" >
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
                           <mat-form-field fxFlex   appearance="outline" >
                             <mat-label class="label">Nombre Completo</mat-label>
                             <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off">
                           </mat-form-field >
-                        </div>
-                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-                          <mat-form-field fxFlex appearance="outline">
+                          <mat-form-field fxFlex.gt-lg="10px" appearance="outline">
                             <mat-label class="label">Sigla</mat-label>
                             <input matInput placeholder="Sigla" formControlName="Sigla" autocomplete="off">
                           </mat-form-field>
+                        </div>
+                     
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
                           <mat-form-field fxFlex appearance="outline">
                             <mat-label class="label">Secuencia OT</mat-label>
                             <input matInput placeholder="Secuencia OT" formControlName="SecuenciaOT" autocomplete="off">
                           </mat-form-field>
-
-
-
-                        </div>
-                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-                          <mat-form-field fxFlex appearance="outline">
+                          <mat-form-field  fxFlex appearance="outline">
                             <mat-label class="label">Prefijo CC</mat-label>
                             <input matInput placeholder="Prefijo CC" formControlName="PrefijoControlCambios" autocomplete="off">
                           </mat-form-field>
-                          <mat-form-field fxFlex appearance="outline">
+                          <mat-form-field fxFlex.gt-lg="10px"  appearance="outline">
                             <mat-label class="label">Secuencia CC</mat-label>
                             <input matInput placeholder="Secuencia CC" formControlName="SecuenciaControlCambios" autocomplete="off">
                           </mat-form-field>
@@ -44,19 +41,43 @@
                             <mat-label class="label">Estado</mat-label>
                             <input matInput placeholder="Estado" formControlName="Estado" fxFlex="50" autocomplete="off">
                           </mat-form-field> -->
-                          <mat-form-field fxFlex appearance="outline">
-                            <mat-label class="label">Estado</mat-label>
-                            <mat-select formControlName="Estado">
-
-                              <mat-option *ngFor="let estado of estados" [value]="estado.value">
-                                {{estado.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
+                          
 
 
                         </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                          <mat-form-field  appearance="outline">
+                            <mat-label class="label">Dias Notificacion</mat-label>
+                            <input matInput placeholder="Secuencia CC" formControlName="DiasNotificacion" autocomplete="off">
+                          </mat-form-field>
+                          <mat-form-field  appearance="outline">
+                            <mat-label class="label">Dias CierreOT</mat-label>
+                            <input matInput placeholder="Secuencia CC" formControlName="DiasCierreOT" autocomplete="off">
+                          </mat-form-field>
+                        
+                      </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="70px" fxLayoutGap.lt-md="0px">
+                          
+                          <section >
+                           
+                            <input type="checkbox"  (change)="onChangeAprobacion($event)" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                            <mat-label class="label">Tiene Administrador</mat-label>
+                             
+                           
+                        </section>
+                          <mat-form-field appearance="outline">
+                          <mat-label class="label">Estado</mat-label>
+                          <mat-select formControlName="Estado">
 
+                            <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                              {{estado.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+                        </div>
                         <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
                           <mat-form-field fxFlex appearance="outline">

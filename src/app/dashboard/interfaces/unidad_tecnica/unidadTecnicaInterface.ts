@@ -1,6 +1,6 @@
 export interface unidadTecnicaInterface{
 
-  IdDptoTecnico:number;
+  idDptoTecnico:number;
     Nombre : string;
     Sigla: string;
     SecuenciaOT: number;
@@ -12,6 +12,8 @@ export interface unidadTecnicaInterface{
     Respuesta3:string;
     Respuesta4:string;
     Respuesta5:string;
-
+    DiasNotificacion: number;
+    DiasCierreOT: number;
+    SinAdministrador: number;
   //primary key(IdDptoTecnico)
 }

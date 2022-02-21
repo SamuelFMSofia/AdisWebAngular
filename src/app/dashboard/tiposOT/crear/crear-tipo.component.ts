@@ -8,6 +8,7 @@ import { ListarusersService } from '../../services/usuarios/listusers/listaruser
 import { MatCheckboxDefaultOptions, MAT_CHECKBOX_DEFAULT_OPTIONS } from '@angular/material/checkbox';
 import { filter } from 'rxjs';
 import { ThemePalette } from '@angular/material/core';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -57,6 +58,7 @@ export class CrearTipoComponent implements OnInit {
   sending=false;
   hide=true;
   estadoCheck=false;
+  aprobacionCheck=false;
   color: ThemePalette = 'accent';
   disabled = false;
   constructor(
@@ -66,6 +68,7 @@ export class CrearTipoComponent implements OnInit {
     public snackbar: MatSnackBar,
     public unidad: UnidadTecnicaService,
     public usuario: ListarusersService,
+    public notifyService: NotificacionService,
 
   ) {
     this.FormTipo=this.formBuilder.group({
@@ -73,6 +76,7 @@ export class CrearTipoComponent implements OnInit {
       IdDptoTecnico:['', Validators.required],
       IdUsrResponsable:0,
       TieneSubTipo:0,
+      TieneAprobacion:0,
       estado:1,
     })
   }
@@ -96,16 +100,11 @@ export class CrearTipoComponent implements OnInit {
 
       console.log(data);
       //localStorage.setItem('userCode', data.result.userCode);
-      this.snackbar.open('Creado Correctemante ', 'action', {
-        duration: 4000,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }).afterDismissed().subscribe(() => {
+      this.showToasterSuccess()
         //window.location.reload();
 
         this.router.navigateByUrl('/dashboard/tipoOT')
 
-      });
     })
 
   }
@@ -133,16 +132,32 @@ export class CrearTipoComponent implements OnInit {
       this.FormTipo.patchValue({TieneSubTipo:"0"});
     }
   }
-
+  onChangeAprobacion(e) {
+    if (e.target.checked==true) {
+      this.aprobacionCheck=true;
+      this.FormTipo.patchValue({TieneAprobacion:"1"});
+    } else {
+      this.aprobacionCheck=false;
+      this.FormTipo.patchValue({TieneAprobacion:"0"});
+    }
+  }
   cancelar(){
     this.snackbar.open('Cancelado ', 'action', {
       duration: 100,
       horizontalPosition: "start",
       verticalPosition: 'bottom',
-    }).afterDismissed().subscribe(() => {
+    })
       //window.location.reload();
       this.router.navigate(['/dashboard/tipoOT'])
 
-    });
+    
+  }
+
+  showToasterSuccess() {
+    this.notifyService.showSuccess(
+      'Correctamente.."',
+      'TIPO OT CREADO..!'
+     
+    );
   }
 }

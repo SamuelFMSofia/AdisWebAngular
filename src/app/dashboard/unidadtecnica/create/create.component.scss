@@ -104,6 +104,11 @@ mat-card-content{
 input{
   font-family: Arial; font-size: 10pt; 
   }
+  input[type=checkbox] {
+    transform: scale(1.5);
+}
+
+
   mat-select{
     font-family: Arial; font-size: 10pt; 
   }

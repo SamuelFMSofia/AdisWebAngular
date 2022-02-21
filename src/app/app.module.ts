@@ -29,6 +29,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MATERIALModule } from './MATERIAL/material.module';
 import { ModifyService } from './dashboard/services/tipoOT/modify/modify.service';
 import { ModificarSubtipoService } from './dashboard/services/subTipoOT/modificar/modificar-subtipo.service';
+import { ToastrModule } from 'ngx-toastr';
+import { NotificacionService } from './dashboard/services/notificacion/notificacion.service';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { ModificarSubtipoService } from './dashboard/services/subTipoOT/modifica
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    ToastrModule.forRoot(),
 
   ],
   exports:[
@@ -62,7 +66,8 @@ import { ModificarSubtipoService } from './dashboard/services/subTipoOT/modifica
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
     ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService,
   UnidadTecnicaService,
-  ModifyService, ModificarSubtipoService],
+  ModifyService, ModificarSubtipoService,
+  NotificacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

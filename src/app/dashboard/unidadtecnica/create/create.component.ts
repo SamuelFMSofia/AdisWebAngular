@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UnidadTecnicaService } from './../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -13,7 +14,8 @@ interface Food {
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  providers:[NotificacionService]
 })
 export class CreateComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
@@ -28,11 +30,14 @@ export class CreateComponent implements OnInit {
 
   toggle = true;
   status = 'Enable'
-
+  /**************** */
+  aprobacionCheck=false;
+  /****************************** */
   constructor(private formBuilder: FormBuilder,
     private service: UnidadTecnicaService,
     private dialog: MatDialog,
     private router: Router,
+    private notifyService: NotificacionService,
     public snackBar: MatSnackBar) {
       this.FormUnidadTecnica=this.formBuilder.group({
 
@@ -42,6 +47,9 @@ export class CreateComponent implements OnInit {
          PrefijoControlCambios:[''],
          SecuenciaControlCambios:[''],
          Estado:1,
+         DiasNotificacion:[''],
+         DiasCierreOT:[''],
+         SinAdministrador:[''],
          RespuestaOT:[''],
          Respuesta2:[''],
          Respuesta3:[''],
@@ -68,22 +76,43 @@ export class CreateComponent implements OnInit {
        }).afterDismissed().subscribe(() => {
          window.location.reload();
          this.router.navigate(['/unidadtecnica'])
-         console.log('xxxxxxxxxx');
+
        });
 
-     /*   this._snackBar.open('Cannonball!!', 'Splash', {
-         horizontalPosition: "start",
-         verticalPosition: 'bottom',
-       }); */
-
-       //alerta lo que me esta devolviendo el backend
-       //alert("fdfdfdfd");
-       //ruta
 
      }
 
      )
 
    }
+
+   showToasterSuccess() {
+    this.notifyService.showSuccess(
+      'Data shown successfully !!',
+      'codingshiksha.com'
+    );
+  }
+
+  showToasterError() {
+    this.notifyService.showError('Something is wrong', 'codingshiksha.com');
+  }
+
+  showToasterInfo() {
+    this.notifyService.showInfo('This is info', 'codingshiksha.com');
+  }
+
+  showToasterWarning() {
+    this.notifyService.showWarning('This is warning', 'codingshiksha.com');
+  }
+
+  onChangeAprobacion(e) {
+    if (e.target.checked==true) {
+      this.aprobacionCheck=true;
+      this.FormUnidadTecnica.patchValue({SinAdministrador:"1"});
+    } else {
+      this.aprobacionCheck=false;
+      this.FormUnidadTecnica.patchValue({SinAdministrador:"0"});
+    }
+  }
 
 }

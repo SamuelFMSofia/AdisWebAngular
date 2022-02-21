@@ -9,7 +9,7 @@
     <mat-form-field >
       <mat-label class="label">Unidad Tecnica ID</mat-label>
 
-        <input matInput formControlName="idDptoTecnico" readonly onmousedown="return false;">
+        <input matInput formControlName="IdDptoTecnico" readonly onmousedown="return false;">
     </mat-form-field>
 
     <mat-form-field  fxFlex  appearance="outline">
@@ -55,6 +55,21 @@
       </mat-select>
     </mat-form-field>
  </div>
+ <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Dias Notificacion</mat-label>
+    <input matInput placeholder="Secuencia CC" formControlName="diasNotificacion" autocomplete="off">
+  </mat-form-field>
+  <mat-form-field fxFlex appearance="outline">
+    <mat-label class="label">Dias CierreOT</mat-label>
+    <input matInput placeholder="Secuencia CC" formControlName="diasCierreOt" autocomplete="off">
+  </mat-form-field>
+  <section>
+    <input   formControlName="sinAdministrador" type="checkbox"  (change)="onChangeAdministrador($event)" >&nbsp;&nbsp;
+     <mat-label class="label">Tiene Administrador</mat-label>
+   
+</section>
+</div>
  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
   <mat-form-field fxFlex appearance="outline">

@@ -18,6 +18,7 @@ export class UnidadTecnicaService {
   baserUrl: string ='https://localhost:5001/api/admin/unidadTecnica/create';
   _url: string ='https://localhost:5001/api/admin/unidadTecnica/getUsers';
   bass: string='https://localhost:5001/api/admin/unidadTecnica/getTipos';
+  url: string='https://localhost:5001/api/admin/unidadTecnica/get'
   constructor(
     private http: HttpClient,
     private router: Router
@@ -44,6 +45,18 @@ export class UnidadTecnicaService {
    // return this.ELEMENT_DATA.slice();
       //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
       return this.http.get(this._url+ "?idUnidadTecnica="+idUnidadTecnica, {headers:headers} );
+           
+   }
+
+   getUnidadtecnica(idUnidadTecnica: number|any){
+    let auth_token = localStorage.getItem('token_value');
+    const headers =new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': 'Bearer '+auth_token
+    })
+   // return this.ELEMENT_DATA.slice();
+      //lamado de backend le ponemos get dependiendo de como esta nuestro metodo en backend
+      return this.http.get(this.url+ "?idUnidadTecnica="+idUnidadTecnica, {headers:headers} );
            
    }
 

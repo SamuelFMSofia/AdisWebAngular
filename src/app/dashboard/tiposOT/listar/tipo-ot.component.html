@@ -11,7 +11,7 @@
   <div class="container">
     <div class="busqueda" [formGroup]="formControl">
       <div class="izquierda">
-         
+
       <mat-form-field>
         <mat-label>BUSCAR TIPO OT</mat-label>
 
@@ -22,25 +22,25 @@
       </mat-form-field>
 
       &nbsp;
-      <mat-form-field >
+      <mat-form-field style="width: 300px;">
         <mat-label>UNIDAD TECNICA</mat-label>
         <mat-select  formControlName="dptoTecnico_filter" >
-  
+
           <mat-option *ngFor="let dpto of dptoTecnicos" [value]="dpto.idDptoTecnico">
             {{dpto.nombre}}
           </mat-option>
-  
+
         </mat-select><a class="icon"  matSuffix>
           <mat-icon>search</mat-icon>
         </a>
       </mat-form-field>
       <button class="borrar" mat-icon-button  (click)="clear()" matTooltip="LIMPIAR"><mat-icon>delete_sweep</mat-icon></button>
         </div>
-           <div class="derecha">   
+           <div class="derecha">
             <button class="create-ot-button" routerLinkActive="list-item-active" routerLink="../creartipo">
               <div class="button-icon-container">
-                  <mat-icon class="button-icon">group_add</mat-icon> 
-              </div>          
+                  <mat-icon class="button-icon">group_add</mat-icon>
+              </div>
                 <p class="button-title">NUEVO</p>
             </button>
           </div>

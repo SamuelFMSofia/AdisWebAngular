@@ -69,6 +69,8 @@ export class ModificarTipoComponent implements OnInit {
     disabled = false;
 
 
+    aprobacionCheck=true;
+
     foodControl = new FormControl(this.estados[1]);
   constructor(
     private formBuilder: FormBuilder,
@@ -87,6 +89,7 @@ export class ModificarTipoComponent implements OnInit {
           IdDptoTecnico: [''],
           IdUsrResponsable: [''],
           tieneSubTipo:[''],
+          tieneAprobacion:[''],
           estado: [''],
 
           idTipoOT:['']
@@ -111,6 +114,7 @@ this.fromTipo.patchValue(
     IdDptoTecnico: data.data.dptoTecnico.idDptoTecnico,
     IdUsrResponsable:data.data.usuarioResponsable!=null? data.data.usuarioResponsable.idUser:0,
     tieneSubTipo: data.data.tieneSubTipo,
+    tieneAprobacion:data.data.tieneAprobacion,
     estado: data.data.estado,
     });
 
@@ -122,7 +126,19 @@ this.fromTipo.patchValue(
     }
 
     console.log(this.fromTipo)
-    })}
+
+    if(this.fromTipo.value.tieneAprobacion=="1"){
+      this.aprobacionCheck=true;
+
+    }else if (this.fromTipo.value.tieneAprobacion=="0"){
+      this.aprobacionCheck=false;
+    }
+
+   
+    }
+    
+    
+    )}
 
 
   cerrar(){
@@ -175,4 +191,16 @@ this.fromTipo.patchValue(
       this.fromTipo.patchValue({tieneSubTipo:"0"});
     }
   }
+
+  onChangeAdministrador(e) {
+    if (e.target.checked==true) {
+      this.aprobacionCheck=true;
+      this.fromTipo.patchValue({tieneAprobacion:"1"});
+    } else {
+      this.aprobacionCheck=false;
+      this.fromTipo.patchValue({tieneAprobacion:"0"});
+    }
+  }
+ 
+
 }

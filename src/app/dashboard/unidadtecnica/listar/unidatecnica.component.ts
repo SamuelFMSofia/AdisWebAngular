@@ -70,7 +70,7 @@ export class UnidatecnicaComponent implements OnInit {
 
   upgradeUnidadTecnica(unidadTecnica:unidadTecnicaInterface){
     this.dialog.open(TechnicalunitComponent,{
-      data:unidadTecnica
+      data:unidadTecnica.idDptoTecnico
     })
   }
 

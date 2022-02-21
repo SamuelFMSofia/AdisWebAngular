@@ -37,6 +37,7 @@
                           <mat-form-field fxFlex appearance="outline">
                             <mat-label class="label">Usuario</mat-label>
                             <mat-select  formControlName="IdUsrResponsable">
+                              <mat-option value="0" selected>N/A</mat-option>
                               <mat-option *ngFor="let IdUsrResponsable of usuarios" [value]="IdUsrResponsable.idUser">
                                 {{IdUsrResponsable.persona.nombreCompleto}}
                               </mat-option>
@@ -53,7 +54,7 @@
                             <mat-radio-button value="0">NO</mat-radio-button>
                           </mat-radio-group> -->
 
-                          <section class="example-section col-lg-3 col-xl-3">
+                          <section flex>
                             <mat-slide-toggle
                                 class="example-margin"
                                 [color]="color"
@@ -63,8 +64,16 @@
                               <mat-label class="label">Tiene SubTipo</mat-label>
                             </mat-slide-toggle>
                           </section>
+                          <br>
+                          <section>
+                             <input type="checkbox"  (change)="onChangeAprobacion($event)" >&nbsp;&nbsp;
+                              <mat-label class="label">Tiene Aprobacion</mat-label>
+                            
+                         </section>
+
 
                           </div>
+                          <br>
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
                            <mat-form-field  appearance="outline">
                             <mat-label class="label">Estado</mat-label>

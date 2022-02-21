@@ -52,6 +52,11 @@
           (change)="onChangeEstado($event.checked)">
           <mat-label class="label">Tiene SubTipo</mat-label>
       </mat-slide-toggle>
+      <section>
+        <input   formControlName="tieneAprobacion" type="checkbox"  (change)="onChangeAdministrador($event)" >&nbsp;&nbsp;
+         <mat-label class="label">Tiene Administrador</mat-label>
+       
+    </section>
 
     <!-- <mat-form-field fxFlex appearance="outline">
       <mat-label class="label">Estado</mat-label>
