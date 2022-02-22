@@ -56,7 +56,7 @@
                             <mat-form-field  appearance="outline">
                               <mat-label class="label">Estado</mat-label>
                               <mat-select formControlName="estado" [(value)]="selectedFood">
-  
+
                                 <mat-option *ngFor="let estado of estados" [value]="estado.value">
                                   {{estado.viewValue}}
                                 </mat-option>
@@ -65,7 +65,7 @@
                           </div>
 
                           <div class="boton">
-                            <button class="btn1"  type="cancel"  mat-raised-button color="warn" routerLink="../SubtipoOT" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <button class="btn1"  type="cancel"  mat-raised-button color="warn" (clic)="cancelar()"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                               <mat-icon>cancel</mat-icon>Cancelar</button>
                             <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button color="primary" [disabled]="FormSubtipo.invalid" ><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
                             <mat-icon>save</mat-icon>GUARDAR</button>
