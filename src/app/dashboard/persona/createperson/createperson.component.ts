@@ -44,7 +44,7 @@ export class CreatepersonComponent implements OnInit {
 
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
-    {value: 2, viewValue: 'Inactivo'}];
+    {value: 2, viewValue: 'Pasivo'}];
     foodControl = new FormControl(this.estados[1]);
 
 
@@ -136,7 +136,7 @@ status = 'Enable';
       correo: ['',Validators.required],
       locacion: [''],
       sucursal: ['',Validators.required],
-      estado:[''],
+      estado:1,
       aprobador:[''],
       empresa:[''],
       gerencia: [''],
@@ -211,12 +211,10 @@ status = 'Enable';
       }).afterDismissed().subscribe(() => {
         window.location.reload();
         this.router.navigate(['/listperson'])
-        console.log('xxxxxxxxxx');
+        
       });
 
-    }
-
-    )
+    })
   }
 
   iniForm(){

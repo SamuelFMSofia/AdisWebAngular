@@ -2,22 +2,42 @@
   <div class="toolbar">
     <p>
       <mat-toolbar class="example-spacer">
-    <span>USUARIOS</span>
+        <span>USUARIOS</span>
       </mat-toolbar>
     </p>
   </div>
 
   <div class="container">
-    <div  class="buscar">
+   <!--  <div  class="buscar">
 
-  <mat-form-field  >
+      <div class="search">
+        <mat-form-field  >
 
-    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+          <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+          <a class="icon"  matSuffix>
+            <mat-icon>search</mat-icon>
+          </a>
+          
+        </mat-form-field>
+      </div>
 
-  </mat-form-field>
+    </div> -->
 
+     <div class="busqueda">
+        <div class="izquierda">
+          <mat-form-field  >
 
-</div>
+            <input matInput type="text" (keyup)="applyFilter($event)" placeholder="BUSCAR"  #input >
+            <a class="icon"  matSuffix>
+              <mat-icon>search</mat-icon>
+            </a>
+            
+          </mat-form-field>
+          </div>
+           
+          
+    </div>
+
 <div class="tablero">
 
 
@@ -51,9 +71,11 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let element">
-        <a (click) = "upgradeUser(element)" color="primary">
-          <mat-icon color="warn">border_color</mat-icon>
+        <a (click) = "upgradeUser(element)" color="primary" matTooltip="EDITAR">
+
+          <mat-icon color="warn" >border_color</mat-icon>
         </a>
+
       </td>
     </ng-container>
 

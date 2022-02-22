@@ -1,0 +1,98 @@
+<div class="main">
+    <div class="toolbar">
+      <p>
+        <mat-toolbar class="example-spacer">
+      <span>SUBTIPO DE ORDEN DE TRABAJO</span>
+        </mat-toolbar>
+      </p>
+    </div>
+
+   
+      <div class="container">
+        <div class="busqueda" [formGroup]="formControl">
+              <div class="izquierda">
+                 <mat-form-field>
+                    <mat-label>BUSCAR SUBTIPOS OT</mat-label>
+
+                    <input type="text" matInput placeholder="Buscar Tipo" formControlName="nombre" >
+                    <a class="icon"  matSuffix >
+                      <mat-icon>search</mat-icon>
+                    </a>
+                  </mat-form-field>
+
+                  &nbsp;
+                  
+                  <mat-form-field >
+                    <mat-label>UNIDAD TECNICA</mat-label>
+                    <mat-select  formControlName="dptoTecnico_filter" >
+
+                      <mat-option *ngFor="let dpto of dptoTecnicos" [value]="dpto.idDptoTecnico">
+                        {{dpto.nombre}}
+                      </mat-option>
+
+                    </mat-select><a class="icon"  matSuffix>
+                      <mat-icon>search</mat-icon>
+                    </a>
+                  </mat-form-field>
+                  <button class="borrar" mat-icon-button  (click)="clear()" matTooltip="LIMPIAR"><mat-icon>delete_sweep</mat-icon></button>
+                </div>
+                   <div class="derecha">   
+                    <button class="create-ot-button" routerLinkActive="list-item-active" routerLink="../crearsubtipo">
+                      <div class="button-icon-container">
+                          <mat-icon class="button-icon">group_add</mat-icon> 
+                      </div>          
+                        <p class="button-title">NUEVO</p>
+                    </button>
+                  </div>
+                
+          </div>
+        <div class="tablero">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+              <ng-container matColumnDef="idSTipoOT">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.idSTipoOT}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="IdDptoTecnico">
+                <th mat-header-cell *matHeaderCellDef> Unidad tecnica </th>
+                <td mat-cell *matCellDef="let element"> {{element.dptoTecnico.nombre}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef> Tipo OT</th>
+                <td mat-cell *matCellDef="let element"> {{element.tipoOrdeTrabajo.nombre}} </td>
+              </ng-container>
+
+
+
+
+                <ng-container matColumnDef="Acciones">
+                  <th mat-header-cell *matHeaderCellDef>Editar</th>
+                  <td mat-cell *matCellDef="let element">
+                    <a (click) = "upgradeTipo(element)"  color="primary" matTooltip="EDITAR">
+                      <mat-icon color="warn">border_color</mat-icon>
+                    </a>
+                  </td>
+                </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro ""</td><!-- {{input.value}} -->
+              </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="100" [pageSize]="5"></mat-paginator>
+         </div>
+      </div>
+    </div>

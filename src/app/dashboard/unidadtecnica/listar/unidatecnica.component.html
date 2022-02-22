@@ -7,19 +7,43 @@
     </p>
   </div>
     <div class="container">
-        <div  class="buscar">
+      <!--   <div  class="buscar">
 
+          <div class="search">
+            <mat-form-field  >
 
-  <mat-form-field  >
+              <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
+              <a class="icon"  matSuffix>
+                <mat-icon>search</mat-icon>
+              </a>
+            </mat-form-field>
 
-    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
+            <a  class="nuevo" mat-flat-button color="primary"  routerLinkActive="list-item-active" routerLink="../createunidadtecnica"><mat-icon inline=true  class="white-icon">group_add</mat-icon>NUEVO</a>
+          </div>
 
-  </mat-form-field><mat-icon>search</mat-icon>
+          </div> -->
 
-  <a  class="nuevo" mat-flat-button color="primary"  routerLinkActive="list-item-active" routerLink="../createunidadtecnica"><mat-icon inline=true  class="white-icon">group_add</mat-icon>NUEVO</a>
+          <div class="busqueda">
+            <div class="izquierda">
+              <mat-form-field  >
 
-
-</div>
+                <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Buscar"  #input >
+                <a class="icon"  matSuffix>
+                  <mat-icon>search</mat-icon>
+                </a>
+              </mat-form-field>
+    
+              </div>
+                 <div class="derecha">   
+                  <button class="create-ot-button" routerLinkActive="list-item-active" routerLink="../createunidadtecnica">
+                    <div class="button-icon-container">
+                        <mat-icon class="button-icon">group_add</mat-icon> 
+                    </div>          
+                      <p class="button-title">NUEVO</p>
+                  </button>
+                </div>
+              
+        </div>
 
 <div class="tablero">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -52,7 +76,7 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef>Editar</th>
       <td mat-cell *matCellDef="let element">
-        <a (click) = "upgradeUnidadTecnica(element)"  color="primary">
+        <a (click) = "upgradeUnidadTecnica(element)"  color="primary" matTooltip="EDITAR">
           <mat-icon color="warn">border_color</mat-icon>
         </a>
       </td>

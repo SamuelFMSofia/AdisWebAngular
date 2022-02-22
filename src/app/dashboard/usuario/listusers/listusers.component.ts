@@ -16,7 +16,8 @@ import { modifyuserInterface } from '../../interfaces/usuarios/modifyuserInterfa
 @Component({
   selector: 'app-listusers',
   templateUrl: './listusers.component.html',
-  styleUrls: ['./listusers.component.scss']
+  styleUrls: ['./../../style/styles.scss']
+  
 })
 export class ListusersComponent implements OnInit {
   dataSource:any=[];
@@ -66,5 +67,7 @@ export class ListusersComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  
 
 }

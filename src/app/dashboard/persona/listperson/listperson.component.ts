@@ -30,12 +30,12 @@ const ELEMENT_DATA: listInterface[] = [];
 @Component({
   selector: 'app-listperson',
   templateUrl: './listperson.component.html',
-  styleUrls: ['./listperson.component.scss']
+  styleUrls: ['./../../style/styles.scss']
 })
 export class ListpersonComponent implements OnInit {
    dataSource:any=[];
 
-   displayedColumns: string[] = ['numeroDocumento', 'nombreCompleto', 'correo', 'unidadOrganizacional', 'Acciones'];
+   displayedColumns: string[] = ['numeroDocumento', 'nombreCompleto', 'cargo', 'unidadOrganizacional','gerencia', 'Acciones'];
    @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   constructor(
@@ -83,12 +83,6 @@ export class ListpersonComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+ 
 }
-
- /*   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }  */
-
-

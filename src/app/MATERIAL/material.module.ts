@@ -27,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 
@@ -59,7 +61,7 @@ const matModules = [
 
 
    MatDialogModule,
-  
+
    MatExpansionModule,
 
    MatMenuModule,
@@ -68,11 +70,13 @@ const matModules = [
    MatListModule,
    MatSidenavModule,
 
- 
+
    MatProgressSpinnerModule,
 
    MatCheckboxModule,
-   
+   MatSlideToggleModule
+
+
 ];
 @NgModule({
 

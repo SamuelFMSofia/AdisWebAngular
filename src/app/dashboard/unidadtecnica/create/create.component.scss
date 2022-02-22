@@ -90,7 +90,8 @@ mat-card-title{
 
 
   border-radius: 15px;
-
+  background-color: #36e00b;
+color: white;
 }
 
 .btn2:hover{
@@ -100,7 +101,17 @@ mat-card-title{
 mat-card-content{
   margin: 10px;
 }
+input{
+  font-family: Arial; font-size: 10pt; 
+  }
+  input[type=checkbox] {
+    transform: scale(1.5);
+}
 
+
+  mat-select{
+    font-family: Arial; font-size: 10pt; 
+  }
 /* .green {
     background-color: green;
 }

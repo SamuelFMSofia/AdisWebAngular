@@ -10,7 +10,7 @@ export class MpersonServiceService {
 
   // este servicio es para AdminEditPerson o para el EditPerson normal?
   // si es así, donde queda el AdminEditPerson?
-  baseUrl: string = 'https://localhost:5001/api/person/edit/';
+  baseUrl: string = 'https://localhost:5001/api/admin/person/edit/';
   constructor(
     private http: HttpClient
   ) { }
