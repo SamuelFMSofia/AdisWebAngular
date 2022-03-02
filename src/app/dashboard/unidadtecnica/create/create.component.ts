@@ -14,7 +14,7 @@ interface Food {
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
+  styleUrls: ['./../../style/styleCrear.scss'],
   providers:[NotificacionService]
 })
 export class CreateComponent implements OnInit {
@@ -69,15 +69,11 @@ export class CreateComponent implements OnInit {
      this.service.createUnidadTecnica(this.FormUnidadTecnica.value).subscribe((data:any)=>{
        console.log(data);
        //localStorage.setItem('userCode', data.result.userCode);
-       this.snackBar.open('Creado Correctemante ', 'action', {
-         duration: 4000,
-         horizontalPosition: "start",
-         verticalPosition: 'bottom',
-       }).afterDismissed().subscribe(() => {
-         window.location.reload();
-         this.router.navigate(['/unidadtecnica'])
+       this.showToasterSuccess();
+         
+         this.router.navigate(['/dashboard/unidadTecnica'])
 
-       });
+      
 
 
      }
@@ -88,8 +84,8 @@ export class CreateComponent implements OnInit {
 
    showToasterSuccess() {
     this.notifyService.showSuccess(
-      'Data shown successfully !!',
-      'codingshiksha.com'
+      'CORRECTAMENTE.. !!',
+      'UNIDAD TECNICA CREADO'
     );
   }
 

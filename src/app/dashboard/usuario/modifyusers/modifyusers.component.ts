@@ -30,7 +30,7 @@ interface perfilInterface{
 @Component({
   selector: 'app-modifyusers',
   templateUrl: './modifyusers.component.html',
-  styleUrls: ['./modifyusers.component.scss'],
+  styleUrls: ['./../../style/stylesEdit.scss'],
   providers:[UnidadTecnicaService]
 })
 export class ModifyusersComponent implements OnInit {

@@ -21,7 +21,7 @@ interface tipo{
 @Component({
   selector: 'app-crear-subtipo',
   templateUrl: './crear-subtipo.component.html',
-  styleUrls: ['./crear-subtipo.component.scss']
+  styleUrls: ['./../../style/styleCrear.scss']
 })
 export class CrearSubtipoComponent implements OnInit {
   Estado: any[] = ['Activo', 'Pasivo'];
@@ -111,8 +111,6 @@ export class CrearSubtipoComponent implements OnInit {
   }
 
   cancelar(){
-    this.showToasterError();
-    this.router.navigateByUrl('/dashboard/SubtipoOT')
-
+    
   }
 }

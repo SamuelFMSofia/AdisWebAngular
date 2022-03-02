@@ -23,6 +23,7 @@ import { CreatepersonModule } from './persona/createperson/createperson.module';
 import { MATERIALModule } from '../MATERIAL/material.module';
 import { ModificarSubtipoService } from './services/subTipoOT/modificar/modificar-subtipo.service';
 import { ModifyService } from './services/tipoOT/modify/modify.service';
+import { ListService } from './services/Aplicacion/list/list.service';
 
 
 
@@ -46,7 +47,7 @@ import { ModifyService } from './services/tipoOT/modify/modify.service';
     ListpersonServiceService,ListuoService, CpersonServiceService,MusersServiceService, UnidadTecnicaService,
     MunidadtecnicaService,
     ModificarSubtipoService,
-    ModifyService
+    ModifyService, ListService
   ]
 
 })

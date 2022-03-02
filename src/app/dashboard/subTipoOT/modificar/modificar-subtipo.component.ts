@@ -25,7 +25,7 @@ interface tipoInterface{
 @Component({
   selector: 'app-modificar-subtipo',
   templateUrl: './modificar-subtipo.component.html',
-  styleUrls: ['./modificar-subtipo.component.scss'],
+  styleUrls: ['./../../style/stylesEdit.scss'],
   providers:[CreateService, UnidadTecnicaService]
 })
 export class ModificarSubtipoComponent implements OnInit {

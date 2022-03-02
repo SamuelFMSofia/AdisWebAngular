@@ -30,7 +30,7 @@ interface usuario{
 @Component({
   selector: 'app-crear-tipo',
   templateUrl: './crear-tipo.component.html',
-  styleUrls: ['./crear-tipo.component.scss'],
+  styleUrls: ['./../../style/styleCrear.scss'],
   providers: [
     {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}
   ]

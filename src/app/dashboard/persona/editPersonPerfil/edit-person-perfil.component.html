@@ -1,4 +1,93 @@
 
-<div>
- 
-</div>
+
+
+
+    <form [formGroup] = "form"  (ngSubmit)="onSubmit()"  class="add-field" >
+
+
+
+       <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label class="label">Locacion</mat-label>
+          <input type="text" placeholder="Locacion"  formControlName="locacion"  matInput  [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let locacion of locaciones " [value]="locacion">
+              {{ locacion }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label class="label">Sucursal</mat-label>
+
+            <input type="text" placeholder="Sucursal"  matInput formControlName="sucursal" [matAutocomplete]="auto2" >
+            <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal">
+              {{sucursal}}
+            </mat-option>
+          </mat-autocomplete>
+
+        </mat-form-field>
+
+      </div>
+
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+          <!-- empresa -->
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label class="label">Empresa</mat-label>
+            <mat-select  formControlName="empresa">
+              <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
+                {{empresa.nombre}}
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label class="label">Gerencias</mat-label>
+            <mat-select [(ngModel)]="selectedGerencias.id"  formControlName="gerencia">
+
+              <mat-option *ngFor="let gerencia of gerencias" [value]="gerencia.id">
+                {{gerencia.nombre}}
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+
+
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+            <mat-form-field fxFlex appearance="outline">
+              <mat-label class="label">Unidad Organizacional</mat-label>
+
+
+              <mat-select [(ngModel)]="selectedUnidadOrganizacionales.id"  formControlName="unidadOrganizacional">
+                <mat-option *ngFor="let unidadOrganizacional of unidadOrganizacionales" [value]="unidadOrganizacional.id">
+                  {{unidadOrganizacional.nombre}}
+                </mat-option>
+
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="outline">
+              <mat-label class="label">Cargo</mat-label>
+                <mat-select [(ngModel)]="selectedCargos.id" formControlName="cargo">
+                <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
+                  {{cargo.nombre}}
+                </mat-option>
+              </mat-select>
+
+            </mat-form-field>
+
+
+
+      </div>
+      <button mat-icon-button fxShow.lt-sm   type="submit" class="btn btn-primary" >
+      <mat-icon class="mat-18">save</mat-icon></button>
+    </form>
+
+
+
+

@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -74,7 +75,8 @@ const matModules = [
    MatProgressSpinnerModule,
 
    MatCheckboxModule,
-   MatSlideToggleModule
+   MatSlideToggleModule,
+   MatProgressBarModule
 
 
 ];

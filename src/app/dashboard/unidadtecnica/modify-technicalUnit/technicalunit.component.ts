@@ -15,7 +15,7 @@ interface Food {
 @Component({
   selector: 'app-technicalunit',
   templateUrl: './technicalunit.component.html',
-  styleUrls: ['./technicalunit.component.scss']
+  styleUrls: ['./../../style/stylesEdit.scss']
 })
 export class TechnicalunitComponent implements OnInit {
   FormUnidadTecnica:FormGroup;
@@ -40,7 +40,7 @@ export class TechnicalunitComponent implements OnInit {
   ) {
 
     this.FormUnidadTecnica=formBuilder.group({
-      
+
       nombre : [''],
       sigla: [''],
       secuenciaOT: [''],
@@ -56,11 +56,11 @@ export class TechnicalunitComponent implements OnInit {
       respuesta4:[''],
       respuesta5:[''],
       IdDptoTecnico:[''],
-      
+
     }
-    
+
     )
-   
+
   }
 
   ngOnInit(): void {
@@ -83,16 +83,16 @@ export class TechnicalunitComponent implements OnInit {
       respuesta3:data.data.respuesta3,
       respuesta4:data.data.respuesta4,
       respuesta5:data.data.respuesta5,
-      
+
       });
       if(this.FormUnidadTecnica.value.sinAdministrador=="1"){
         this.administradorCheck=true;
-  
+
       }else if (this.FormUnidadTecnica.value.sinAdministrador=="0"){
         this.administradorCheck=false;
       }
     })
-    
+
   }
 
 
@@ -106,11 +106,11 @@ export class TechnicalunitComponent implements OnInit {
     this.service.modifyUnidadTecnica(this._idUnidadTecnica, this.FormUnidadTecnica.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
 
-      
+
       this.showToasterSuccess()
         this.router.navigate(['dashboard/unidadTecnica'])
         //window.location.reload();
-      
+
 
 
     });
@@ -132,7 +132,7 @@ export class TechnicalunitComponent implements OnInit {
     this.notifyService.showSuccess(
       'Correctamente.."',
       'UNIDAD TECNICA MODIFICADO..!'
-     
+
     );
   }
 

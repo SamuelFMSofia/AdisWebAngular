@@ -14,7 +14,7 @@ interface Food {
 }
 
 
-interface aprobador {
+interface aprobadorInterface {
   userCode: string;
   nombre: string
 }
@@ -50,9 +50,8 @@ declare var Jquery:any;
 
 @Component({
   selector: 'app-modifyperson',
-  //selector:'ModifypersonComponent',
   templateUrl: './modifyperson.component.html',
-  styleUrls: ['./modifyperson.component.scss']
+  styleUrls: ['./../../style/stylesEdit.scss']
 })
 export class ModifypersonComponent implements OnInit {
   estados: Food[] = [
@@ -92,9 +91,11 @@ filteredOptions: Observable<string[]>;
 sucursales:any=[];
 selectedSucursal:string;
 //aprobador
+aprobadores:aprobadorInterface[] = [
+  {userCode: '0000000', nombre: 'N/A'},
+];
+selectedAprobadores :aprobadorInterface;
 
-selectedAprobador:string;
-//unidad uo
 unidadOrganizacionales:unidadOrganizacionalInterface[]=[];
 selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
 
@@ -145,6 +146,7 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
    this.selectedGerencias=data.gerencia;
    this.selectedUnidadOrganizacionales=data.unidadOrganizacional;
    this.selectedCargos=data.cargo;
+   this.selectedAprobadores=data.aprobador;
    //this.nombre_Completo=data.nombre_Completo;
    this.form=formBuilder.group({
      //digito los cambios que se van a realizar
@@ -152,7 +154,7 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
      locacion:[data.locacion],
      sucursal:[data.sucursal],
      estado:[data.estado],
-     aprobador:[data.aprobador.userCode],
+     aprobador:[data.aprobador],
      empresa: [data.empresa],
      gerencia:[data.gerencia],
      unidadOrganizacional:[data.unidadOrganizacional],
@@ -180,10 +182,12 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
       let selectedItemGerencia:any;
       let selectedItemUnidadOrganizacional:any;
       let selectedItemCargo:any;
+      let selectedItemAprobador:any;
       selectedItemEmpresa = this.empresas.filter(item => item.id == this.form.value.empresa)[0];
       selectedItemGerencia=this.gerencias.filter(item1=> item1.id== this.form.value.gerencia)[0];
       selectedItemUnidadOrganizacional=this.unidadOrganizacionales.filter(item2=> item2.id== this.form.value.unidadOrganizacional)[0];
       selectedItemCargo=this.cargos.filter(item3=>  item3.id== this.form.value.cargo)[0];
+      selectedItemAprobador=this.aprobadores.filter(item4=>item4.userCode==this.form.value.aprobador)[0];
 
       dataSend=this.form.value;
 
@@ -192,6 +196,7 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
       dataSend.gerencia=selectedItemGerencia;
       dataSend.unidadOrganizacional=selectedItemUnidadOrganizacional;
       dataSend.cargo=selectedItemCargo;
+      dataSend.aprobador=selectedItemAprobador;
      this.service.modifyPerson(this.idPersona, dataSend ).subscribe((data:any)=>{
       this.snackBar.open('Modificado Correctamente ', 'action', {
         duration: 1000,
@@ -199,12 +204,12 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
         verticalPosition: 'bottom',
       }).afterDismissed().subscribe(() => {
 
-        this.router.navigate(['/listusers']);
-      window.location.reload();
+       // this.router.navigate(['/listusers']);
+      //window.location.reload();
       });
      });
     //cerrar
-    this.dialogRef.close();
+    //this.dialogRef.close();
   }
 /*
 
@@ -242,25 +247,4 @@ ngOnInit(): void {
     return this.locaciones.filter(option =>
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
-  /* private _filter2(nombre: string): empresaInterface[] {
-    const filterValue = nombre.toLowerCase();
-    return this.options2.filter(o => o.nombre.toLowerCase().includes(filterValue));
-  } */
-  //aprobador
-aprobadores:aprobador[] = [
-  {userCode: 'sistemas', nombre: 'xxx'},
-  {userCode: 'rrhh', nombre: 'yyyyy'},
-  {userCode: 'comunicacion', nombre: 'zzzzz'},
-];
-
-select(){
-
-}
-/*  displayFn(empresas) {
-
-  return empresas.nombre;
-} */
-
-
-
 }
