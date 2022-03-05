@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { CreateService } from '../../services/Aplicacion/create/create.service';
+import { CreateAService } from '../../services/Aplicacion/create/createA.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
@@ -17,13 +17,6 @@ interface unidadTecnica{
   idDptoTecnico:number; nombre : string
 }
 
-export interface PeriodicElement {
-  name: string;
-
-  weight: number;
-  symbol: string;
-}
-
 
 
 
@@ -34,8 +27,6 @@ export interface PeriodicElement {
 })
 export class CreateComponent implements OnInit {
 
-  displayedColumns: string[] = ['nombre', 'estado', 'action'];
-  dataSource:any=[];
 
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
@@ -62,7 +53,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: CreateService,
+    private service: CreateAService,
     public subAplica: ListService,
     private router:      Router,
     public snackbar: MatSnackBar,
@@ -83,11 +74,7 @@ export class CreateComponent implements OnInit {
       let result=data.data;
       this.unidadTecnicas=result.filter(value => value.estado == 1);
     });
-    this.subAplica.listarSubAplicacion().subscribe((data1:any)=>{
-      console.log(data1)
-      const ELEMENT_DATA: subAplicacionInterface[]=data1.data;
-      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    })
+ 
   }
 
 
@@ -136,7 +123,5 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  update(subAplicacion:subAplicacionInterface){
-
-  }
+ 
 }

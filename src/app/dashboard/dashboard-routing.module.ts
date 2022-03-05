@@ -83,6 +83,10 @@ const routes: Routes = [
       loadChildren:()=> import('./Aplicacion/create/create.module').then(capli=>capli.CreateModule)
     },
     {
+      path:'CrearAplicaciones',
+      loadChildren:()=> import('./Aplicaciones/create/create.module').then(caplic=>caplic.CreateModule)
+    },
+    {
       path:'EditAplicacion',
       loadChildren:()=> import('./Aplicacion/update/update.module').then(mapli=>mapli.UpdateModule)
     },

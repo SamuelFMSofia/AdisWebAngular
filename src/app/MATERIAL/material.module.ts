@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,7 +30,7 @@ import { NgModule } from '@angular/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const matModules = [
@@ -43,7 +43,7 @@ const matModules = [
   MatButtonModule,
   MatIconModule,
   RouterModule,
-
+  MatNativeDateModule,
   MatInputModule,
   MatToolbarModule,
   MatPaginatorModule,
@@ -64,6 +64,7 @@ const matModules = [
    MatDialogModule,
 
    MatExpansionModule,
+   MatDatepickerModule,
 
    MatMenuModule,
 
@@ -76,7 +77,9 @@ const matModules = [
 
    MatCheckboxModule,
    MatSlideToggleModule,
-   MatProgressBarModule
+   MatProgressBarModule,
+
+
 
 
 ];

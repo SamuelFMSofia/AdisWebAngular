@@ -7,7 +7,7 @@ import { aplicacionInterface } from '../../../interfaces/Aplicacion/aplicacionIn
 @Injectable({
   providedIn: 'root'
 })
-export class CreateService {
+export class CreateAService {
   baserUrl: string ='https://localhost:5001/api/admin/aplicacion/create';
 
   constructor(

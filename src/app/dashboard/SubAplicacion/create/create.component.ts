@@ -78,18 +78,18 @@ export class CreateComponent implements OnInit {
 
   }
 
-  submit(){
-
-    this.service.createSubAplicacion(this.FormSubAplicacion.value).subscribe((data:any)=>{
-      console.log(data);
-      //localStorage.setItem('userCode', data.result.userCode);
-      this.showToasterSuccess()
-        //window.location.reload();
-
-        this.router.navigateByUrl('/dashboard/SubAplicacion')
-    })
-
-    }
+        submit(){
+      
+                  this.service.createSubAplicacion(this.FormSubAplicacion.value).subscribe((data:any)=>{
+                    console.log(data);
+                    //localStorage.setItem('userCode', data.result.userCode);
+                    this.showToasterSuccess()
+                      //window.location.reload();
+              
+                      this.router.navigateByUrl('/dashboard/SubAplicacion')
+                  })
+      
+          }
     cancelar(){
       this.snackbar.open('Cancelado ', 'action', {
         duration: 100,
