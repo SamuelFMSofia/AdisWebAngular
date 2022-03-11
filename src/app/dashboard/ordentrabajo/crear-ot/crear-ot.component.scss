@@ -1,0 +1,84 @@
+$border-green-button-color: rgba(33, 136, 33);
+$light-green-bg-btn-color: rgba(153, 204, 153);
+$dark-green-bg-btn-color: rgba(51, 112, 51);
+
+$light-grey-bg-color : rgba(240, 240, 240, 0.54);
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    justify-content: center;
+}
+
+
+.big-text{
+    font: 500 20px/28px Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.flex-box-column-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.inline-flex-container{
+    display: inline-flex;
+    justify-content: center;
+    padding: 3%;
+}
+
+.page-title{   
+    background-color:white;
+}
+
+.toolbar-zone{
+    background-color: $light-grey-bg-color;
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding: 1.5%;
+}
+
+.create-button{
+    color: white;
+    background: 
+        linear-gradient( 
+            $light-green-bg-btn-color 0.1%,
+            $dark-green-bg-btn-color 90%);
+    opacity: 0.83;
+    font-weight: 400;
+}
+.create-button:hover{
+    opacity: 10;
+    transform: scale(1.01);
+}
+
+.fields-zone{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.inputs-left-zone{
+    background-color:white;
+    justify-content: center;
+    padding: 2%;
+}
+
+.inputs-right-zone{
+    background-color: $light-grey-bg-color;
+    padding: 2%;
+}
+
+
+.preloaded-fields-zone{
+    justify-content:flex-start;
+}
+
+.attached-files-zone{
+    background-color: red;
+}
+
+
+
+
+

@@ -16,7 +16,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatRippleModule} from '@angular/material/core';
 
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -72,10 +76,15 @@ const matModules = [
    MatProgressSpinnerModule,
 
    MatCheckboxModule,
+
+   MatSlideToggleModule,
+   MatNativeDateModule,
+   MatDatepickerModule,
+   MatProgressBarModule,
+   MatRippleModule,
    
 ];
 @NgModule({
-
   imports: matModules,
   exports: matModules,
 })

@@ -47,6 +47,10 @@ const routes: Routes = [
       loadChildren:()=> import('./unidadtecnica/create/create.module').then(mt=>mt.CreateModule)
     },
     {
+      path:'ordentrabajo',
+      loadChildren:()=> import('./ordentrabajo/ordentrabajo.module').then(mt=>mt.OrdentrabajoModule)
+    },
+    {
       path:'**',
       redirectTo:'listperson'
     }

@@ -19,6 +19,7 @@ export class LoginComponent  {
     userCode:'',
     password:''
   }
+  showSpinner = false;
 
   constructor(
   public servi: ServicesService,
@@ -37,17 +38,18 @@ export class LoginComponent  {
   }
 
   onLogin(){
-
     if (this.loginData.userCode == '' || this.loginData.password == '') {
       this.OpenSnack(" Por favor, es obligatorio llenar ambos campos ");
       return;
     }
 
+    this.showSpinner = true;
     this.servi.login(this.loginData)
     .pipe(
       catchError( err => {
           console.log(err);
           this.OpenSnack(" Hubo un error al iniciar sesión. Intente nuevamente. ");
+          this.showSpinner = false;
           return of();
       })
     )
@@ -57,7 +59,7 @@ export class LoginComponent  {
       if(result.status==1){
           console.log(result.data.token);
         if(result.data.token!=""){
-
+          console.log(result.data.userResponse);
             localStorage.setItem('userCode', result.data.userResponse.userCode);
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
             localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
@@ -74,6 +76,7 @@ export class LoginComponent  {
       }else{
         this.OpenSnack('Usuario No Valido');
       }
+      this.showSpinner = false;
     })
   }
 

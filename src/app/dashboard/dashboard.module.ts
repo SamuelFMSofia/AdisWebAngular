@@ -32,7 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UnidadTecnicaService } from './services/unidadTecnica/Create/unidad-tecnica.service';
 import { CreatepersonModule } from './persona/createperson/createperson.module';
 import { MATERIALModule } from '../MATERIAL/material.module';
-
+import { OrdentrabajoModule } from './ordentrabajo/ordentrabajo.module';
 
 
 
@@ -43,6 +43,7 @@ import { MATERIALModule } from '../MATERIAL/material.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    OrdentrabajoModule,
     ListpersonModule,
     ShareddashModule,
     ModifypersonModule,

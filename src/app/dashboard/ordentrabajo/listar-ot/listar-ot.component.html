@@ -1,0 +1,208 @@
+<div class="page-container">
+    <mat-toolbar class="page-title">
+      <span>Solicitudes de Trabajo</span>
+    </mat-toolbar>
+<form> 
+    <mat-toolbar class="ot-toolbar" fxLayout="row">         
+        <div class="search-component col-lg-12">
+            <mat-form-field class="search-input big-medium-text" appearance="legacy" >
+                <mat-label>Buscar</mat-label>
+                <input 
+                    matInput 
+                    type="text" 
+                    [(ngModel)]="searchInputText"
+                    [formControl] = "searchFormControl"
+                    (keyup) = "onChangeSearchInputText($event)"
+                    >
+                <button 
+                    [hidden]="!showResetSearchButton" 
+                    matSuffix
+                    mat-icon-button aria-label="Clear" 
+                    (click)="resetSearchParams()">
+                    <mat-icon>close</mat-icon>
+                </button>          
+            </mat-form-field> 
+
+            <button class="my-icon-button" (click)="searchOT()">
+                <mat-icon class="icon-display">search</mat-icon>
+            </button>              
+        </div>      
+        <button 
+            type="submit"
+            class="my-icon-button filter-btn" 
+            [class.my-icon-button-active] = "isFilterActivated"       
+            (click)="showFilters()">
+            <mat-icon class="icon-display">tune</mat-icon>
+        </button>          
+        
+        <div 
+            [hidden]="!isFilterActivated" 
+            class="fast-filters-component small-text">
+            <label class="filters-title">Filtros</label>
+            <mat-radio-group
+                aria-labelledby="getFastFilterChoice()"
+                class="fast-filter-group-radio-btns medium-text"
+                [formControl] = "fastFilterFormControl"
+                [(ngModel)]="fastFilterPicked">
+                <mat-radio-button 
+                    class="fast-filter-radio-btn"
+                    *ngFor="let fastFilter of fastFilters"
+                    (change)="onFastFiltersChange($event)"
+                    [value]="fastFilter.name">
+                        {{fastFilter.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <mat-slide-toggle
+                class="slide-toggle-more-filters"
+                [(ngModel)]="showMoreFilters"
+                [ngModelOptions]="{standalone: true}">
+                Ver filtros personalizados
+            </mat-slide-toggle>
+        </div> 
+
+
+        <div class="especific-filters-component"
+            [hidden]="!showMoreFilters">
+            
+            <mat-form-field 
+                class="small-text"    
+                appearance="legacy">
+                <mat-label>Rango de fechas</mat-label>
+                <mat-date-range-input 
+                    [formGroup]="dateRange" 
+                    [rangePicker]="picker">
+                    <input 
+                        (dateChange)="onDateRangeSelected()"
+                        matStartDate 
+                        formControlName="start" 
+                        placeholder="Inicio">
+                    <input
+                        (dateChange)="onDateRangeSelected()"
+                        matEndDate 
+                        formControlName="end" 
+                        placeholder="Fin">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>              
+                <mat-error *ngIf="dateRange.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="dateRange.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <mat-form-field 
+                class="filter-input-select small-text" 
+                appearance="legacy">
+                <mat-label>Departamento</mat-label>
+                <mat-select
+                    placeholder="Seleccione uno"
+                    aria-label="UnidadTecnica"
+                    (selectionChange)="onUnidadTecnicaFilterSelected()"
+                    [formControl]="uniTecnicaFormControl">
+                    <mat-select-trigger>
+                        {{uniTecnicaFormControl.value ? uniTecnicaFormControl.value.nombre : ''}}
+                    </mat-select-trigger>
+                    <mat-option>-TODOS-</mat-option>
+                    <mat-option *ngFor="let unidad of uniTecnicaList" 
+                        [value]="unidad">
+                        {{unidad.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field 
+                class="filter-input-select small-text"
+                appearance="legacy">
+                <mat-label>Estado de las Solicitudes</mat-label>
+                <mat-select 
+                    (selectionChange)="onStatusFilterSelected()"
+                    [formControl]="statusFormControl" multiple>
+                    <mat-select-trigger>
+                        {{statusFormControl.value?.length >= 1  ? statusFormControl.value[0].name : ''}}
+                        <span 
+                            *ngIf="statusFormControl.value?.length > 1" 
+                            class="filter-additional-selection">
+                            (+{{statusFormControl.value.length - 1}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let status of statusList" 
+                        [value]="status">
+                        {{status.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+
+
+        <!--  END SEARCH BOX-->
+
+        <a
+            routerLinkActive="active" 
+            routerLink="/dashboard/ordentrabajo/crear"
+            type="button"
+            class="create-ot-button">
+            <div class="button-icon-container">
+                <mat-icon class="button-icon">add</mat-icon> 
+            </div>          
+            <p class="button-title small-text">Nueva Solicitud</p>
+        </a>
+    </mat-toolbar>
+</form>
+    
+
+    <mat-toolbar 
+        *ngIf="showNotification"
+        class="panel-notification">
+        <span>Notification Panel</span>
+
+        <button 
+            mat-icon-button
+            (click)="closeNotification()">
+            <mat-icon class="icon-display">close</mat-icon>
+        </button>   
+    </mat-toolbar>
+
+
+    <div class="table-container">
+        <mat-progress-bar 
+            class="loading-bar"
+            *ngIf="!listReady"
+            mode="query">
+        </mat-progress-bar>
+
+        <mat-table 
+            *ngIf="listReady"
+            [dataSource]="userOTList" 
+            class="my-table mat-elevation-z8">
+            <ng-container 
+                *ngFor="let column of columns" 
+                [matColumnDef]="column.columnDef">
+                <mat-header-cell 
+                    class="table-header-cell"
+                    mat-header-cell 
+                    *matHeaderCellDef> 
+                        {{column.header}} 
+                </mat-header-cell>
+                <mat-cell 
+                    class="table-row"
+                    mat-cell 
+                    *matCellDef="let row"> 
+                        {{column.cell(row) ? column.cell(row) : ' - '}} 
+                </mat-cell>
+            </ng-container>
+          
+            <mat-header-row 
+                class="table-header-row"
+                *matHeaderRowDef="displayedColumns">
+            </mat-header-row>
+            <mat-row 
+                class="table-content-row"
+                [class.row-highlighted] = "isHighlightedStatus(row.Estado.id)"
+                matRipple 
+                *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+    </div>
+    
+</div>

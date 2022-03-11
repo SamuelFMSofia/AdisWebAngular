@@ -1,0 +1,29 @@
+{
+    "NroOt" : "12345",
+    "Fecha" : "15/02/2022",
+    "ElaboradorUserId" : "",
+    "correo" : "",
+    "empresa" : "",
+    "estado" : "",
+    "dirigidoA" : "",
+    "prioridad" : "",
+    "cc" : ["aaa@example.com", "aaa@example.com"],
+    "asunto" : "",
+    "detalle" : "",
+    "Departamento" : {
+        "id" : ""
+    },
+    "TipoSolicitud" : {
+        "id" : ""
+    },
+    "Subtipo" : {
+        "id" : ""
+    },
+    "Aplicacion" : {
+        "id" : ""
+    },
+    "Subaplicacion" : {
+        "id" : ""
+    },
+    "Adjuntos" : []
+}

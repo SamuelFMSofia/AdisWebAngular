@@ -1,0 +1,388 @@
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    justify-content: center;
+}
+.page-title{   
+    background-color:rgb(255, 255, 255);
+}
+
+.ot-toolbar{
+    display: grid !important; 
+    grid-template-rows: 60px auto auto; 
+    grid-template-columns: 2.5fr 0.5fr 4fr 1.4fr;
+    height: max-content; 
+    padding: 3%;
+    padding-top: 1%;
+    transition: all 600ms ease;
+    justify-items: stretch;
+}
+
+
+a{
+    color: transparent;
+}
+
+
+input{
+    background: transparent;
+}
+
+.small-label-title{
+    font: 400 18px/32px Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.small-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    font: 400 14px/32px Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.medium-text{
+    font: 400 16px/32px Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.big-medium-text{
+    font: 400 16px/32px Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+
+//_________________________________________________________________________
+$light-grey-bg-color : rgba(220, 220, 220, 0.74);
+$on-hover-grey-bg-color : $light-grey-bg-color;
+
+//---------------------------------------------
+// BEGIN SEARCH COMPONENT
+//---------------------------------------------
+
+.search-component{
+    grid-row: 1;
+    grid-column: 1;
+    align-self: stretch;
+    padding-left: 2%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.search-input{
+    margin-right: 2%;
+    width: max-content;
+    flex: 1 1;
+}
+
+
+.filter-btn{
+    justify-self: center;
+}
+
+.filters-title{
+    margin: 0;
+    justify-self: center;
+    font: 500 20px/28px Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.fast-filters-component{
+    grid-row: 1 / 3;
+    grid-column: 3;
+    align-self: stretch;
+    padding-inline-start: 6%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+
+.fast-filter-group-radio-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font: 400 16px/24px Roboto, "Helvetica Neue", sans-serif;
+    padding-bottom: 2%;
+}
+
+.fast-filter-radio-btn{
+    padding-left: 15%;
+}
+
+.slide-toggle-more-filters{
+    font: 500 16px/28px Roboto, "Helvetica Neue", sans-serif;
+}
+
+.especific-filters-component{
+    grid-row: 3;
+    grid-column: 1 / 5;
+    border-radius: 2%;
+    padding: 2%;
+    background: $light-grey-bg-color;
+    display: flex;
+}
+
+.filter-input-select{
+    width: 100%;
+    margin-inline-start: 5%;
+}
+
+.filter-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+
+
+
+//---------------------------------------------
+// END SEARCH COMPONENT
+//---------------------------------------------
+
+
+
+//------------------
+//begin  icon-button
+//------------------
+
+$light-bg-btn-color: $light-grey-bg-color;
+$dark-bg-btn-color: rgba(135, 135, 135, 0.834);
+
+.my-icon-button{
+    padding: 0;
+    min-width: 0;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 40px;
+    border-radius: 20%;
+
+    border: none;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: bottom;
+    position: relative;
+    transition: all 0.25s ease;
+    background: transparent;
+    margin: 0;
+    overflow: visible;
+    opacity: 0.6;
+}
+.icon-display{
+    transform: scale(1.4);
+    vertical-align: middle;
+}
+.my-icon-button-active{
+    opacity: 10;
+    transform: scale(1.15);
+    background: $light-bg-btn-color;
+    justify-self: end;
+}
+.my-icon-button:hover{
+    opacity: 10;
+    transform: scale(1.15);
+    background: $light-bg-btn-color;
+}
+.my-icon-button:focus{
+    opacity: 10;
+    transform: scale(1.15);
+    background: $light-bg-btn-color;
+} 
+.my-icon-button:active{
+    opacity: 10;
+    transform: scale(1.15);
+    background: $dark-bg-btn-color;
+}
+
+
+//------------------
+//end    icon-button
+//------------------
+
+
+
+//_________________________________________________________________________
+
+
+//---------------------------------------------
+// BEGIN BUTTON
+//---------------------------------------------
+
+$border-button-color: rgb(33, 136, 33);
+$light-bg-btn-color: rgb(153, 204, 153);
+$dark-bg-btn-color: rgb(51, 112, 51);
+
+//TODO:
+// - missing responsive behavior
+
+.create-ot-button{
+    grid-row: 1;
+    grid-column: 4;
+    align-self: start;
+    justify-self: center;
+
+    background: 
+        linear-gradient( 
+            $light-bg-btn-color 0.1%,
+            $dark-bg-btn-color 90%);
+    border-color: $border-button-color;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    margin: 1%;
+    margin-bottom: 1.2%;
+    opacity: 0.83;
+    transition: 0.1s ease;
+    box-shadow: 
+    0.1em 0.2em 0.2em gray;
+}
+.button-icon-container{
+    border-radius: 50%;
+    background-color: white;
+    border-style: double;
+    border-color: $border-button-color;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: baseline;
+    z-index: 100;
+    transform: scale(1.5);
+}
+.button-icon{
+    color: $border-button-color;
+    transform: scale(1.2);
+}
+.button-title{
+    margin-top: revert;
+    margin-bottom: 0%;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
+.create-ot-button:hover{
+    opacity: 10;
+    transform: scale(1.02);
+    box-shadow: 
+    0.1em 0.2em 0.2em rgb(94, 94, 94);
+}
+.create-ot-button:focus{
+    opacity: 10;
+    transform: scale(1.03);
+    box-shadow: 
+    0.1em 0.2em 0.2em rgb(94, 94, 94);
+}
+
+
+//---------------------------------------------
+// END BUTTON
+//---------------------------------------------
+
+
+//_________________________________________________________________________
+
+
+
+
+.panel-notification{
+    background-color: rgb(250, 199, 199);
+    width: 90%;
+    border-style: double;
+    border-radius: 1%;
+    border-color: red;
+    align-self: center;
+    margin: 2%;
+    margin-top: 1%;
+    margin-bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-container{
+    width: 90%;
+    margin: 3%;
+    margin-top: 1%;
+    align-self: center;
+}
+
+.loading-bar{
+    margin-top: 5%;
+}
+
+@mixin mat-table-columns($columns)
+{
+    $items: map-keys($columns);
+    @each $colName in $items {          
+        $width: map-get($columns, $colName);
+        .mat-column-#{$colName} 
+        {
+            flex: 1 1 $width !important;
+            width: $width !important;
+            white-space: unset !important;
+            padding-inline: 1.5%;
+            padding-top: 0.5%;
+            padding-bottom: 0.5%;
+        }  
+    }
+}
+
+@mixin linear-gradient($dark-color, $light-color) {
+    background: 
+        linear-gradient( 
+            $light-color 0.1%,
+            $dark-color 97%);
+}
+
+.my-table{
+    @include mat-table-columns((   
+        OTnumber : 5%, 
+        Asunto: 21.5%, 
+        AsignadoA: 8.5%,
+        Fecha: 10%, 
+        FechaAsignacion: 10%,
+        Departamento: 11%,
+        Tipo: 7%, 
+        Estado: 11% 
+    ));
+}
+
+.mat-column-OTnumber{
+    font-weight: 500;
+}
+
+.table-header-row{
+    @include linear-gradient(
+        rgba(115, 141, 214), 
+        rgba(135, 161, 234, 0.71));
+}
+
+.table-header-cell{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.table-content-row{
+    cursor: pointer;
+}
+
+.table-content-row:hover{
+    background-color: $on-hover-grey-bg-color;
+}
+
+.row-highlighted{
+    background-color: darken($color: #f5f5f5, $amount: 2);
+}

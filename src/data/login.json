@@ -1,0 +1,22 @@
+{
+    "status": "1",
+    "data": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJuYmYiOjE2MzkxNzE1NzgsImV4cCI6MTYzOTI1Nzk3OCwiaWF0IjoxNjM5MTcxNTc4fQ.Q24_t5LCCZbUp0R5L_CkAVXFcyigrzAm4mWROamAkOU",
+      "user": {
+        "idUser": 1,
+        "userCode": "8198090",
+        "nombre_Completo": "ANTELO MANSILLA, LUIS OCTAVIO                                                   ",
+        "correo": null,
+        "tipoUsuario": "ELABORADOR",
+        "idPerfil": 5,
+        "diasExpiracion": 45,
+        "estado": 0,
+        "siglaUO": null,
+        "idDptoTecnico": 0,
+        "empresa": null,
+        "gerencia": null,
+        "locacion": null,
+        "nombreAprobador": null
+      }
+    }
+  }
