@@ -31,6 +31,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+
+
 
 
 const matModules = [
@@ -82,10 +85,14 @@ const matModules = [
 
 
 
+
 ];
 @NgModule({
 
   imports: matModules,
   exports: matModules,
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+  ]
 })
 export class MATERIALModule { }

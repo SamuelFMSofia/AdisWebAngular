@@ -5,7 +5,7 @@ import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ListService } from '../../services/Aplicacion/list/list.service';
+import { ListAService } from '../../services/Aplicacion/list/listA.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -56,7 +56,7 @@ export class UpdateComponent implements OnInit {
     private unidad: UnidadTecnicaService,
     private router:Router,
     public snackBar: MatSnackBar,
-    public aplica: ListService,
+    public aplica: ListAService,
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public  _idSubAplica:number
   ) {

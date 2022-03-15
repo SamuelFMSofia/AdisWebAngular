@@ -1,0 +1,242 @@
+<!-- <mat-progress-bar *ngIf="sending" mode="indeterminate"></mat-progress-bar> -->
+
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>MODIFICAR APLICACIONES</span>
+    </mat-toolbar>
+  </p>
+</div>
+
+<!-- <app-toolbar-title-form titleForm="{{title}}" ></app-toolbar-title-form> -->
+<div>
+  <mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(50%-10px)">
+
+    <div class="content">
+              <mat-card-content>
+                    <form novalidate id="contactForm" [formGroup]="formAplicacion"  >
+                      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                        <mat-form-field >
+                          <mat-label class="label">Aplicacion ID</mat-label>
+                            <input matInput formControlName="idAplica" readonly >
+                        </mat-form-field>
+                      </div>
+                      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                        <mat-form-field fxFlex   appearance="outline" >
+                          <mat-label class="label">Nombre Completo</mat-label>
+                          <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
+                        </mat-form-field >
+                      </div>
+                      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+
+
+                            <mat-form-field fxFlex appearance="outline">
+                              <mat-label class="label">Unidad Tecnica</mat-label>
+                              <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="IdDptoTecnico">
+                                <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
+                                  {{UnidadTecnica.nombre}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <section flex>
+                          <mat-slide-toggle
+                              class="example-margin"
+                              [color]="color"
+                              [checked]="estadoCheck"
+                              [disabled]="disabled"
+                              (change)="onChangeEstado($event.checked)">
+                            <mat-label class="label">Tiene SubAplica</mat-label>
+                          </mat-slide-toggle>
+                        </section>
+
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+
+                          <mat-form-field  appearance="outline"  >
+                          <mat-label class="label">Estado</mat-label>
+                          <mat-select formControlName="estado" [(value)]="selectedFood">
+
+                            <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                              {{estado.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+                      </div>
+                      <span>
+                       <!--  <button mat-icon-button >
+                         <mat-icon type="submit" id="contactForm" (click)="submitForm()">save</mat-icon>
+                       </button> -->
+                      <!--  <button class="btn2" mat-raised-button id="contactForm" (click)="submitForm()" >
+                        <mat-icon  >save</mat-icon>AGREGAR</button> -->
+                     </span>
+                     <!--  <mat-toolbar type="submit" class="flexSpaceBetween">
+
+                        <span>Detalles de las Sub Aplicaciones</span>
+                        <span>
+                          <button><mat-icon class="add-button" type="submit" (click)="addRow()">add_box</mat-icon></button>
+                        </span>
+                      </mat-toolbar>-->
+
+
+
+                      <div class="boton">
+                        <!-- <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()">
+                          <mat-icon>cancel</mat-icon>Cancelar</button> -->
+                        <button class="btn2" id="contactForm" type="submit" (click)="submitForm()" mat-raised-button  >
+                        <mat-icon>save</mat-icon>AGREGAR</button> 
+                        
+
+                      </div>
+
+                    </form>
+                    <mat-toolbar type="submit" class="flexSpaceBetween">
+
+                      <span>Detalles de las Sub Aplicaciones</span>
+                      <span>
+                        <button><mat-icon class="add-button" type="submit" (click)="addRow()">add_box</mat-icon></button>
+                      </span>
+                    </mat-toolbar>
+            </mat-card-content>
+
+
+            <table class="table" >
+              
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Estado </th>
+
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let employee of employeesList; index as i;" >
+                  <tr>
+
+                    <ng-container *ngIf="enableEditIndex != i" >
+                      <td class="tbody-td">
+                        <mat-form-field class="input-row-td" appearance="outline">
+                          <input  matInput value="{{employee.nombre}}" readonly>
+                        </mat-form-field>
+                      </td>
+                      <td  class="tbody-td">
+                        <mat-form-field class="input-row-td" appearance="outline" >
+                        <mat-select [(ngModel)]="employee.estado" >
+
+                          <mat-option *ngFor="let estado of estados" [value]="estado.value" readonly>
+                            {{estado.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      </td>
+
+                      <td *ngIf="enableEditIndex != i" class="tbody-td">
+
+                        <button mat-icon-button type="button"
+
+                          matTooltip="Edit" color="warn" (click)="switchEditMode(i)">
+                          <mat-icon>edit</mat-icon>
+                      </button>
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="enableEditIndex == i">
+                      <td><mat-form-field class="input-row-td" appearance="outline">
+                       
+                        <input  matInput  [(ngModel)]="employee.nombre">
+                      </mat-form-field>
+                        
+                      </td>
+                      <td>
+                        <mat-form-field class="input-row-td" appearance="outline">
+                        <mat-select [(ngModel)]="employee.estado">
+
+                          <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                            {{estado.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                      </td>
+
+                      <td><button class="save" mat-icon-button (click)="save(employee)" matTooltip="Guardar" ><mat-icon>done_all</mat-icon></button>
+
+                      </td>
+                    </ng-container>
+                  </tr>
+                </ng-container>
+
+              </tbody>
+              
+            </table>
+           <!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="100" [pageSize]="5"></mat-paginator> -->
+            <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()">
+              <mat-icon>reply_all</mat-icon>REGRESAR</button>
+          </div>
+
+  </mat-card>
+ 
+</div>
+
+
+<!--
+  <form [formGroup]="userTable">
+                        <table class="table table-border" [ngClass]="{'table-dark': mode}">
+                          <thead class="text-nowrap">
+                            <th>Nombre <span class="ui-column-resizer" dragableColumn> </span></th>
+                            <th>Estado<span class="ui-column-resizer" dragableColumn> </span></th>
+
+                            <th></th>
+                          </thead>
+                          <tbody>
+                            <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
+                              <tr *ngIf="group.get('isEditable')?.value" [formGroupName]="i">
+                                <td>
+                                  <mat-form-field>
+                                    <input matInput type="text" formControlName="Nombre">
+                                  </mat-form-field>
+                                </td>
+
+
+                                <td>
+                                  <mat-form-field>
+                                    <mat-label class="label">Estado</mat-label>
+                                    <mat-select formControlName="estado" >
+
+                                      <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                        {{estado.viewValue}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </td>
+
+                                <td>
+                                  <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+                                  <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+                                </td>
+                              </tr>
+                              <tr *ngIf="!group.get('isEditable')?.value" >
+                                <td>
+                                  {{group.get('Nombre')?.value}}
+                                </td>
+
+
+                                <td>
+                                    {{group.get('estado')?.value}}
+                                </td>
+
+                                <td>
+                                  <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                        <div class="action-container">
+                          <button mat-raised-button type="submit" (click)="addRow()">Add row</button>
+                          <button mat-raised-button [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>
+                        </div>
+                      </form>
+ -->

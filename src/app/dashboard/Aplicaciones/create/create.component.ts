@@ -10,7 +10,7 @@ import { NotificacionService } from '../../services/notificacion/notificacion.se
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 import { CreateService } from '../../services/SubAplicacion/create/create.service';
-import { ListService } from '../../services/Aplicacion/list/list.service';
+import { ListAService } from '../../services/Aplicacion/list/listA.service';
 import { CreateAService } from '../../services/Aplicacion/create/createA.service';
 
 interface unidadTecnica{
@@ -32,6 +32,9 @@ interface aplicacion{
   styleUrls: ['./../../style/styleCrear.scss'],
 })
 export class CreateComponent implements OnInit {
+
+  _idAplica:number;
+  _idDptoTecnico:number;
 
   estados: Food[] = [
     {value: 1, viewValue: 'Activo'},
@@ -81,25 +84,26 @@ export class CreateComponent implements OnInit {
     private service: CreateAService,
     private subAplica: CreateService,
     //public subAplica: ListService,
-    public aplica: ListService,
+    public aplica: ListAService,
     private router:      Router,
     public snackbar: MatSnackBar,
     public unidad: UnidadTecnicaService,
     public notifyService: NotificacionService,
   ) {
     this.FormAplicacion=this.formBuilder.group({
+      idAplica: [''],
       Nombre:['', Validators.required],
       IdDptoTecnico:['', Validators.required],
       TieneSubAplica:0,
       estado:1,
     });
 
-    this.userTable=this.fb.group({
+  /*   this.userTable=this.fb.group({
       Nombre:['', Validators.required],
       IdDptoTecnico:['', Validators.required],
       idAplica:['', Validators.required],
       estado:1,
-    })
+    }) */
    }
 
   ngOnInit(): void {
@@ -120,34 +124,12 @@ export class CreateComponent implements OnInit {
     this.addRow();
   }
 
-
-  submit(){
-
-    this.service.createAplicacion(this.FormAplicacion.value).subscribe((data1:any)=>{
-      console.log(data1);
-      //localStorage.setItem('userCode', data.result.userCode);
-     // this.showToasterSuccess()
-        
-        this.aplicaciones.push(data1.data);
-
-        this.userTable.patchValue({
-          
-          
-          IdDptoTecnico: data1.data.dptoTecnico.idDptoTecnico,
-          idAplica:data1.data.idAplica,
-          
-        })
-        
-        //this.router.navigateByUrl('/dashboard/Aplicacion')
-    })
-
-    }
     submitSubAplica(){
-      
+
       this.subAplica.createSubAplicacion(this.userTable.value).subscribe((data:any)=>{
         console.log(data);
-       
-  
+
+
         /*   this.router.navigateByUrl('/dashboard/SubAplicacion') */
       })
 
@@ -168,40 +150,39 @@ export class CreateComponent implements OnInit {
       duration: 100,
       horizontalPosition: "start",
       verticalPosition: 'bottom',
-      
+
     })
       //window.location.reload();
-     
+
       this.router.navigate(['/dashboard/Aplicacion'])
 
   }
 
-  showToasterSuccess() {
-    this.notifyService.showSuccess(
-      'Correctamente.."',
-      'APLICACION CREADO..!'
 
-    );
-  }
 /***************************************************** */
 ngAfterOnInit() {
   this.control = this.userTable.get('tableRows') as FormArray;
 }
 
-initiateForm(): FormGroup {
-  return this.fb.group({
-    Nombre: ['', Validators.required],
-    IdDptoTecnico: ['', Validators.required],
-    idAplica: ['', Validators.required],
-    estado: 1,
-
-    isEditable: [true]
-  });
-}
-
 addRow() {
-  const control =  this.userTable.get('tableRows') as FormArray;
-  control.push(this.initiateForm());
+
+
+ if(this.FormAplicacion.status=="VALID"){
+   const control =  this.userTable.get('tableRows') as FormArray;
+
+   control.push(
+    this.fb.group({
+     Nombre: ['', Validators.required],
+     IdDptoTecnico:this._idDptoTecnico,
+     idAplica:this._idAplica,
+     estado: 1,
+
+     isEditable: [true]
+   }));
+
+  }
+
+
 }
 
 deleteRow(index: number) {
@@ -213,13 +194,19 @@ editRow(group: AbstractControl) {
   group.get('isEditable')?.setValue(true);
 }
 
-doneRow(group: AbstractControl) {
-  this.subAplica.createSubAplicacion(this.userTable.value).subscribe((data:any)=>{
-    console.log(data);
-   
-    group.get('isEditable')?.setValue(false);
+doneRow(index: number) {
+  const control =  this.userTable.get('tableRows')  as FormArray;
+
+  let sub= control.at(index);
+
+
+  this.subAplica.createSubAplicacion(sub.value).subscribe((data1:any)=>{
+    console.log(data1);
+    //group.get('isEditable')?.setValue(false);
+    this.showToasterSuccessSub();
     /*   this.router.navigateByUrl('/dashboard/SubAplicacion') */
   })
+
 
 }
 
@@ -233,13 +220,42 @@ get getFormControls() {
 }
 
 submitForm() {
-  const control = this.userTable.get('tableRows') as FormArray;
-  this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
-  console.log(this.touchedRows);
+  this.service.createAplicacion(this.FormAplicacion.value).subscribe((data1:any)=>{
+    console.log(data1);
+    //localStorage.setItem('userCode', data.result.userCode);
+   // this.showToasterSuccess()
+   this._idAplica=data1.data.idAplica;
+   this._idDptoTecnico=data1.data.dptoTecnico.idDptoTecnico;
+   console.log(this._idAplica);
+
+   this.showToasterSuccess()
+
+  })
+
 }
 
 toggleTheme() {
   this.mode = !this.mode;
 }
+
+    showToasterSuccess() {
+      this.notifyService.showSuccess(
+        'Correctamente.."',
+        'APLICACION CREADO..!'
+
+      );
+
+    }
+
+    showToasterSuccessSub() {
+      this.notifyService.showSuccess(
+        'Correctamente.."',
+        'SUB APLICACION CREADO..!'
+
+      );
+
+    }
+
+
 
 }

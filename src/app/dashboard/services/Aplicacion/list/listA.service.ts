@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ListService {
+export class ListAService {
 
   baseUrl: string ='https://localhost:5001/api/admin/aplicacion';
   constructor(

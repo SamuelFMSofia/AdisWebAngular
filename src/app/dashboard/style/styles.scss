@@ -8,7 +8,9 @@
     vertical-align: top;
     font-size: 1.25em;
   }
-
+  .readonly-block {
+    pointer-events: none;
+}
   .toolbar{
     
       margin-top: 1px; /* height of header */

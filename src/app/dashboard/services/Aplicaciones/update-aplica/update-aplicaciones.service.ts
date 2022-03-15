@@ -1,12 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { aplicacionInterface } from '../../../interfaces/Aplicacion/aplicacionInterface';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { aplicacionesInterface } from '../../../interfaces/Aplicaciones/aplicacionesInterface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UpdateService {
+export class UpdateAplicacionesService {
 
+  
   baseUrl: string = 'https://localhost:5001/api/admin/aplicacion/edit/';
   _baseUrl: string = 'https://localhost:5001/api/admin/aplicacion/get';
 
@@ -26,7 +27,7 @@ export class UpdateService {
 
    }
 
-  modificarAplicacion(IdAplica:number, aplicacion:aplicacionInterface){
+  modificarAplicacion(IdAplica:number, aplicacion:aplicacionesInterface){
 
     let auth_token = localStorage.getItem('token_value');
     const headers = new HttpHeaders({

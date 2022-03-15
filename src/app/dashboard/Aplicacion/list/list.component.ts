@@ -1,18 +1,26 @@
-import { UpdateComponent } from './../../Aplicacion/update/update.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+/* import { UpdateComponent } from './../../Aplicaciones/update/update.component'; */
+
+import { UpdateComponent } from './../update/update.component';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ListService } from '../../services/Aplicacion/list/list.service';
+import { ListAService } from '../../services/Aplicacion/list/listA.service';
+import { ListService } from '../../services/SubAplicacion/list/list.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { filter } from 'rxjs';
 import { aplicacionInterface } from '../../interfaces/Aplicacion/aplicacionInterface';
 import { MatTableDataSource } from '@angular/material/table';
+import { aplicacionesInterface } from '../../interfaces/Aplicaciones/aplicacionesInterface';
+import { Router } from '@angular/router';
 
 interface unidadTecnica{
   idDptoTecnico:number; nombre : string; sigla:string
 }
-
+interface Food {
+  value: number;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-list',
@@ -23,20 +31,28 @@ export class ListComponent implements OnInit {
 
   dptoTecnicos:unidadTecnica[]=[];
 
-  displayedColumns: string[] = ['idAplica', 'nombre', 'Unidad', 'action'];
+  displayedColumns: string[] = ['idAplica', 'nombre', 'Unidad', 'estado', 'action'];
   dataSource:any=[];
+
+  estados: Food[] = [
+    {value: 1, viewValue: 'Activo'},
+    {value: 2, viewValue: 'Pasivo'}];
+    selectedFood = this.estados[1].value;
 
   readonly formControl: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
 
   constructor(
-    private service: ListService,
+    private service: ListAService,
     private dialog: MatDialog,
     public unidad: UnidadTecnicaService,
+    public listSubAplica : ListService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.formControl=formBuilder.group({
+      idAplica:'',
       nombre: '',
       idTipoOT: '',
       dptoTecnico_filter: '',
@@ -68,7 +84,14 @@ export class ListComponent implements OnInit {
         const c = !filter.dptoTecnico_filter || data.dptoTecnico.idDptoTecnico === filter.dptoTecnico_filter;
         return a && b && c;
       }) as (PeriodicElement, string) => boolean;
-    })
+    });
+
+    this.listSubAplica.listarSubAplicacion().subscribe((data:any)=>{
+
+
+   localStorage.setItem('myArray', JSON.stringify(data))
+
+     });
 
   }
 
@@ -81,12 +104,9 @@ export class ListComponent implements OnInit {
     }
   }
 
-  update(aplicacion:aplicacionInterface){
+  update(){
 
-    this.dialog.open(UpdateComponent,{
-     data:aplicacion.idAplica
-
-   })
+    this.router.navigateByUrl['../EditAplicaciones']    
 
  }
 

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { NotificacionService } from '../../services/notificacion/notificacion.service';
-import { ListService } from '../../services/Aplicacion/list/list.service';
+import { ListAService } from '../../services/Aplicacion/list/listA.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -52,7 +52,7 @@ export class CreateComponent implements OnInit {
     private router:      Router,
     public snackbar: MatSnackBar,
     public unidad: UnidadTecnicaService,
-    public aplica: ListService,
+    public aplica: ListAService,
     public notifyService: NotificacionService,
   ) {
     this.FormSubAplicacion=this.formBuilder.group({

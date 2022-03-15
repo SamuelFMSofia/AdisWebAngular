@@ -1,11 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { UpdateService } from '../../services/Aplicacion/update/update.service';
+import { UpdateAService } from '../../services/Aplicacion/update/updateA.service';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ThemePalette } from '@angular/material/core';
+import { subAplicacionInterface } from '../../interfaces/SubAplicacion/subAplicacionInterface';
+import { UpdateService } from '../../services/SubAplicacion/update/update.service';
 interface unidadTecnica{
   idDptoTecnico:number; nombre : string;
 }
@@ -24,7 +26,7 @@ interface Food {
 export class UpdateComponent implements OnInit {
 
   fromAplicacion:FormGroup;
-  idAplica:number;
+  //idAplica:number;
 
   unidadTecnicas:unidadTecnica[]=[];
 
@@ -41,12 +43,19 @@ export class UpdateComponent implements OnInit {
     color: ThemePalette = 'accent';
     disabled = false;
 
-
+/********************************************* */
+    employees: subAplicacionInterface[]  =[];
+    idSubAplica:number;
+    enableEditIndex = null;
+    isEditing: boolean = false;
+    employeesList: subAplicacionInterface[]  =[
+  ];
   constructor(
     private formBuilder: FormBuilder,
-    private service: UpdateService,
+    private service: UpdateAService,
     private unidad_tecnicas: UnidadTecnicaService,
     private router:Router,
+    private subAplica:UpdateService,
     public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public  _idAplica:number
@@ -56,24 +65,32 @@ export class UpdateComponent implements OnInit {
       IdDptoTecnico: [''],
       tieneSubAplica:[''],
       estado: [''],
+      idAplica:[''],
+    employees:['']
+    });
 
-      idAplica:['']
-    })
   }
 
   ngOnInit(): void {
     this.unidad_tecnicas.listarUnidadTercnica().subscribe((data1:any)=>{
-      console.log(data1);
+     // console.log(data1);
     this.unidadTecnicas=data1.data.filter(value => value.estado == 1);;
     });
     this.service.getAplicacion(this._idAplica).subscribe((data:any)=>{
+     
+     this.employeesList= data.data.subAplica;// aqui carga
+
       this.fromAplicacion.patchValue({
         idAplica:data.data.idAplica,
         nombre:data.data.nombre,
         IdDptoTecnico: data.data.dptoTecnico.idDptoTecnico,
         tieneSubAplica:data.data.tieneSubAplica,
         estado: data.data.estado,
+    //   employees:data.data.subAplica
+ 
       })
+    
+console.log(this.employeesList);
       if(this.fromAplicacion.value.tieneSubAplica=="1"){
         this.estadoCheck=true;
 
@@ -81,6 +98,8 @@ export class UpdateComponent implements OnInit {
         this.estadoCheck=false;
       }
     })
+
+   
   }
 
   cerrar(){
@@ -121,5 +140,25 @@ export class UpdateComponent implements OnInit {
     }
   }
 
+  /****************************************** */
+  switchEditMode(i) {
+    this.isEditing = true;
+    this.enableEditIndex = i;
+  }
+
+  save() {
+    
+
+    this.isEditing = false;
+    this.enableEditIndex = null;
+    
+    
+  }
+
+
+  cancel() {
+    this.isEditing = false;
+    this.enableEditIndex = null;
+  }
 
 }
