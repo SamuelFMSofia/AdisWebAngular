@@ -32,6 +32,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -81,9 +82,7 @@ const matModules = [
    MatCheckboxModule,
    MatSlideToggleModule,
    MatProgressBarModule,
-
-
-
+   MatSortModule,
 
 
 ];

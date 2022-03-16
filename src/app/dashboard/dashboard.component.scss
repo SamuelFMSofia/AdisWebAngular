@@ -15,11 +15,12 @@
   }
   mat-drawer-container {
     height: 100%;
-    margin-bottom: 35px; 
+    
   }
 
   mat-drawer {
     background-color: #00204A;
+    
   //  background-image: radial-gradient(circle at 95.14% 90.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
   }
 
@@ -39,7 +40,7 @@
 
     max-height: auto;
 
-    padding: 40px;
+  margin-bottom: 40px;
 
 
   }

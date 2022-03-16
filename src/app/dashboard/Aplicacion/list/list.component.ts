@@ -13,6 +13,7 @@ import { aplicacionInterface } from '../../interfaces/Aplicacion/aplicacionInter
 import { MatTableDataSource } from '@angular/material/table';
 import { aplicacionesInterface } from '../../interfaces/Aplicaciones/aplicacionesInterface';
 import { Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
 
 interface unidadTecnica{
   idDptoTecnico:number; nombre : string; sigla:string
@@ -41,6 +42,7 @@ export class ListComponent implements OnInit {
 
   readonly formControl: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatSort) sort: MatSort;
 
 
   constructor(
@@ -78,6 +80,7 @@ export class ListComponent implements OnInit {
       const ELEMENT_DATA: aplicacionInterface[]=data.data;
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
       this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
       this.dataSource.filterPredicate = ((data, filter) => {
         const a = !filter.idTipoOT || data.idTipoOT === filter.idTipoOT;
         const b = !filter.nombre || data.nombre.toLowerCase().includes(filter.nombre);

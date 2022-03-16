@@ -13,7 +13,7 @@
 }
   .toolbar{
     
-      margin-top: 1px; /* height of header */
+      
       padding: 0.8px;
       height: 50px;
   }
@@ -25,10 +25,11 @@
 
   }
 
-/* Structure */
+
 table {
   margin-top: 10px;
   width: 100%;
+    overflow: auto;
 }
 
 .buscar{
@@ -66,11 +67,14 @@ table {
   max-height: auto;
 
     padding: 30px;
+    
+  flex-direction: column;
+  min-width: 300px;
 
 }
 .toolbar{
 
-  margin-top: 1px; /* height of header */
+ 
   padding: 0.8px;
   height: 50px;
 }
@@ -174,4 +178,16 @@ $bg-dark-btn-color: rgb(51, 112, 51);
 
 .borrar{
   color: red;
+}
+ 
+.mat-row:nth-child(even){
+  background-color: #FFFFFF;
+}
+
+.mat-row:nth-child(odd){
+  background-color:#EFFBFF;
+}
+
+.encabezado{
+    background-color: lightcoral;
 }
