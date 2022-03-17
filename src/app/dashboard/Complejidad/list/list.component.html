@@ -43,8 +43,8 @@
               </button>
             </div>
       </div>
-    <div class="tablero">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="tablero mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" >
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -76,14 +76,14 @@
           </td>
         </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro </td>
         </tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="100" [pageSize]="5"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" [length]="100" [pageSize]="10"></mat-paginator>
       
     </div>
   </div>
