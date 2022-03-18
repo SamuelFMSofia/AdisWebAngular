@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +28,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -42,7 +47,7 @@ const matModules = [
   MatButtonModule,
   MatIconModule,
   RouterModule,
-
+  MatNativeDateModule,
   MatInputModule,
   MatToolbarModule,
   MatPaginatorModule,
@@ -63,6 +68,7 @@ const matModules = [
    MatDialogModule,
 
    MatExpansionModule,
+   MatDatepickerModule,
 
    MatMenuModule,
 
@@ -74,7 +80,9 @@ const matModules = [
    MatProgressSpinnerModule,
 
    MatCheckboxModule,
-   MatSlideToggleModule
+   MatSlideToggleModule,
+   MatProgressBarModule,
+   MatSortModule,
 
 
 ];
@@ -82,5 +90,8 @@ const matModules = [
 
   imports: matModules,
   exports: matModules,
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+  ]
 })
 export class MATERIALModule { }

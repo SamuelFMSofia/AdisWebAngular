@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { CpersonServiceService } from '../../services/personas/cpersonService/cperson-service.service';
 import { debounceTime, map, Observable, startWith, switchMap } from 'rxjs';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 
 
 interface Food {
@@ -38,7 +39,7 @@ export interface Locaciones {
 @Component({
   selector: 'app-createperson',
   templateUrl: './createperson.component.html',
-  styleUrls: ['./createperson.component.scss']
+  styleUrls: ['./../../style/styleCrear.scss']
 })
 export class CreatepersonComponent implements OnInit {
 
@@ -128,6 +129,7 @@ status = 'Enable';
     private service: CpersonServiceService,
     private router:Router,
     public snackBar: MatSnackBar,
+    public notifyService: NotificacionService,
     public listaruo: ListuoService
     ){
     this.form = this.formBuilder.group({
@@ -204,15 +206,10 @@ status = 'Enable';
     this.service.createPerson(this.form.value).subscribe((data:any)=>{
       console.log(data);
       //localStorage.setItem('userCode', data.result.userCode);
-      this.snackBar.open('Creado Correctemante ', 'action', {
-        duration: 4000,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }).afterDismissed().subscribe(() => {
-        window.location.reload();
-        this.router.navigate(['/listperson'])
+      this.showToasterSuccess();
+        this.router.navigate(['/dashboard/listperson'])
         
-      });
+      
 
     })
   }
@@ -240,5 +237,19 @@ aprobadores:aprobador[] = [
   {userCode: 'rrhh', nombre: 'Recursos Humano'},
   {userCode: 'comunicacion', nombre: 'Comunicacion'},
 ];
+
+
+showToasterSuccess() {
+  this.notifyService.showSuccess(
+    'Correctamente.."',
+    'PERSONA CREADO..!'
+
+  );
+}
+
+showToasterError() {
+  this.notifyService.showError('','CANCELADO..');
+}
+
 
 }

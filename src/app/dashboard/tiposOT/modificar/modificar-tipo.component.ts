@@ -47,7 +47,7 @@ interface usuarioInterface{
 @Component({
   selector: 'app-modificar-tipo',
   templateUrl: './modificar-tipo.component.html',
-  styleUrls: ['./modificar-tipo.component.scss']
+  styleUrls: ['./../../style/stylesEdit.scss']
 
 })
 export class ModificarTipoComponent implements OnInit {
@@ -134,10 +134,10 @@ this.fromTipo.patchValue(
       this.aprobacionCheck=false;
     }
 
-   
+
     }
-    
-    
+
+
     )}
 
 
@@ -201,6 +201,6 @@ this.fromTipo.patchValue(
       this.fromTipo.patchValue({tieneAprobacion:"0"});
     }
   }
- 
+
 
 }

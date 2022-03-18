@@ -8,25 +8,31 @@
     vertical-align: top;
     font-size: 1.25em;
   }
+  .readonly-block {
+    pointer-events: none;
 
+}
   .toolbar{
-    
-      margin-top: 1px; /* height of header */
+
+
       padding: 0.8px;
       height: 50px;
   }
   .example-spacer {
      flex: 1 1 auto;
-    background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+     background-color: #00BBF0;
+   // background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
     color: #ffffff;
-    height: 20px;
-
+    height: 25px;
+    font-size: 25px;
   }
 
-/* Structure */
+
 table {
   margin-top: 10px;
   width: 100%;
+    overflow: auto;
+
 }
 
 .buscar{
@@ -50,7 +56,7 @@ table {
 .container{
 
   padding: 5px;
-      
+
 }
 
 .busqueda{
@@ -65,20 +71,17 @@ table {
 
     padding: 30px;
 
+  flex-direction: column;
+  min-width: 300px;
+
 }
 .toolbar{
 
-  margin-top: 1px; /* height of header */
+
   padding: 0.8px;
   height: 50px;
 }
-.example-spacer {
- flex: 1 1 auto;
-background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
-color: #ffffff;
-height: 20px;
 
-}
 
 .search{
 
@@ -98,8 +101,8 @@ $bg-dark-btn-color: rgb(51, 112, 51);
 // - missing responsive behavior
 
 .create-ot-button{
-    background: 
-        linear-gradient( 
+    background:
+        linear-gradient(
           90deg,
             $bg-light-btn-color 0.1%,
             $bg-dark-btn-color 90%);
@@ -117,13 +120,13 @@ $bg-dark-btn-color: rgb(51, 112, 51);
     margin-bottom: 1.2%;
     opacity: 0.83;
     transition: 0.1s ease;
-    box-shadow: 
+    box-shadow:
     0.1em 0.2em 0.2em gray;
 }
 .derecha   { float: right; }
 .izquierda { float: left;  }
 .button-icon-container{
-  
+
     border-radius: 50%;
     background-color: white;
     border-style: double;
@@ -140,7 +143,7 @@ $bg-dark-btn-color: rgb(51, 112, 51);
 .button-icon{
     color: $border-button-color;
     transform: scale(1.2);
-    
+
 }
 .button-title{
     margin-top: revert;
@@ -153,13 +156,13 @@ $bg-dark-btn-color: rgb(51, 112, 51);
 .create-ot-button:hover{
     opacity: 10;
     transform: scale(1.02);
-    box-shadow: 
+    box-shadow:
     0.1em 0.2em 0.2em rgb(94, 94, 94);
 }
 .create-ot-button:focus{
     opacity: 10;
     transform: scale(1.03);
-    box-shadow: 
+    box-shadow:
     0.1em 0.2em 0.2em rgb(94, 94, 94);
 }
 
@@ -173,3 +176,21 @@ $bg-dark-btn-color: rgb(51, 112, 51);
 .borrar{
   color: red;
 }
+
+.mat-row:nth-child(even){
+  background-color: #EFFBFF;
+}
+
+.mat-row:nth-child(odd){
+  background-color: #FFFFFF;
+}
+
+.encabezado{
+    background-color: #BAE8E8;
+}
+
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+

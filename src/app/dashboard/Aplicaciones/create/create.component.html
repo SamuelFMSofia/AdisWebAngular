@@ -1,0 +1,250 @@
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>CREAR NUEVA APLICACIONES</span>
+    </mat-toolbar>
+  </p>
+</div>
+
+<div>
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(50%-10px)">
+
+      <div class="content">
+                <mat-card-content>
+                      <form novalidate id="contactForm" [formGroup]="FormAplicacion"  >
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                          <mat-form-field fxFlex   appearance="outline" >
+                            <mat-label class="label">Nombre Completo</mat-label>
+                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
+                          </mat-form-field >
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+
+
+                              <mat-form-field fxFlex appearance="outline">
+                                <mat-label class="label">Unidad Tecnica</mat-label>
+                                <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="IdDptoTecnico">
+                                  <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
+                                    {{UnidadTecnica.nombre}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </div>
+                          <section flex>
+                            <mat-slide-toggle
+                                class="example-margin"
+                                [color]="color"
+                                [checked]="estadoCheck"
+                                [disabled]="disabled"
+                                (change)="onChangeEstado($event.checked)">
+                              <mat-label class="label">Tiene SubAplica</mat-label>
+                            </mat-slide-toggle>
+                          </section>
+
+                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+
+                            <mat-form-field  appearance="outline">
+                            <mat-label class="label">Estado</mat-label>
+                            <mat-select formControlName="estado" [(value)]="selectedFood">
+
+                              <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                {{estado.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                        </div>
+                        <span>
+                         <!--  <button mat-icon-button >
+                           <mat-icon type="submit" id="contactForm" (click)="submitForm()">save</mat-icon>
+                         </button> -->
+                         <button class="btn2" mat-raised-button id="contactForm" (click)="submitForm()" >
+                          <mat-icon  >save</mat-icon>AGREGAR</button>
+                       </span>
+                        <mat-toolbar type="submit" class="flexSpaceBetween">
+
+                          <span>Detalles de las Sub Aplicaciones</span>
+                          <span>
+                            <button><mat-icon class="add-button" type="submit" (click)="addRow()">add_box</mat-icon></button>
+                          </span>
+                        </mat-toolbar>
+
+                        <form [formGroup]="userTable">
+
+                          <table class="table table-border" [ngClass]="{'table-dark': mode}">
+                            <thead class="text-nowrap">
+                              <th>Nombre <span class="ui-column-resizer" dragableColumn> </span></th>
+                              <!-- <th>Dpto<span class="ui-column-resizer" dragableColumn> </span></th>
+                              <th>Aplica<span class="ui-column-resizer" dragableColumn> </span></th> -->
+                              <th>Estado<span class="ui-column-resizer" dragableColumn> </span></th>
+                              <th></th>
+                            </thead>
+                            <tbody>
+                              <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
+                                <tr *ngIf="group.get('isEditable')?.value" [formGroupName]="i">
+                                  <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Nombre Completo</mat-label>
+                                      <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
+                                    </mat-form-field >
+                                  </td>
+                                 <!--  <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Unidad Tecnica</mat-label>
+                                      <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="IdDptoTecnico" >
+                                        <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
+                                          {{UnidadTecnica.nombre}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+
+
+                                  </td> -->
+                        <!--           <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Aplicacion</mat-label>
+                                      <mat-select [ngModel]="selectedAplicaciones.idAplica"  formControlName="idAplica">
+                                        <mat-option *ngFor="let aplicacion of aplicaciones" [value]="aplicacion.idAplica">
+                                          {{aplicacion.nombre}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+
+
+                                  </td> -->
+                                  <td>
+                                    <mat-form-field  >
+                                      <mat-label class="label">Estado</mat-label>
+                                      <mat-select formControlName="estado" [(value)]="selectedFood">
+
+                                        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                          {{estado.viewValue}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </td>
+
+                                  <td>
+                                     <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+                                    <mat-icon class="done" (click)="doneRow(i)">done</mat-icon>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="!group.get('isEditable')?.value" >
+                                  <td>
+                                    <mat-form-field>
+                                     <input matInput type="text" value="{{group.get('Nombre')?.value}}" readonly >
+                                    </mat-form-field>
+
+                                    <mat-form-field [hidden]="true">
+                                      <input matInput type="text" value=" {{group.get('IdDptoTecnico')?.value}}" readonly >
+                                     </mat-form-field>
+
+
+                                    <mat-form-field  [hidden]="true">
+                                      <input matInput type="text" value=" {{group.get('idAplica')?.value}}" readonly >
+                                     </mat-form-field>
+
+                                  </td>
+                                  <td>
+                                    <mat-form-field>
+                                      <input matInput type="text" value="{{group.get('estado')?.value}}" readonly >
+                                     </mat-form-field>
+
+                                  </td>
+
+                                  <td>
+                                    <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                  </td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                          </table>
+                        <!--   <div class="action-container">
+                            <button mat-raised-button type="submit" (click)="addRow()">Add row</button>
+                            <button mat-raised-button [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>
+                          </div> -->
+                        </form>
+
+                        <div class="boton">
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <mat-icon>cancel</mat-icon>Cancelar</button>
+                          <!-- <button class="btn2" id="contactForm" type="submit"  mat-raised-button  [disabled]="FormAplicacion.invalid"><
+                          <mat-icon>save</mat-icon>AGREGAR</button> -->
+
+                        </div>
+
+                      </form>
+              </mat-card-content>
+            </div>
+
+    </mat-card>
+
+  </div>
+
+<!--
+  <mat-label class="label">DETALLE DE SUBAPLICACIONES</mat-label>
+                          <button class="add-button"><mat-icon >add_box</mat-icon></button>
+                          <form [formGroup]="userTable" (ngSubmit)="submitSubAplica()" id="btnSubmit1">
+                          <table class="table table-border" [ngClass]="{'table-dark': mode}"  >
+                            <thead class="text-nowrap">
+                              <th>Nombre <span class="ui-column-resizer" dragableColumn> </span></th>
+                              <th>Dpto<span class="ui-column-resizer" dragableColumn> </span></th>
+                              <th>Aplica<span class="ui-column-resizer" dragableColumn> </span></th>
+                              <th>Estado<span class="ui-column-resizer" dragableColumn> </span></th>
+
+                              <ng-container >
+                                <tr >
+                                  <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Nombre Completo</mat-label>
+                                      <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
+                                    </mat-form-field >
+                                  </td>
+                                  <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Unidad Tecnica</mat-label>
+                                      <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="IdDptoTecnico">
+                                        <mat-option *ngFor="let UnidadTecnica of unidadTecnicas" [value]="UnidadTecnica.idDptoTecnico">
+                                          {{UnidadTecnica.nombre}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </td>
+                                  <td>
+                                    <mat-form-field >
+                                      <mat-label class="label">Aplicacion</mat-label>
+                                      <mat-select [ngModel]="selectedAplicaciones.idAplica"  formControlName="idAplica">
+                                        <mat-option *ngFor="let aplicacion of aplicaciones" [value]="aplicacion.idAplica">
+                                          {{aplicacion.nombre}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </td>
+                                  <td>
+                                    <mat-form-field  >
+                                      <mat-label class="label">Estado</mat-label>
+                                      <mat-select formControlName="estado" [(value)]="selectedFood">
+
+                                        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                          {{estado.viewValue}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </td>
+                                  <td>
+                                    <mat-icon class="delete" >delete_forever</mat-icon>
+
+                                     <button mat-icon-button id="btnSubmit1" type="submit">
+                                      <mat-icon>done</mat-icon>
+                                    </button>
+                                  </td>
+                                </tr>
+
+                              </ng-container>
+                            </thead>
+                          </table>
+
+                        </form>
+ -->

@@ -11,6 +11,7 @@ export class CpersonServiceService  {
   //para llamar al enpoint de users register
 baseUrl: string = 'https://localhost:5001/api/admin/person/create';
 
+
   constructor(
     private http: HttpClient,
     private router: Router
@@ -24,5 +25,7 @@ baseUrl: string = 'https://localhost:5001/api/admin/person/create';
     })
     return this.http.post(this.baseUrl, person, {headers:headers});
   }
+
+  
 
 }

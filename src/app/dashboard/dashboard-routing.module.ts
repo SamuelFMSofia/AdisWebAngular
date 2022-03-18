@@ -75,6 +75,62 @@ const routes: Routes = [
       loadChildren:()=> import('./subTipoOT/modificar/modificar-subtipo.module').then(sub=>sub.ModificarSubtipoModule)
     },
     {
+      path:'Aplicacion',
+      loadChildren:()=> import('./Aplicacion/list/list.module').then(apli=>apli.ListModule)
+    },
+    {
+      path:'CrearAplicacion',
+      loadChildren:()=> import('./Aplicacion/create/create.module').then(capli=>capli.CreateModule)
+    },
+    {
+      path:'EditAplicacion',
+      loadChildren:()=> import('./Aplicacion/update/update.module').then(mapli=>mapli.UpdateModule)
+    },
+    {
+      path:'CrearAplicaciones',
+      loadChildren:()=> import('./Aplicaciones/create/create.module').then(caplic=>caplic.CreateModule)
+    },
+    {
+      path:'EditAplicaciones/:idAplica',
+      loadChildren:()=> import('./Aplicaciones/update/update.module').then(maplic=>maplic.UpdateModule)
+    },
+    {
+      path:'SubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/list/list.module').then(sub=>sub.ListModule)
+    },
+    {
+      path:'CrearSubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/create/create.module').then(csub=>csub.CreateModule)
+    },
+    {
+      path:'EditSubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/update/update.module').then(msub=>msub.UpdateModule)
+    },
+    {
+      path:'Prioridad',
+      loadChildren:()=> import('./Prioridad/list/list.module').then(pri=>pri.ListModule)
+    },
+    {
+      path:'CrearPrioridad',
+      loadChildren:()=> import('./Prioridad/create/create.module').then(cpri=>cpri.CreateModule)
+    },
+    {
+      path:'EditPrioridad',
+      loadChildren:()=> import('./Prioridad/update/update.module').then(mpri=>mpri.UpdateModule)
+    },
+    {
+      path:'Complejidad',
+      loadChildren:()=> import('./Complejidad/list/list.module').then(com=>com.ListModule)
+    },
+    {
+      path:'CrearComplejidad',
+      loadChildren:()=> import('./Complejidad/create/create.module').then(ccom=>ccom.CreateModule)
+    },
+    {
+      path:'EditComplejidad',
+      loadChildren:()=> import('./Complejidad/update/update.module').then(mcom=>mcom.UpdateModule)
+    },
+    {
       path:'**',
       redirectTo:'listperson'
     }

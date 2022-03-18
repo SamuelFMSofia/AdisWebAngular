@@ -43,9 +43,9 @@
             </div>
           
     </div>
-    <div class="tablero">
+    <div class="tablero mat-elevation-z8">
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" >
 
           <!-- Position Column -->
           <ng-container matColumnDef="numeroDocumento">
@@ -86,7 +86,7 @@
             </ng-container>
 
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
           <!-- fila que se muestra cuando no hay datos -->

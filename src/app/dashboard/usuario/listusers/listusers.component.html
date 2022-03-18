@@ -38,10 +38,10 @@
           
     </div>
 
-<div class="tablero">
+<div class="tablero mat-elevation-z16">
 
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z16">
+<table mat-table [dataSource]="dataSource" >
 
   <!-- Position Column -->
   <ng-container matColumnDef="userCode">
@@ -80,7 +80,7 @@
     </ng-container>
 
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   <!-- Row shown when there is no matching data. -->

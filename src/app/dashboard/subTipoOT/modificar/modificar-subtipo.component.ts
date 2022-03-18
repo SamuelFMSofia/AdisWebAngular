@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { TipoOTComponent } from '../../tiposOT/listar/tipo-ot.component';
 import { CreateService } from '../../services/tipoOT/create/create.service';
 import { CreateSubtipoService } from '../../services/subTipoOT/create/create-subtipo.service';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -24,7 +25,7 @@ interface tipoInterface{
 @Component({
   selector: 'app-modificar-subtipo',
   templateUrl: './modificar-subtipo.component.html',
-  styleUrls: ['./modificar-subtipo.component.scss'],
+  styleUrls: ['./../../style/stylesEdit.scss'],
   providers:[CreateService, UnidadTecnicaService]
 })
 export class ModificarSubtipoComponent implements OnInit {
@@ -47,6 +48,7 @@ export class ModificarSubtipoComponent implements OnInit {
     public unidad_tecnicas: UnidadTecnicaService,
     public listarSubtipo: CreateSubtipoService,
     private router:Router,
+    public notifyService: NotificacionService,
     public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ModificarSubtipoComponent>,
     @Inject(MAT_DIALOG_DATA) public  _idSTipoOT:number)
@@ -85,7 +87,10 @@ export class ModificarSubtipoComponent implements OnInit {
     })
   }
   cerrar(){
+    this.showToasterError()
     this.dialogRef.close();
+
+
   }
 
   guardar(){
@@ -94,18 +99,10 @@ export class ModificarSubtipoComponent implements OnInit {
     this.service.modificarSubtipo(this._idSTipoOT, this.FormSubtipo.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
 
-      this.snackBar.open('Modificado Correctamente ', 'action', {
-        duration: 2000,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }).afterDismissed().subscribe(() => {
+      this.showToasterWarning();
 
          this.router.navigateByUrl('/dashboard/SubtipoOT');
        // window.location.reload();
-
-      });
-
-
     });
     //cerrar
    this.dialogRef.close();
@@ -126,5 +123,17 @@ export class ModificarSubtipoComponent implements OnInit {
         horizontalPosition: "start",
         verticalPosition: 'bottom',
       })
-}
+  }
+
+  showToasterWarning() {
+    this.notifyService.showWarning(
+      'Correctamente.."',
+      'SUBTIPO OT MODIFICADO..!'
+
+    );
+  }
+  showToasterError() {
+    this.notifyService.showError('','CANCELADO..');
+  }
+
 }
