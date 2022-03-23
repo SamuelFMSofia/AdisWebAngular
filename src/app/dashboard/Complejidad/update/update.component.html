@@ -9,7 +9,7 @@
     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
       <mat-form-field >
         <mat-label class="label">Complejidad ID</mat-label>
-          <input matInput formControlName="idComplejidad" readonly onmousedown="return false;">
+          <input matInput formControlName="idComplejidad" readonly>
       </mat-form-field>
     </div>
     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
@@ -19,7 +19,7 @@
       </mat-form-field >
     </div>
     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-               
+
       <mat-form-field fxFlex appearance="outline">
         <mat-label class="label">Unidad Tecnica</mat-label>
         <mat-select [ngModel]="selectedUnidadTecnica.idDptoTecnico"  formControlName="IdDptoTecnico">
@@ -30,6 +30,11 @@
       </mat-form-field>
   </div>
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-form-field   appearance="outline" >
+      <mat-label class="label">Dias</mat-label>
+      <input matInput placeholder="Dias" formControlName="dias" autocomplete="off" required>
+    </mat-form-field >
     <mat-form-field appearance="outline">
       <mat-label class="label">Estado</mat-label>
       <mat-select formControlName="estado">

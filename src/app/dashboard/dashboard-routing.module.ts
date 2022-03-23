@@ -131,6 +131,18 @@ const routes: Routes = [
       loadChildren:()=> import('./Complejidad/update/update.module').then(mcom=>mcom.UpdateModule)
     },
     {
+      path:'Actividad',
+      loadChildren:()=> import('./Actividad/list/list.module').then(act=>act.ListModule)
+    },
+    {
+      path:'CrearActividad',
+      loadChildren:()=> import('./Actividad/create/create.module').then(cact=>cact.CreateModule)
+    },
+    {
+      path:'EditActividad',
+      loadChildren:()=> import('./Actividad/update/update.module').then(mact=>mact.UpdateModule)
+    },
+    {
       path:'**',
       redirectTo:'listperson'
     }
