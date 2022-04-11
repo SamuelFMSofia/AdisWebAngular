@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UpdateActividadService } from '../../services/Actividad/update/update-actividad.service';
 import { NotificacionService } from '../../services/notificacion/notificacion.service';
+import { ListActividadService } from '../../services/Actividad/list/list-actividad.service';
 
 
 interface unidadTecnica{
@@ -44,11 +45,12 @@ export class UpdateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: UpdateActividadService,
     private unidad_tecnicas: UnidadTecnicaService,
+    public listarService: ListActividadService,
     private router:Router,
     public snackBar: MatSnackBar,
     public notificacion: NotificacionService,
     public dialogRef: MatDialogRef<UpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public  _idComplejidad:number
+    @Inject(MAT_DIALOG_DATA) public  _idActividad:number
   ) {
     this.fromActividad=formBuilder.group({
       nombre : [''],
@@ -64,7 +66,7 @@ export class UpdateComponent implements OnInit {
       console.log(data1);
     this.unidadTecnicas=data1.data.filter(value => value.estado == 1);;
     });
-    this.service.getActividad(this._idComplejidad).subscribe((data:any)=>{
+    this.service.getActividad(this._idActividad).subscribe((data:any)=>{
       this.fromActividad.patchValue({
         idActividad:data.data.idActividad,
         nombre:data.data.nombre,
@@ -72,6 +74,7 @@ export class UpdateComponent implements OnInit {
         estado: data.data.estado,
       })
     })
+
   }
 
   cerrar(){
@@ -80,18 +83,21 @@ export class UpdateComponent implements OnInit {
 
   guardar(){
 
-    this.fromActividad.value._idComplejidad=this._idComplejidad;
-    this.service.modificarActividad(this._idComplejidad, this.fromActividad.value).subscribe((data)=>{
+    this.fromActividad.value._idActividad=this._idActividad;
+    this.service.modificarActividad(this._idActividad, this.fromActividad.value).subscribe((data)=>{
       //direcionaa ala pagina requerida
+     // window.location.reload();
 
-      this.showToasterWarning();
-       
-         
-
-
-
+       this.showToasterWarning();
+       this.cerrar();
     });
 
+  }
+
+  url(){
+    this.listarService.listarActividad().subscribe((data:any)=>{
+
+    });
   }
 
   showToasterWarning() {

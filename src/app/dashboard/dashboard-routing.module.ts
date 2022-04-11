@@ -33,7 +33,7 @@ const routes: Routes = [
     {
       path:'listusers',
       loadChildren:()=> import('./usuario/listusers/listusers.module').then(lu=>lu.ListusersModule)
-    } ,
+    },
     {
       path:'listuo',
       loadChildren:()=> import('./listUO/list-uo.module').then(li=>li.ListUOModule)
@@ -76,15 +76,15 @@ const routes: Routes = [
     },
     {
       path:'Aplicacion',
-      loadChildren:()=> import('./Aplicacion/list/list.module').then(apli=>apli.ListModule)
+      loadChildren:()=> import('./Aplicaciones/list/list.module').then(apli=>apli.ListModule)
     },
     {
       path:'CrearAplicacion',
-      loadChildren:()=> import('./Aplicacion/create/create.module').then(capli=>capli.CreateModule)
+      loadChildren:()=> import('./Aplicaciones/create/create.module').then(capli=>capli.CreateModule)
     },
     {
       path:'EditAplicacion',
-      loadChildren:()=> import('./Aplicacion/update/update.module').then(mapli=>mapli.UpdateModule)
+      loadChildren:()=> import('./Aplicaciones/update/update.module').then(mapli=>mapli.UpdateModule)
     },
     {
       path:'CrearAplicaciones',

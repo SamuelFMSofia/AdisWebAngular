@@ -75,11 +75,12 @@ selectedUnidadTecnica:unidadTecnica={
   }
 
   cancelar(){
-    this.snackbar.open('Cancelado ', 'action', {
+    /* this.snackbar.open('Cancelado ', 'action', {
       duration: 100,
       horizontalPosition: "start",
       verticalPosition: 'bottom',
-    })
+    }) */
+    this.showToasterError();
       //window.location.reload();
       this.router.navigate(['/dashboard/Actividad'])
 
@@ -93,5 +94,11 @@ selectedUnidadTecnica:unidadTecnica={
 
     );
   }
-
+  showToasterError(){
+    this.notifyService.showError(
+      '_____',
+      'Cancelado..!'
+     
+    )
+  }
 }

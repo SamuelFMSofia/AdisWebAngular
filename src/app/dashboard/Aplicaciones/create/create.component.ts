@@ -146,12 +146,7 @@ export class CreateComponent implements OnInit {
   }
 
   cancelar(){
-    this.snackbar.open('Cancelado ', 'action', {
-      duration: 100,
-      horizontalPosition: "start",
-      verticalPosition: 'bottom',
-
-    })
+    this.showToasterError();
       //window.location.reload();
 
       this.router.navigate(['/dashboard/Aplicacion'])
@@ -255,7 +250,13 @@ toggleTheme() {
       );
 
     }
-
+    showToasterError(){
+      this.notifyService.showError(
+        '_____',
+        'Cancelado..!'
+       
+      )
+    }
 
 
 }

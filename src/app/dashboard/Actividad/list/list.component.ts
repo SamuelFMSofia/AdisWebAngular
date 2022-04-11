@@ -3,7 +3,7 @@ import { UpdateComponent } from './../update/update.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 
 import { filter } from 'rxjs';
@@ -44,10 +44,11 @@ export class ListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private service: ListActividadService,
+    public _service: ListActividadService,
     private dialog: MatDialog,
     public unidad: UnidadTecnicaService,
     private formBuilder: FormBuilder,
+
   ) {
     this.formControl=formBuilder.group({
       nombre: '',
@@ -68,7 +69,7 @@ export class ListComponent implements OnInit {
       this.dptoTecnicos=data.data;
       console.log(this.dptoTecnicos)
   });
-  this.service.listarActividad().subscribe((data:any)=>{
+  this._service.listarActividad().subscribe((data:any)=>{
     console.log(data);
     const ELEMENT_DATA: actividadInterface[]=data.data;
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -97,11 +98,12 @@ export class ListComponent implements OnInit {
      data:actividad.idActividad
 
    })
-
  }
+
+
   clear() {
     this.formControl.reset();
-
+    this.ngOnInit();
 
   }
 
