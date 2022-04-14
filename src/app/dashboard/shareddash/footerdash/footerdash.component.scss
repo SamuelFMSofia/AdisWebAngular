@@ -2,19 +2,18 @@
 /*====================
 	Footer
 ====================== */
-.footer-1{
-	position: fixed;
 
-bottom: 0;
+#adis-footer{
 
-width: 100%;
+	// position: fixed;
+	// bottom: 0;
+	align-self: flex-end;
 
-height: 32px;
-
-padding-bottom: 16px;
-
-z-index:2000;
+	height: 32px;
+	padding-bottom: 16px;
+	z-index:2000;
 }
+
 
 /* Main Footer */
 footer .main-footer{padding: 20px 0;	background: #252525; position: fixed;

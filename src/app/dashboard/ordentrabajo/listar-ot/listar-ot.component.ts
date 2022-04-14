@@ -3,15 +3,15 @@ import {FormGroup, FormControl} from '@angular/forms';
 import { UnidadTecnicaSimpleInterface } from '../../interfaces/unidad_tecnica/unidadTecnicaSimpleInterface';
 import { OTtoListInterface } from '../../interfaces/OrdenesTrabajo/OTtoListInterface';
 import {MatTableDataSource} from '@angular/material/table';
-import { setDateFromString, isDateInRange } from 'src/utils/DateHandler';
-import { OT_LIST_DATA, OT_STATUS_LIST_DATA, UNIDAD_TECNICA_DATA } from 'src/data/OT_DATA';
+import { setDateFromString, isDateInRange } from 'src/app/utils/DateHandler';
+import { OT_LIST_DATA, OT_STATUS_LIST_DATA, UNIDAD_TECNICA_LIST_DATA } from 'src/data/OT__TEST_DATA';
 /**
  * 
  * Test DATA
  * 
  */
 
-const uniTecnicaData = UNIDAD_TECNICA_DATA;
+const uniTecnicaData = UNIDAD_TECNICA_LIST_DATA;
 const statusListData = OT_STATUS_LIST_DATA;
 
 

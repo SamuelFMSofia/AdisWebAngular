@@ -1,8 +1,9 @@
-$border-green-button-color: rgba(33, 136, 33);
-$light-green-bg-btn-color: rgba(153, 204, 153);
+$green-button-color: rgba(33, 136, 33, 1);
+$light-green-btn-color: rgba(33, 136, 33, 0.8);
 $dark-green-bg-btn-color: rgba(51, 112, 51);
 
 $light-grey-bg-color : rgba(240, 240, 240, 0.54);
+$btn-grey-bg-color : rgba(240, 240, 240, 1);
 
 .page-container{
     display: flex;
@@ -11,72 +12,348 @@ $light-grey-bg-color : rgba(240, 240, 240, 0.54);
     justify-content: center;
 }
 
-
-.big-text{
-    font: 500 20px/28px Roboto, "Helvetica Neue", sans-serif !important;
-}
-
-.flex-box-column-container{
-    display: flex;
-    flex-direction: column;
-}
-
-.inline-flex-container{
-    display: inline-flex;
-    justify-content: center;
-    padding: 3%;
-}
-
 .page-title{   
     background-color:white;
 }
 
+
+.form-container{
+    display: grid;
+    grid-template-columns: [border] 1fr [field] 5fr [field] 2.5fr [border] 1fr;
+    grid-template-rows: min-content max-content;
+    height: 100%;
+}
+
 .toolbar-zone{
+    grid-row: 1;
+    grid-column: border 1 / border 3;
     background-color: $light-grey-bg-color;
     display: inline-flex;
     justify-content: space-evenly;
     padding: 1.5%;
 }
 
+.left-fields-zone{
+    grid-column: field 1;
+    padding-top: 0.5%;
+    background-color:white;
+}
+
+.right-fields-zone{
+    grid-column: field 2;
+    background-color: $light-grey-bg-color;
+}
+
+.text-centered{
+    text-align: center;
+}
+
+.padding-2{
+    padding: 2%;
+}
+
+.padding-3{
+    padding: 3%;
+}
+
+.small-1-pd-bottom{
+    padding-bottom: 1%;
+}
+
+.small-2-pd-bottom{
+    padding-bottom: 2%;
+}
+
+.pd-top-7{
+    padding-top: 7%;
+}
+
+.pd-top-5{
+    padding-top: 5%;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.rem-margin-12-end{
+    margin-inline-end: 0.5rem;
+}
+
+.rem-margin-12-start{
+    margin-inline-start: 0.5rem;
+}
+
+
+.big-text{
+    font: 500 1.5em Roboto, "Helvetica Neue", sans-serif ;
+}
+
+
+.normal-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    font: 400 14.5px/24px Roboto, "Helvetica Neue", sans-serif ;
+}
+
+.medium-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    font: 400 0.94em Roboto, "Helvetica Neue", sans-serif ;
+}
+
+.small-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    font: 400 0.85em Roboto, "Helvetica Neue", sans-serif ;
+}
+
+.sublabel-text{
+    color: fade-out($color: #000000, $amount: 0.4);
+}
+
+.flex-box-column-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.inline-flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1% 3% 1% 3%;
+    width: 100%;
+}
+
+.inline-flex-container-centered{
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.inline-flex-container-spaced{
+    justify-content: space-between;
+}
+
+
+.flexed-element{
+    flex: 1 1 auto;
+}
+
+
+
+
 .create-button{
     color: white;
     background: 
-        linear-gradient( 
-            $light-green-bg-btn-color 0.1%,
-            $dark-green-bg-btn-color 90%);
+         linear-gradient( 
+             $light-green-btn-color 0.1%,
+             $dark-green-bg-btn-color 90%);
     opacity: 0.83;
     font-weight: 400;
 }
 .create-button:hover{
     opacity: 10;
-    transform: scale(1.01);
+    background: 
+         linear-gradient( 
+             $green-button-color 0.1%,
+             $dark-green-bg-btn-color 90%);
+    transform: scale(1.05);
 }
 
-.fields-zone{
+
+
+//-----------------------------------------------------------------------
+//              LEFT FIELDS ZONE
+//-----------------------------------------------------------------------
+
+
+.grid-zone-fields{
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: flex-start;
+    justify-items: stretch;
+}
+
+
+
+
+.priority-component{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+.grid-2-columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    justify-items: stretch;
+}
+
+.flex-container-row{
+    align-self: normal;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.inputs-left-zone{
-    background-color:white;
     justify-content: center;
-    padding: 2%;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-.inputs-right-zone{
-    background-color: $light-grey-bg-color;
-    padding: 2%;
+.grid-3-columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+    justify-items:self-start;
 }
 
+
+.double-label-optional{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.email-zone-fields{
+    flex: 2 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+//-----------------------------------------------------------------------
+//              RIGHT FIELDS ZONE
+//-----------------------------------------------------------------------
+
+.static-info-grid{
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    justify-items: flex-start;
+}
+
+.static-info-title{
+    justify-self: flex-end;
+    grid-column: 1;
+    font-weight: 500;
+    text-align: end;
+}
+
+.static-info-content{
+    justify-self: flex-start;
+    grid-column: 2;
+    font-weight: 300;
+}
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 
 .preloaded-fields-zone{
     justify-content:flex-start;
 }
 
-.attached-files-zone{
-    background-color: red;
+
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+
+.space-element{
+    flex: 2 1 auto;
 }
+
+
+.attached-files-zone{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    justify-content: center;
+    padding: 4%;
+}
+
+
+.attached-files-list{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.file-card{
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 0.2% 1% 4%;
+    transform: scale(0.85);
+}
+
+.file-card-text-size{
+    font: 400 0.84em Roboto, "Helvetica Neue", sans-serif ;
+}
+
+.file-name{
+    text-align: start;
+}
+
+.pd-top-8px{
+    padding: 8px 0;
+}
+
+.file-card-img{
+    display: flex;
+    justify-content: center;
+}
+
+.file-card-left-side{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.file-info{
+    padding: 2% 2% 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.drop-area{
+    padding: 6%;
+    margin: 5%;
+    border: 0.19em dashed #ddd;
+    border-radius: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+}
+
+.drop-area a{
+    background-color: $btn-grey-bg-color;
+}
+
+.drop-area.active{
+    background-color: #ccdef8ab;
+    color: #000000;
+    border: 0.15em dashed #618ac9;
+}
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 
 
 

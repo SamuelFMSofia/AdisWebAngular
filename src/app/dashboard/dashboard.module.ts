@@ -33,6 +33,7 @@ import { UnidadTecnicaService } from './services/unidadTecnica/Create/unidad-tec
 import { CreatepersonModule } from './persona/createperson/createperson.module';
 import { MATERIALModule } from '../MATERIAL/material.module';
 import { OrdentrabajoModule } from './ordentrabajo/ordentrabajo.module';
+import { DragDropFileDirective } from '../utils/directives/drag-drop-file.directive';
 
 
 
@@ -40,6 +41,7 @@ import { OrdentrabajoModule } from './ordentrabajo/ordentrabajo.module';
   declarations: [
     DashboardComponent
   ],
+
   imports: [
     CommonModule,
     DashboardRoutingModule,

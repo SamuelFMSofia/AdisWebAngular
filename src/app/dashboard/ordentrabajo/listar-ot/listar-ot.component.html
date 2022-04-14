@@ -98,12 +98,12 @@
                     (selectionChange)="onUnidadTecnicaFilterSelected()"
                     [formControl]="uniTecnicaFormControl">
                     <mat-select-trigger>
-                        {{uniTecnicaFormControl.value ? uniTecnicaFormControl.value.nombre : ''}}
+                        {{uniTecnicaFormControl.value ? uniTecnicaFormControl.value.Nombre : ''}}
                     </mat-select-trigger>
                     <mat-option>-TODOS-</mat-option>
                     <mat-option *ngFor="let unidad of uniTecnicaList" 
                         [value]="unidad">
-                        {{unidad.nombre}}
+                        {{unidad.Nombre}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

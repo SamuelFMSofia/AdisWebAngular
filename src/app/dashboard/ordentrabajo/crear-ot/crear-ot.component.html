@@ -1,6 +1,7 @@
 <div class="page-container">
 
-    <form class="page-container">
+    <form 
+        class="form-container normal-text">
         <div class="toolbar-zone">
             <a
                 mat-button
@@ -9,98 +10,179 @@
                 Volver
             </a>
 
-            <span class="big-text">Solicitar una Orden de Trabajo</span>
+            <h1 class="big-text">Solicitar una Orden de Trabajo</h1>
 
             <button
                 class="create-button"
                 mat-raised-button
                 type="submit">
-                Guardar Solicitud
+                Enviar Solicitud
             </button>
         </div>
 
-        <div class="fields-zone">
-            <div class="flex-box-column-container 
-                        inputs-left-zone">
-                <div class="inline-flex-container">
+
+        <div
+            class="padding-3 medium-text pd-top-7
+                left-fields-zone flex-box-column-container">
+
+
+            <div class="grid-2-columns">
+                <!-- Departamento y Prioridad -->
+
+                <div class="flexed-element inline-flex-container">                    
                     <mat-form-field 
-                        class="" 
+                        class="primary-element flexed-element" 
                         appearance="outline">
-                        <mat-label>Departamento</mat-label>
+                        <mat-label>¿A cuál departamento va dirigida?</mat-label>
                         <mat-select
-                            placeholder="Seleccione uno">
+                            placeholder="Seleccione uno"
+                            aria-label="UnidadTecnica"
+                            (selectionChange)="onUnidadTecnicaSelected()"
+                            [formControl]="uniTecnicaFormControl"
+                            required>
                             <mat-select-trigger>
-                                aa
+                                {{uniTecnicaFormControl.value ? uniTecnicaFormControl.value.Nombre : ''}}
                             </mat-select-trigger>
-                            <mat-option>-TODOS-</mat-option>
+                            <mat-option *ngFor="let unidad of uniTecnicaList" 
+                                [value]="unidad">
+                                {{unidad.Nombre}}
+                            </mat-option>
                         </mat-select>
-                    </mat-form-field>
-                    <select name="a12" id="e12">tata</select>
+                    </mat-form-field>           
                 </div>
 
-                <div class="inline-flex-container">
-                    <mat-form-field 
-                        class="" 
-                        appearance="outline">
-                        <mat-label>Departamento</mat-label>
-                        <mat-select
-                            placeholder="Seleccione uno">
-                            <mat-select-trigger>
-                                aa
-                            </mat-select-trigger>
-                            <mat-option>-TODOS-</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                    <mat-form-field 
-                        class="" 
-                        appearance="outline">
-                        <mat-label>Departamento</mat-label>
-                        <mat-select
-                            placeholder="Seleccione uno">
-                            <mat-select-trigger>
-                                aa
-                            </mat-select-trigger>
-                            <mat-option>-TODOS-</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <div class="flexed-element priority-component">
+                    <label class="text-centered small-1-pd-bottom" style="font-weight: 500">¿Cuál es la prioridad de su solicitud? </label>
+                    <mat-hint class="medium-text text-centered small-2-pd-bottom">
+                        {{!showPriorityList() ? 'Seleccione una prioridad:' : 'El dpto no clasifica sus OT por prioridad.'}} 
+                    </mat-hint>
+                    <mat-radio-group
+                        [@priorityFieldsTrigger] = "isPriorityListEmpty() ? 'closed' : 'open' "
+                        aria-labelledby="prioridad-ot-radio-btn"
+                        class="flex-container-row padding-2"
+                        [formControl] = "priorityFormControl"
+                        required>
+                        <mat-radio-button
+                            class="medium-text rem-margin-12-end padding-2"
+                            *ngFor="let priority of priorityList"
+                            [value]="priority">
+                                {{priority.Nombre}}
+                        </mat-radio-button>    
+                    </mat-radio-group>      
                 </div>
+            </div>
+            
+            <div class="grid-zone-fields flexed-element">
 
-                <div class="inline-flex-container">
-                    <mat-form-field 
-                        class="" 
-                        appearance="outline">
-                        <mat-label>Departamento</mat-label>
-                        <mat-select
-                            placeholder="Seleccione uno">
-                            <mat-select-trigger>
-                                aa
-                            </mat-select-trigger>
-                            <mat-option>-TODOS-</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <!-- Tipo de Ot y Subtipos de Ot -->
 
-                    <mat-form-field 
-                        class="" 
-                        appearance="outline">
-                        <mat-label>Departamento</mat-label>
-                        <mat-select
-                            placeholder="Seleccione uno">
-                            <mat-select-trigger>
-                                aa
-                            </mat-select-trigger>
-                            <mat-option>-TODOS-</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-
-                <div class="inline-flex-container">
-                    <p>Dirigido A: </p>
+                <div class="flexed-element inline-flex-container">
                     
                     <mat-form-field 
-                        class="" 
+                        class="primary-element flexed-element" 
                         appearance="outline">
-                        <mat-label>Departamento</mat-label>
+                        <mat-label>¿Qué tipo de trabajo solicita?</mat-label>
+                        <mat-select
+                            placeholder="Seleccione uno"
+                            aria-label="TipoOt"
+                            (selectionChange)="onTipoOtSelected()"
+                            [formControl]="tipoOtFormControl"
+                            required>
+                            <mat-select-trigger>
+                                {{tipoOtFormControl.value ? tipoOtFormControl.value.Nombre : ''}}
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let type of tipoOtListFilteredByDpto" 
+                                [value]="type">
+                                {{type.Nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>  
+
+
+
+                <div class="flexed-element inline-flex-container">
+                    <mat-form-field
+                        @subElementsTrigger
+                        *ngIf="!isSubtiposOtListEmpty()" 
+                        class="secondary-element flexed-element" 
+                        appearance="outline">
+                        <mat-label>Subtipo de OT</mat-label>
+                        <mat-select
+                            placeholder="Seleccione uno"
+                            aria-label="SubtipoOt"
+                            [formControl]="subtipoOtFormControl"
+                            required>
+                            <mat-select-trigger>
+                                {{subtipoOtFormControl.value ? subtipoOtFormControl.value.Nombre : ''}}
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let subtype of subtipoOtList" 
+                                [value]="subtype">
+                                {{subtype.Nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>  
+                    
+
+
+                <!-- Aplicacion y SubAplicacion -->
+                <div class="flexed-element inline-flex-container">
+                    <mat-form-field 
+                        class="primary-element flexed-element" 
+                        appearance="outline">
+                        <mat-label>¿En cuál aplicación?</mat-label>
+                        <mat-select
+                            placeholder="Seleccione una"
+                            aria-label="AplicacionOt"
+                            (selectionChange)="onAplicacionOtSelected()"
+                            [formControl]="aplicacionOtFormControl"
+                            required>
+                            <mat-select-trigger>
+                                {{aplicacionOtFormControl.value ? aplicacionOtFormControl.value.Nombre : ''}}
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let aplicacion of aplicacionOtListFilteredByDpto" 
+                                [value]="aplicacion">
+                                {{aplicacion.Nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                    
+
+                <div class="flexed-element inline-flex-container">
+                    <mat-form-field 
+                        @subElementsTrigger
+                        *ngIf="!isSubAplicacionesOtListEmpty()" 
+                        class="secondary-element flexed-element"  
+                        appearance="outline">
+                        <mat-label>Sub Aplicacion</mat-label>
+                        <mat-select
+                            placeholder="Seleccione una"
+                            aria-label="SubAplicacionOt"
+                            [formControl]="subAplicacionOtFormControl"
+                            required>
+                            <mat-select-trigger>
+                                {{subAplicacionOtFormControl.value ? subAplicacionOtFormControl.value.Nombre : ''}}
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let subAplicacion of subAplicacionOtList" 
+                                [value]="subAplicacion">
+                                {{subAplicacion.Nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                    
+
+
+                <!-- Dirigido A -->               
+                    
+                <div class="flexed-element inline-flex-container">
+                                
+                    <mat-form-field 
+                        class="primary-element flexed-element"
+                        appearance="outline">
+                        <mat-label>¿Quién le gustaría que lo resuelva?</mat-label>
                         <mat-select
                             placeholder="Seleccione uno">
                             <mat-select-trigger>
@@ -109,45 +191,131 @@
                             <mat-option>-TODOS-</mat-option>
                         </mat-select>
                     </mat-form-field>
-
                 </div>
-
-                <div class="inline-flex-container">
-                    <input  
-                        matInput 
-                        appearance="outline" 
-                        placeholder="CC">
-                </div>
-
-                <div class="inline-flex-container">
-                    <input 
-                        matInput 
-                        appearance="outline" 
-                        placeholder="Asunto">
-                </div>
-
-
-                <textarea></textarea>
-
             </div>
 
-            <div class="flex-box-column-container
-                        inputs-right-zone">
-                <div class="flex-box-column-container
-                            preloaded-fields-zone">
-                    <p>info 1</p>
-                    <p>info 1</p>
-                    <p>info 1</p>
-                    <p>info 1</p>
-                    <p>info 1</p>
+
+
+            <div class="email-zone-fields">
+
+                <div class="inline-flex-container">
+                    <mat-form-field 
+                        class="flexed-element"
+                        appearance="outline">
+                        <mat-label>CC</mat-label>
+                        <input  matInput 
+                                placeholder="pat@example.com; gym@example.com;" 
+                                [formControl]="carbonCopyFormControl" >
+                        <mat-hint>
+                            (Opcional)  -  
+                            Lista de correos adjuntos.  
+                            Ej: pat@example.com; gim@example.com;
+                        </mat-hint>
+                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
                 </div>
 
-                <div class="flex-box-column-container
-                            attached-files-zone">
-                    <p>Archivos Adjuntos</p>
-                    <textarea></textarea>
+                <div class="inline-flex-container">
+                    <mat-form-field 
+                        class="flexed-element"
+                        appearance="outline">
+                        <mat-label>Asunto</mat-label>
+                        <input  matInput 
+                                placeholder="Asunto" 
+                                [formControl]="asuntoFormControl" 
+                                required>
+                    </mat-form-field>
+                </div>
+
+                <div class="inline-flex-container">
+                    <mat-form-field 
+                        class="flexed-element"
+                        appearance="outline">
+                        <mat-label>Detalle</mat-label>
+                        <textarea matInput rows="10"></textarea>
+                        <mat-hint>Expláyese acerca del inconveniente / solicitud / consulta que tiene
+                            de manera explícita y detallada.
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="right-fields-zone pd-top-7 flexed-element
+                    padding-3 flex-box-column-container">
+            
+            <div class="flex-box-column-container
+                        preloaded-fields-zone medium-text">
+
+                <div 
+                    *ngFor="let field of staticInfoFields"
+                    class="grid-2-columns static-info-grid">
+                    <div class="static-info-title padding-2">
+                        <p>{{field.Name}}</p>
+                    </div>
+                    <div class="static-info-content padding-2 rem-margin-12-start">
+                        <p>{{field.Value}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex-box-column-container
+                        attached-files-zone flexed-element">
+
+                <mat-divider></mat-divider>
+                <h2 class="pd-top-5">Archivos Adjuntos</h2>
+
+                <div 
+                    *ngFor="let file of attachedFiles" 
+                    id="preview" 
+                    class="attached-files-list">
+
+                    <mat-card 
+                        class="file-card flexed-element">
+                                        
+                        <mat-card-content 
+                            class="no-margin file-card-left-side pd-top-8px flexed-element">
+                            <div class="file-card-img">
+                                <button type="button" mat-mini-fab color="primary">
+                                    <mat-icon>attach_file</mat-icon>
+                                </button>
+                            </div>
+                            <div class="file-info">
+                                <p class="no-margin file-name">{{file.name}}</p>
+                                <span class="small-text sublabel-text">{{calculateFileSize(file.size)}}</span>
+                            </div>
+                            
+                        </mat-card-content>
+                        
+                        <div class="file-card-img pd-top-8px">
+                            <button type="button" mat-icon-button (click)="onRemoveAttachedFile(file)">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+                    </mat-card>
+
+                </div>
+
+                <div 
+                    appDragDropFile 
+                    (fileDropped)="onFileDropped($event)"
+                    class="drop-area flexed-element">
+                    
+                    <h3 class="no-margin text-centered">Suelta tus archivos aquí</h3>
+                    <span>o</span>
+                    <a mat-button type="button" (click)="onInputFileSelected()">Selecciona tus archivos</a>
+                    <input 
+                        type="file" 
+                        name="" 
+                        #inputFile 
+                        (change)="onUploadFile($any($event).target.files)" 
+                        hidden multiple>
                 </div>
             </div>
         </div>
+
     </form>
 </div>

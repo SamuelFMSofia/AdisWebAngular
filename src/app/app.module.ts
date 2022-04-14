@@ -27,11 +27,12 @@ import { ListpersonServiceService } from './dashboard/services/personas/listpers
 import { ListarusersService } from './dashboard/services/usuarios/listusers/listarusers.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MATERIALModule } from './MATERIAL/material.module';
+import { DragDropFileDirective } from './utils/directives/drag-drop-file.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     CommonModule,

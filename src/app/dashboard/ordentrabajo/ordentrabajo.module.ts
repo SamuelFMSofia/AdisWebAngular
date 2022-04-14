@@ -7,13 +7,15 @@ import { ListarOTComponent } from './listar-ot/listar-ot.component';
 import { CrearOTComponent } from './crear-ot/crear-ot.component';
 import { DetalleOTComponent } from './detalle-ot/detalle-ot.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DragDropFileDirective } from 'src/app/utils/directives/drag-drop-file.directive';
 
 
 @NgModule({
   declarations: [
     ListarOTComponent,
     CrearOTComponent,
-    DetalleOTComponent
+    DetalleOTComponent,
+    DragDropFileDirective
   ],
   imports: [
     CommonModule,
