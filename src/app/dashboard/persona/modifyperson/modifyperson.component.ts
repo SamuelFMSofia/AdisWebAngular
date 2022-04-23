@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MusersServiceService } from '../../services/usuarios/musersService/musers-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 interface Food {
   value: number;
   viewValue: string;
@@ -109,6 +110,7 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
     private router: Router,
     public listaruo: ListuoService,
     public snackBar: MatSnackBar,
+    public notificacion: NotificacionService,
     public dialogRef: MatDialogRef <ModifypersonComponent>,
     //defino los datos que estos recibiendo
     @Inject(MAT_DIALOG_DATA) public data:{
@@ -198,29 +200,12 @@ selectedUnidadOrganizacionales:unidadOrganizacionalInterface;
       dataSend.cargo=selectedItemCargo;
       dataSend.aprobador=selectedItemAprobador;
      this.service.modifyPerson(this.idPersona, dataSend ).subscribe((data:any)=>{
-      this.snackBar.open('Modificado Correctamente ', 'action', {
-        duration: 1000,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }).afterDismissed().subscribe(() => {
-
-       // this.router.navigate(['/listusers']);
-      //window.location.reload();
-      });
+     this.showToasterWarning();
      });
     //cerrar
-    //this.dialogRef.close();
+   // this.dialogRef.close();
   }
-/*
 
-  onSubmit() {
-
-    this.service.modifyUsers(this.form.value).subscribe((data:any)=>{
-      console.log(data);
-      this.router.navigate(['dashboard'])
-    })
-    console.log(this.form.value);
-} */
 ngOnInit(): void {
   this.listaruo.getlistUo().subscribe((data:any)=>{
     console.log(data);
@@ -237,9 +222,6 @@ ngOnInit(): void {
       map(val => this.filter(val))
     );
 
-
-
-
   },)
 
   }
@@ -247,4 +229,14 @@ ngOnInit(): void {
     return this.locaciones.filter(option =>
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
+
+  showToasterWarning() {
+    this.notificacion.showWarning(
+      'Correctamente.."',
+      'MODIFICADO CORRECTAMENTE..!'
+
+    );
+
+  }
+
 }

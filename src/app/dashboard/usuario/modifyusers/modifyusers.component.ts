@@ -8,6 +8,7 @@ import { MusersServiceService } from '../../services/usuarios/musersService/muse
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UnidadTecnicaService } from '../../services/unidadTecnica/Create/unidad-tecnica.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { NotificacionService } from '../../services/notificacion/notificacion.service';
 
 interface Food {
   value: number;
@@ -79,6 +80,7 @@ export class ModifyusersComponent implements OnInit {
     private router: Router,
     public snackBar: MatSnackBar,
     public unidad_tecnicas: UnidadTecnicaService,
+    public notificacion: NotificacionService,
     public dialogRef: MatDialogRef <ModifyusersComponent>,
     @Inject(MAT_DIALOG_DATA) public data:{
   	    abreviatura		:string,
@@ -131,18 +133,10 @@ export class ModifyusersComponent implements OnInit {
      this.service.modifyUsers(this.idUser, dataSend).subscribe((data:any)=>{
       //direcionaa ala pagina requerida
 
-      this.snackBar.open('Modificado Correctamente ', 'action', {
-        duration: 1000,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      }).afterDismissed().subscribe(() => {
-        window.location.reload();
-        this.router.navigate(['/dashboard/listusers']);
+    this.showToasterWarning();
 
-      });
-
-     });
-    //cerrar
+     })
+     this.cerrar();
 
   }
 
@@ -153,5 +147,14 @@ export class ModifyusersComponent implements OnInit {
          this.unidadTecnicas=data.data;
         }
         );
+      }
+
+      showToasterWarning() {
+        this.notificacion.showWarning(
+          'Correctamente.."',
+          'USUARIO MODIFICADO..!'
+    
+        );
+    
       }
 }

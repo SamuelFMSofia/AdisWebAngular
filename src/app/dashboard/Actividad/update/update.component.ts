@@ -89,9 +89,9 @@ export class UpdateComponent implements OnInit {
      // window.location.reload();
 
        this.showToasterWarning();
-       this.cerrar();
+       
     });
-
+    this.dialogRef.close();
   }
 
   url(){

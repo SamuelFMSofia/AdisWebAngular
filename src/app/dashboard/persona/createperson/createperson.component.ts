@@ -225,12 +225,19 @@ status = 'Enable';
     this.toggle = !this.toggle;
 
 }
-/////cargo
 
-/* cargos: Cargo[] = [
+cancelar(){
+  /* this.snackbar.open('Cancelado ', 'action', {
+    duration: 100,
+    horizontalPosition: "start",
+    verticalPosition: 'bottom',
+  }) */
+  this.showToasterError();
+    //window.location.reload();
+    this.router.navigate(['/dashboard/listperson'])
 
 
-]; */
+}
 //aprobador
 aprobadores:aprobador[] = [
   {userCode: 'sistemas', nombre: 'Sistemas'},
@@ -247,9 +254,13 @@ showToasterSuccess() {
   );
 }
 
-showToasterError() {
-  this.notifyService.showError('','CANCELADO..');
-}
 
+showToasterError(){
+  this.notifyService.showError(
+    '_____',
+    'Cancelado..!'
+   
+  )
+}
 
 }
