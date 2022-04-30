@@ -1,0 +1,104 @@
+<div class="toolbar">
+  <p>
+    <mat-toolbar class="example-spacer">
+  <span>CREAR TIPOS DE ORDEN DE TRABAJO</span>
+    </mat-toolbar>
+  </p>
+</div>
+
+<div>
+<mat-card class="mat-elevation-z16" fxFlex.sm="0 1 calc(70%-5px)" fxFlex.md="0 1 calc(33%-5px)" fxFlex.gt-md="0 1 calc(50%-10px)">
+
+      <div class="content">
+                <mat-card-content>
+                      <form novalidate id="contactForm" [formGroup]="FormTipo" (ngSubmit)="submit()" >
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
+                          <mat-form-field fxFlex   appearance="outline" >
+                            <mat-label class="label">Nombre Completo</mat-label>
+                            <input matInput placeholder="Nombre" formControlName="Nombre" autocomplete="off" required>
+                          </mat-form-field >
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Unidad Tecnica</mat-label>
+                            <mat-select (valueChange)="cargarusuario($event)"  formControlName="IdDptoTecnico" required>
+                              <mat-option *ngFor="let IdDptoTecnico of unidadTecnicas" [value]="IdDptoTecnico.idDptoTecnico">
+                                {{IdDptoTecnico.nombre}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          </div>
+                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                           <!-- <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Usuario</mat-label>
+                            <input matInput placeholder="Usuario" formControlName="IdUsrResponsable" autocomplete="off">
+                          </mat-form-field> -->
+                          <mat-form-field fxFlex appearance="outline">
+                            <mat-label class="label">Usuario</mat-label>
+                            <mat-select  formControlName="IdUsrResponsable">
+                              <mat-option value="0" selected>N/A</mat-option>
+                              <mat-option *ngFor="let IdUsrResponsable of usuarios" [value]="IdUsrResponsable.idUser">
+                                {{IdUsrResponsable.persona.nombreCompleto}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+
+                        </div>
+                        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+                         <!--  <mat-radio-group formControlName="TieneSubTipo">
+                            <mat-label class="label">Tiene SubTipo</mat-label>&nbsp;
+                            <mat-radio-button value="1">SI</mat-radio-button>&nbsp;
+                            <mat-radio-button value="0">NO</mat-radio-button>
+                          </mat-radio-group> -->
+
+                          <section flex>
+                            <mat-slide-toggle
+                                class="example-margin"
+                                [color]="color"
+                                [checked]="estadoCheck"
+                                [disabled]="disabled"
+                                (change)="onChangeEstado($event.checked)">
+                              <mat-label class="label">Tiene SubTipo</mat-label>
+                            </mat-slide-toggle>
+                          </section>
+                          <br>
+                          <section>
+                             <input type="checkbox"  (change)="onChangeAprobacion($event)" >&nbsp;&nbsp;
+                              <mat-label class="label">Tiene Aprobacion</mat-label>
+                            
+                         </section>
+
+
+                          </div>
+                          <br>
+                          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                           <mat-form-field  appearance="outline">
+                            <mat-label class="label">Estado</mat-label>
+                            <mat-select formControlName="estado" [(value)]="selectedFood">
+
+                              <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                                {{estado.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                        </div>
+
+                        <div class="boton">
+                          <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <mat-icon>cancel</mat-icon>Cancelar</button>
+                          <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  [disabled]="FormTipo.invalid"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                          <mat-icon>save</mat-icon>AGREGAR</button>
+
+                        </div>
+
+                      </form>
+              </mat-card-content>
+            </div>
+
+    </mat-card>
+
+  </div>

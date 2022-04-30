@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { CreateRoutingModule } from './create-routing.module';
 import { MATERIALModule } from '../../../MATERIAL/material.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -16,7 +17,8 @@ import { MATERIALModule } from '../../../MATERIAL/material.module';
   imports: [
     CommonModule,
     CreateRoutingModule,
-   MATERIALModule
+   MATERIALModule,
+   ToastrModule
   ]
 })
 export class CreateModule { }

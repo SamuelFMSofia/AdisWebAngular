@@ -1,0 +1,189 @@
+
+
+
+  .readonly-block {
+    pointer-events: none;
+
+}
+  .toolbar{
+
+
+      padding: 0.8px;
+      height: 50px;
+  }
+  .example-spacer {
+     flex: 1 1 auto;
+     background-color: #00BBF0;
+   // background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+    color: #ffffff;
+    height: 25px;
+    font-size: 25px;
+  }
+
+
+table {
+  margin-top: 10px;
+  width: 100%;
+    overflow: auto;
+
+}
+
+.buscar{
+  height: 60px;
+  margin-top: 3px;
+  margin-right: auto;
+   margin-left: auto;
+   border-width:3px;
+   border-color:cornflowerblue;
+   border-style:solid;
+   border-radius: 5px;
+  justify-content: space-around;
+  padding: 1px;
+  }
+ .nuevo{
+
+		float:right;
+    margin: 10px;
+
+}
+.container{
+
+  padding: 5px;
+
+}
+
+.busqueda{
+  max-height: auto;
+
+    padding-left: 30px;
+    padding-top: 1px;
+    padding-right: 30px;
+}
+.tablero{
+  max-height: auto;
+
+    padding: 30px;
+
+  flex-direction: column;
+  min-width: 300px;
+
+}
+.toolbar{
+
+
+  padding: 0.8px;
+  height: 50px;
+}
+
+
+.search{
+
+margin: 1px;
+}
+
+
+//---------------------------------------------
+// BEGIN BUTTON
+//---------------------------------------------
+
+$border-button-color: rgb(33, 136, 33);
+$bg-light-btn-color: rgb(153, 204, 153);
+$bg-dark-btn-color: rgb(51, 112, 51);
+
+//TODO:
+// - missing responsive behavior
+
+.create-ot-button{
+    background:
+        linear-gradient(
+          90deg,
+            $bg-light-btn-color 0.1%,
+            $bg-dark-btn-color 90%);
+
+    border-color: $border-button-color;
+    border-style: solid;
+    display: ruby-base-container;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    margin: 1%;
+    margin-bottom: 1.2%;
+    opacity: 0.83;
+    transition: 0.1s ease;
+    box-shadow:
+    0.1em 0.2em 0.2em gray;
+}
+.derecha   { float: right; }
+.izquierda { float: left;  }
+.button-icon-container{
+
+    border-radius: 50%;
+    background-color: white;
+    border-style: double;
+    border-color: $border-button-color;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: baseline;
+    z-index: 100;
+    transform: scale(1.5);
+}
+.button-icon{
+    color: $border-button-color;
+    transform: scale(1.2);
+
+}
+.button-title{
+    margin-top: revert;
+    margin-bottom: 0%;
+    text-align: end;
+    justify-content: center;
+    color: white;
+    margin: 8px;
+}
+.create-ot-button:hover{
+    opacity: 10;
+    transform: scale(1.02);
+    box-shadow:
+    0.1em 0.2em 0.2em rgb(94, 94, 94);
+}
+.create-ot-button:focus{
+    opacity: 10;
+    transform: scale(1.03);
+    box-shadow:
+    0.1em 0.2em 0.2em rgb(94, 94, 94);
+}
+
+
+//---------------------------------------------
+// END BUTTON
+//---------------------------------------------
+
+//---------------------------------------
+
+.borrar{
+  color: red;
+}
+
+.mat-row:nth-child(even){
+  background-color: #FCFCFC;
+}
+
+.mat-row:nth-child(odd){
+  background-color: #FFFFFF;
+}
+
+.encabezado{
+    background-color: #F3F3F3;
+}
+
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+

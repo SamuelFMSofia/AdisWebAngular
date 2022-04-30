@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { ServicesService } from './../services/services.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RestorePassword } from './restore-password/restore-password.component';
+import { NotificacionService } from '../../dashboard/services/notificacion/notificacion.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginComponent  {
   public servi: ServicesService,
   public dialog: MatDialog,
   private router: Router,
-  private _snackBar: MatSnackBar
+  private _snackBar: MatSnackBar,
+  private notifyService: NotificacionService,
   ) { }
 
 
@@ -63,6 +65,8 @@ export class LoginComponent  {
             localStorage.setItem('userCode', result.data.userResponse.userCode);
             localStorage.setItem('nombreCompleto', result.data.userResponse.persona.nombreCompleto);
             localStorage.setItem('userResponse', JSON.stringify(result.data.userResponse));
+            localStorage.setItem('idUser', result.data.userResponse.idUser);
+            localStorage.setItem('idPersona', result.data.userResponse.persona.idPersona);
             //JSON.parse(localStorage.getItem('userResponse'));
             //localStorage.setItem('Password', data.result.password);
             localStorage.setItem('token_value', result.data.token);
@@ -70,6 +74,7 @@ export class LoginComponent  {
             //alert(localStorage.getItem('nombre_Completo'));
             //pagina
             this.router.navigate(['/dashboard']);
+            this.showToasterSuccess();
         }else{
             this.OpenSnack('Usuario No Valido');
         }
@@ -87,6 +92,14 @@ export class LoginComponent  {
         horizontalPosition: "center",
         verticalPosition: 'bottom'
       })
+  }
+
+  showToasterSuccess() {
+    this.notifyService.showSuccess(
+      'ADIS HS "Soporte en Linea"',
+      'BIENVENIDO AL SISTEMA..!'
+     
+    );
   }
 
 }

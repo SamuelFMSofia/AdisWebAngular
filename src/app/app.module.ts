@@ -28,7 +28,10 @@ import { ListarusersService } from './dashboard/services/usuarios/listusers/list
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MATERIALModule } from './MATERIAL/material.module';
 import { DragDropFileDirective } from './utils/directives/drag-drop-file.directive';
-
+import { ModifyService } from './dashboard/services/tipoOT/modify/modify.service';
+import { ModificarSubtipoService } from './dashboard/services/subTipoOT/modificar/modificar-subtipo.service';
+import { ToastrModule } from 'ngx-toastr';
+import { NotificacionService } from './dashboard/services/notificacion/notificacion.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { DragDropFileDirective } from './utils/directives/drag-drop-file.directi
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    ToastrModule.forRoot(),
 
   ],
   exports:[
@@ -61,7 +65,9 @@ import { DragDropFileDirective } from './utils/directives/drag-drop-file.directi
 
   providers: [ServicesService, CpersonServiceService, MusersServiceService,
     ListpersonServiceService, ListarusersService, ListuoService,PasswordService, MpersonServiceService,
-  UnidadTecnicaService, MunidadtecnicaService],
+  UnidadTecnicaService,
+  ModifyService, ModificarSubtipoService,
+  NotificacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

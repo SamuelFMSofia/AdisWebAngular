@@ -27,9 +27,13 @@ const routes: Routes = [
       loadChildren:()=> import('./persona/editperfil/editperfil.module').then(e=>e.EditperfilModule)
     },
     {
+      path:'editPersonPerfil',
+      loadChildren:()=> import('./persona/editPersonPerfil/edit-person-perfil.module').then(ed=>ed.EditPersonPerfilModule)
+    },
+    {
       path:'listusers',
       loadChildren:()=> import('./usuario/listusers/listusers.module').then(lu=>lu.ListusersModule)
-    } ,
+    },
     {
       path:'listuo',
       loadChildren:()=> import('./listUO/list-uo.module').then(li=>li.ListUOModule)
@@ -44,7 +48,99 @@ const routes: Routes = [
     },
     {
       path:'createunidadtecnica',
-      loadChildren:()=> import('./unidadtecnica/create/create.module').then(mt=>mt.CreateModule)
+      loadChildren:()=> import('./unidadtecnica/create/create.module').then(ul=>ul.CreateModule)
+    },
+    {
+      path:'tipoOT',
+      loadChildren:()=> import('./tiposOT/listar/tipo-ot.module').then(tp=>tp.TipoOTModule)
+    },
+    {
+      path:'SubtipoOT',
+      loadChildren:()=> import('./subTipoOT/listar/sub-tipo.module').then(sl=>sl.SubTipoModule)
+    },
+    {
+      path:'crearsubtipo',
+      loadChildren:()=> import('./subTipoOT/crear/crear-subtipo.module').then(pq=>pq.CrearSubtipoModule)
+    },
+    {
+      path:'creartipo',
+      loadChildren:()=> import('./tiposOT/crear/crear-tipo.module').then(q=>q.CrearTipoModule)
+    },
+    {
+      path:'modificartipo',
+      loadChildren:()=> import('./tiposOT/modificar/modificar-tipo.module').then(ti=>ti.ModificarTipoModule)
+    },
+    {
+      path:'modificarsubtipo',
+      loadChildren:()=> import('./subTipoOT/modificar/modificar-subtipo.module').then(sub=>sub.ModificarSubtipoModule)
+    },
+    {
+      path:'Aplicacion',
+      loadChildren:()=> import('./Aplicaciones/list/list.module').then(apli=>apli.ListModule)
+    },
+    {
+      path:'CrearAplicacion',
+      loadChildren:()=> import('./Aplicaciones/create/create.module').then(capli=>capli.CreateModule)
+    },
+    {
+      path:'EditAplicacion',
+      loadChildren:()=> import('./Aplicaciones/update/update.module').then(mapli=>mapli.UpdateModule)
+    },
+    {
+      path:'CrearAplicaciones',
+      loadChildren:()=> import('./Aplicaciones/create/create.module').then(caplic=>caplic.CreateModule)
+    },
+    {
+      path:'EditAplicaciones/:idAplica',
+      loadChildren:()=> import('./Aplicaciones/update/update.module').then(maplic=>maplic.UpdateModule)
+    },
+    {
+      path:'SubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/list/list.module').then(sub=>sub.ListModule)
+    },
+    {
+      path:'CrearSubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/create/create.module').then(csub=>csub.CreateModule)
+    },
+    {
+      path:'EditSubAplicacion',
+      loadChildren:()=> import('./SubAplicacion/update/update.module').then(msub=>msub.UpdateModule)
+    },
+    {
+      path:'Prioridad',
+      loadChildren:()=> import('./Prioridad/list/list.module').then(pri=>pri.ListModule)
+    },
+    {
+      path:'CrearPrioridad',
+      loadChildren:()=> import('./Prioridad/create/create.module').then(cpri=>cpri.CreateModule)
+    },
+    {
+      path:'EditPrioridad',
+      loadChildren:()=> import('./Prioridad/update/update.module').then(mpri=>mpri.UpdateModule)
+    },
+    {
+      path:'Complejidad',
+      loadChildren:()=> import('./Complejidad/list/list.module').then(com=>com.ListModule)
+    },
+    {
+      path:'CrearComplejidad',
+      loadChildren:()=> import('./Complejidad/create/create.module').then(ccom=>ccom.CreateModule)
+    },
+    {
+      path:'EditComplejidad',
+      loadChildren:()=> import('./Complejidad/update/update.module').then(mcom=>mcom.UpdateModule)
+    },
+    {
+      path:'Actividad',
+      loadChildren:()=> import('./Actividad/list/list.module').then(act=>act.ListModule)
+    },
+    {
+      path:'CrearActividad',
+      loadChildren:()=> import('./Actividad/create/create.module').then(cact=>cact.CreateModule)
+    },
+    {
+      path:'EditActividad',
+      loadChildren:()=> import('./Actividad/update/update.module').then(mact=>mact.UpdateModule)
     },
     {
       path:'ordentrabajo',

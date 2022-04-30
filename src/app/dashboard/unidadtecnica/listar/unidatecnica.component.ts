@@ -17,10 +17,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-unidatecnica',
   templateUrl: './unidatecnica.component.html',
-  styleUrls: ['./unidatecnica.component.scss']
+  styleUrls: ['./../../style/styles.scss']
 })
 export class UnidatecnicaComponent implements OnInit {
-  Estado: any[] = ['Activo', 'Pasivo'];
+ 
 
   ELEMENT_DATA:unidadTecnicaInterface[]=[];
 
@@ -70,7 +70,7 @@ export class UnidatecnicaComponent implements OnInit {
 
   upgradeUnidadTecnica(unidadTecnica:unidadTecnicaInterface){
     this.dialog.open(TechnicalunitComponent,{
-      data:unidadTecnica
+      data:unidadTecnica.idDptoTecnico
     })
   }
 

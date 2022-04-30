@@ -6,11 +6,8 @@
     </mat-toolbar>
   </p>
 </div>
-
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
-
   <div fxFlex="95%">
-
     <mat-card>
       <mat-card-content>
         <h2>Mi Perfil</h2>
@@ -19,82 +16,81 @@
 
           <div fxFlex="95%" fxFlex.sm="95%" fxFlex.xs="95%">
            <!--  <app-profile-details></app-profile-details> -->
-            <div  *ngIf="list.isAutenticado">
+           <div  *ngIf="list.isAutenticado">
+
 
             <!-- <label class="title">
              Nombre Completo: <label class="title1">{{list.getUserCode}}</label>
             </label> -->
 
-              <label class="title">Nombre Completo:</label>
-            	<input readonly type="text" value="{{list.getUserCode}}"/>
+            <label class="title">Nombre Completo:</label>
+            	<input type="text" value="{{list.getUserCode}}"/>
 
-              <br>
-              <label class="title"> Codigo Usuario: </label>
-              <input readonly type="text" value="{{list.getUserResponse.userCode}}" />
-
-              <br>
-              <label class="title"> Correo: </label>
-              <input readonly type="text" value="{{list.getUserResponse.persona.correo}}" />  
-
-              <br>
-              <label class="title"> Cargo: </label>
-              <input readonly type="text" value="{{list.getUserResponse.persona.cargo.nombre}}" />
-
-              <br>
-              <label class="title"> Unidad Organizacional:  </label>
-              <input readonly type="text" value="{{list.getUserResponse.persona.unidadOrganizacional.nombre}}" />
-
-              <br>
-              <label class="title"> Tipo Usuario: </label>
-              <input readonly type="text" value="{{list.getUserResponse.tipoUsuario.nombre}}" />
-
-            </div>
+            <!-- <label class="title1">
+              {{list.getUserCode}}
+             </label> --><br>
+          <label class="title">
+            Codigo Usuario:
+            </label>
+          <input type="text" value="
+            {{list.getUserResponse.userCode}}" >
+          <br>
+          <label class="title">
+            Cargo:
+            </label>
+          <input type="text" value="
+            {{list.getUserResponse.persona.cargo.nombre}}" >
+            <br>
+            <label class="title">
+              Unidad Organizacional:
+            </label>
+            <input type="text" value="
+            {{list.getUserResponse.persona.unidadOrganizacional.nombre}}" >
+            <br>
+            <!-- <label class="title">
+              Tipo Usuario:
+            </label>
+            <input type="text" value="
+            {{list.getUserResponse.tipoUsuario.persona.nombreCompleto}}" > -->
+          </div>
           </div>
         </div>
       </form>
       </mat-card-content>
-
       <div style="width: auto;margin:0 auto" >
         <mat-accordion  >
             <mat-expansion-panel style="background-color: #D6EAF8;" >
                 <mat-expansion-panel-header fxLayoutAlign="center none" >
                     <mat-panel-title style="color: blue;" >
-                        Cambiar Correo
+                        CAMBIAR CONTRASEÑA
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <app-password></app-password>
             </mat-expansion-panel>
         </mat-accordion>
       </div>
-
       <div style="width: auto;margin:0 auto" >
         <mat-accordion  >
             <mat-expansion-panel style="background-color: #D6EAF8;" >
                 <mat-expansion-panel-header fxLayoutAlign="center none" >
                     <mat-panel-title style="color: blue;" >
-                        Cambiar Contraseña
+                        CAMBIAR CORREO ELECTRONICO
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <app-password></app-password>
+                <app-email></app-email>
             </mat-expansion-panel>
         </mat-accordion>
       </div>
 
-      <div style="width: auto;margin:0 auto" >
+       <div style="width: auto;margin:0 auto" >
         <mat-accordion  >
             <mat-expansion-panel style="background-color: #D6EAF8;" >
                 <mat-expansion-panel-header fxLayoutAlign="center none" >
                     <mat-panel-title style="color: blue;" >
-                        Modificar Datos de mi persona
+                        MODIFICAR PERFIL
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <app-password></app-password>
+                <app-edit-person-perfil></app-edit-person-perfil>
             </mat-expansion-panel>
         </mat-accordion>
       </div>
-
-    </mat-card>
-  </div>
-
-
-</div>
