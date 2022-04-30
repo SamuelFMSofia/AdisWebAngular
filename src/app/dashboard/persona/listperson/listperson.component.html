@@ -31,17 +31,17 @@
               <mat-icon>search</mat-icon>
             </a>
           </mat-form-field>
- 
+
           </div>
-             <div class="derecha">   
+             <div class="derecha">
               <button class="create-ot-button" routerLinkActive="list-item-active" routerLink="../createperson">
                 <div class="button-icon-container">
-                    <mat-icon class="button-icon">group_add</mat-icon> 
-                </div>          
+                    <mat-icon class="button-icon">group_add</mat-icon>
+                </div>
                   <p class="button-title">NUEVO</p>
               </button>
             </div>
-          
+
     </div>
     <div class="tablero mat-elevation-z8">
 
@@ -94,7 +94,7 @@
             <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro "{{input.value}}"</td>
           </tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="100" [pageSize]="5"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" [length]="100" [pageSize]="10"></mat-paginator>
     </div>
   </div>
 </div>

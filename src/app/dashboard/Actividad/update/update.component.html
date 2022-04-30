@@ -1,15 +1,15 @@
 
-<div class="title">
-    <h4 class="text">MODIFICAR APLICACION</h4>
-</div>
+  <div class="title">
+    <h4 class="text">MODIFICAR ACTIVIDAD</h4>
+  </div>
 
-<div>
+  <div>
   <div class="content">
-    <mat-dialog-content [formGroup] = "fromAplicacion">
+    <mat-dialog-content [formGroup] = "fromActividad">
       <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
         <mat-form-field >
-          <mat-label class="label">Aplicacion ID</mat-label>
-            <input matInput formControlName="idAplica" readonly >
+          <mat-label class="label">Actividad ID</mat-label>
+            <input matInput formControlName="idActividad" readonly>
         </mat-form-field>
       </div>
       <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
@@ -28,15 +28,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
-        <mat-slide-toggle
-        class="example-margin"
-        [color]="color"
-        [checked]="estadoCheck"
-        [disabled]="disabled"
-        (change)="onChangeEstado($event.checked)">
-        <mat-label class="label">Tiene SubAplica</mat-label>
-    </mat-slide-toggle>
     </div>
     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
       <mat-form-field appearance="outline">
@@ -45,54 +36,12 @@
 
           <mat-option *ngFor="let estado of estados" [value]="estado.value">
             {{estado.viewValue}}
-
           </mat-option>
         </mat-select>
       </mat-form-field>
    </div>
-
-
-
     </mat-dialog-content>
-  <mat-dialog-content>
-
-    <table class="table">
-     
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Estado </th>
-
-          <th scope="col">Accion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let employee of employeesList; index as i;">
-          <tr>
-
-            <ng-container *ngIf="enableEditIndex != i">
-              <td>{{employee.nombre}}</td>
-              <td>{{employee.estado}}</td>
-
-              <td *ngIf="enableEditIndex != i">
-                <button type="button" (click)="switchEditMode(i)">Edit</button>
-              </td>
-            </ng-container>
-            <ng-container *ngIf="enableEditIndex == i">
-              <td><input [(ngModel)]="employee.nombre" /></td>
-              <td><input [(ngModel)]="employee.estado" /></td>
-
-              <td><button (click)="save()">Update</button></td>
-            </ng-container>
-          </tr>
-        </ng-container>
-
-      </tbody>
-    </table>
-  </mat-dialog-content>
   </div>
-
-
   <mat-dialog-actions>
 
     <!--    <button mat-raiset-button color="primary" (click) = "cerrar()">CERRAR</button> -->
@@ -102,7 +51,8 @@
         </button>
 
         <button  class="btn2"  mat-flat-button  (click) = "guardar()">
-        <mat-icon>save</mat-icon>Modificar</button>
+          <mat-icon>save</mat-icon>Modificar
+        </button>
       </div>
     </mat-dialog-actions>
-</div>
+  </div>

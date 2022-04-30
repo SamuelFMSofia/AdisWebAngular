@@ -20,7 +20,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./../../style/styles.scss']
 })
 export class UnidatecnicaComponent implements OnInit {
-  Estado: any[] = ['Activo', 'Pasivo'];
+ 
 
   ELEMENT_DATA:unidadTecnicaInterface[]=[];
 

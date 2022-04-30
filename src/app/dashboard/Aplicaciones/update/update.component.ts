@@ -213,7 +213,7 @@ export class UpdateComponent implements OnInit {
 
 }
 cancelar(){
-
+    this.showToasterError();
     //window.location.reload();
     this.router.navigate(['/dashboard/Aplicacion'])
 
@@ -243,5 +243,13 @@ subToasterWarning() {
 
   );
 }
+showToasterError(){
+  this.notificacion.showError(
+    '_____',
+    'Cancelado..!'
+   
+  )
+}
+
 
 }

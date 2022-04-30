@@ -69,11 +69,7 @@ selectedUnidadTecnica:unidadTecnica={
   
     }
     cancelar(){
-      this.snackbar.open('Cancelado ', 'action', {
-        duration: 100,
-        horizontalPosition: "start",
-        verticalPosition: 'bottom',
-      })
+         this.showToasterError();
         //window.location.reload();
         this.router.navigate(['/dashboard/Prioridad'])
   
@@ -87,5 +83,12 @@ selectedUnidadTecnica:unidadTecnica={
         'COMPLEJIDAD CREADO..!'
        
       );
+    }
+
+    showToasterError(){
+      this.notifyService.showError(
+        'Cancelado..!',
+        '_____'
+      )
     }
 }

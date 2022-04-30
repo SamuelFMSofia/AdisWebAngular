@@ -1,53 +1,46 @@
-import { ROUTES } from './shareddash/sidenavdash/sidenavdash.component';
+
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+interface SideNavToggle{
+  screenWidth:number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
-  private listTitles: any[];
+export class DashboardComponent {
+
   location: Location
-  constructor(
+ /*  constructor(
     private router: Router,
     location: Location
   ) {
     this.location=location;
-  }
+  } */
+  title = 'Adis-HS';
 
+  isSideNavCollapsed = false;
+  screenWidth = 0;
 
   sideBarOpen = true;
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
-
+  onToggleSideNav(data: SideNavToggle):void{
+    this.screenWidth = data.screenWidth;
+    this.isSideNavCollapsed = data.collapsed;
+   }
   ngOnInit(){
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+
 
   }
 
-  getTitle(){
-
-    var titlee = this.location.prepareExternalUrl(this.location.path())
-
-    if(titlee.charAt(1) ==='/dashboard/unidadTecnica')
-    console.log(titlee);
-    {
-
-      titlee=titlee.slice(1);
-    }
-
-
-       for(var item = 0; item < this.listTitles.length; item++){
-        if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
-        }
-    }
-    return titlee;
-  }
+ 
 
 }

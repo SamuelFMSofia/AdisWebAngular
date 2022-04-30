@@ -1,8 +1,7 @@
-
 <div class="toolbar">
     <p>
       <mat-toolbar class="example-spacer">
-    <span>CREAR NUEVA APLICACION</span>
+    <span>CREAR NUEVA ACTIVIDAD</span>
       </mat-toolbar>
     </p>
   </div>
@@ -12,7 +11,7 @@
 
         <div class="content">
                   <mat-card-content>
-                        <form novalidate id="contactForm" [formGroup]="FormAplicacion" (ngSubmit)="submit()" >
+                        <form novalidate id="contactForm" [formGroup]="FormActividad" (ngSubmit)="submit()" >
                           <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px">
                             <mat-form-field fxFlex   appearance="outline" >
                               <mat-label class="label">Nombre Completo</mat-label>
@@ -32,16 +31,7 @@
                                   </mat-select>
                                 </mat-form-field>
                             </div>
-                            <section flex>
-                              <mat-slide-toggle
-                                  class="example-margin"
-                                  [color]="color"
-                                  [checked]="estadoCheck"
-                                  [disabled]="disabled"
-                                  (change)="onChangeEstado($event.checked)">
-                                <mat-label class="label">Tiene SubAplica</mat-label>
-                              </mat-slide-toggle>
-                            </section>
+
 
                             <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
@@ -57,12 +47,15 @@
                             </mat-form-field>
 
                           </div>
-                         
-                           
+
                           <div class="boton">
-                            <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
-                              <mat-icon>cancel</mat-icon>Cancelar</button>
-                            <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  [disabled]="FormAplicacion.invalid"><!-- (click)="enableDisableRule()"    [ngClass]="{'primary' : toggle, 'red': !toggle}" -->
+                            <!-- <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()">
+                              <mat-icon>cancel</mat-icon>Cancelar</button> -->
+                              <button class="btn1"  type="cancel"  mat-raised-button color="warn" (click)="cancelar()">
+                                <mat-icon>reply_all</mat-icon>REGRESAR</button>
+                            
+
+                            <button class="btn2" id="btnSubmit" type="submit"  mat-raised-button  [disabled]="FormActividad.invalid">
                             <mat-icon>save</mat-icon>AGREGAR</button>
 
                           </div>

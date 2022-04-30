@@ -17,11 +17,12 @@ a.mat-stroked-button .mat-icon {
   //height: 30px;
 }
 .example-spacer {
- flex: 1 1 auto;
- background-color: #00BBF0;
-//background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
-color: #ffffff;
-height: 20px;
+  flex: 1 1 auto;
+  background-color: #00BBF0;
+// background-image: radial-gradient(circle at 95.14% 70.29%, #ffffff 0, #8092fd 15%, #3c78f2 50%, #0060e7 75%, #004cdc 100%);
+ color: #ffffff;
+ height: 25px;
+ font-size: 25px;
 
 }
 
@@ -84,10 +85,10 @@ mat-card-title{
 .btn1{
   font-family: helvetica;
 
-  font-size: 10px;
+  font-size: 12px;
   font-style: italic;
-
-
+  font-weight: bold;
+  color: white;
   border-radius: 15px;
 
 }
@@ -106,12 +107,12 @@ mat-card-content{
 .btn2{
   font-family: helvetica;
 
-  font-size: 10px;
+  font-size: 12px;
   font-style: italic;
 
-
+  font-weight: bold;
   border-radius: 15px;
-  background-color: #36e00b;
+  background-color: #02B415;
 color: white;
 }
 .btn2:hover{
